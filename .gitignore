@@ -1,0 +1,17 @@
+Rust
+/target
+**/*.rs.bk
+Cargo.lock
+VS Code
+.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+Ollama/Continue
+.continue/
+OS
+.DS_Store
+Thumbs.db
+Node/Next (para landing)
+node_modules
+.next
+.env.local
