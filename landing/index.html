@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QbitCoin - Post-Quantum Blockchain</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        qbitgreen: '#00C864',
+                        qbitneon: '#00FFCC',
+                        qbitdark: '#00321E',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+        .hero-pattern {
+            background: radial-gradient(circle, rgba(0,200,100,0.1) 0%, rgba(0,0,0,0) 70%);
+        }
+        .countdown-box {
+            background: linear-gradient(145deg, #00321E, #001a0f);
+            box-shadow: 0 8px 32px 0 rgba(0, 200, 100, 0.2);
+            border: 1px solid rgba(0, 200, 100, 0.3);
+        }
+        .card {
+            background: rgba(0, 50, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 200, 100, 0.3);
+        }
+        .cube-3d {
+            animation: rotate 10s infinite linear;
+        }
+        @keyframes rotate {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Navigation -->
+    <nav class="bg-qbitdark py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <div class="w-10 h-10 bg-qbitgreen rounded-full flex items-center justify-center">
+                <i class="fas fa-cube text-black"></i>
+            </div>
+            <h1 class="text-xl font-bold bg-gradient-to-r from-qbitgreen to-qbitneon bg-clip-text text-transparent">QbitCoin</h1>
+        </div>
+        <div class="hidden md:flex space-x-8">
+            <a href="#about" class="hover:text-qbitgreen transition">About</a>
+            <a href="#tech" class="hover:text-qbitgreen transition">Technology</a>
+            <a href="#tokenomics" class="hover:text-qbitgreen transition">Tokenomics</a>
+            <a href="#roadmap" class="hover:text-qbitgreen transition">Roadmap</a>
+            <a href="#whitepaper" class="hover:text-qbitgreen transition">Whitepaper</a>
+        </div>
+        <button class="bg-gradient-to-r from-qbitgreen to-qbitneon text-black px-6 py-2 rounded-full font-bold hover:opacity-90 transition">
+            <a href="https://github.com/RaulObsidian/QbitCoin-Core" target="_blank">GitHub</a>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern min-h-screen flex flex-col justify-center items-center px-4 text-center">
+        <div class="max-w-4xl">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                <span class="bg-gradient-to-r from-qbitgreen to-qbitneon bg-clip-text text-transparent">Post-Quantum</span>
+                <br>Blockchain
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-gray-300">
+                La primera y única Proof of Work verdaderamente resistente a la computación cuántica
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+                <button class="bg-gradient-to-r from-qbitgreen to-qbitneon text-black px-8 py-4 rounded-full font-bold text-lg hover:opacity-90 transition">
+                    <a href="#whitepaper">Descargar Whitepaper</a>
+                </button>
+                <button class="border-2 border-qbitgreen text-qbitgreen px-8 py-4 rounded-full font-bold text-lg hover:bg-qbitgreen hover:text-black transition">
+                    <a href="#roadmap">Ver Roadmap</a>
+                </button>
+            </div>
+            
+            <!-- Countdown to Testnet -->
+            <div class="countdown-box rounded-xl p-8 max-w-2xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-qbitneon">Lanzamiento de Testnet</h2>
+                <div class="flex justify-center space-x-4 mb-6">
+                    <div class="text-center">
+                        <div id="days" class="text-4xl font-bold text-qbitgreen">00</div>
+                        <div class="text-gray-400">Días</div>
+                    </div>
+                    <div class="text-center">
+                        <div id="hours" class="text-4xl font-bold text-qbitgreen">00</div>
+                        <div class="text-gray-400">Horas</div>
+                    </div>
+                    <div class="text-center">
+                        <div id="minutes" class="text-4xl font-bold text-qbitgreen">00</div>
+                        <div class="text-gray-400">Minutos</div>
+                    </div>
+                    <div class="text-center">
+                        <div id="seconds" class="text-4xl font-bold text-qbitgreen">00</div>
+                        <div class="text-gray-400">Segundos</div>
+                    </div>
+                </div>
+                <p class="text-gray-300">Objetivo: Segundo trimestre de 2026</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="bg-gradient-to-r from-qbitgreen to-qbitneon bg-clip-text text-transparent">La amenaza cuántica</span>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-qbitgreen">La próxima era de la computación</h3>
+                    <p class="text-gray-300 mb-4">
+                        La computación cuántica representa una amenaza inminente para todas las criptomonedas actuales. 
+                        IBM predice procesadores cuánticos de 1000 qubits en 2030, suficientes para romper RSA/ECDSA.
+                    </p>
+                    <p class="text-gray-300 mb-4">
+                        Mientras que Shor's algorithm romperá los esquemas criptográficos actuales, 
+                        Grover's algorithm duplica la longitud de clave efectiva, lo que compromete la seguridad.
+                    </p>
+                    <p class="text-gray-300">
+                        Sin protección, Bitcoin, Ethereum y otras blockchains serán inseguras.
+                    </p>
+                </div>
+                <div class="flex justify-center">
+                    <div class="cube-3d w-64 h-64 relative transform-style-3d">
+                        <div class="cube-face w-full h-full absolute bg-qbitgreen opacity-80 border-2 border-qbitneon"></div>
+                        <div class="cube-face w-full h-full absolute bg-qbitgreen opacity-80 border-2 border-qbitneon transform rotate-y-90"></div>
+                        <div class="cube-face w-full h-full absolute bg-qbitgreen opacity-80 border-2 border-qbitneon transform rotate-y-180"></div>
+                        <div class="cube-face w-full h-full absolute bg-qbitgreen opacity-80 border-2 border-qbitneon transform rotate-y-270"></div>
+                        <div class="cube-face w-full h-full absolute bg-qbitgreen opacity-80 border-2 border-qbitneon transform rotate-x-90"></div>
+                        <div class="cube-face w-full h-full absolute bg-qbitgreen opacity-80 border-2 border-qbitneon transform -rotate-x-90"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="tech" class="py-20 px-4 bg-qbitdark">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="bg-gradient-to-r from-qbitgreen to-qbitneon bg-clip-text text-transparent">RubikPoW</span>
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card p-8 rounded-xl">
+                    <div class="text-qbitgreen text-4xl mb-4"><i class="fas fa-cube"></i></div>
+                    <h3 class="text-xl font-bold mb-4">n×n×n Arbitrario</h3>
+                    <p class="text-gray-300">
+                        Nuestro algoritmo soporta cubos de cualquier tamaño n×n×n, escalando la dificultad exponencialmente.
+                    </p>
+                </div>
+                <div class="card p-8 rounded-xl">
+                    <div class="text-qbitgreen text-4xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="text-xl font-bold mb-4">Resistencia Cuántica</h3>
+                    <p class="text-gray-300">
+                        2⁸⁹ operaciones cuánticas necesarias para 3×3×3 según Grover - imposible incluso con quantum advantage.
+                    </p>
+                </div>
+                <div class="card p-8 rounded-xl">
+                    <div class="text-qbitgreen text-4xl mb-4"><i class="fas fa-bolt"></i></div>
+                    <h3 class="text-xl font-bold mb-4">Alta Velocidad</h3>
+                    <p class="text-gray-300">
+                        Verificación sublineal en <0.45ms para 3×3×3, manteniendo altas tasas de transacción.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-qbitdark p-8 rounded-xl border border-qbitgreen">
+                <h3 class="text-2xl font-bold mb-6 text-center">Complejidad por tamaño n</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b border-qbitgreen">
+                                <th class="pb-4">n</th>
+                                <th class="pb-4">Estados</th>
+                                <th class="pb-4">Equivalente clásico</th>
+                                <th class="pb-4">Equivalente cuántico (Grover)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3">3</td>
+                                <td class="py-3">4.32×10¹⁹</td>
+                                <td class="py-3">2⁶⁵</td>
+                                <td class="py-3"><span class="text-qbitgreen">2⁸⁹</span></td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3">4</td>
+                                <td class="py-3">7.40×10⁴⁵</td>
+                                <td class="py-3">2¹⁵²</td>
+                                <td class="py-3"><span class="text-qbitgreen">2¹⁸⁸</span></td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3">5</td>
+                                <td class="py-3">2.82×10⁷⁴</td>
+                                <td class="py-3">2²⁴⁵</td>
+                                <td class="py-3"><span class="text-qbitgreen">2²⁷⁹</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3">6</td>
+                                <td class="py-3">1.57×10¹⁰⁵</td>
+                                <td class="py-3">2³⁴⁹</td>
+                                <td class="py-3"><span class="text-qbitgreen">2³⁴⁹</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section id="tokenomics" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="bg-gradient-to-r from-qbitgreen to-qbitneon bg-clip-text text-transparent">Tokenomics</span>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-qbitgreen">21 Millones de QBC</h3>
+                    <p class="text-gray-300 mb-4">
+                        Suministro total fijo como Bitcoin, con distribución justa y sostenible.
+                    </p>
+                    <ul class="text-gray-300 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-qbitgreen mr-2"></i> 70% minado vía RubikPoW</li>
+                        <li class="flex items-center"><i class="fas fa-check text-qbitgreen mr-2"></i> 20% para desarrollo y comunidad</li>
+                        <li class="flex items-center"><i class="fas fa-check text-qbitgreen mr-2"></i> 10% para founders e inversores</li>
+                        <li class="flex items-center"><i class="fas fa-check text-qbitgreen mr-2"></i> Economía deflacionaria post-quantum</li>
+                    </ul>
+                </div>
+                <div class="bg-qbitdark p-8 rounded-xl border border-qbitgreen">
+                    <div class="flex justify-between items-center mb-4">
+                        <span>Minería PoW</span>
+                        <span class="text-qbitgreen">70%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-4 mb-6">
+                        <div class="bg-gradient-to-r from-qbitgreen to-qbitneon h-4 rounded-full" style="width: 70%"></div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center mb-4">
+                        <span>Desarrollo & Comunidad</span>
+                        <span class="text-qbitgreen">20%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-4 mb-6">
+                        <div class="bg-gradient-to-r from-qbitgreen to-qbitneon h-4 rounded-full" style="width: 20%"></div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center mb-4">
+                        <span>Founders & Inversores</span>
+                        <span class="text-qbitgreen">10%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-4">
+                        <div class="bg-gradient-to-r from-qbitgreen to-qbitneon h-4 rounded-full" style="width: 10%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-20 px-4 bg-qbitdark">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="bg-gradient-to-r from-qbitgreen to-qbitneon bg-clip-text text-transparent">Roadmap</span>
+            </h2>
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-qbitgreen to-qbitneon"></div>
+                <div class="space-y-12">
+                    <div class="flex items-center justify-start">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-qbitdark p-6 rounded-xl border border-qbitgreen">
+                                <h3 class="text-xl font-bold mb-2 text-qbitgreen">Q4 2025</h3>
+                                <p>MVP funcional, whitepaper completo de 180 páginas, equipo establecido</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-qbitgreen border-4 border-black z-10"></div>
+                        <div class="w-1/2"></div>
+                    </div>
+                    <div class="flex items-center justify-end">
+                        <div class="w-1/2"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-qbitgreen border-4 border-black z-10"></div>
+                        <div class="w-1/2 pl-8">
+                            <div class="bg-qbitdark p-6 rounded-xl border border-qbitgreen">
+                                <h3 class="text-xl font-bold mb-2 text-qbitgreen">Q2 2026</h3>
+                                <p>Testnet pública, minería RubikPoW, primeros mineros</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-start">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-qbitdark p-6 rounded-xl border border-qbitgreen">
+                                <h3 class="text-xl font-bold mb-2 text-qbitgreen">Q4 2026</h3>
+                                <p>Mainnet + primeros exchanges, token disponible</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-qbitgreen border-4 border-black z-10"></div>
+                        <div class="w-1/2"></div>
+                    </div>
+                    <div class="flex items-center justify-end">
+                        <div class="w-1/2"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-qbitgreen border-4 border-black z-10"></div>
+                        <div class="w-1/2 pl-8">
+                            <div class="bg-qbitdark p-6 rounded-xl border border-qbitgreen">
+                                <h3 class="text-xl font-bold mb-2 text-qbitgreen">Q4 2027</h3>
+                                <p>Contratos inteligentes, DeFi, ecosistema completo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-start">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-qbitdark p-6 rounded-xl border border-qbitgreen">
+                                <h3 class="text-xl font-bold mb-2 text-qbitgreen">2028</h3>
+                                <p>Pagos globales, adopción institucional, auditoría post-cuántica</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-qbitgreen border-4 border-black z-10"></div>
+                        <div class="w-1/2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Whitepaper Section -->
+    <section id="whitepaper" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-16">
+                <span class="bg-gradient-to-r from-qbitgreen to-qbitneon bg-clip-text text-transparent">Whitepaper</span>
+            </h2>
+            <div class="card p-12 rounded-xl">
+                <h3 class="text-2xl font-bold mb-6">QbitCoin: A Post-Quantum Blockchain Based on RubikPoW (n×n×n)</h3>
+                <p class="text-gray-300 mb-8">
+                    Nuestro whitepaper técnico de 180 páginas detalla los fundamentos matemáticos, 
+                    análisis de seguridad y la implementación de RubikPoW, demostrando su resistencia 
+                    a los ataques cuánticos mientras mantiene escalabilidad y descentralización.
+                </p>
+                <a href="https://github.com/RaulObsidian/QbitCoin-Core/blob/main/QbitCoin_Whitepaper_v1.0_EN.pdf" 
+                   target="_blank" 
+                   class="inline-block bg-gradient-to-r from-qbitgreen to-qbitneon text-black px-8 py-4 rounded-full font-bold hover:opacity-90 transition">
+                    <i class="fas fa-file-pdf mr-2"></i>Descargar Whitepaper (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-qbitdark py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-qbitgreen">QbitCoin</h4>
+                    <p class="text-gray-400">
+                        La primera blockchain post-cuántica basada en RubikPoW (n×n×n). 
+                        Resistencia cuántica real. Escalabilidad infinita.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-qbitgreen">Enlaces</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-qbitgreen transition">Sobre</a></li>
+                        <li><a href="#tech" class="text-gray-400 hover:text-qbitgreen transition">Tecnología</a></li>
+                        <li><a href="#tokenomics" class="text-gray-400 hover:text-qbitgreen transition">Tokenomics</a></li>
+                        <li><a href="#roadmap" class="text-gray-400 hover:text-qbitgreen transition">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-qbitgreen">Recursos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="https://github.com/RaulObsidian/QbitCoin-Core" target="_blank" class="text-gray-400 hover:text-qbitgreen transition">GitHub</a></li>
+                        <li><a href="#whitepaper" class="text-gray-400 hover:text-qbitgreen transition">Whitepaper</a></li>
+                        <li><a href="https://github.com/RaulObsidian/QbitCoin-Core/blob/main/investors/pitch_deck.pdf" target="_blank" class="text-gray-400 hover:text-qbitgreen transition">Pitch Deck</a></li>
+                        <li><a href="https://github.com/RaulObsidian/QbitCoin-Core/blob/main/investors/dossier_v2.pdf" target="_blank" class="text-gray-400 hover:text-qbitgreen transition">Dossier</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-qbitgreen">Contacto</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400"><i class="fas fa-envelope mr-2"></i>raul@qbitcoin.org</li>
+                        <li class="text-gray-400"><i class="fab fa-twitter mr-2"></i>@QbitCoinCore</li>
+                        <li class="text-gray-400"><i class="fab fa-telegram mr-2"></i>QbitCoinOfficial</li>
+                        <li class="text-gray-400"><i class="fas fa-globe mr-2"></i>qbitcoin.org</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>© 2025 QbitCoin Foundation. Todos los derechos reservados. ¡QbitCoin o muerte!</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown to Q2 2026 (April 1, 2026)
+        const countDownDate = new Date("Apr 1, 2026 00:00:00").getTime();
+        
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+            
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+            }
+        }, 1000);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
