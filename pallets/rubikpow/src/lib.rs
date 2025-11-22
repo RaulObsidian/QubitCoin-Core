@@ -33,6 +33,10 @@ pub mod pallet {
     #[pallet::getter(fn last_nonce)]
     pub type LastNonce<T: Config> = StorageValue<_, u64, ValueQuery>;
 
+    #[pallet::storage]
+    #[pallet::getter(fn block_number)]
+    pub type BlockNumber<T: Config> = StorageValue<_, u32, ValueQuery>;
+
     #[pallet::event]
     #[pallet::generate_deposit(pub(super) fn deposit_event)]
     pub enum Event<T: Config> {
@@ -47,6 +51,7 @@ pub mod pallet {
         CubeTooSmall,
         CubeTooLarge,
         InvalidNonce,
+        DifficultyTooLow,
     }
 
     #[pallet::call]
@@ -71,22 +76,22 @@ pub mod pallet {
 
             // Create cube and scramble it with the nonce
             let mut cube = Cube::new(cube_size as usize);
-            let block_header = b"mock_block_header"; // In a real implementation, this would be the actual block header
-            let scramble = cube.scramble_deterministic(nonce, block_header);
+            let block_header = Self::get_current_block_header();
+            let scramble = cube.scramble_deterministic(nonce, &block_header);
 
             // Verify solution
             ensure!(cube.verify_solution(&moves), Error::<T>::InvalidSolution);
 
             // Check if the cube state meets the current difficulty target
             let difficulty = Self::difficulty();
-            let target = difficulty; // Simplified: target is same as difficulty
-            let hash = [0u8; 32]; // In a real implementation, this would be the cube's state hash
-            ensure!(cube.meets_difficulty(hash, target), Error::<T>::InvalidSolution);
+            let target_hash = Self::calculate_target_hash(difficulty);
+            ensure!(cube.meets_difficulty(target_hash), Error::<T>::InvalidSolution);
 
             let reward = Self::calculate_reward(cube_size);
             let new_difficulty = Self::adjust_difficulty(difficulty, cube_size);
 
             <Difficulty<T>>::put(new_difficulty);
+            <BlockNumber<T>>::put(Self::block_number() + 1);
 
             // Issue reward (simplified - in reality, would use T::Currency)
             // For now, we just deposit an event.
@@ -101,6 +106,7 @@ pub mod pallet {
         #[pallet::weight(10_000 + T::DbWeight::get().writes(1))]
         pub fn set_difficulty(origin: OriginFor<T>, new_difficulty: u32) -> DispatchResult {
             ensure_root(origin)?;
+            ensure!(new_difficulty > 0, Error::<T>::DifficultyTooLow);
             <Difficulty<T>>::put(new_difficulty);
             Self::deposit_event(Event::DifficultyAdjustment { new_difficulty });
             Ok(())
@@ -115,10 +121,38 @@ pub mod pallet {
         }
 
         fn adjust_difficulty(current_difficulty: u32, cube_size: u32) -> u32 {
-            // Simple difficulty adjustment based on cube size
-            // In a real implementation, this would be based on block time
+            // Difficulty adjustment based on cube size and target block time
+            // This is a simplified implementation
             let adjustment_factor = (cube_size * 100) / (current_difficulty.max(1));
             current_difficulty.saturating_add(adjustment_factor)
+        }
+
+        fn calculate_target_hash(difficulty: u32) -> [u8; 32] {
+            // Calculate the target hash based on the difficulty
+            // This is a simplified implementation
+            let mut target = [0u8; 32];
+            let difficulty_bytes = difficulty.to_le_bytes();
+            target[..4].copy_from_slice(&difficulty_bytes);
+            target
+        }
+
+        fn get_current_block_header() -> Vec<u8> {
+            // Get the current block header as a byte vector
+            // This is a simplified implementation
+            Self::block_number().to_le_bytes().to_vec()
+        }
+
+        #[pallet::hooks]
+        impl<T: Config> Hooks<BlockNumberFor<T>> for Pallet<T> {
+            fn on_finalize(_n: BlockNumberFor<T>) {
+                // Adjust difficulty every 2016 blocks (similar to Bitcoin)
+                if Self::block_number() % 2016 == 0 {
+                    let current_difficulty = Self::difficulty();
+                    let new_difficulty = Self::adjust_difficulty(current_difficulty, 3); // Using 3 as a default cube size for adjustment
+                    <Difficulty<T>>::put(new_difficulty);
+                    Self::deposit_event(Event::DifficultyAdjustment { new_difficulty });
+                }
+            }
         }
     }
 }

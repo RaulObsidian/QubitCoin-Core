@@ -4,6 +4,7 @@
 \usepackage{hyperref}
 \usepackage{geometry}
 \usepackage{tikz}
+\usepackage{tikz-3dplot}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -93,9 +94,50 @@ n & States & Approximation & $\sqrt{|G_n|}$ (Grover) \\
 \caption{State space and quantum security for different cube sizes}
 \end{table}
 
+\section{Cube Evolution and Permutation Groups}
+\begin{tikzpicture}[scale=0.5]
+\tdplotsetmaincoords{70}{110}
+\begin{scope}[tdplot_main_coords]
+\draw[thick] (0,0,0) -- (3,0,0) -- (3,3,0) -- (0,3,0) -- cycle;
+\draw[thick] (0,0,0) -- (0,0,3) -- (3,0,3) -- (3,0,0);
+\draw[thick] (0,0,3) -- (0,3,3) -- (3,3,3) -- (3,0,3);
+\draw[thick] (0,3,0) -- (0,3,3);
+\draw[thick] (3,3,0) -- (3,3,3);
+\draw[thick] (3,3,0) -- (3,3,3);
+
+% Draw a 3x3x3 cube grid
+\foreach \x in {0,1,2} {
+    \foreach \y in {0,1,2} {
+        \foreach \z in {0,1,2} {
+            \draw[fill=gray!20] (\x,\y,\z) -- (\x+1,\y,\z) -- (\x+1,\y+1,\z) -- (\x,\y+1,\z) -- cycle;
+            \draw[fill=gray!40] (\x,\y,\z) -- (\x,\y,\z+1) -- (\x,\y+1,\z+1) -- (\x,\y+1,\z) -- cycle;
+            \draw[fill=gray!60] (\x,\y,\z) -- (\x+1,\y,\z) -- (\x+1,\y,\z+1) -- (\x,\y,\z+1) -- cycle;
+        }
+    }
+}
+\end{scope}
+\end{tikzpicture}
+
 % Resistencia a Grover/Shor
 \chapter{Quantum Resistance Analysis}
 RubikPoW's resistance stems from the computational complexity of solving the cube. Grover's algorithm provides a quadratic speedup, but the sheer size of the state space for $n \geq 3$ makes it computationally infeasible even for quantum computers.
+
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+    axis lines = left,
+    xlabel = {Cube Size (n×n×n)},
+    ylabel = {Quantum Operations (log scale)},
+    title = {Grover Complexity vs Cube Size},
+]
+\addplot [
+    domain=2:6,
+    samples=100,
+    color=blue,
+]
+{2^(4.78*x - 4.5)}; % Approximation of Grover complexity for n×n×n
+\addlegendentry{$O(\sqrt{|G_n|})$ - Grover Complexity}
+\end{axis}
+\end{tikzpicture}
 
 % Arquitectura
 \chapter{Hybrid PoW/PoS Architecture}
