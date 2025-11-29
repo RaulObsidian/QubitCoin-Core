@@ -1,0 +1,41 @@
+Subject: Grant Application for QbitCoin - Quantum-Resistant Blockchain Using RubikPoW
+
+Dear Web3 Foundation Grants Committee,
+
+I am writing to apply for a grant to develop QbitCoin, a quantum-resistant blockchain that implements a novel proof-of-work algorithm called RubikPoW, which is based on the mathematical complexity of the Rubik's Cube group.
+
+**Project Overview**
+QbitCoin (QBC) addresses a critical long-term security issue facing the blockchain space: quantum computing threats to existing cryptographic systems. Our solution uses RubikPoW, a unique algorithm that leverages the computational difficulty of solving n×n×n Rubik's cubes as a proof-of-work mechanism.
+
+**Technical Approach**
+The security of our system is based on group theory problems within the Rubik's Cube group, which are computationally difficult even for quantum computers to solve. We've designed the algorithm to provide security that is inherently quantum-resistant by mathematical design rather than add-on solutions.
+
+**Funding Request**
+We are requesting $500,000 to fund:
+- Core protocol development over 18 months
+- Security audits and formal verification
+- Testnet deployment and community outreach
+- Team expansion for research and development
+
+**Project Timeline**
+- Month 1-3: Protocol refinement and security architecture
+- Month 4-9: Implementation and testing
+- Month 10-15: Testnet launch and iteration
+- Month 16-18: Mainnet preparation and launch
+
+**Team Credentials**
+Our team includes experts in cryptography, blockchain technology, and group theory mathematics. We have already completed a comprehensive technical whitepaper and functional prototype demonstrating the feasibility of our approach.
+
+**Expected Impact**
+If successful, QbitCoin will provide the blockchain ecosystem with the first truly quantum-resistant consensus mechanism, offering long-term security for decentralized applications and digital assets in the post-quantum world.
+
+**Attachments**
+- Technical whitepaper
+- Working prototype documentation
+- Team CVs and credentials
+
+Thank you for considering our application. We believe this project represents an essential security advancement for the decentralized web.
+
+Sincerely,
+Raúl
+QbitCoin Development Team

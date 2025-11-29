@@ -14,5 +14,6 @@ Thumbs.db
 Node/Next (para landing)
 node_modules
 .next
-.env.localMiKTeX-Local-Repo/ 
-"*.tar.lzma" 
+.env.local
+MiKTeX-Local-Repo/
+*.tar.lzma 

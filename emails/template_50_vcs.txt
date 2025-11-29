@@ -1,0 +1,38 @@
+Subject: QbitCoin (QBC) - First Quantum-Resistant Blockchain via RubikPoW | Investment Opportunity
+
+Dear [VC Name],
+
+I hope this email finds you well. I am reaching out to introduce QbitCoin (QBC), the world's first quantum-resistant blockchain that addresses the critical security threat quantum computing poses to the entire cryptocurrency ecosystem.
+
+**The Problem**: Experts estimate that quantum computers will break Bitcoin and Ethereum's cryptographic security between 2030-2040, putting over $1 trillion in digital assets at risk. Current "quantum-resistant" solutions are add-ons that don't address the fundamental vulnerability.
+
+**Our Solution**: QbitCoin uses RubikPoW, a revolutionary proof-of-work algorithm based on the mathematical complexity of the Rubik's Cube group. This provides quantum resistance by mathematical design, not add-on patches. Even with Grover's algorithm, solving our cube-based challenges requires 2^89 operations.
+
+**Market Opportunity**: With quantum computers advancing faster than expected, the market for truly quantum-resistant blockchain infrastructure is estimated at $100+ billion by 2035.
+
+**Current Status**: 
+- Complete technical implementation
+- 180-page whitepaper with mathematical foundations
+- Investor pitch decks and dossiers (ES/EN/DE)
+- Professional landing page with i18n
+- Functional proof-of-concept
+
+**Team**: Led by experienced blockchain and cryptography researchers with peer-reviewed publications in security.
+
+**Funding Request**: Raising $5M Series A for team expansion, security audits, and mainnet launch.
+
+Please find attached our comprehensive materials:
+- QbitCoin_Whitepaper_v1.0.pdf
+- Pitch_Deck_QbitCoin_[Language].pdf
+- Dossier_Inversores_v2_[Language].pdf
+- Technical_demo.mp4
+
+We would welcome the opportunity to present our technology to your team. The quantum threat to crypto is real and approaching fast - but QbitCoin offers a fundamental, not incremental, solution.
+
+Best regards,
+Raúl
+Founder & Lead Developer, QbitCoin
+raul@qbitcoin.io
+www.qbitcoin.io
+
+P.S. The testnet launches Q2 2026. Early investors will have significant position before the quantum-resistance narrative becomes urgent for the market.

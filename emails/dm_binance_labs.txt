@@ -1,0 +1,11 @@
+Hi @BinanceLabs, I've developed QbitCoin (QBC) - the first quantum-resistant blockchain using RubikPoW algorithm. Unlike current chains, our approach is mathematically quantum-safe using Rubik's Cube group theory. 
+
+We've built a working prototype, comprehensive whitepaper, and Next.js landing with i18n. Seeking strategic partners to secure the post-quantum crypto ecosystem. Could we schedule a brief call to discuss potential collaboration? 
+
+Docs: Pitch Deck & Dossier in ES/EN/DE
+Website: [landing page URL]
+Repo: github.com/RaulObsidian/QbitCoin-Core
+
+The quantum threat to existing blockchains is real and approaching (est. 2030-2040). QbitCoin offers the first fundamental solution rather than add-on security. Would love to show you our technical implementation. 
+
+#QuantumResistant #Blockchain #Crypto #Web3 #BinanceLabs

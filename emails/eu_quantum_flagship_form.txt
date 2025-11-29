@@ -1,0 +1,50 @@
+EU Quantum Flagship Funding Application Form
+
+Project Title: QbitCoin - Quantum-Resistant Blockchain Infrastructure Using RubikPoW
+
+Principal Investigator: Raúl [Apellido]
+Institution: QbitCoin Research Lab
+Duration: 36 months
+Requested Funding: €2,500,000
+
+1. PROJECT ABSTRACT
+
+We propose to develop QbitCoin, a quantum-resistant blockchain infrastructure that uses a novel proof-of-work algorithm called RubikPoW. This algorithm leverages the mathematical complexity of the Rubik's Cube group to provide security that remains robust against quantum computing attacks.
+
+2. SCIENTIFIC AND TECHNOLOGICAL QUALITY
+
+The project addresses the critical challenge of quantum computing threats to existing blockchain infrastructure. Current cryptographic systems will be vulnerable to quantum attacks within the next decade. Our approach uses group theory problems in the Rubik's Cube group, which have been shown to resist efficient quantum algorithms.
+
+3. INNOVATION ASPECTS
+
+Our innovation lies in applying Rubik's Cube group theory to blockchain consensus mechanisms. Unlike existing approaches that attempt to adapt classical cryptography, RubikPoW is quantum-resistant by mathematical design. This represents a paradigm shift in quantum-safe consensus mechanisms.
+
+4. IMPACT ASPECTS
+
+The expected impact includes:
+- A quantum-resistant blockchain infrastructure that can secure digital assets
+- Advancement in the application of group theory to practical security problems
+- A foundation for future quantum-safe distributed systems
+- European leadership in quantum-resistant blockchain technology
+
+5. IMPLEMENTATION ASPECTS
+
+Our implementation plan includes:
+- Phase 1 (Months 1-12): Theoretical foundation and protocol design
+- Phase 2 (Months 13-24): Implementation and security testing
+- Phase 3 (Months 25-36): Test deployment and optimization
+
+6. MANAGEMENT ASPECTS
+
+Project management will include monthly technical reviews, quarterly stakeholder updates, and annual assessments by an advisory board of quantum computing and cryptography experts.
+
+7. ETHICS AND SECURITY ASPECTS
+
+The project poses no ethical concerns. All research will be conducted openly where possible, with security-sensitive aspects appropriately protected until implementation.
+
+8. BUDGET JUSTIFICATION
+
+Personnel (60%): 6 researchers across cryptography, blockchain, and quantum computing
+Equipment (20%): High-performance computing resources for testing
+Travel (10%): Conferences and collaboration
+Indirect costs (10%): Project administration and infrastructure
