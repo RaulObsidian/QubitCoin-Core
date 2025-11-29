@@ -1,15 +1,9 @@
 // src/app/page.tsx
-import { getMessages } from 'next-intl/server';
-import Link from 'next/link';
-import ClientPage from './ClientPage';
+import { redirect } from 'next/navigation';
+import { getRequestConfig } from 'next-intl/server';
 
-export default async function Page({
-  params: { locale }
-}: {
-  params: { locale: string };
-}) {
-  // Obtener mensajes para el idioma actual
-  const messages = await getMessages();
-  
-  return <ClientPage locale={locale} messages={messages} />;
+// Redirigir al idioma predeterminado
+export default async function Page() {
+  // Redirigir al idioma español por defecto
+  redirect('/es');
 }
