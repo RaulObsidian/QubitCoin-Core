@@ -6,7 +6,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "QbitCoin - Criptomoneda Resistente a Cuánticos",
+  title: "QubitCoin - The Post-Quantum Standard",
   description: "La primera criptomoneda basada en el algoritmo RubikPoW, verdaderamente segura contra amenazas cuánticas",
 };
 

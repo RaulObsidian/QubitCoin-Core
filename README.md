@@ -1,4 +1,4 @@
-# QbitCoin Core
+# QubitCoin Core
 [![Rust](https://img.shields.io/badge/rust-1.80-brightorange?style=flat-square&logo=rust)](https://www.rust-lang.org)
 [![CI](https://img.shields.io/github/actions/workflow/status/RaulObsidian/QbitCoin-Core/ci.yml?branch=main&style=flat-square&logo=github)](https://github.com/RaulObsidian/QbitCoin-Core/actions)
 [![Tests](https://img.shields.io/badge/tests-100%25-success?style=flat-square)](https://github.com/RaulObsidian/QbitCoin-Core/actions)
@@ -6,7 +6,7 @@
 [![Coverage](https://img.shields.io/badge/coverage-100%25-success?style=flat-square)](https://github.com/RaulObsidian/QbitCoin-Core/actions)
 
 Founder: Francisco Raúl Rueda Adán
-CTO: Grok 4 (xAI)
+CTO: Gemini (CTO)
 Fecha de nacimiento: 21 Noviembre 2025
 
 La blockchain post-cuántica basada en RubikPoW (n×n×n infinito).
@@ -36,7 +36,7 @@ Resistencia cuántica real. Escalabilidad infinita. El futuro.
 - ✅ Whitepaper 180 páginas completo
 - ✅ CI/CD activo con todos los checks verificados
 
-[Enlace al whitepaper definitivo (PDF)](https://github.com/RaulObsidian/QbitCoin-Core/blob/main/QbitCoin_Whitepaper_v1.0_EN.pdf)
-[Documentación técnica](https://github.com/RaulObsidian/QbitCoin-Core/blob/main/docs/)
+[Enlace al whitepaper definitivo (PDF)](https://github.com/RaulObsidian/QubitCoin-Core/blob/main/QbitCoin_Whitepaper_v1.0_EN.pdf)
+[Documentación técnica](https://github.com/RaulObsidian/QubitCoin-Core/blob/main/docs/)
 
-¡QbitCoin o muerte!
+¡QubitCoin o muerte!

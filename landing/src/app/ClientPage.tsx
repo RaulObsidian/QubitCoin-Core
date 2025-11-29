@@ -54,7 +54,7 @@ export default function ClientPage({ locale, messages }: { locale: string; messa
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 text-white">
       {/* Barra de navegación con selector de idioma */}
       <nav className="p-4 flex justify-between items-center bg-gray-800/50 backdrop-blur-sm">
-        <div className="text-xl font-bold">QbitCoin</div>
+        <div className="text-xl font-bold">QubitCoin</div>
         <div className="flex items-center space-x-4">
           <span className="text-sm">{t('languageSwitcher')}:</span>
           <select 
@@ -294,7 +294,7 @@ export default function ClientPage({ locale, messages }: { locale: string; messa
 
       {/* Pie de página */}
       <footer className="py-8 px-4 bg-gray-900 text-center text-gray-400">
-        <p>© {new Date().getFullYear()} QbitCoin. Todos los derechos reservados.</p>
+        <p>© {new Date().getFullYear()} QubitCoin. Todos los derechos reservados.</p>
       </footer>
     </div>
   );
