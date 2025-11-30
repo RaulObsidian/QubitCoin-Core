@@ -41,3 +41,4 @@ Resistencia cuántica real. Escalabilidad infinita. El futuro.
 
 ¡QubitCoin o muerte!
 " " 
+" " 
