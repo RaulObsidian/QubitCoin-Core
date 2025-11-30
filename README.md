@@ -40,3 +40,4 @@ Resistencia cuántica real. Escalabilidad infinita. El futuro.
 [Documentación técnica](https://github.com/RaulObsidian/QubitCoin-Core/blob/main/docs/)
 
 ¡QubitCoin o muerte!
+" " 
