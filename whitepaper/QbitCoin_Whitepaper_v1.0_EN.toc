@@ -1,0 +1,60 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Executive Summary}{2}{section.1}%
+\contentsline {section}{\numberline {2}Introduction}{2}{section.2}%
+\contentsline {section}{\numberline {3}Background and Motivation}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The quantum threat}{2}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Limitations of current solutions}{2}{subsection.3.2}%
+\contentsline {section}{\numberline {4}RubikPoW: The Quantum-Resistant Proof-of-Work Algorithm}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Mathematical foundations}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Order of the Rubik's Cube group}{3}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Computational complexity}{3}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Technical Implementation}{3}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Mining protocol}{3}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Block structure}{3}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Solution algorithm}{4}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Security Analysis}{4}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Quantum resistance}{4}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Comparison with other systems}{4}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Tokenomics}{5}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Emission model}{5}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Reward curve}{5}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Scalability and Performance}{5}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Block time}{5}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Transaction throughput}{5}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Roadmap}{5}{section.9}%
+\contentsline {section}{\numberline {10}Smart Contracts Implementation}{5}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Theoretical framework}{5}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Differentiating features}{6}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Economic and Market Analysis}{6}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Demand for quantum-resistant cryptocurrencies}{6}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Competition}{6}{subsection.11.2}%
+\contentsline {section}{\numberline {12}Regulatory Aspects}{6}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Compliance}{6}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Privacy and Transparency}{7}{subsection.12.2}%
+\contentsline {section}{\numberline {13}Consensus and Governance}{7}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Consensus protocol}{7}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Decentralized governance}{7}{subsection.13.2}%
+\contentsline {section}{\numberline {14}Detailed Technical Implementation}{7}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Cube data structure}{7}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Hash functions}{7}{subsection.14.2}%
+\contentsline {section}{\numberline {15}Test Results and Validation}{7}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Security tests}{7}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}Mathematical validation}{8}{subsection.15.2}%
+\contentsline {section}{\numberline {16}Attack Simulations and Risk Analysis}{8}{section.16}%
+\contentsline {subsection}{\numberline {16.1}Analysis of known attacks}{8}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}Risk mitigation}{8}{subsection.16.2}%
+\contentsline {section}{\numberline {17}Conclusion}{8}{section.17}%
+\contentsline {section}{\numberline {18}Acknowledgments}{9}{section.18}%
+\contentsline {section}{\numberline {19}References}{9}{section.19}%
+\contentsline {section}{\numberline {20}Appendix A: Permutation Algorithms}{9}{section.20}%
+\contentsline {subsection}{\numberline {20.1}Cube State Representation}{9}{subsection.20.1}%
+\contentsline {subsection}{\numberline {20.2}Move Application Algorithm}{9}{subsection.20.2}%
+\contentsline {section}{\numberline {21}Appendix B: Complexity Analysis}{9}{section.21}%
+\contentsline {subsection}{\numberline {21.1}Verification Complexity}{9}{subsection.21.1}%
+\contentsline {subsection}{\numberline {21.2}Statistical Security Analysis}{10}{subsection.21.2}%
+\contentsline {section}{\numberline {22}Appendix C: Comparison with Other PoW Algorithms}{10}{section.22}%
+\contentsline {subsection}{\numberline {22.1}Comparison with SHA-256}{10}{subsection.22.1}%
+\contentsline {subsection}{\numberline {22.2}Comparison with Scrypt and Equihash}{10}{subsection.22.2}%
+\contentsline {section}{\numberline {23}Appendix D: Implementation of Difficulty}{10}{section.23}%
+\contentsline {subsection}{\numberline {23.1}Difficulty Adjustment}{10}{subsection.23.1}%
+\contentsline {subsection}{\numberline {23.2}Combined Difficulty Calculation}{10}{subsection.23.2}%
