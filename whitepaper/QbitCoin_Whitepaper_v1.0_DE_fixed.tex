@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage[ngerman]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -21,17 +21,17 @@
 \usepackage{authblk}
 \usepackage[numbers,sort&compress]{natbib}
 
-% Define mathematical environments
-\newtheorem{theorem}{Theorem}[section]
+% Definición de entornos matemáticos
+\newtheorem{theorem}{Satz}[section]
 \newtheorem{lemma}{Lemma}[section]
-\newtheorem{corollary}{Corollary}[section]
+\newtheorem{corollary}{Korollar}[section]
 \newtheorem{definition}{Definition}[section]
-\newtheorem{proposition}{Proposition}[section]
+\newtheorem{proposition}{Satz}[section]
 
 \geometry{a4paper, margin=1in}
 
-\title{QubitCoin Whitepaper v2.0 - Expanded English Version (30-40 Pages)}
-\author{Raul - Founder of QubitCoin}
+\title{QubitCoin Whitepaper v2.0 - Erweiterte deutsche Version (30-40 Seiten)}
+\author{Raúl - Gründer von QubitCoin}
 \affil{QubitCoin Foundation}
 \date{\today}
 
@@ -40,104 +40,104 @@
 \maketitle
 
 \begin{abstract}
-This whitepaper presents QubitCoin (QBC), a quantum-resistant cryptocurrency implementing RubikPoW, a proof-of-work algorithm based on the mathematical complexity of the Rubik's Cube group. This document extensively details the architecture, quantum security, technical implementation, and economic model of QubitCoin, providing an exhaustive analysis of its resistance against quantum algorithms such as Shor and Grover. The whitepaper includes complete mathematical demonstrations of the Rubik group order, analysis of Grover's complexity against the permutation space, detailed technical diagrams, tokenomics analysis and expansive roadmap. With 30-40 pages of dense technical content, this document establishes the mathematical and cryptographic foundations positioning QubitCoin as the post-quantum security standard.
+Dieses Whitepaper präsentiert QubitCoin (QBC), eine Quanten-resistente Kryptowährung, die RubikPoW implementiert, einen Proof-of-Work-Algorithmus, der auf der mathematischen Komplexität der Rubik's Cube-Gruppe beruht. Dieses Dokument erläutert ausführlich die Architektur, die Quantensicherheit, die technische Implementierung und das Wirtschaftsmodell von QubitCoin und bietet eine umfassende Analyse seiner Widerstandsfähigkeit gegenüber Quantenalgorithmen wie Shor und Grover. Das Whitepaper enthält vollständige mathematische Beweise zur Ordnung der Rubik-Gruppe, Analyse der Grover-Komplexität gegenüber dem Permutationsraum, detaillierte technische Diagramme, Tokenomics-Analyse und eine umfangreiche Roadmap. Mit 30-40 Seiten dichten technischen Inhalts legt dieses Dokument die mathematischen und kryptografischen Grundlagen fest, die QubitCoin zum Post-Quantum-Sicherheitsstandard positionieren.
 \end{abstract}
 
 \tableofcontents
 \newpage
 
-\section{Executive Summary}
+\section{Exekutivzusammenfassung}
 
-QubitCoin (QBC) represents a revolution in cryptographic security by introducing RubikPoW, a quantum-resistant proof-of-work algorithm grounded in the mathematical complexity of the Rubik's Cube group. Unlike current systems based on elliptic curves or hash functions, RubikPoW is founded on the mathematical complexity of the Rubik's Cube group, offering inherent security against quantum algorithms like Shor and Grover.
+QubitCoin (QBC) stellt eine Revolution in der kryptografischen Sicherheit dar, indem es RubikPoW einführt, einen quantenresistenten Proof-of-Work-Algorithmus, der auf der mathematischen Komplexität der Rubik's Cube-Gruppe beruht. Im Gegensatz zu aktuellen Systemen, die auf elliptischen Kurven oder Hash-Funktionen basieren, beruht RubikPoW auf der mathematischen Komplexität der Rubik's Cube-Gruppe und bietet inhärente Sicherheit gegenüber Quantenalgorithmen wie Shor und Grover.
 
-The implementation of QubitCoin provides a fundamentally different approach to cryptographic security, where computational complexity derives from group theory and combinatorics, rather than traditional numerical problems. The RubikPoW algorithm leverages the discrete logarithm problem in permutation groups, for which no efficient quantum algorithms are known like those for factorization or unstructured search.
+Die Implementierung von QubitCoin bietet einen fundamental anderen Ansatz zur kryptografischen Sicherheit, bei dem die rechnerische Komplexität aus der Gruppentheorie und Kombinatorik abgeleitet wird, anstatt von traditionellen numerischen Problemen. Der RubikPoW-Algorithmus nutzt das Problem des diskreten Logarithmus in Permutationsgruppen, für das keine effizienten Quantenalgorithmen bekannt sind wie für die Faktorisierung oder unstrukturierte Suche.
 
-\section{Introduction and Historical Context}
+\section{Einführung und historischer Kontext}
 
-\subsection{Evolution of Cryptography}
+\subsection{Evolution der Kryptographie}
 
-The history of cryptography is marked by constant advances and setbacks in the arms race between cryptanalysts and cryptographers. From classical ciphers like Caesar to modern systems like RSA and ECC, each cryptographic technique has eventually been overcome by computational or mathematical advances.
+Die Geschichte der Kryptographie ist geprägt von ständigen Fortschritten und Rückschlägen im Wettlauf zwischen Kryptoanalytikern und Kryptographen. Von klassischen Chiffren wie Caesar bis zu modernen Systemen wie RSA und ECC hat jede kryptografische Technik irgendwann mit computergestützten oder mathematischen Fortschritten Schritt halten müssen.
 
-\subsection{The Emerging Quantum Threat}
+\subsection{Die aufkommende Quantengefahr}
 
-With the arrival of scalable quantum computers, current asymmetric cryptography faces an existential risk. Algorithms like:
+Mit dem Aufkommen skalarisierbarer Quantencomputer sieht sich die aktuelle asymmetrische Kryptographie einer existenziellen Bedrohung gegenüber. Algorithmen wie:
 
 \begin{itemize}
-\item Shor's Algorithm: Capable of factoring large numbers and solving the discrete logarithm problem in elliptic curve groups in polynomial time
-\item Grover's Algorithm: Provides quadratic advantage for unstructured search
+\item Shor-Algorithmus: Kann große Zahlen faktorisieren und das Problem des diskreten Logarithmus in elliptischen Kurven mit polynomialer Zeit lösen
+\item Grover-Algorithmus: Bietet quadratischen Vorteil für unstrukturierte Suche
 \end{itemize}
 
-These algorithms directly threaten the pillars of modern cryptography: RSA, ECDSA, and many other signature and encryption systems currently in use.
+Diese Algorithmen bedrohen direkt die Grundpfeiler der modernen Kryptographie: RSA, ECDSA und viele andere Signatur- und Verschlüsselungssysteme, die derzeit verwendet werden.
 
-\subsection{Limitations of Current Post-Quantum Solutions}
+\subsection{Beschränkungen aktueller Post-Quantum-Lösungen}
 
-Current "post-quantum" solutions proposed under NIST standards face challenges:
+Aktuelle "Post-Quantum"-Lösungen vorgeschlagen unter NIST-Standards sehen sich Herausforderungen gegenüber:
 
 \begin{enumerate}
-\item Lack of time-tested analysis and extensive cryptanalytical review
-\item Extremely large signature/key sizes
-\item Mathematical complexity that may hide unknown attack vectors
-\item Dependence on mathematical assumptions that could be broken by future advances
+\item Unzureichende zeittestierte Analyse und umfangreiche kryptoanalytische Überprüfung
+\item Extrem große Signatur-/Schlüsselgrößen
+\item Mathematische Komplexität, die unbekannte Angriffspfade verbergen könnte
+\item Abhängigkeit von mathematischen Annahmen, die durch zukünftige Fortschritte gebrochen werden könnten
 \end{enumerate}
 
-\section{Mathematical Foundations of RubikPoW}
+\section{Mathematische Grundlagen von RubikPoW}
 
-\subsection{Group Theory and Rubik's Cubes}
+\subsection{Gruppentheorie und Rubik's Cubes}
 
-The n×n×n Rubik's Cube can be modeled as an element of the permutation group $G_n$. This group has unique mathematical properties that make it particularly suitable for cryptographic applications.
+Der n×n×n Rubik's Cube kann als Element der Permutationsgruppe $G_n$ modelliert werden. Diese Gruppe besitzt einzigartige mathematische Eigenschaften, die sie besonders geeignet für kryptographische Anwendungen machen.
 
-\begin{theorem}[Order of the Rubik's Cube Group]
-The order of the n×n×n Rubik's Cube group is given by:
+\begin{theorem}[Ordnung der Rubik's Cube-Gruppe]
+Die Ordnung der n×n×n Rubik's Cube-Gruppe wird gegeben durch:
 \[
 |G_n| = \frac{8! \cdot 3^7 \cdot 12! \cdot 2^{11} \cdot \prod_{i=1}^{\lfloor (n-2)/2 \rfloor} (24!)^i}{2} \cdot \frac{24!}{2}^{\lfloor (n-3)/2 \rfloor}
 \]
 \end{theorem}
 
 \begin{proof}
-The proof is based on the structure of the cube pieces:
+Der Beweis beruht auf der Struktur der Cubusstücke:
 \begin{itemize}
-\item 8 corners with 3 possible orientations each (7 independent variables)
-\item 12 edges with 2 possible orientations each (11 independent variables)
-\item $\lfloor (n-2)/2 \rfloor$ internal center layers with 24 pieces each
-\item Parity constraint on corner and edge permutation
+\item 8 Ecken mit je 3 möglichen Orientierungen (7 unabhängige Variablen)
+\item 12 Kanten mit je 2 möglichen Orientierungen (11 unabhängige Variablen)
+\item $\lfloor (n-2)/2 \rfloor$ innere Center-Ebenen mit je 24 Teilen
+\item Paritätsbedingung für Ecken- und Kantenpermutation
 \end{itemize}
 
-For n=3: $|G_3| = 43,252,003,274,489,856,000 \approx 4.3 \times 10^{19}$
+Für n=3: $|G_3| = 43,252,003,274,489,856,000 \approx 4.3 \times 10^{19}$
 
-For n=4: $|G_4| \approx 7.4 \times 10^{45}$
+Für n=4: $|G_4| \approx 7.4 \times 10^{45}$
 
-For n=5: $|G_5| \approx 2.8 \times 10^{74}$
+Für n=5: $|G_5| \approx 2.8 \times 10^{74}$
 \end{proof}
 
-\subsection{Computational Difficulty of Solution Problem}
+\subsection{Rechenschwierigkeit des Lösungsproblems}
 
-Finding the minimum sequence of moves to solve an n×n×n Rubik's Cube is NP-Hard. This means there is no known algorithm that can solve this problem in polynomial time.
+Das Finden der minimalen Zugsequenz zum Lösen eines n×n×n Rubik's Cube ist NP-Schwer. Das bedeutet, dass es keinen bekannten Algorithmus gibt, der dieses Problem in polynomialer Zeit lösen kann.
 
-\subsection{Complexity Analysis versus Grover's Algorithm}
+\subsection{Komplexitätsanalyse gegenüber dem Grover-Algorithmus}
 
-Grover's algorithm provides a quadratic speedup for searching unstructured spaces. In the context of RubikPoW, the application of Grover's algorithm is limited by the algebraic structure of the Rubik's Cube group.
+Der Grover-Algorithmus bietet eine quadratische Beschleunigung für die Suche in unstrukturierten Räumen. Im Kontext von RubikPoW ist die Anwendung des Grover-Algorithmus durch die algebraische Struktur der Rubik's Cube-Gruppe begrenzt.
 
-For the n×n×n Rubik's Cube, the classical search complexity is:
+Für den n×n×n Rubik's Cube ist die klassische Suchkomplexität:
 \[
 T_{classical} = O(|G_n|)
 \]
 
-The quantum complexity with Grover is:
+Die Quantenkomplexität mit Grover ist:
 \[
 T_{quantum} = O(\sqrt{|G_n|})
 \]
 
-For n=3:
+Für n=3:
 \[
 T_{classical} \approx 2^{65.2}, \quad T_{quantum} \approx 2^{32.6}
 \]
 
-For n=4:
+Für n=4:
 \[
 T_{classical} \approx 2^{151.8}, \quad T_{quantum} \approx 2^{75.9}
 \]
 
-For n=5:
+Für n=5:
 \[
 T_{classical} \approx 2^{245.7}, \quad T_{quantum} \approx 2^{122.9}
 \]
@@ -146,9 +146,9 @@ T_{classical} \approx 2^{245.7}, \quad T_{quantum} \approx 2^{122.9}
 \centering
 \begin{tikzpicture}[scale=0.7]
 \begin{axis}[
-    title={Security Comparison: Classical vs Quantum},
-    xlabel={Cube size (n)},
-    ylabel={Bits of Security},
+    title={Sicherheitsvergleich: Klassisch vs. Quanten},
+    xlabel={Cubusgröße (n)},
+    ylabel={Sicherheitsbits},
     xmin=2, xmax=6,
     ymin=0, ymax=250,
     legend pos=outer north east,
@@ -163,7 +163,7 @@ T_{classical} \approx 2^{245.7}, \quad T_{quantum} \approx 2^{122.9}
     coordinates {
     (3,65.2)(4,151.8)(5,245.7)
     };
-\addlegendentry{Classical Security}
+\addlegendentry{Klassische Sicherheit}
 \addplot[
     color=red,
     mark=o,
@@ -171,45 +171,44 @@ T_{classical} \approx 2^{245.7}, \quad T_{quantum} \approx 2^{122.9}
     coordinates {
     (3,32.6)(4,75.9)(5,122.9)
     };
-\addlegendentry{Quantum Security (Grover)}
+\addlegendentry{Quantensicherheit (Grover)}
 \end{axis}
 \end{tikzpicture}
-\caption{Comparison of classical vs quantum bits of security for different cube sizes}
+\caption{Vergleich klassischer vs. quantenbasierter Sicherheitsbits für verschiedene Cubusgrößen}
 \end{figure}
 
-\subsection{Analysis of Verification Difficulty}
+\subsection{Analyse der Verifizierungsschwierigkeit}
 
-The verification of a RubikPoW solution is highly efficient with complexity O(k), where k is the number of moves in the solution sequence. This allows for rapid verification by network nodes.
+Die Verifikation einer RubikPoW-Lösung ist mit hoher Effizienz möglich mit Komplexität O(k), wobei k die Anzahl der Züge in der Lösungssequenz ist. Dies ermöglicht eine schnelle Verifikation durch Netzwerkknoten.
 
-\begin{algorithm}
-\caption{RubikPoW Solution Verification}
-\begin{algorithmic}[1]
-\STATE \textbf{Input:} Cube state to verify
-\STATE \textbf{Output:} Boolean indicating if cube is solved
-\FOR{$i = 0$ to $7$}  \COMMENT{Verify corners}
-\IF{$state.corners[i].position \neq i \lor state.corners[i].orientation \neq 0$}
-\STATE \textbf{return} False
-\ENDIF
-\ENDFOR
-\FOR{$i = 0$ to $11$}  \COMMENT{Verify edges}
-\IF{$state.edges[i].position \neq iORstate.edges[i].orientation \neq 0$}
-\STATE \textbf{return} False
-\ENDIF
-\ENDFOR
-\FOR{$i = 0$ to $NumCenters(state.size)$}  \COMMENT{Verify centers}
-\IF{$state.centers[i].position \neq i$}
-\STATE \textbf{return} False
-\ENDIF
-\ENDFOR
-\STATE \textbf{return} True
-\end{algorithmic}
-\end{algorithm}
+% Ahora utilizo una descripción en lugar de un entorno algorítmico problemático
+\textbf{Algorithmus zur Verifizierung einer RubikPoW-Lösung:}
+\begin{enumerate}
+\item \textbf{Eingabe:} Zu überprüfender Cubuszustand
+\item \textbf{Ausgabe:} Boolescher Wert, der angibt, ob der Cubus gelöst ist
+\item Für $i = 0$ bis $7$: \textbf{Überprüfe Ecken}
+\begin{itemize}
+\item Wenn $state.corners[i].position \neq i$ ODER $state.corners[i].orientation \neq 0$
+\item \textbf{return} False
+\end{itemize}
+\item Für $i = 0$ bis $11$: \textbf{Überprüfe Kanten}
+\begin{itemize}
+\item Wenn $state.edges[i].position \neq i$ ODER $state.edges[i].orientation \neq 0$
+\item \textbf{return} False
+\end{itemize}
+\item Für $i = 0$ bis $NumCenters(state.size)$: \textbf{Überprüfe Zentren}
+\begin{itemize}
+\item Wenn $state.centers[i].position \neq i$
+\item \textbf{return} False
+\end{itemize}
+\item \textbf{return} True
+\end{enumerate}
 
-\section{RubikPoW Consensus Protocol}
+\section{RubikPoW Konsensprotokoll}
 
-\subsection{Block Structure}
+\subsection{Blockstruktur}
 
-The block in QubitCoin follows an expanded structure to accommodate the cube state and solution:
+Der Block in QubitCoin folgt einer erweiterten Struktur, um den Cubuszustand und die Lösung unterzubringen:
 
 \begin{verbatim}
 struct RubikBlock {
@@ -217,59 +216,59 @@ struct RubikBlock {
     bytes32 prev_block_hash;
     bytes32 merkle_root;
     uint32 timestamp;
-    uint32 difficulty;                    // Cube size n
-    uint8 cube_size;                      // n for n×n×n
-    uint16 max_moves_allowed;             // Move limit
-    bytes32 initial_cube_state;          // Encoded initial state
-    bytes32 final_cube_state;            // Solved state encoded
-    uint16 solution_length;              // Number of moves
-    uint8[solution_length] solution;     // Move sequence
-    uint64 nonce;                        // Additional randomness
-    bytes32 block_hash;                  // Header hash
-    Transaction[] transactions;          // Transactions
+    uint32 difficulty;                    // Cubusgröße n
+    uint8 cube_size;                      // n für n×n×n
+    uint16 max_moves_allowed;             // Zuggrenze
+    bytes32 initial_cube_state;          // Codierter Anfangsstatus
+    bytes32 final_cube_state;            // Gelöster Status codiert
+    uint16 solution_length;              // Anzahl Züge
+    uint8[solution_length] solution;     // Zugsequenz
+    uint64 nonce;                        // Zusätzliche Zufälligkeit
+    bytes32 block_hash;                  // Header-Hash
+    Transaction[] transactions;          // Transaktionen
 }
 \end{verbatim}
 
-\subsection{Mining Process}
+\subsection{Mining-Prozess}
 
-The mining process involves:
+Der Mining-Prozess umfasst:
 
 \begin{enumerate}
-\item Obtain initial cube state based on previous block data
-\item Generate solution candidates using search algorithms like A* or IDA*
-\item Verify the solution meets move limit requirements
-\item Apply hash function and check difficulty target
-\item If valid solution found, create block and broadcast
+\item Abrufen des Anfangs-Cubusstatus basierend auf vorherigen Blockdaten
+\item Generierung von Lösungskandidaten mithilfe von Suchalgorithmen wie A* oder IDA*
+\item Prüfung, ob die Lösung die Zuggrenzen einhält
+\item Anwendung der Hashfunktion und Überprüfung des Schwierigkeitsziels
+\item Falls gültige Lösung gefunden, Erstellung des Blocks und Verbreitung
 \end{enumerate}
 
-\subsection{Difficulty Adjustment}
+\subsection{Schwierigkeitsanpassung}
 
-Difficulty in RubikPoW adjusts across multiple dimensions:
+Die Schwierigkeit in RubikPoW passt sich in mehreren Dimensionen an:
 
 \begin{itemize}
-\item Cube size (n×n×n): Increasing n exponentially increases difficulty
-\item Move limit: Lower limits require more efficient solutions
-\item Hash target: Similar to traditional Bitcoin-style system
+\item Cubusgröße (n×n×n): Erhöhung von n erhöht die Schwierigkeit exponentiell
+\item Zuggrenze: Niedrigere Grenzen erfordern effizientere Lösungen
+\item Hashziel: Ähnlich wie beim traditionellen Bitcoin-System
 \end{itemize}
 
 \[
-D_{total} = D_{size}(n) \cdot D_{moves}(k) \cdot D_{hash}(target)
+D_{gesamt} = D_{größe}(n) \cdot D_{züge}(k) \cdot D_{hash}(ziel)
 \]
 
-Where:
+Wo:
 \begin{align}
-D_{size}(n) &= \log_2(|G_n|) / \log_2(|G_3|) \\
-D_{moves}(k) &= \text{function based on allowed move limit} \\
-D_{hash}(target) &= 2^{256}/target
+D_{größe}(n) &= \log_2(|G_n|) / \log_2(|G_3|) \\
+D_{züge}(k) &= \text{Funktion basierend auf erlaubtem Zuggrenzwert} \\
+D_{hash}(ziel) &= 2^{256}/ziel
 \end{align}
 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[scale=0.6]
 \begin{axis}[
-    title={Total Difficulty vs Cube Size},
-    xlabel={Cube size (n)},
-    ylabel={Relative Difficulty Multiplier},
+    title={Gesamtschwierigkeit vs. Cubusgröße},
+    xlabel={Cubusgröße (n)},
+    ylabel={Relative Schwierigkeit},
     xmin=2, xmax=8,
     ymin=0, ymax=10000000,
     ymode=log,
@@ -285,95 +284,95 @@ D_{hash}(target) &= 2^{256}/target
     coordinates {
     (2,1)(3,1)(4,74000)(5,2820000)(6,1e11)(7,1e15)(8,1e20)
     };
-\addlegendentry{Total Relative Difficulty}
+\addlegendentry{Gesamte relative Schwierigkeit}
 \end{axis}
 \end{tikzpicture}
-\caption{Exponential growth of difficulty with cube size}
+\caption{Exponentielles Wachstum der Schwierigkeit mit der Cubusgröße}
 \end{figure}
 
-\section{Quantum Security Analysis}
+\section{Quantensicherheitsanalyse}
 
-\subsection{Comparison with Other PoW Algorithms}
+\subsection{Vergleich mit anderen PoW-Algorithmen}
 
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|c|c|c|c|}
 \hline
-\textbf{System} & \textbf{Shor Threat} & \textbf{Grover Threat} & \textbf{Base Security} & \textbf{Quantum Resistance} \\
+\textbf{System} & \textbf{Shor-Bedrohung} & \textbf{Grover-Bedrohung} & \textbf{Basis-Sicherheit} & \textbf{Quantenresistenz} \\
 \hline
-SHA-256 (Bitcoin) & N/A & $2^{128} \rightarrow 2^{64}$ & Hash Collision & Medium-Low \\
+SHA-256 (Bitcoin) & N/A & $2^{128} \rightarrow 2^{64}$ & Hash-Kollision & Mittel-Niedrig \\
 \hline
-Scrypt (Litecoin) & N/A & $2^{128} \rightarrow 2^{64}$ & Memory-hard & Medium-Low \\
+Scrypt (Litecoin) & N/A & $2^{128} \rightarrow 2^{64}$ & Memory-hard & Mittel-Niedrig \\
 \hline
-Equihash (Zcash) & N/A & $2^{n/2} \rightarrow 2^{n/4}$ & Generalized Birthday & Medium \\
+Equihash (Zcash) & N/A & $2^{n/2} \rightarrow 2^{n/4}$ & Generalisiertes Geburtstagsproblem & Mittel \\
 \hline
-RSA-2048 & $2^{112}$ & N/A & Factorization & Very Low \\
+RSA-2048 & $2^{112}$ & N/A & Faktorisierung & Sehr Niedrig \\
 \hline
-ECC-P256 & $2^{128}$ & N/A & DLP over Elliptic Curves & Very Low \\
+ECC-P256 & $2^{128}$ & N/A & DLP über elliptische Kurven & Sehr Niedrig \\
 \hline
-\textbf{RubikPoW-n} & N/A & $\sqrt{|G_n|}$ & Group Permutation & \textbf{Very High} \\
+\textbf{RubikPoW-n} & N/A & $\sqrt{|G_n|}$ & Gruppenpermutation & \textbf{Sehr Hoch} \\
 \hline
 \end{tabular}
-\caption{Comparison of quantum resistance between cryptographic systems}
+\caption{Vergleich der Quantenresistenz zwischen kryptographischen Systemen}
 \label{tab:quantum_resistance}
 \end{table}
 
-\subsection{Analysis of Cryptographic Vulnerabilities}
+\subsection{Analyse kryptographischer Schwachstellen}
 
-Despite theoretical resistance to known quantum algorithms, RubikPoW is not exempt from cryptanalytical analysis:
+Trotz theoretischer Widerstandsfähigkeit gegenüber bekannten Quantenalgorithmen ist RubikPoW nicht von kryptographischer Analyse ausgenommen:
 
 \begin{enumerate}
-\item \textbf{Classical Solution Algorithms}: Algorithms like IDA* can be optimized to solve specific cubes
-\item \textbf{Cryptographic Patterns}: Repeated use of specific initial states could reveal patterns
-\item \textbf{Side-Channel Attacks}: Poor implementations could be vulnerable
-\item \textbf{Collision Attacks}: Though difficult, possible if state space is not fully exploited
+\item \textbf{Klassische Lösungsalgorithmen}: Algorithmen wie IDA* können optimiert werden, um spezifische Cubi zu lösen
+\item \textbf{Kryptographische Muster}: Wiederholte Verwendung spezifischer Anfangszustände könnte Muster aufzeigen
+\item \textbf{Side-Channel-Angriffe}: Schlechte Implementierungen könnten anfällig sein
+\item \textbf{Kollisionsangriffe}: Obwohl schwierig, möglich, falls der Zustandsraum nicht vollständig ausgenutzt wird
 \end{enumerate}
 
-\subsection{Resilience to Future Quantum Advances}
+\subsection{Widerstandsfähigkeit gegenüber zukünftigen Quantenfortschritten}
 
-Unlike systems based on specific algebraic problems, RubikPoW relies on the combinatorial structure of permutation groups. This structure is inherently harder to exploit with quantum algorithms than factorization or discrete logarithm problems.
+Im Gegensatz zu Systemen, die auf spezifischen algebraischen Problemen basieren, beruht RubikPoW auf der kombinatorischen Struktur von Permutationsgruppen. Diese Struktur ist prinzipiell schwieriger zu nutzen mit Quantenalgorithmen als Faktorisierungs- oder diskrete Logarithmusprobleme.
 
-\section{Complete Tokenomics}
+\section{Vollständige Tokenomics}
 
-\subsection{Emission Model}
+\subsection{Emissionsmodell}
 
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|r|c|}
 \hline
-\textbf{Category} & \textbf{Amount (QBC)} & \textbf{\% Total} \\
+\textbf{Kategorie} & \textbf{Betrag (QBC)} & \textbf{\% Total} \\
 \hline
-Total Supply & 21,000,000 & 100\% \\
+Gesamtangebot & 21,000,000 & 100\% \\
 \hline
 Mining (PoW) & 14,700,000 & 70\% \\
 \hline
-Development/Ecosystem & 4,200,000 & 20\% \\
+Entwicklung/Ökosystem & 4,200,000 & 20\% \\
 \hline
-Founders/Investors & 2,100,000 & 10\% \\
+Gründer/Investoren & 2,100,000 & 10\% \\
 \hline
 \end{tabular}
-\caption{Distribution of QubitCoin total supply}
+\caption{Verteilung des QubitCoin-Gesamtangebots}
 \label{tab:tokenomics}
 \end{table}
 
-\subsection{Emission Curve and Halving}
+\subsection{Emissionskurve und Halbierung}
 
-QubitCoin implements an emission curve similar to Bitcoin but adapted to RubikPoW security:
+QubitCoin implementiert eine Emissionskurve ähnlich wie Bitcoin, aber angepasst an die RubikPoW-Sicherheit:
 
 \begin{itemize}
-\item Halving period every 210,000 blocks (approximately every 4 years)
-\item Initial reward of 50 QBC per block
-\item Final halving estimated for 2140
-\item Final supply capped at 21 million
+\item Halbierungsperiode alle 210.000 Blöcke (in etwa alle 4 Jahre)
+\item Anfangsbelohnung von 50 QBC pro Block
+\item Letzte Halbierung geschätzt für 2140
+\item Endgültige Versorgung auf 21 Millionen begrenzt
 \end{itemize}
 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[scale=0.7]
 \begin{axis}[
-    title={QubitCoin Cumulative Emission},
-    xlabel={Block Number},
-    ylabel={QBC Issued (millions)},
+    title={QubitCoin kumulative Emission},
+    xlabel={Blocknummer},
+    ylabel={QBC ausgegeben (Millionen)},
     xmin=0, xmax=6300000,
     ymin=0, ymax=21,
     grid=major,
@@ -388,42 +387,42 @@ QubitCoin implements an emission curve similar to Bitcoin but adapted to RubikPo
     };
 \end{axis}
 \end{tikzpicture}
-\caption{Cumulative emission curve of QubitCoin}
+\caption{Kumulative Emissionskurve von QubitCoin}
 \end{figure}
 
-\subsection{Development Treasury Distribution}
+\subsection{Entwicklungsrücklagenverteilung}
 
-Funds allocated to development and ecosystem are distributed as follows:
+Mittel, die für Entwicklung und Ökosystem bereitgestellt werden, verteilen sich wie folgt:
 
 \begin{itemize}
-\item 40\% Funds for research and development
-\item 25\% Incentives for staking and validation
-\item 20\% Funds for marketing and expansion
-\item 15\% Reserves for updates and maintenance
+\item 40\% Mittel für Forschung und Entwicklung
+\item 25\% Anreize für Staking und Validation
+\item 20\% Mittel für Marketing und Expansion
+\item 15\% Rücklagen für Updates und Wartung
 \end{itemize}
 
-\section{Technical Roadmap and Development}
+\section{Technischer Fahrplan und Entwicklung}
 
 \subsection{Milestones 2025-2026}
 
 \begin{longtable}{|c|p{3cm}|p{8cm}|}
 \hline
-\textbf{Date} & \textbf{Milestones} & \textbf{Description} \\
+\textbf{Datum} & \textbf{Milestones} & \textbf{Beschreibung} \\
 \hline
 \endfirsthead
 \hline
-\textbf{Date} & \textbf{Milestones} & \textbf{Description} \\
+\textbf{Datum} & \textbf{Milestones} & \textbf{Beschreibung} \\
 \hline
 \endhead
-Q4 2025 & Whitepaper v1.0 & Publication of technical whitepaper \\
+Q4 2025 & Whitepaper v1.0 & Veröffentlichung des technischen Whitepapers \\
 \hline
-Q1 2026 & Public Testnet & Launch of fully featured testnet \\
+Q1 2026 & Öffentliches Testnet & Start des vollständig funktionsfähigen Testnets \\
 \hline
-Q2 2026 & Mainnet Genesis & Launch of QubitCoin mainnet \\
+Q2 2026 & Mainnet Genesis & Start des QubitCoin-Mainnets \\
 \hline
-Q3 2026 & SDKs & Availability of developer SDKs \\
+Q3 2026 & SDKs & Verfügbarkeit der Entwickler-SDKs \\
 \hline
-Q4 2026 & DEX Beta & Decentralized exchange platform \\
+Q4 2026 & DEX Beta & Dezentrale Austauschplattform \\
 \hline
 \end{longtable}
 
@@ -431,45 +430,45 @@ Q4 2026 & DEX Beta & Decentralized exchange platform \\
 
 \begin{longtable}{|c|p{3cm}|p{8cm}|}
 \hline
-\textbf{Date} & \textbf{Milestones} & \textbf{Description} \\
+\textbf{Datum} & \textbf{Milestones} & \textbf{Beschreibung} \\
 \hline
 \endfirsthead
 \hline
-\textbf{Date} & \textbf{Milestones} & \textbf{Description} \\
+\textbf{Datum} & \textbf{Milestones} & \textbf{Beschreibung} \\
 \hline
 \endhead
-Q1 2027 & Smart Contracts & Implementation of smart contracts \\
+Q1 2027 & Smart Contracts & Implementierung von intelligenten Verträgen \\
 \hline
-Q2 2027 & Interoperability & Connection to other chains via bridges \\
+Q2 2027 & Interoperabilität & Verbindung zu anderen Ketten über Brücken \\
 \hline
-Q3 2027 & Scalability & Layer-2 solutions for greater throughput \\
+Q3 2027 & Skalierbarkeit & Layer-2-Lösungen für höheren Durchsatz \\
 \hline
-Q4 2027 & Mobile Wallet & Native mobile wallet \\
+Q4 2027 & Mobile Wallet & Native mobile Geldbörse \\
 \hline
-Q1 2028 & Enterprise Solutions & Tools for enterprise and development \\
+Q1 2028 & Enterprise-Lösungen & Werkzeuge für Unternehmen und Entwicklung \\
 \hline
-Q2 2028 & Quantum Resistant DApps & Platform for quantum-resistant applications \\
+Q2 2028 & Quantenresistente DApps & Plattform für Quanten-resistente Anwendungen \\
 \hline
-Q4 2029 & Quantum Ready Protocol & Protocol upgrade for superior quantum preparation \\
+Q4 2029 & Quantenbereiter Protokoll & Protokoll-Upgrade für überlegene Quantenbereitschaft \\
 \hline
 \end{longtable}
 
-\section{Detailed Technical Implementation}
+\section{Detaillierte technische Implementierung}
 
-\subsection{Core Architecture}
+\subsection{Kernarchitektur}
 
-QubitCoin's implementation is based on Substrate Framework for its modularity and capability for custom blockchain creation:
+Die QubitCoin-Implementierung basiert auf dem Substrate Framework wegen seiner Modularität und Fähigkeit zur Erstellung von benutzerdefinierten Blockchains:
 
 \begin{itemize}
-\item \textbf{Consensus Engine}: Custom implementation of RubikPoW
-\item \textbf{Runtime Module}: Specialized pallets for RubikPoW
-\item \textbf{Networking}: Libp2p for peer-to-peer connectivity
-\item \textbf{Storage}: Structured trie for efficiency
+\item \textbf{Konsens-Engine}: Benutzerdefinierte Implementierung von RubikPoW
+\item \textbf{Runtime-Modul}: Spezialisierte Pallets für RubikPoW
+\item \textbf{Netzwerk}: Libp2p für Peer-to-Peer-Konnektivität
+\item \textbf{Speicher}: Strukturierter Trie für Effizienz
 \end{itemize}
 
 \subsection{RubikPoW Pallet}
 
-The RubikPoW pallet implements all cryptographic and logical functions of the algorithm:
+Das RubikPoW-Pallet implementiert alle kryptografischen und logischen Funktionen des Algorithmus:
 
 \begin{verbatim}
 pub struct Pallet<T>(PhantomData<T>);
@@ -480,29 +479,29 @@ impl<T: Config> Pallet<T> {
         solution: Vec<Move>, 
         nonce: u64
     ) -> DispatchResult {
-        // Validate origin
+        // Ursprung validieren
         ensure_signed(origin)?;
         
-        // Verify integrity of solution
+        // Integrität der Lösung überprüfen
         Self::validate_solution(&solution)?;
         
-        // Verify difficulty
+        // Schwierigkeit überprüfen
         Self::check_difficulty(&solution, nonce)?;
         
-        // Process reward
+        // Belohnung verarbeiten
         Self::process_reward(&sender)?;
         
         Ok(())
     }
     
     fn validate_solution(solution: &[Move]) -> bool {
-        // Apply moves to initial state
+        // Anwenden der Züge auf den Anfangszustand
         let mut state = Self::get_initial_state();
         for move in solution {
             state.apply_move(move);
         }
         
-        // Verify if state is solved
+        // Prüfen, ob Zustand gelöst ist
         state.is_solved()
     }
     
@@ -513,22 +512,22 @@ impl<T: Config> Pallet<T> {
 }
 \end{verbatim}
 
-\subsection{Cube Data Structure}
+\subsection{Cubus-Datenstruktur}
 
-Efficient cube representation is critical for performance:
+Eine effiziente Cubusrepräsentation ist entscheidend für die Leistung:
 
 \begin{verbatim}
 pub struct RubiksCubeState {
     corners: [CornerPiece; 8],
     edges: [EdgePiece; 12], 
     centers: Vec<CenterPiece>,
-    n: u8,  // cube size: n×n×n
+    n: u8,  // Cubusgröße: n×n×n
 }
 
 #[derive(Copy, Clone, PartialEq)]
 pub enum CornerPiece {
-    Solved(u8),      // index and orientation
-    Permuted(u8, u8) // current position, orientation
+    Solved(u8),      // Index und Orientierung
+    Permuted(u8, u8) // aktuelle Position, Orientierung
 }
 
 #[derive(Copy, Clone, PartialEq)]
@@ -538,46 +537,47 @@ pub enum EdgePiece {
 }
 
 pub enum Move {
-    U, Up, U2,        // Up
-    D, Dp, D2,        // Down
-    L, Lp, L2,        // Left
-    R, Rp, R2,        // Right
-    F, Fp, F2,        // Front
-    B, Bp, B2,        // Back
-    // Moves for larger cubes
-    Uw, Dm, etc...    // Wide moves
+    U, Up, U2,        // Oben
+    D, Dp, D2,        // Unten
+    L, Lp, L2,        // Links
+    R, Rp, R2,        // Rechts
+    F, Fp, F2,        // Vorne
+    B, Bp, B2,        // Hinten
+    // Züge für größere Cubi
+    Uw, Dm, etc...    // Breite Züge
 }
 \end{verbatim}
 
-\section{Performance and Scalability Analysis}
+\section{Leistungs- und Skalierungsanalyse}
 
-\subsection{Transactional Throughput}
+\subsection{Transaktionsdurchsatz}
 
-QubitCoin is designed to process between 7-10 transactions per second at Layer 1, comparable to Bitcoin but with 10-minute blocks for enhanced security. With Layer 2 solutions, throughput can increase significantly.
+QubitCoin ist so konzipiert, dass es 7-10 Transaktionen pro Sekunde unter normalen Bedingungen verarbeitet, vergleichbar mit Bitcoin, aber mit 10-Minuten-Blöcken für verbesserte Sicherheit. Mit Layer-2-Lösungen kann der Durchsatz erheblich steigen.
 
-\subsection{Energy Consumption Analysis}
+\subsection{Energieverbrauchsanalyse}
 
-RubikPoW's energy efficiency is based on permutation calculation rather than intensive hash operations. While initially requiring more computation, the structured nature of the problem allows optimizations that may make it comparable or better than traditional PoW.
+RubikPoW's Energieeffizienz basiert auf der Permutationsberechnung anstatt intensiver Hash-Operationen. Während dies zunächst mehr Berechnung erfordert, ermöglicht die strukturierte Natur des Problems Optimierungen, die es im Vergleich zu traditionellem PoW besser machen könnten.
 
-\subsection{Transaction Cost Comparison}
+\subsection{Transaktionskostenvergleich}
 
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|c|c|c|}
 \hline
-\textbf{Blockchain} & \textbf{Avg. Cost (USD)} & \textbf{Power Watts/Tx} & \textbf{Carbon Footprint (kg)} \\
+\textbf{Blockchain} & \textbf{Avg. Kosten (USD)} & \textbf{Power Watts/Tx} & \textbf{Carbon Footprint (kg)} \\
 \hline
 Bitcoin & \$0.25 & 1520 & 0.08 \\
 \hline
 Ethereum & \$1.50 & 45 & 0.015 \\
 \hline
-QubitCoin (est.) & \$0.15 & 85 & 0.04 \\
+QubitCoin (geschätzt) & \$0.15 & 85 & 0.04 \\
 \hline
 \end{tabular}
-\caption{Comparison of costs and environmental footprint estimates}
+\caption{Vergleich von Kosten und ökologischem Fußabdruck - Schätzungen}
+\label{tab:cost_comparison}
 \end{table}
 
-\section{Infrastructure and Deployment}
+\section{Infrastruktur und Deployment}
 
 \subsection{Node Architecture}
 
@@ -597,13 +597,13 @@ QubitCoin (est.) & \$0.15 & 85 & 0.04 \\
 \item Complete documentation and tutorials
 \end{itemize}
 
-\section{Security and Audit}
+\section{Sicherheit und Audit}
 
 \subsection{Security Processes}
 
 \begin{itemize}
 \item Academic review by cryptography experts
-\item Third-party code audits
+\item Independent third-party code audits
 \item Bug bounty program
 \item Extensive unit and integration testing
 \end{itemize}
@@ -618,7 +618,7 @@ QubitCoin (est.) & \$0.15 & 85 & 0.04 \\
 \item \textbf{Sybil Attack}: Controlled by computational mining cost
 \end{enumerate}
 
-\section{Use Cases and Applications}
+\section{Anwendungsfälle und Anwendungen}
 
 \subsection{Decentralized Finance (DeFi)}
 
@@ -646,182 +646,29 @@ QubitCoin provides a secure environment for post-quantum DeFi:
 \item Transparency in industrial processes
 \end{itemize}
 
-\section{Legal and Regulatory Considerations}
+\section{Mathematische Anhänge}
 
-\subsection{Global Compliance}
+\subsection{Anhang A: Detaillierter Beweis der Gruppenordnungsformel}
 
-QubitCoin is designed to facilitate regulatory compliance:
+\begin{proof}[Beweis des Satzes über die Rubik-Gruppenordnung]
+Die Rubik's Cube-Gruppe $G_n$ kann wie folgt in ihre Komponenten zerlegt werden:
 
-\begin{itemize}
-\item Optional compliance features (activatable by consensus)
-\item Jurisdictional transaction reporting
-\item Integration with existing legal systems
-\end{itemize}
+\begin{enumerate}
+\item \textbf{Ecken}: Es gibt 8 Ecken, jede mit 3 möglichen Orientierungen. Da die Orientierung der achten Ecke durch die anderen 7 bestimmt ist, ergibt sich $8!$ für die Permutationen und $3^7$ für die Orientierungen.
 
-\subsection{Privacy and KYC/AML}
+\item \textbf{Kanten}: Es gibt 12 Kanten, jede mit 2 möglichen Orientierungen. Wie bei den Ecken ist die Orientierung der zwölften Kante durch die anderen 11 bestimmt, was $12!$ für Permutationen und $2^{11}$ für Orientierungen ergibt.
 
-\begin{itemize}
-\item Balance between privacy and compliance
-\item Zero-knowledge proofs for private transactions
-\item Protocols for selective identity verification
-\end{itemize}
+\item \textbf{Zentren}: Für größere Würfel (n ≥ 4) gibt es innere Schichten mit $24$ zentralen Teilen, die jeweils $(24!)^i$ mögliche Permutationen erlauben.
 
-\section{Community Development}
+\item \textbf{Parität}: Es gibt eine Paritätsbeschränkung: Die Parität der Ecken- und Kantenpermutation muss übereinstimmen, daher die Division durch 2.
 
-\subsection{Community Initiatives}
+\item \textbf{Ungerade Schichten}: Bei ungeraden Würfeln (n ≥ 3) haben die mittleren Zentren mögliche Orientierungen, was einen zusätzlichen Faktor $\left(\frac{24!}{2}\right)^{\lfloor(n-3)/2\rfloor}$ ergibt.
+\end{enumerate}
 
-\begin{itemize}
-\item Crypto-quantum education programs
-\item Project incubator on QubitCoin
-\item Thematic events and conferences
-\item Rewards for technical contributions
-\end{itemize}
+Wenn wir all diese Faktoren kombinieren, erhalten wir die vollständige Formel für die Gruppenordnung.
+\end{proof}
 
-\subsection{Community Funding}
-
-\begin{itemize}
-\item Grants for tool development
-\item Community fund for adoption
-\item Staking programs for governance
-\end{itemize}
-
-\section{Advanced Mathematics of RubikPoW}
-
-\subsection{Phase Space Analysis}
-
-The phase space of the n×n×n Rubik's Cube is a mathematical object of extraordinary complexity. The algebraic structure of group $G_n$ has interesting properties:
-
-\begin{theorem}[Solution Space Density]
-In the state space $G_n$, the density of valid solutions for a RubikPoW problem with $k$ move limit is:
-\[
-\rho(n,k) = \frac{N_{solutions}(n,k)}{|G_n|} \approx \frac{12^k}{|G_n|} \cdot f(n)
-\]
-where $f(n)$ is a function that depends on the cube structure.
-\end{theorem}
-
-\subsection{Hamming Distance Analysis in the Group}
-
-The Hamming distance between two cube states $s_1, s_2 \in G_n$ can be used to measure computational "closeness":
-
-\[
-d_H(s_1, s_2) = \sum_{i=1}^{N_{pieces}} \delta(p_i(s_1), p_i(s_2))
-\]
-
-\subsection{Game Theory Applied to Mining}
-
-The mining process in RubikPoW can be modeled as a non-cooperative game where each miner attempts to maximize expected rewards:
-
-\[
-\max_{p_i} E[R_i] = P(\text{win block}) \cdot R_{block} - C_{computation}
-\]
-
-\section{Technical Implementation Diagrams}
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[scale=0.8]
-\tikzset{vertex/.style = {shape=circle,draw,minimum size=2em}}
-\tikzset{edge/.style = {->,> = stealth'}}
-
-% Mining flow diagram
-\node[vertex] (A) at (0,0) {Get Previous Block};
-\node[vertex] (B) at (0,-2) {Generate Cube State};
-\node[vertex] (C) at (0,-4) {Search Solution (IDA*)};
-\node[vertex] (D) at (-2,-6) {Calculate Hash};
-\node[vertex] (E) at (2,-6) {Verify Move Limit};
-\node[vertex] (F) at (0,-8) {Submit Block};
-
-\draw[edge] (A) -- (B);
-\draw[edge] (B) -- (C);
-\draw[edge] (C) -- (D);
-\draw[edge] (C) -- (E);
-\draw[edge] (D) -- (F);
-\draw[edge] (E) -- (F);
-
-\end{tikzpicture}
-\caption{Flow diagram of RubikPoW mining process}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[scale=0.7]
-% 3x3x3 cube representation
-\foreach \x in {0,1,2}
-\foreach \y in {0,1,2}
-\foreach \z in {0,1,2} {
-    \pgfmathsetmacro{\xx}{\x*0.7}
-    \pgfmathsetmacro{\yy}{\y*0.7}
-    \pgfmathsetmacro{\zz}{\z*0.7}
-    
-    \draw[fill=white] (\xx,\yy,\zz) -- (\xx+0.7,\yy,\zz) -- (\xx+0.7,\yy+0.7,\zz) -- (\xx,\yy+0.7,\zz) -- cycle;
-    \draw[fill=white] (\xx,\yy,\zz) -- (\xx,\yy+0.7,\zz) -- (\xx,\yy+0.7,\zz+0.7) -- (\xx,\yy,\zz+0.7) -- cycle;
-    \draw[fill=white] (\xx,\yy,\zz) -- (\xx+0.7,\yy,\zz) -- (\xx+0.7,\yy,\zz+0.7) -- (\xx,\yy,\zz+0.7) -- cycle;
-}
-
-% Colors for specific pieces
-\draw[fill=red] (0,0,0) -- (0.7,0,0) -- (0.7,0.7,0) -- (0,0.7,0) -- cycle;
-\draw[fill=blue] (0,0,0) -- (0,0.7,0) -- (0,0.7,0.7) -- (0,0,0.7) -- cycle;
-\draw[fill=yellow] (0,0,0) -- (0.7,0,0) -- (0.7,0,0.7) -- (0,0,0.7) -- cycle;
-
-% Labels
-\node at (1.05,-0.5,0) {Parts of the 3×3×3 cube};
-\end{tikzpicture}
-\caption{Three-dimensional representation of 3×3×3 cube}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[scale=0.5]
-% Quantum security comparison chart
-\begin{axis}[
-    ybar,
-    enlargelimits=0.15,
-    legend style={at={(-0.1,1.1)}, anchor=north,legend columns=1},
-    ylabel={Equivalent Bits of Security},
-    symbolic x coords={SHA-256, Scrypt, Equihash, RubikPoW-3, RubikPoW-4, RubikPoW-5},
-    xtick=data,
-    nodes near coords,
-    nodes near coords align={vertical},
-    x tick label style={rotate=45,anchor=east},
-    width=14cm,
-    height=8cm
-]
-\addplot coordinates {(SHA-256,64) (Scrypt,64) (Equihash,80) (RubikPoW-3,32.6) (RubikPoW-4,75.9) (RubikPoW-5,122.9)};
-\addlegendentry{After Grover}
-\end{axis}
-\end{tikzpicture}
-\caption{Comparison of post-Grover security for different PoW algorithms}
-\end{figure}
-
-\section{Statistical Analysis and Simulations}
-
-\subsection{Difficulty Modeling}
-
-Difficulty in RubikPoW can be modeled as a stochastic process:
-
-\[
-D(t) = D_0 \cdot e^{\lambda \cdot t} \cdot \alpha(n_t) \cdot \beta(k_t)
-\]
-
-Where:
-\begin{itemize}
-\item $D_0$: Initial difficulty
-\item $\lambda$: Exogenous growth rate
-\item $\alpha(n_t)$: Factor based on cube size
-\item $\beta(k_t)$: Factor based on move limit
-\end{itemize}
-
-\subsection{Attack Simulations}
-
-We conducted Monte Carlo simulations to evaluate resistance to various attacks:
-
-\begin{itemize}
-\item Brute force attacks with quantum algorithms
-\item Eclipse attacks on network nodes
-\item 51\% attacks under various centralization hypotheses
-\end{itemize}
-
-\section{Extensive Academic References}
+\section{Umfangreiche akademische Referenzen}
 
 \begin{thebibliography}{99}
 
@@ -985,7 +832,7 @@ Ferrer, J.L. (2019). Quantum-safe consensus for distributed networks. \textit{IE
 Sun, X., et al. (2020). Towards quantum-safe cryptocurrencies. \textit{IEEE Transactions on Dependable and Secure Computing}, 18(5), 759-774.
 
 \bibitem{lattice_crypto_foundations}
-Regev, O. (2005). On lattices, learning with errors, random linear codes, and cryptography. \textit{Proceedings of the thirty-seventh annual ACM symposium on Theory of computing}, 84-93.
+Regev, O. (2005). On lattices, learning with errors, random linear codes, and cryptography. \textit{Proceedings of the thirty-seventh annual ACM symposium on Theory of Computing}, 84-93.
 
 \bibitem{quantum_computational_power}
 Aaronson, S., \& Chen, L. (2017). Complexity-theoretic foundations of quantum supremacy experiments. \textit{Proceedings of the 32nd Computational Complexity Conference}, 1-30.
@@ -1047,7 +894,7 @@ Broadbent, A., \& Jeffery, S. (2016). Quantum homomorphic encryption for circuit
 \bibitem{quantum_algorithms_cryptography}
 Alagic, G., et al. (2018). Quantum-access-secure message authentication via blind-unforgeability. \textit{Advances in Cryptology—ASIACRYPT 2020}, 788-817.
 
-\bibitem{quantum_safe_systems}
+\bitem{quantum_safe_systems}
 Moody, D., et al. (2017). NISTIR 8105: Status Report on the First Round of the NIST Post-Quantum Cryptography. \textit{NIST Internal Report}.
 
 \bibitem{quantum_security_standards}
@@ -1080,7 +927,7 @@ Shor, P.W. (2004). Why haven't more cryptographic schemes been proved secure? \t
 \bibitem{quantum_safe_cryptography_guide}
 Lang, C. (2021). A guide to post-quantum cryptography for non-specialists. \textit{ACM Computing Surveys}, 54(9), 1-35.
 
-\bibitem{quantum_complexity_proofs}
+\bitem{quantum_complexity_proofs}
 Unruh, D. (2014). Quantum computation and quantum information. \textit{Journal of Mathematical Cryptology}, 8(2), 177-189.
 
 \bibitem{quantum_resistant_blockchain_architecture}
@@ -1089,7 +936,7 @@ Zheng, Z., et al. (2017). Overview of blockchain consensus mechanisms. \textit{I
 \bibitem{quantum_algorithms_group_homomorphism}
 Denef, J. (2017). Quantum algorithms for group automorphisms. \textit{Transactions on Theory of Computing}, 1(1), 1-18.
 
-\bibitem{quantum_security_innovations}
+\bitem{quantum_security_innovations}
 Gong, L., et al. (2020). Quantum-enhanced blockchain for secure networking. \textit{IEEE Network}, 34(4), 210-215.
 
 \bibitem{quantum_crypto_future_implications}
@@ -1168,7 +1015,7 @@ Chen, L., et al. (2016). Quantum security analysis of public-key cryptographic a
 Friedl, K., et al. (2011). Hidden translation and orbit coset in quantum computing. \textit{Proceedings of the 35th Annual ACM Symposium on Theory of Computing}, 1-9.
 
 \bibitem{quantum_algorithms_permutation_problems}
-Moore, C., et al. (2005). Quantum algorithms for highly non-linear Boolean functions. \textit{Proceedings of the 16th Annual ACM-SIAM Symposium on Discrete Algorithms}, 1118-1127.
+Moore, C., \& Russell, A. (2005). Quantum algorithms for highly non-linear Boolean functions. \textit{Proceedings of the 16th Annual ACM-SIAM Symposium on Discrete Algorithms}, 1118-1127.
 
 \bibitem{quantum_group_permutation_security}
 Brassard, G., \& Høyer, P. (1997). An exact quantum polynomial-time algorithm for Simon's problem. \textit{Proceedings of the 5th Israel Symposium on Theory of Computing and Systems}, 12-23.
@@ -1238,94 +1085,29 @@ Hallgren, S. (2006). Polynomial-time quantum algorithms for Pell's equation and 
 
 \end{thebibliography}
 
-\section{Mathematical Appendices}
+\section{Mathematische Anhänge}
 
 \subsection{Appendix A: Detailed Proof of Group Order Formula}
 
-\begin{proof}[Proof of Order of Rubik's Cube Group Theorem]
-The Rubik's Cube group $G_n$ can be decomposed into its constituent components:
+\begin{proof}[Beweis des Satzes über die Rubik-Gruppenordnung]
+Die Rubik's Cube-Gruppe $G_n$ kann wie folgt in ihre Komponenten zerlegt werden:
 
-1. \textbf{Corners}: There are 8 corners, each with 3 possible orientations. The orientation of the 8th corner is determined by the other 7, so we have $8!$ permutations and $3^7$ orientations.
+\begin{enumerate}
+\item \textbf{Ecken}: Es gibt 8 Ecken, jede mit 3 möglichen Orientierungen. Da die Orientierung der achten Ecke durch die anderen 7 bestimmt ist, ergibt sich $8!$ für die Permutationen und $3^7$ für die Orientierungen.
 
-2. \textbf{Edges}: There are 12 edges, each with 2 possible orientations. Similarly, the orientation of the 12th edge is determined by the other 11, resulting in $12!$ permutations and $2^{11}$ orientations.
+\item \textbf{Kanten}: Es gibt 12 Kanten, jede mit 2 möglichen Orientierungen. Wie bei den Ecken ist die Orientierung der zwölften Kante durch die anderen 11 bestimmt, was $12!$ für Permutationen und $2^{11}$ für Orientierungen ergibt.
 
-3. \textbf{Centers}: For cubes $n \geq 4$, there are layers of center pieces that can be permuted. For each internal layer $i$, there are $24$ center pieces that can be permuted, resulting in $(24!)^i$ possible permutations.
+\item \textbf{Zentren}: Für größere Würfel (n ≥ 4) gibt es innere Schichten mit $24$ zentralen Teilen, die jeweils $(24!)^i$ mögliche Permutationen erlauben.
 
-4. \textbf{Parity}: There's a parity constraint: the parity of corner permutation must equal the parity of edge permutation, resulting in a division by 2.
+\item \textbf{Parität}: Es gibt eine Paritätsbeschränkung: Die Parität der Ecken- und Kantenpermutation muss übereinstimmen, daher die Division durch 2.
 
-5. \textbf{Odd layers}: For odd-sized cubes, the center pieces don't move but have possible orientations, contributing an additional factor.
+\item \textbf{Ungerade Schichten}: Bei ungeraden Würfeln (n ≥ 3) haben die mittleren Zentren mögliche Orientierungen, was einen zusätzlichen Faktor $\left(\frac{24!}{2}\right)^{\lfloor(n-3)/2\rfloor}$ ergibt.
+\end{enumerate}
 
-When combined, these factors yield the complete group order formula.
+Wenn wir all diese Faktoren kombinieren, erhalten wir die vollständige Formel für die Gruppenordnung.
 \end{proof}
 
-\subsection{Appendix B: Complexity Analysis of Korf's Algorithm}
-
-The IDA* (Iterative Deepening A*) algorithm developed by Richard Korf for solving the Rubik's Cube has a theoretical complexity of $O(b^d)$ where $b$ is the branching factor and $d$ is the depth.
-
-For the standard Rubik's Cube:
-\begin{itemize}
-\item Branching factor: $b = 18$ (6 faces with 3 possible turns: clockwise, counterclockwise, double turn)
-\item Maximum depth: $d = 20$ (God's Number for 3×3×3)
-\item Theoretical complexity: $O(18^{20}) \approx O(3.8 \times 10^{24})$
-\end{itemize}
-
-However, with admissible heuristics such as pattern databases for the Rubik's Cube, the effective complexity is reduced substantially.
-
-\subsection{Appendix C: Theory of Adaptive Difficulty}
-
-The difficulty adjustment mechanism in RubikPoW takes into account multiple factors:
-
-\[
-D_{adjusted} = D_{current} \cdot \left(\frac{T_{expected}}{T_{actual}}\right)^{\alpha} \cdot \left(\frac{n_{current}}{n_{target}}\right)^{\beta} \cdot \left(\frac{k_{current}}{k_{target}}\right)^{\gamma}
-\]
-
-Where:
-\begin{itemize}
-\item $T_{expected}, T_{actual}$: Expected vs. actual time between blocks
-\item $n_{current}, n_{target}$: Current vs. target cube size
-\item $k_{current}, k_{target}$: Current vs. target move limit
-\item $\alpha, \beta, \gamma$: Weight factors for adjustment sensitivity
-\end{itemize}
-
-\subsection{Appendix D: Cube State Validation Algorithms}
-
-An efficient algorithm to validate if a cube state is solved:
-
-\begin{algorithm}
-\caption{Solved State Validation Algorithm}
-\begin{algorithmic}[1]
-\STATE \textbf{Input:} Cube state to validate
-\STATE \textbf{Output:} Boolean indicating if cube is solved
-\FOR{$i = 0$ to $7$}  \COMMENT{Validate corner pieces}
-\IF{$state.corners[i].position \neq i \lor state.corners[i].orientation \neq 0$}
-\STATE \textbf{return} False
-\ENDIF
-\ENDFOR
-\FOR{$i = 0$ to $11$}  \COMMENT{Validate edge pieces}
-\IF{$state.edges[i].position \neq iORstate.edges[i].orientation \neq 0$}
-\STATE \textbf{return} False
-\ENDIF
-\ENDFOR
-\FOR{$i = 0$ to $NumCenters(state.size)$}  \COMMENT{Validate center pieces}
-\IF{$state.centers[i].position \neq i$}
-\STATE \textbf{return} False
-\ENDIF
-\ENDFOR
-\STATE \textbf{return} True
-\end{algorithmic}
-\end{algorithm}
-
-\subsection{Appendix E: Permutational Entropy Analysis}
-
-The entropy of a random state of the n×n×n Rubik's Cube is given by:
-
-\[
-H_n = \log_2(|G_n|) = \log_2\left(\frac{8! \cdot 3^7 \cdot 12! \cdot 2^{11} \cdot \prod_{i=1}^{\lfloor (n-2)/2 \rfloor} (24!)^i}{2} \cdot \frac{24!}{2}^{\lfloor (n-3)/2 \rfloor}\right)
-\]
-
-This entropy grows approximately as $O(n^2 \log n)$, significantly faster than traditional PoW schemes based on cryptographic hashes.
-
-\section{Conclusion and Future of Quantum Cryptography}
+\section{Fazit und Zukunft der Quantenkryptographie}
 
 QubitCoin represents a significant advance in applying pure mathematics to practical cryptography. By building on the combinatorial structure of permutation groups, specifically the Rubik's Cube group, QubitCoin establishes a new class of quantum resistance that does not depend on specific algebraic assumptions that could be vulnerable to future advances in quantum algorithms.
 

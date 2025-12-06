@@ -31,7 +31,7 @@
 \geometry{a4paper, margin=1in}
 
 \title{QubitCoin Whitepaper v2.0 - Expanded English Version (30-40 Pages)}
-\author{Raul - Founder of QubitCoin}
+\author{Raúl - Founder of QubitCoin}
 \affil{QubitCoin Foundation}
 \date{\today}
 
@@ -74,7 +74,7 @@ These algorithms directly threaten the pillars of modern cryptography: RSA, ECDS
 Current "post-quantum" solutions proposed under NIST standards face challenges:
 
 \begin{enumerate}
-\item Lack of time-tested analysis and extensive cryptanalytical review
+\item Insufficient time-tested analysis and extensive cryptanalytical review
 \item Extremely large signature/key sizes
 \item Mathematical complexity that may hide unknown attack vectors
 \item Dependence on mathematical assumptions that could be broken by future advances
@@ -146,9 +146,9 @@ T_{classical} \approx 2^{245.7}, \quad T_{quantum} \approx 2^{122.9}
 \centering
 \begin{tikzpicture}[scale=0.7]
 \begin{axis}[
-    title={Security Comparison: Classical vs Quantum},
+    title={Security Comparison: Classical vs. Quantum},
     xlabel={Cube size (n)},
-    ylabel={Bits of Security},
+    ylabel={Security bits},
     xmin=2, xmax=6,
     ymin=0, ymax=250,
     legend pos=outer north east,
@@ -174,36 +174,35 @@ T_{classical} \approx 2^{245.7}, \quad T_{quantum} \approx 2^{122.9}
 \addlegendentry{Quantum Security (Grover)}
 \end{axis}
 \end{tikzpicture}
-\caption{Comparison of classical vs quantum bits of security for different cube sizes}
+\caption{Comparison of classical vs. quantum bits of security for different cube sizes}
 \end{figure}
 
 \subsection{Analysis of Verification Difficulty}
 
 The verification of a RubikPoW solution is highly efficient with complexity O(k), where k is the number of moves in the solution sequence. This allows for rapid verification by network nodes.
 
-\begin{algorithm}
-\caption{RubikPoW Solution Verification}
-\begin{algorithmic}[1]
-\STATE \textbf{Input:} Cube state to verify
-\STATE \textbf{Output:} Boolean indicating if cube is solved
-\FOR{$i = 0$ to $7$}  \COMMENT{Verify corners}
-\IF{$state.corners[i].position \neq i \lor state.corners[i].orientation \neq 0$}
-\STATE \textbf{return} False
-\ENDIF
-\ENDFOR
-\FOR{$i = 0$ to $11$}  \COMMENT{Verify edges}
-\IF{$state.edges[i].position \neq iORstate.edges[i].orientation \neq 0$}
-\STATE \textbf{return} False
-\ENDIF
-\ENDFOR
-\FOR{$i = 0$ to $NumCenters(state.size)$}  \COMMENT{Verify centers}
-\IF{$state.centers[i].position \neq i$}
-\STATE \textbf{return} False
-\ENDIF
-\ENDFOR
-\STATE \textbf{return} True
-\end{algorithmic}
-\end{algorithm}
+% Using text description instead of problematic algorithmic environment
+\textbf{RubikPoW Solution Verification Algorithm:}
+\begin{enumerate}
+\item \textbf{Input:} Cube state to verify
+\item \textbf{Output:} Boolean indicating if cube is solved
+\item For $i = 0$ to $7$: \textbf{Verify corners}
+\begin{itemize}
+\item If $state.corners[i].position \neq i$ OR $state.corners[i].orientation \neq 0$
+\item \textbf{return} False
+\end{itemize}
+\item For $i = 0$ to $11$: \textbf{Verify edges}
+\begin{itemize}
+\item If $state.edges[i].position \neq i$ OR $state.edges[i].orientation \neq 0$
+\item \textbf{return} False
+\end{itemize}
+\item For $i = 0$ to $NumCenters(state.size)$: \textbf{Verify centers}
+\begin{itemize}
+\item If $state.centers[i].position \neq i$
+\item \textbf{return} False
+\end{itemize}
+\item \textbf{return} True
+\end{enumerate}
 
 \section{RubikPoW Consensus Protocol}
 
@@ -220,8 +219,8 @@ struct RubikBlock {
     uint32 difficulty;                    // Cube size n
     uint8 cube_size;                      // n for n×n×n
     uint16 max_moves_allowed;             // Move limit
-    bytes32 initial_cube_state;          // Encoded initial state
-    bytes32 final_cube_state;            // Solved state encoded
+    bytes32 initial_cube_state;          // Encoded initial status
+    bytes32 final_cube_state;            // Solved status encoded
     uint16 solution_length;              // Number of moves
     uint8[solution_length] solution;     // Move sequence
     uint64 nonce;                        // Additional randomness
@@ -232,7 +231,7 @@ struct RubikBlock {
 
 \subsection{Mining Process}
 
-The mining process involves:
+The mining process encompasses:
 
 \begin{enumerate}
 \item Obtain initial cube state based on previous block data
@@ -446,11 +445,11 @@ Q3 2027 & Scalability & Layer-2 solutions for greater throughput \\
 \hline
 Q4 2027 & Mobile Wallet & Native mobile wallet \\
 \hline
-Q1 2028 & Enterprise Solutions & Tools for enterprise and development \\
+Q1 2028 & Enterprise Solutions & Tools for business and development \\
 \hline
 Q2 2028 & Quantum Resistant DApps & Platform for quantum-resistant applications \\
 \hline
-Q4 2029 & Quantum Ready Protocol & Protocol upgrade for superior quantum preparation \\
+Q4 2029 & Quantum Ready Protocol & Protocol upgrade for superior quantum preparedness \\
 \hline
 \end{longtable}
 
@@ -458,7 +457,7 @@ Q4 2029 & Quantum Ready Protocol & Protocol upgrade for superior quantum prepara
 
 \subsection{Core Architecture}
 
-QubitCoin's implementation is based on Substrate Framework for its modularity and capability for custom blockchain creation:
+The QubitCoin implementation is based on Substrate Framework due to its modularity and capability for custom blockchain creation:
 
 \begin{itemize}
 \item \textbf{Consensus Engine}: Custom implementation of RubikPoW
@@ -486,7 +485,7 @@ impl<T: Config> Pallet<T> {
         // Verify integrity of solution
         Self::validate_solution(&solution)?;
         
-        // Verify difficulty
+        // Check difficulty
         Self::check_difficulty(&solution, nonce)?;
         
         // Process reward
@@ -515,7 +514,7 @@ impl<T: Config> Pallet<T> {
 
 \subsection{Cube Data Structure}
 
-Efficient cube representation is critical for performance:
+An efficient cube representation is critical for performance:
 
 \begin{verbatim}
 pub struct RubiksCubeState {
@@ -553,7 +552,7 @@ pub enum Move {
 
 \subsection{Transactional Throughput}
 
-QubitCoin is designed to process between 7-10 transactions per second at Layer 1, comparable to Bitcoin but with 10-minute blocks for enhanced security. With Layer 2 solutions, throughput can increase significantly.
+QubitCoin is designed to process 7-10 transactions per second under normal conditions, similar to Bitcoin but with 10-minute blocks for enhanced security. With Layer-2 solutions, throughput can increase significantly.
 
 \subsection{Energy Consumption Analysis}
 
@@ -571,7 +570,7 @@ Bitcoin & \$0.25 & 1520 & 0.08 \\
 \hline
 Ethereum & \$1.50 & 45 & 0.015 \\
 \hline
-QubitCoin (est.) & \$0.15 & 85 & 0.04 \\
+QubitCoin (estimated) & \$0.15 & 85 & 0.04 \\
 \hline
 \end{tabular}
 \caption{Comparison of costs and environmental footprint estimates}
@@ -603,7 +602,7 @@ QubitCoin (est.) & \$0.15 & 85 & 0.04 \\
 
 \begin{itemize}
 \item Academic review by cryptography experts
-\item Third-party code audits
+\item Independent third-party code audits
 \item Bug bounty program
 \item Extensive unit and integration testing
 \end{itemize}
@@ -672,7 +671,7 @@ QubitCoin is designed to facilitate regulatory compliance:
 
 \begin{itemize}
 \item Crypto-quantum education programs
-\item Project incubator on QubitCoin
+\item Project incubator on QubitCoin platform
 \item Thematic events and conferences
 \item Rewards for technical contributions
 \end{itemize}
@@ -721,7 +720,7 @@ The mining process in RubikPoW can be modeled as a non-cooperative game where ea
 \centering
 \begin{tikzpicture}[scale=0.8]
 \tikzset{vertex/.style = {shape=circle,draw,minimum size=2em}}
-\tikzset{edge/.style = {->,> = stealth'}}
+\tikzset{edge/.style = {->}}
 
 % Mining flow diagram
 \node[vertex] (A) at (0,0) {Get Previous Block};
@@ -764,7 +763,7 @@ The mining process in RubikPoW can be modeled as a non-cooperative game where ea
 \draw[fill=yellow] (0,0,0) -- (0.7,0,0) -- (0.7,0,0.7) -- (0,0,0.7) -- cycle;
 
 % Labels
-\node at (1.05,-0.5,0) {Parts of the 3×3×3 cube};
+\node at (1.05,-0.5,0) {Pieces of the 3×3×3 cube};
 \end{tikzpicture}
 \caption{Three-dimensional representation of 3×3×3 cube}
 \end{figure}
@@ -777,7 +776,7 @@ The mining process in RubikPoW can be modeled as a non-cooperative game where ea
     ybar,
     enlargelimits=0.15,
     legend style={at={(-0.1,1.1)}, anchor=north,legend columns=1},
-    ylabel={Equivalent Bits of Security},
+    ylabel={Equivalent Security Bits},
     symbolic x coords={SHA-256, Scrypt, Equihash, RubikPoW-3, RubikPoW-4, RubikPoW-5},
     xtick=data,
     nodes near coords,
@@ -985,7 +984,7 @@ Ferrer, J.L. (2019). Quantum-safe consensus for distributed networks. \textit{IE
 Sun, X., et al. (2020). Towards quantum-safe cryptocurrencies. \textit{IEEE Transactions on Dependable and Secure Computing}, 18(5), 759-774.
 
 \bibitem{lattice_crypto_foundations}
-Regev, O. (2005). On lattices, learning with errors, random linear codes, and cryptography. \textit{Proceedings of the thirty-seventh annual ACM symposium on Theory of computing}, 84-93.
+Regev, O. (2005). On lattices, learning with errors, random linear codes, and cryptography. \textit{Proceedings of the thirty-seventh annual ACM symposium on Theory of Computing}, 84-93.
 
 \bibitem{quantum_computational_power}
 Aaronson, S., \& Chen, L. (2017). Complexity-theoretic foundations of quantum supremacy experiments. \textit{Proceedings of the 32nd Computational Complexity Conference}, 1-30.
@@ -1245,17 +1244,19 @@ Hallgren, S. (2006). Polynomial-time quantum algorithms for Pell's equation and 
 \begin{proof}[Proof of Order of Rubik's Cube Group Theorem]
 The Rubik's Cube group $G_n$ can be decomposed into its constituent components:
 
-1. \textbf{Corners}: There are 8 corners, each with 3 possible orientations. The orientation of the 8th corner is determined by the other 7, so we have $8!$ permutations and $3^7$ orientations.
+\begin{enumerate}
+\item \textbf{Corners}: There are 8 corners, each with 3 possible orientations. The orientation of the 8th corner is determined by the other 7, so we have $8!$ permutations and $3^7$ orientations.
 
-2. \textbf{Edges}: There are 12 edges, each with 2 possible orientations. Similarly, the orientation of the 12th edge is determined by the other 11, resulting in $12!$ permutations and $2^{11}$ orientations.
+\item \textbf{Edges}: There are 12 edges, each with 2 possible orientations. Similarly, the orientation of the 12th edge is determined by the other 11, resulting in $12!$ permutations and $2^{11}$ orientations.
 
-3. \textbf{Centers}: For cubes $n \geq 4$, there are layers of center pieces that can be permuted. For each internal layer $i$, there are $24$ center pieces that can be permuted, resulting in $(24!)^i$ possible permutations.
+\item \textbf{Centers}: For larger cubes (n ≥ 4) there are internal layers with $24$ central pieces that each allow $(24!)^i$ possible permutations.
 
-4. \textbf{Parity}: There's a parity constraint: the parity of corner permutation must equal the parity of edge permutation, resulting in a division by 2.
+\item \textbf{Parity}: There's a parity constraint: the parity of corner and edge permutation must match, resulting in a division by 2.
 
-5. \textbf{Odd layers}: For odd-sized cubes, the center pieces don't move but have possible orientations, contributing an additional factor.
+\item \textbf{Odd layers}: For odd-sized cubes (n ≥ 3) the middle centers have possible orientations contributing an additional factor $\left(\frac{24!}{2}\right)^{\lfloor (n-3)/2 \rfloor}$.
+\end{enumerate}
 
-When combined, these factors yield the complete group order formula.
+When we combine all these factors, we get the complete formula for the group order.
 \end{proof}
 
 \subsection{Appendix B: Complexity Analysis of Korf's Algorithm}
@@ -1291,29 +1292,26 @@ Where:
 
 An efficient algorithm to validate if a cube state is solved:
 
-\begin{algorithm}
-\caption{Solved State Validation Algorithm}
-\begin{algorithmic}[1]
-\STATE \textbf{Input:} Cube state to validate
-\STATE \textbf{Output:} Boolean indicating if cube is solved
-\FOR{$i = 0$ to $7$}  \COMMENT{Validate corner pieces}
-\IF{$state.corners[i].position \neq i \lor state.corners[i].orientation \neq 0$}
-\STATE \textbf{return} False
-\ENDIF
-\ENDFOR
-\FOR{$i = 0$ to $11$}  \COMMENT{Validate edge pieces}
-\IF{$state.edges[i].position \neq iORstate.edges[i].orientation \neq 0$}
-\STATE \textbf{return} False
-\ENDIF
-\ENDFOR
-\FOR{$i = 0$ to $NumCenters(state.size)$}  \COMMENT{Validate center pieces}
-\IF{$state.centers[i].position \neq i$}
-\STATE \textbf{return} False
-\ENDIF
-\ENDFOR
-\STATE \textbf{return} True
-\end{algorithmic}
-\end{algorithm}
+\begin{enumerate}
+\item \textbf{Input:} Cube state to verify
+\item \textbf{Output:} Boolean indicating if cube is solved
+\item For $i = 0$ to $7$: \textbf{Verify corners}
+\begin{itemize}
+\item If $state.corners[i].position \neq i$ OR $state.corners[i].orientation \neq 0$
+\item \textbf{return} False
+\end{itemize}
+\item For $i = 0$ to $11$: \textbf{Verify edges}
+\begin{itemize}
+\item If $state.edges[i].position \neq i$ OR $state.edges[i].orientation \neq 0$
+\item \textbf{return} False
+\end{itemize}
+\item For $i = 0$ to $NumCenters(state.size)$: \textbf{Verify centers}
+\begin{itemize}
+\item If $state.centers[i].position \neq i$
+\item \textbf{return} False
+\end{itemize}
+\item \textbf{return} True
+\end{enumerate}
 
 \subsection{Appendix E: Permutational Entropy Analysis}
 

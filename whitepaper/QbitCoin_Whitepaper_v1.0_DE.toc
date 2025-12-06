@@ -1,0 +1,49 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {section}{\numberline {1}Exekutivzusammenfassung}{3}{section.1}%
+\contentsline {section}{\numberline {2}Einführung und historischer Kontext}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Evolution der Kryptographie}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Die aufkommende Quantengefahr}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Beschränkungen aktueller Post-Quantum-Lösungen}{3}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Mathematische Grundlagen von RubikPoW}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Gruppentheorie und Rubik's Cubes}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Rechenschwierigkeit des Lösungsproblems}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Komplexitätsanalyse gegenüber dem Grover-Algorithmus}{4}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Analyse der Verifizierungsschwierigkeit}{5}{subsection.3.4}%
+\contentsline {section}{\numberline {4}RubikPoW Konsensprotokoll}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Blockstruktur}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Mining-Prozess}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Schwierigkeitsanpassung}{6}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Quantensicherheitsanalyse}{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Vergleich mit anderen PoW-Algorithmen}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Analyse kryptographischer Schwachstellen}{7}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Widerstandsfähigkeit gegenüber zukünftigen Quantenfortschritten}{8}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Vollständige Tokenomics}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Emissionsmodell}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Emissionskurve und Halbierung}{8}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Entwicklungsrücklagenverteilung}{8}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Technischer Fahrplan und Entwicklung}{9}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Meilensteine 2025-2026}{9}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Meilensteine 2027-2029}{9}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Detaillierte technische Implementierung}{10}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Kernarchitektur}{10}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}RubikPoW Pallet}{10}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Cubus-Datenstruktur}{11}{subsection.8.3}%
+\contentsline {section}{\numberline {9}Leistungs- und Skalierungsanalyse}{12}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Transaktionsdurchsatz}{12}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Energieverbrauchsanalyse}{12}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Transaktionskostenvergleich}{12}{subsection.9.3}%
+\contentsline {section}{\numberline {10}Infrastruktur und Deployment}{12}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Knoten-Architektur}{12}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Entwicklungsinfrastruktur}{12}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Sicherheit und Audit}{13}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Sicherheitsprozesse}{13}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Analyse von Angriffsvektoren}{13}{subsection.11.2}%
+\contentsline {section}{\numberline {12}Anwendungsfälle und Anwendungen}{13}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Dezentralisierte Finanzen (DeFi)}{13}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Identität und Zugang}{13}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Lieferketten}{13}{subsection.12.3}%
+\contentsline {section}{\numberline {13}Mathematische Anhänge}{14}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Anhang A: Detaillierter Beweis der Gruppenordnungsformel}{14}{subsection.13.1}%
+\contentsline {section}{\numberline {14}Umfangreiche akademische Referenzen}{14}{section.14}%
+\contentsline {section}{\numberline {15}Fazit und Zukunft der Quantenkryptographie}{22}{section.15}%
+\contentsline {section}{\numberline {16}Dank}{22}{section.16}%

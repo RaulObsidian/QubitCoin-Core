@@ -1,0 +1,74 @@
+This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2025.11.22)  6 DEC 2025 17:22
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./QbitCoin_Whitepaper_v1.0_CN.tex
+(QbitCoin_Whitepaper_v1.0_CN.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-04>
+(C:\Users\thebo\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(C:\Users\thebo\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
+File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count183
+\c@section=\count184
+\c@subsection=\count185
+\c@subsubsection=\count186
+\c@paragraph=\count187
+\c@subparagraph=\count188
+\c@figure=\count189
+\c@table=\count190
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+)
+(C:\Users\thebo\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (C:\Users\thebo\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2024/01/07 v24.1 The Babel package
+\babel@savecnt=\count191
+\U@D=\dimen141
+\l@unhyphenated=\language79
+
+(C:\Users\thebo\AppData\Local\Programs\MiKTeX\tex/generic/babel\xebabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count192
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\thebo\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+
+! Package babel Error: Unknown option 'chinese'. Either you misspelled it
+(babel)                or the language definition file chinese.ldf
+(babel)                was not found.
+(babel)                There is a locale ini file for this language.
+(babel)                If it’s the main language, try adding `provide=*'
+(babel)                to the babel package options.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4291 \ProcessOptions*
+                        
+Here is how much of TeX's memory you used:
+ 1243 strings out of 409617
+ 21528 string characters out of 5774012
+ 1917191 words of memory out of 5000000
+ 23401 multiletter control sequences out of 15000+600000
+ 558077 words of font info for 37 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 38i,0n,48p,175b,40s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+No pages of output.
