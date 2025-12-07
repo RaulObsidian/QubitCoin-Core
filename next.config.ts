@@ -1,17 +1,14 @@
-import type { NextConfig } from "next";
 import createNextIntlPlugin from 'next-intl/plugin';
 
-const withNextIntl = createNextIntlPlugin('./i18n.ts');
+// Apunta al archivo que acabamos de mover a src/
+const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
+
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   typescript: { ignoreBuildErrors: true },
   eslint: { ignoreDuringBuilds: true },
-  output: 'standalone',
-  experimental: {
-    serverActions: {
-       allowedOrigins: ['*']
-    }
-  }
+  output: 'standalone'
 };
 
 export default withNextIntl(nextConfig);
