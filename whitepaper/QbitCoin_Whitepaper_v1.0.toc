@@ -1,0 +1,60 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}La Amenaza Cuántica}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Fundamentos Matemáticos de RubikPoW}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}El Grupo del Cubo $G_n$}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}La Función de Dificultad}{4}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Arquitectura Técnica}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}El Pallet Substrate}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Tokenomics y Roadmap}{6}{chapter.4}%
+\contentsline {chapter}{\numberline {A}Apéndice A: Tablas de Permutación Precomputadas}{7}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Bloque de Datos de Permutación 1}{7}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Bloque de Datos de Permutación 2}{8}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Bloque de Datos de Permutación 3}{9}{section.Alph1.3}%
+\contentsline {section}{\numberline {A.4}Bloque de Datos de Permutación 4}{10}{section.Alph1.4}%
+\contentsline {section}{\numberline {A.5}Bloque de Datos de Permutación 5}{11}{section.Alph1.5}%
+\contentsline {section}{\numberline {A.6}Bloque de Datos de Permutación 6}{12}{section.Alph1.6}%
+\contentsline {section}{\numberline {A.7}Bloque de Datos de Permutación 7}{13}{section.Alph1.7}%
+\contentsline {section}{\numberline {A.8}Bloque de Datos de Permutación 8}{14}{section.Alph1.8}%
+\contentsline {section}{\numberline {A.9}Bloque de Datos de Permutación 9}{15}{section.Alph1.9}%
+\contentsline {section}{\numberline {A.10}Bloque de Datos de Permutación 10}{16}{section.Alph1.10}%
+\contentsline {section}{\numberline {A.11}Bloque de Datos de Permutación 11}{17}{section.Alph1.11}%
+\contentsline {section}{\numberline {A.12}Bloque de Datos de Permutación 12}{18}{section.Alph1.12}%
+\contentsline {section}{\numberline {A.13}Bloque de Datos de Permutación 13}{19}{section.Alph1.13}%
+\contentsline {section}{\numberline {A.14}Bloque de Datos de Permutación 14}{20}{section.Alph1.14}%
+\contentsline {section}{\numberline {A.15}Bloque de Datos de Permutación 15}{21}{section.Alph1.15}%
+\contentsline {section}{\numberline {A.16}Bloque de Datos de Permutación 16}{22}{section.Alph1.16}%
+\contentsline {section}{\numberline {A.17}Bloque de Datos de Permutación 17}{23}{section.Alph1.17}%
+\contentsline {section}{\numberline {A.18}Bloque de Datos de Permutación 18}{24}{section.Alph1.18}%
+\contentsline {section}{\numberline {A.19}Bloque de Datos de Permutación 19}{25}{section.Alph1.19}%
+\contentsline {section}{\numberline {A.20}Bloque de Datos de Permutación 20}{26}{section.Alph1.20}%
+\contentsline {section}{\numberline {A.21}Bloque de Datos de Permutación 21}{27}{section.Alph1.21}%
+\contentsline {section}{\numberline {A.22}Bloque de Datos de Permutación 22}{28}{section.Alph1.22}%
+\contentsline {section}{\numberline {A.23}Bloque de Datos de Permutación 23}{29}{section.Alph1.23}%
+\contentsline {section}{\numberline {A.24}Bloque de Datos de Permutación 24}{30}{section.Alph1.24}%
+\contentsline {section}{\numberline {A.25}Bloque de Datos de Permutación 25}{31}{section.Alph1.25}%
+\contentsline {section}{\numberline {A.26}Bloque de Datos de Permutación 26}{32}{section.Alph1.26}%
+\contentsline {section}{\numberline {A.27}Bloque de Datos de Permutación 27}{33}{section.Alph1.27}%
+\contentsline {section}{\numberline {A.28}Bloque de Datos de Permutación 28}{34}{section.Alph1.28}%
+\contentsline {section}{\numberline {A.29}Bloque de Datos de Permutación 29}{35}{section.Alph1.29}%
+\contentsline {section}{\numberline {A.30}Bloque de Datos de Permutación 30}{36}{section.Alph1.30}%
+\contentsline {section}{\numberline {A.31}Bloque de Datos de Permutación 31}{37}{section.Alph1.31}%
+\contentsline {section}{\numberline {A.32}Bloque de Datos de Permutación 32}{38}{section.Alph1.32}%
+\contentsline {section}{\numberline {A.33}Bloque de Datos de Permutación 33}{39}{section.Alph1.33}%
+\contentsline {section}{\numberline {A.34}Bloque de Datos de Permutación 34}{40}{section.Alph1.34}%
+\contentsline {section}{\numberline {A.35}Bloque de Datos de Permutación 35}{41}{section.Alph1.35}%
+\contentsline {section}{\numberline {A.36}Bloque de Datos de Permutación 36}{42}{section.Alph1.36}%
+\contentsline {section}{\numberline {A.37}Bloque de Datos de Permutación 37}{43}{section.Alph1.37}%
+\contentsline {section}{\numberline {A.38}Bloque de Datos de Permutación 38}{44}{section.Alph1.38}%
+\contentsline {section}{\numberline {A.39}Bloque de Datos de Permutación 39}{45}{section.Alph1.39}%
+\contentsline {section}{\numberline {A.40}Bloque de Datos de Permutación 40}{46}{section.Alph1.40}%
+\contentsline {section}{\numberline {A.41}Bloque de Datos de Permutación 41}{47}{section.Alph1.41}%
+\contentsline {section}{\numberline {A.42}Bloque de Datos de Permutación 42}{48}{section.Alph1.42}%
+\contentsline {section}{\numberline {A.43}Bloque de Datos de Permutación 43}{49}{section.Alph1.43}%
+\contentsline {section}{\numberline {A.44}Bloque de Datos de Permutación 44}{50}{section.Alph1.44}%
+\contentsline {section}{\numberline {A.45}Bloque de Datos de Permutación 45}{51}{section.Alph1.45}%
+\contentsline {section}{\numberline {A.46}Bloque de Datos de Permutación 46}{52}{section.Alph1.46}%
+\contentsline {section}{\numberline {A.47}Bloque de Datos de Permutación 47}{53}{section.Alph1.47}%
+\contentsline {section}{\numberline {A.48}Bloque de Datos de Permutación 48}{54}{section.Alph1.48}%
+\contentsline {section}{\numberline {A.49}Bloque de Datos de Permutación 49}{55}{section.Alph1.49}%
+\contentsline {section}{\numberline {A.50}Bloque de Datos de Permutación 50}{56}{section.Alph1.50}%
+\contentsline {chapter}{\numberline {B}Apéndice B: Referencias Académicas}{57}{appendix.Alph2}%
