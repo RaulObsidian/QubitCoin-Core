@@ -1,0 +1,10 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}La Amenaza Cuántica y la Obsolescencia de Bitcoin}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}El Algoritmo de Shor}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}La Solución QbitCoin}{3}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Tecnología RubikPoW: El Motor del Consenso}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Fundamentos Matemáticos}{4}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Arquitectura de Seguridad Escalonada (Tiered Security)}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Escalabilidad Infinita (XK-XK-XK)}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Tokenomics y Economía del Protocolo}{6}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Conclusión}{7}{chapter.5}%

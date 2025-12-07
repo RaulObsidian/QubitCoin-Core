@@ -1,0 +1,98 @@
+\documentclass[11pt, a4paper]{report}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{xcolor}
+
+% Configuración de diseño profesional
+\geometry{top=3cm, bottom=3cm, left=2.5cm, right=2.5cm}
+\pagestyle{fancy}
+\fancyhead[L]{\textbf{QbitCoin Core}}
+\fancyhead[R]{Protocolo de Seguridad Post-Cuántica}
+\definecolor{qbitblue}{RGB}{0, 51, 102}
+
+\title{
+    \vspace{2cm}
+    \textbf{\Huge \color{qbitblue} QbitCoin (QBC)} \\
+    \vspace{1cm}
+    \Large La Primera Blockchain con Consenso basado en \\ Grupos de Permutación No Abelianos (RubikPoW) \\
+    \vspace{2cm}
+    \textbf{WHITEPAPER TÉCNICO v2.0} \\
+    \large Edición Institucional
+}
+\author{\textbf{Francisco Raúl Rueda Adán} \\ Fundador y Arquitecto Jefe}
+\date{Diciembre 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\textbf{Resumen Ejecutivo:} La inminente llegada de la computación cuántica (Q-Day) dejará obsoletos los algoritmos RSA y de Curva Elíptica (ECDSA) que protegen actualmente el 99\% de la economía digital mundial, incluido Bitcoin. QbitCoin introduce una solución definitiva: \textbf{RubikPoW}. Un mecanismo de prueba de trabajo basado en la complejidad combinatoria de resolver espacios de estado en subgrupos $G_n$, resistente matemáticamente al Algoritmo de Shor y Grover. Este protocolo implementa una arquitectura de seguridad escalonada (del 3K al 6K) para ofrecer utilidad real desde micropagos hasta secretos de estado.
+\end{abstract}
+
+\tableofcontents
+\listoftables
+\newpage
+
+\chapter{La Amenaza Cuántica y la Obsolescencia de Bitcoin}
+\section{El Algoritmo de Shor}
+Los ordenadores cuánticos utilizan cúbits y superposición para resolver la factorización de enteros en tiempo polinómico $O((\log N)^3)$. Esto significa que las claves privadas de Bitcoin (secp256k1) podrán ser derivadas de las claves públicas en cuestión de horas.
+
+\section{La Solución QbitCoin}
+QbitCoin abandona la aritmética modular en favor de la \textbf{Teoría de Grupos}. La seguridad de nuestra red no depende de factorizar números, sino de encontrar el camino más corto ("Número de Dios") en un espacio de permutaciones de alta entropía.
+
+\chapter{Tecnología RubikPoW: El Motor del Consenso}
+\section{Fundamentos Matemáticos}
+El puzzle criptográfico se basa en el Grupo del Cubo $G$. Para un cubo de dimensiones $N \times N \times N$, el espacio de estados $\Omega$ crece super-exponencialmente.
+
+\begin{equation}
+    Size(N) = \frac{8! \cdot 3^7 \cdot 12! \cdot 2^{11}}{2} \approx 4.3 \times 10^{19} \quad (\text{para } N=3)
+\end{equation}
+
+Para nuestro nivel máximo ($N=6$), el espacio de búsqueda supera $1.57 \times 10^{116}$, una cifra mayor que el número de átomos en el universo observable.
+
+\chapter{Arquitectura de Seguridad Escalonada (Tiered Security)}
+A diferencia de las blockchains monolíticas, QbitCoin ofrece niveles de encriptación adaptativos según la criticidad de la transacción.
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|l|l|}
+\hline
+\textbf{Nivel} & \textbf{Estructura} & \textbf{Usuario Objetivo} & \textbf{Aplicación Real} \\
+\hline
+\textbf{3K} & Cubo 3x3x3 & Usuario Estándar & Pagos diarios, compras online. \\
+\hline
+\textbf{4K} & Cubo 4x4x4 & Corporativo & Contratos B2B, Nóminas. \\
+\hline
+\textbf{5K} & Cubo 5x5x5 & Institucional & Banca, Reservas Federales. \\
+\hline
+\textbf{6K} & Cubo 6x6x6 & Militar/Científico & Secretos de Estado, Datos Genéticos. \\
+\hline
+\end{tabular}
+\caption{Matriz de Seguridad y Casos de Uso de QbitCoin}
+\end{table}
+
+\section{Escalabilidad Infinita (XK-XK-XK)}
+El protocolo está diseñado para ser agnóstico a la dimensión. A medida que la computación cuántica avance, la red puede activar mediante soft-fork niveles superiores (7K, 8K...), garantizando la seguridad perpetua.
+
+\chapter{Tokenomics y Economía del Protocolo}
+Diseñado para ser dinero duro, escaso y deflacionario.
+\begin{itemize}
+    \item \textbf{Suministro Total:} 21,000,000 QBC (Inmutable).
+    \item \textbf{Halving:} Cada 210,000 bloques.
+    \item \textbf{Recompensa Minera:} Basada en la dificultad del cubo resuelto. Resolver un bloque 6K otorga mayores recompensas que un bloque 3K, incentivando la inversión en hardware de alta computación.
+\end{itemize}
+
+\chapter{Conclusión}
+QbitCoin no es solo una criptomoneda, es la infraestructura de seguridad para la era post-cuántica. Mientras otras redes tendrán que migrar o morir, QbitCoin ha nacido preparada.
+
+\end{document}
