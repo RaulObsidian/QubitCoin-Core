@@ -10,7 +10,7 @@ export default getRequestConfig(async ({locale}) => {
   if (!routing.locales.includes(locale as any)) notFound();
 
   return {
-    // Los mensajes están en la carpeta hermana 'messages'
-    messages: (await import(`./messages/${locale}.json`)).default
+    // Usar alias para acceder a los mensajes
+    messages: (await import(`@/messages/${locale}.json`)).default
   };
 });
