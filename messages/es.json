@@ -1,6 +1,24 @@
 {
   "Index": {
-    "title": "Bienvenido a QubitCoin",
-    "description": "La primera cadena de bloques post-cuántica basada en grupos de permutación"
+    "hero_title": "El Estándar Post-Cuántico",
+    "hero_subtitle": "Soberanía a través de la criptografía de grupos de permutación",
+    "countdown_title": "Cuenta Regresiva para el Bloque Génesis",
+    "days": "Días",
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos",
+    "download_section_title": "Descargar Documentos Técnicos",
+    "whitepaper_en_desc": "Especificación completa del mecanismo de consenso RubikPoW",
+    "whitepaper_es_desc": "Especificación completa del mecanismo de consenso RubikPoW",
+    "whitepaper_de_desc": "Vollständige Spezifikation des RubikPoW-Konsensmechanismus",
+    "download_cta": "Descargar Ahora",
+    "features_title": "Arquitectura Resistente a Cuánticos",
+    "feature_1_title": "Consenso RubikPoW",
+    "feature_1_desc": "Basado en la complejidad matemática de grupos de permutación n×n×n",
+    "feature_2_title": "Seguridad por Niveles",
+    "feature_2_desc": "De 3×3 a 6×6 niveles de complejidad para diferentes necesidades de seguridad",
+    "feature_3_title": "Red Distribuida",
+    "feature_3_desc": "Infraestructura global protegida por matemáticas post-cuánticas",
+    "footer_text": "Asegurando el futuro de las finanzas contra amenazas cuánticas"
   }
 }

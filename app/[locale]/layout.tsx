@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '../../i18n';
 
@@ -9,7 +8,6 @@ export default function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const t = useTranslations('Index');
   const {locale} = params;
 
   // Ensure that the incoming locale is valid
@@ -19,7 +17,7 @@ export default function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className="min-h-screen bg-gray-50">
+      <body className="min-h-screen bg-gradient-to-br from-nebulae-black to-black">
         {children}
       </body>
     </html>

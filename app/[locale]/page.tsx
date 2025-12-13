@@ -108,7 +108,7 @@ export default function HomePage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card EN */}
-            <Link href="/whitepaper/QbitCoin-QBC _EU_EN_Fina.pdf" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
+            <Link href="/whitepaper/QbitCoin-QBC _EU_EN_Final.pdf" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
               <div className="text-4xl mb-4">🇬🇧</div>
               <h3 className="text-xl font-bold mb-2">English</h3>
               <p className="text-gray-400 mb-4">{t('whitepaper_en_desc')}</p>
@@ -116,7 +116,7 @@ export default function HomePage() {
                 📄 {t('download_cta')}
               </div>
             </Link>
-            
+
             {/* Card ES */}
             <Link href="/whitepaper/QbitCoin-QBC _EU_ES_Final.pdf" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
               <div className="text-4xl mb-4">🇪🇸</div>
@@ -126,7 +126,7 @@ export default function HomePage() {
                 📄 {t('download_cta')}
               </div>
             </Link>
-            
+
             {/* Card DE */}
             <Link href="/whitepaper/QbitCoin-QBC _EU_DE_Final.pdf" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
               <div className="text-4xl mb-4">🇩🇪</div>
