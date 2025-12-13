@@ -1,6 +1,6 @@
 import createMiddleware from 'next-intl/middleware';
 // Updated to use the new i18n implementation that matches whitepaper specifications
-import {routing} from './src/i18n';
+import {routing} from './i18n';
 
 export default createMiddleware(routing);
 
