@@ -1,67 +1,182 @@
+'use client';
+
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-export default function Home({ params: { locale } }: { params: { locale: string } }) {
+export default function HomePage() {
   const t = useTranslations('Index');
-  
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  // Fecha del Genesis Block (Marzo 2026)
+  const genesisDate = new Date('March 1, 2026 00:00:00 GMT+0000').getTime();
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = genesisDate - now;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-slate-950 text-white overflow-hidden relative selection:bg-cyan-500 selection:text-white">
-      {/* Fondo Ambiental */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-cyan-600/20 blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-purple-600/20 blur-[120px]" />
-      </div>
-
-      {/* Contenido Principal */}
-      <div className="z-10 text-center max-w-5xl px-6 animate-fade-in-up">
-        <div className="mb-6 inline-block px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-md">
-          <span className="text-cyan-400 text-sm font-mono tracking-widest uppercase">Protocolo Post-Cuántica v1.0</span>
-        </div>
-        
-        <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-slate-400">
-          {t('title')}
-        </h1>
-        
-        <p className="text-xl md:text-2xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-          {t('description')}
-        </p>
-
-        {/* Cuenta Atrás Simulada (Estética) */}
-        <div className="grid grid-cols-4 gap-4 mb-16 max-w-lg mx-auto">
-          {['08', '14', '32', '59'].map((num, i) => (
-            <div key={i} className="flex flex-col items-center p-4 bg-slate-900/50 border border-slate-800 rounded-xl backdrop-blur-sm">
-              <span className="text-3xl font-bold font-mono text-cyan-400">{num}</span>
-              <span className="text-xs text-slate-500 uppercase tracking-widest mt-1">
-                {['Días', 'Hrs', 'Min', 'Seg'][i]}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* Botones de Descarga Premium */}
-        <div className="flex flex-col md:flex-row gap-6 justify-center w-full">
-          {[
-            { lang: 'ES', label: 'Descargar Whitepaper', file: 'QbitCoin_Whitepaper_v1.0_ES.pdf' },
-            { lang: 'EN', label: 'Download Whitepaper', file: 'QbitCoin_Whitepaper_v1.0_EN.pdf' },
-            { lang: 'DE', label: 'Whitepaper herunterladen', file: 'QbitCoin_Whitepaper_v1.0_DE.pdf' }
-          ].map((btn) => (
-            <a 
-              key={btn.lang}
-              href={`/whitepaper/${btn.file}`}
-              download
-              className="group relative px-8 py-4 bg-slate-900 border border-slate-800 rounded-lg overflow-hidden transition-all hover:border-cyan-500/50 hover:shadow-[0_0_40px_-10px_rgba(6,182,212,0.3)]"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative flex items-center justify-center gap-3">
-                <span className="text-2xl">📄</span>
-                <div className="text-left">
-                  <div className="text-xs text-cyan-500 font-bold tracking-wider">{btn.lang}</div>
-                  <div className="text-sm font-medium text-slate-200">{btn.label}</div>
+    <div className="min-h-screen bg-gradient-to-br from-nebulae-black to-black text-white">
+      {/* Hero Section */}
+      <section className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center relative z-10">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
+            <span className="block">QbitCoin: </span>
+            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-nebulae-neon-green to-nebulae-quantum-violet mt-2">
+              {t('hero_title')}
+            </span>
+          </h1>
+          
+          <p className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-gray-300">
+            {t('hero_subtitle')}
+          </p>
+          
+          <div className="mt-10 flex justify-center">
+            <div className="relative">
+              {/* Placeholder de la moneda QBC en 3D */}
+              <div className="w-48 h-48 md:w-64 md:h-64 mx-auto relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-nebulae-neon-green to-nebulae-quantum-violet rounded-full opacity-20 blur-xl animate-pulse"></div>
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <div className="w-32 h-32 md:w-44 md:h-44 bg-gradient-to-br from-nebulae-neon-green to-nebulae-quantum-violet rounded-2xl transform rotate-45 shadow-2xl flex items-center justify-center">
+                    <div className="transform -rotate-45 text-black font-bold text-xl md:text-2xl">QBC</div>
+                  </div>
                 </div>
               </div>
-            </a>
-          ))}
+            </div>
+          </div>
         </div>
-      </div>
-    </main>
+      </section>
+
+      {/* Countdown Timer */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-nebulae-neon-green mb-8">
+            {t('countdown_title')}
+          </h2>
+          
+          <div className="countdown-container">
+            <div className="countdown-box card-glass">
+              <div className="countdown-number">{timeLeft.days.toString().padStart(2, '0')}</div>
+              <div className="countdown-label">{t('days')}</div>
+            </div>
+            <div className="countdown-box card-glass">
+              <div className="countdown-number">{timeLeft.hours.toString().padStart(2, '0')}</div>
+              <div className="countdown-label">{t('hours')}</div>
+            </div>
+            <div className="countdown-box card-glass">
+              <div className="countdown-number">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+              <div className="countdown-label">{t('minutes')}</div>
+            </div>
+            <div className="countdown-box card-glass">
+              <div className="countdown-number">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+              <div className="countdown-label">{t('seconds')}</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Download Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+            {t('download_section_title')}
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card EN */}
+            <Link href="/whitepaper/QbitCoin-QBC _EU_EN_Fina.pdf" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
+              <div className="text-4xl mb-4">🇬🇧</div>
+              <h3 className="text-xl font-bold mb-2">English</h3>
+              <p className="text-gray-400 mb-4">{t('whitepaper_en_desc')}</p>
+              <div className="inline-block px-6 py-3 bg-gradient-to-r from-nebulae-neon-green to-nebulae-electric-blue rounded-full">
+                📄 {t('download_cta')}
+              </div>
+            </Link>
+            
+            {/* Card ES */}
+            <Link href="/whitepaper/QbitCoin-QBC _EU_ES_Final.pdf" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
+              <div className="text-4xl mb-4">🇪🇸</div>
+              <h3 className="text-xl font-bold mb-2">Español</h3>
+              <p className="text-gray-400 mb-4">{t('whitepaper_es_desc')}</p>
+              <div className="inline-block px-6 py-3 bg-gradient-to-r from-nebulae-neon-green to-nebulae-electric-blue rounded-full">
+                📄 {t('download_cta')}
+              </div>
+            </Link>
+            
+            {/* Card DE */}
+            <Link href="/whitepaper/QbitCoin-QBC _EU_DE_Final.pdf" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
+              <div className="text-4xl mb-4">🇩🇪</div>
+              <h3 className="text-xl font-bold mb-2">Deutsch</h3>
+              <p className="text-gray-400 mb-4">{t('whitepaper_de_desc')}</p>
+              <div className="inline-block px-6 py-3 bg-gradient-to-r from-nebulae-neon-green to-nebulae-electric-blue rounded-full">
+                📄 {t('download_cta')}
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-nebulae-dark-gray">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+            {t('features_title')}
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="card-glass p-8 text-center">
+              <div className="text-nebulae-neon-green text-5xl mb-4">🔒</div>
+              <h3 className="text-xl font-bold mb-3">{t('feature_1_title')}</h3>
+              <p className="text-gray-400">{t('feature_1_desc')}</p>
+            </div>
+            
+            <div className="card-glass p-8 text-center">
+              <div className="text-nebulae-quantum-violet text-5xl mb-4">🧮</div>
+              <h3 className="text-xl font-bold mb-3">{t('feature_2_title')}</h3>
+              <p className="text-gray-400">{t('feature_2_desc')}</p>
+            </div>
+            
+            <div className="card-glass p-8 text-center">
+              <div className="text-nebulae-electric-blue text-5xl mb-4">🌐</div>
+              <h3 className="text-xl font-bold mb-3">{t('feature_3_title')}</h3>
+              <p className="text-gray-400">{t('feature_3_desc')}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-gray-500">
+            © {new Date().getFullYear()} QbitCoin (QBC) - {t('footer_text')}
+          </p>
+        </div>
+      </footer>
+    </div>
   );
 }

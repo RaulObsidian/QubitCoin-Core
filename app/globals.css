@@ -10,5 +10,106 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background: linear-gradient(135deg, #050505 0%, #0a0a1a 30%, #1a0a1a 70%, #050505 100%);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Efecto de nebulosa cuántica para el body */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(0, 255, 157, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(0, 238, 255, 0.05) 0%, transparent 30%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Estilo Glassmorphism para cards */
+.card-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+/* Efecto de pulso lento para elementos importantes */
+.pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Efecto de flotación para elementos destacados */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Efecto de brillo para elementos interactivos */
+.glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ff9d, 0 0 20px #00ff9d; }
+  to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #7000ff, 0 0 40px #7000ff; }
+}
+
+/* Estilo para enlaces de descarga */
+.download-link {
+  transition: all 0.3s ease;
+}
+
+.download-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px -5px rgba(112, 0, 255, 0.4);
+  background: rgba(112, 0, 255, 0.2);
+}
+
+/* Contador de tiempo */
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.countdown-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  min-width: 80px;
+}
+
+.countdown-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00ff9d;
+}
+
+.countdown-label {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
