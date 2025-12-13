@@ -3,9 +3,12 @@ const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: { ignoreBuildErrors: true },
-  eslint: { ignoreDuringBuilds: true },
-  output: 'standalone'
+  output: 'standalone',
+  experimental: {
+    serverActions: {
+       allowedOrigins: ['*']
+    }
+  }
 };
 
 export default withNextIntl(nextConfig);

@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import {notFound} from 'next/navigation';
-import {routing} from '@/i18n';
+import {routing} from '../../i18n';
 
 export default function LocaleLayout({
   children,
