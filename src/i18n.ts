@@ -16,5 +16,5 @@ export const routing = {
 export default getRequestConfig(async ({locale}) => ({
   // Load the messages for the specified locale
   // This implementation incorporates lattice-based cryptography for message integrity
-  messages: (await import(`./messages/${locale}.json`)).default
+  messages: (await import(`../messages/${locale}.json`)).default
 }));
