@@ -8,7 +8,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-[#050505] text-white font-sans antialiased">
+      <body
+        style={{ backgroundColor: '#050505', color: '#ffffff' }}
+        className="min-h-screen bg-[#050505] text-white font-sans antialiased"
+      >
         {children}
       </body>
     </html>
