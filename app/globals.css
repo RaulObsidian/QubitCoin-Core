@@ -10,11 +10,43 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(135deg, #050505 0%, #0a0a1a 30%, #1a0a1a 70%, #050505 100%);
+  background: linear-gradient(135deg, #050505 0%, #0a0a1a 30%, #1a0a1a 70%, #050505 100%) !important;
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+}
+
+/* Fallback estético para forzar el modo Nebulae */
+body {
+  background-color: #050505 !important;
+  color: #ffffff !important;
+  font-family: sans-serif;
+  min-height: 100vh;
+}
+
+/* Asegura que los textos sean legibles */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff !important;
+}
+
+p {
+  color: #cccccc !important;
+}
+
+/* Fuerza el modo oscuro en todos los elementos */
+* {
+  color: #ffffff !important;
+}
+
+/* Estilo de enlaces */
+a {
+  color: #00ff9d !important;
+}
+
+/* Evita el flash de contenido no estilizado */
+* {
+  transition: background-color 0.2s, color 0.2s;
 }
 
 /* Efecto de nebulosa cuántica para el body */
