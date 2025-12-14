@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function HomePage() {
@@ -37,13 +36,13 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-nebulae-black to-black text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#050505] to-black text-white">
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
             <span className="block">QbitCoin: </span>
-            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-nebulae-neon-green to-nebulae-quantum-violet mt-2">
+            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-[#00ff9d] to-[#7000ff] mt-2">
               The Post-Quantum Standard
             </span>
           </h1>
@@ -56,9 +55,9 @@ export default function HomePage() {
             <div className="relative">
               {/* Placeholder de la moneda QBC en 3D */}
               <div className="w-48 h-48 md:w-64 md:h-64 mx-auto relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-nebulae-neon-green to-nebulae-quantum-violet rounded-full opacity-20 blur-xl animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#00ff9d] to-[#7000ff] rounded-full opacity-20 blur-xl animate-pulse"></div>
                 <div className="relative w-full h-full flex items-center justify-center">
-                  <div className="w-32 h-32 md:w-44 md:h-44 bg-gradient-to-br from-nebulae-neon-green to-nebulae-quantum-violet rounded-2xl transform rotate-45 shadow-2xl flex items-center justify-center">
+                  <div className="w-32 h-32 md:w-44 md:h-44 bg-gradient-to-br from-[#00ff9d] to-[#7000ff] rounded-2xl transform rotate-45 shadow-2xl flex items-center justify-center">
                     <div className="transform -rotate-45 text-black font-bold text-xl md:text-2xl">QBC</div>
                   </div>
                 </div>
@@ -71,7 +70,7 @@ export default function HomePage() {
       {/* Countdown Timer */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-nebulae-neon-green mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#00ff9d] mb-8">
             Genesis Block Countdown
           </h2>
 
@@ -109,7 +108,7 @@ export default function HomePage() {
               <div className="text-4xl mb-4">🇬🇧</div>
               <h3 className="text-xl font-bold mb-2">English</h3>
               <p className="text-gray-400 mb-4">Full specification of the RubikPoW consensus mechanism</p>
-              <div className="inline-block px-6 py-3 bg-gradient-to-r from-nebulae-neon-green to-nebulae-electric-blue rounded-full">
+              <div className="inline-block px-6 py-3 bg-gradient-to-r from-[#00ff9d] to-[#00eeff] rounded-full">
                 📄 Download Now
               </div>
             </a>
@@ -119,7 +118,7 @@ export default function HomePage() {
               <div className="text-4xl mb-4">🇪🇸</div>
               <h3 className="text-xl font-bold mb-2">Spanish</h3>
               <p className="text-gray-400 mb-4">Especificación completa del mecanismo de consenso RubikPoW</p>
-              <div className="inline-block px-6 py-3 bg-gradient-to-r from-nebulae-neon-green to-nebulae-electric-blue rounded-full">
+              <div className="inline-block px-6 py-3 bg-gradient-to-r from-[#00ff9d] to-[#00eeff] rounded-full">
                 📄 Download Now
               </div>
             </a>
@@ -129,7 +128,7 @@ export default function HomePage() {
               <div className="text-4xl mb-4">🇩🇪</div>
               <h3 className="text-xl font-bold mb-2">German</h3>
               <p className="text-gray-400 mb-4">Vollständige Spezifikation des RubikPoW-Konsensmechanismus</p>
-              <div className="inline-block px-6 py-3 bg-gradient-to-r from-nebulae-neon-green to-nebulae-electric-blue rounded-full">
+              <div className="inline-block px-6 py-3 bg-gradient-to-r from-[#00ff9d] to-[#00eeff] rounded-full">
                 📄 Download Now
               </div>
             </a>
@@ -138,7 +137,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-nebulae-dark-gray">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-[#1a0a1a]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
             Quantum-Resistant Architecture
@@ -146,19 +145,19 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <div className="card-glass p-8 text-center">
-              <div className="text-nebulae-neon-green text-5xl mb-4">🔒</div>
+              <div className="text-[#00ff9d] text-5xl mb-4">🔒</div>
               <h3 className="text-xl font-bold mb-3">RubikPoW Consensus</h3>
               <p className="text-gray-400">Based on the mathematical complexity of n×n×n permutation groups</p>
             </div>
 
             <div className="card-glass p-8 text-center">
-              <div className="text-nebulae-quantum-violet text-5xl mb-4">🧮</div>
+              <div className="text-[#7000ff] text-5xl mb-4">🧮</div>
               <h3 className="text-xl font-bold mb-3">Tiered Security</h3>
               <p className="text-gray-400">From 3×3 to 6×6 complexity levels for different security needs</p>
             </div>
 
             <div className="card-glass p-8 text-center">
-              <div className="text-nebulae-electric-blue text-5xl mb-4">🌐</div>
+              <div className="text-[#00eeff] text-5xl mb-4">🌐</div>
               <h3 className="text-xl font-bold mb-3">Distributed Network</h3>
               <p className="text-gray-400">Global infrastructure secured by post-quantum mathematics</p>
             </div>
