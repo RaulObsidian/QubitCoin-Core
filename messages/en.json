@@ -1,0 +1,26 @@
+{
+  "Index": {
+    "hero_title": "The Post-Quantum Standard",
+    "hero_subtitle": "Sovereignty through permutation group cryptography",
+    "countdown_title": "Genesis Block Countdown",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "download_section_title": "Download Technical Papers",
+    "whitepaper_en_desc": "Full specification of the RubikPoW consensus mechanism",
+    "whitepaper_es_desc": "Especificación completa del mecanismo de consenso RubikPoW",
+    "whitepaper_de_desc": "Vollständige Spezifikation des RubikPoW-Konsensmechanismus",
+    "download_cta": "Download Now",
+    "download_cta": "Descargar Ahora", 
+    "download_cta": "Jetzt Herunterladen",
+    "features_title": "Quantum-Resistant Architecture",
+    "feature_1_title": "RubikPoW Consensus",
+    "feature_1_desc": "Based on the mathematical complexity of n×n×n permutation groups",
+    "feature_2_title": "Tiered Security",
+    "feature_2_desc": "From 3×3 to 6×6 complexity levels for different security needs",
+    "feature_3_title": "Distributed Network",
+    "feature_3_desc": "Global infrastructure secured by post-quantum mathematics",
+    "footer_text": "Securing the future of finance against quantum threats"
+  }
+}
