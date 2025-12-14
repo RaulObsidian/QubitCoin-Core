@@ -1,5 +1,6 @@
 import {notFound} from 'next/navigation';
 import {isValidLocale} from '../../i18n';
+import '../../app/globals.css';
 
 export default function LocaleLayout({
   children,
