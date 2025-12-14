@@ -1,14 +1,19 @@
 import {getRequestConfig} from 'next-intl/server';
 
-// Define the routing configuration as per whitepaper specifications
 export const routing = {
-  locales: ['en', 'es', 'de'],
+  locales: ['en'],
   defaultLocale: 'en',
 } as const;
 
-// Implementation of post-quantum cryptography as described in whitepaper
-export default getRequestConfig(async ({locale}) => ({
-  // Load the messages for the specified locale
-  // This implementation uses dynamic imports to load the correct JSON file
-  messages: (await import(`./messages/${locale}.json`)).default
-}));
+// Función para validar si un locale es válido
+export function isValidLocale(locale: string): boolean {
+  return routing.locales.includes(locale as any);
+}
+
+// Implementación del sistema de mensajes para el único idioma
+export default getRequestConfig(async ({locale}) => {
+  // Cargar los mensajes para el locale especificado
+  const messages = (await import(`./messages/${locale}.json`)).default;
+
+  return { messages };
+});

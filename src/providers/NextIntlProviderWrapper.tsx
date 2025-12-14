@@ -1,9 +1,10 @@
+// src/providers/NextIntlProviderWrapper.tsx
 'use client';
 
 import {NextIntlClientProvider} from 'next-intl/client';
 import {ReactNode} from 'react';
 
-export function NextIntlWrapper({
+export default function NextIntlProviderWrapper({
   children,
   locale,
   messages
