@@ -2,17 +2,10 @@
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-  // Forzamos a Next.js a NO buscar i18n
+  // Desactivamos explícitamente cualquier i18n
   i18n: null,
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
 };
 
 module.exports = nextConfig;
