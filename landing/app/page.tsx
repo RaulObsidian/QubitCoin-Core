@@ -8,11 +8,11 @@ export default function Home() {
   useEffect(() => {
     // Fecha Genesis: 1 Marzo 2026
     const targetDate = new Date('2026-03-01T00:00:00Z').getTime();
-
+    
     const interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = targetDate - now;
-
+      
       if (distance < 0) {
         clearInterval(interval);
         return;
@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#050505] text-white font-sans selection:bg-[#00ff9d] selection:text-black overflow-hidden relative">
-
+      
       {/* --- CSS ANIMATIONS --- */}
       <style jsx global>{`
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
@@ -53,7 +53,7 @@ export default function Home() {
 
       {/* --- CONTENT --- */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-20">
-
+        
         {/* --- HERO SECTION --- */}
         <section className="text-center py-20">
           <h1 className="text-6xl md:text-8xl font-extrabold mb-6 text-gradient">
@@ -63,7 +63,7 @@ export default function Home() {
             The Post-Quantum Financial Infrastructure. <br/>
             Secured by <span className="text-[#7000ff]">RubikPoW</span> & S48 Group Theory.
           </p>
-
+          
           <div className="relative w-80 h-80 mx-auto animate-float">
             <div className="absolute inset-0 bg-gradient-to-br from-[#00ff9d] to-[#7000ff] rounded-2xl transform rotate-45 shadow-2xl flex items-center justify-center blur-sm"></div>
             <div className="absolute inset-4 bg-[#050505] rounded-xl transform rotate-45 flex items-center justify-center">
@@ -75,7 +75,7 @@ export default function Home() {
         {/* --- COUNTDOWN SECTION --- */}
         <section className="text-center py-16">
           <h2 className="text-4xl font-bold mb-12 text-[#00ff9d]">Genesis Block Countdown</h2>
-
+          
           <div className="grid grid-cols-4 gap-8 max-w-2xl mx-auto">
             <div className="glass-card p-6 rounded-xl">
               <div className="text-4xl font-bold">{timeLeft.days.toString().padStart(2, '0')}</div>
@@ -99,7 +99,7 @@ export default function Home() {
         {/* --- DOWNLOAD CARDS --- */}
         <section className="py-16">
           <h2 className="text-4xl font-bold text-center mb-16">Download Technical Papers</h2>
-
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* ENGLISH */}
             <a href="/whitepaper/QbitCoin-QBC _EU_EN_Final.pdf" target="_blank" className="glass-card p-8 rounded-2xl hover:scale-105 transition-all duration-300">
@@ -136,7 +136,7 @@ export default function Home() {
         {/* --- FEATURES SECTION --- */}
         <section className="py-20">
           <h2 className="text-4xl font-bold text-center mb-16">Quantum-Resistant Architecture</h2>
-
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div className="glass-card p-8 rounded-2xl text-center">
               <div className="text-5xl mb-6 text-[#00ff9d]">🔒</div>
