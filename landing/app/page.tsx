@@ -1,58 +1,60 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import React from 'react';
+
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#050505] text-white font-sans selection:bg-[#00ff9d] selection:text-black">
+    <div style={{
+      backgroundColor: '#050505',
+      color: '#ffffff',
+      minHeight: '100vh',
+      fontFamily: 'sans-serif',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      padding: '4rem 1rem'
+    }}>
 
-      {/* BACKGROUND EFFECTS */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#7000ff]/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#00ff9d]/10 rounded-full blur-[120px]" />
-      </div>
+      {/* HERO */}
+      <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1rem', textAlign: 'center', color: '#00ff9d' }}>
+        QbitCoin (QBC)
+      </h1>
+      <p style={{ fontSize: '1.5rem', color: '#cccccc', marginBottom: '3rem', textAlign: 'center' }}>
+        The Post-Quantum Financial Standard
+      </p>
 
-      {/* CONTENT */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 flex flex-col items-center text-center">
+      {/* DOWNLOAD BUTTONS - HTML PURO */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', width: '100%', maxWidth: '1000px' }}>
 
-        {/* HERO */}
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6">
-          QbitCoin <span className="text-[#00ff9d]">Core</span>
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mb-12">
-          The Post-Quantum Financial Infrastructure. <br/>
-          Secured by <span className="text-[#7000ff]">RubikPoW</span> & S48 Group Theory.
-        </p>
+        {/* ENGLISH */}
+        <a href="/whitepaper/QbitCoin-QBC _EU_EN_Final.pdf" target="_blank" rel="noopener noreferrer"
+           style={{ padding: '2rem', border: '1px solid #333', borderRadius: '15px', background: '#111', textDecoration: 'none', color: 'white', textAlign: 'center' }}>
+           <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🇬🇧</div>
+           <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>English Whitepaper</h3>
+           <span style={{ color: '#00ff9d', fontWeight: 'bold' }}>📄 Download PDF</span>
+        </a>
 
-        {/* DOWNLOAD CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mt-12">
+        {/* SPANISH */}
+        <a href="/whitepaper/QbitCoin-QBC _EU_ES_Final.pdf" target="_blank" rel="noopener noreferrer"
+           style={{ padding: '2rem', border: '1px solid #333', borderRadius: '15px', background: '#111', textDecoration: 'none', color: 'white', textAlign: 'center' }}>
+           <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🇪🇸</div>
+           <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Whitepaper Español</h3>
+           <span style={{ color: '#00ff9d', fontWeight: 'bold' }}>📄 Descargar PDF</span>
+        </a>
 
-          {/* ENGLISH */}
-          <a href="/whitepaper/QbitCoin-QBC _EU_EN_Final.pdf" target="_blank" className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00ff9d]/50 hover:bg-white/10 transition-all duration-300">
-            <div className="text-4xl mb-4">🇬🇧</div>
-            <h3 className="text-xl font-bold mb-2">English Whitepaper</h3>
-            <div className="text-[#00ff9d] font-mono text-sm mt-4 group-hover:underline">DOWNLOAD PDF &rarr;</div>
-          </a>
-
-          {/* SPANISH */}
-          <a href="/whitepaper/QbitCoin-QBC _EU_ES_Final.pdf" target="_blank" className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00ff9d]/50 hover:bg-white/10 transition-all duration-300">
-            <div className="text-4xl mb-4">🇪🇸</div>
-            <h3 className="text-xl font-bold mb-2">Whitepaper Español</h3>
-            <div className="text-[#00ff9d] font-mono text-sm mt-4 group-hover:underline">DESCARGAR PDF &rarr;</div>
-          </a>
-
-          {/* GERMAN */}
-          <a href="/whitepaper/QbitCoin-QBC _EU_DE_Final.pdf" target="_blank" className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00ff9d]/50 hover:bg-white/10 transition-all duration-300">
-            <div className="text-4xl mb-4">🇩🇪</div>
-            <h3 className="text-xl font-bold mb-2">Deutsches Whitepaper</h3>
-            <div className="text-[#00ff9d] font-mono text-sm mt-4 group-hover:underline">PDF HERUNTERLADEN &rarr;</div>
-          </a>
-
-        </div>
-
-        <footer className="mt-24 text-gray-600 text-sm">
-          © 2025 QbitCoin Labs GmbH • Frankfurt am Main • Sovereignty Built on Math
-        </footer>
+        {/* GERMAN */}
+        <a href="/whitepaper/QbitCoin-QBC _EU_DE_Final.pdf" target="_blank" rel="noopener noreferrer"
+           style={{ padding: '2rem', border: '1px solid #333', borderRadius: '15px', background: '#111', textDecoration: 'none', color: 'white', textAlign: 'center' }}>
+           <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🇩🇪</div>
+           <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Deutsches Whitepaper</h3>
+           <span style={{ color: '#00ff9d', fontWeight: 'bold' }}>📄 PDF Herunterladen</span>
+        </a>
 
       </div>
-    </main>
+
+      <footer style={{ marginTop: '5rem', color: '#666' }}>
+        © 2025 QbitCoin Labs GmbH - Frankfurt am Main
+      </footer>
+    </div>
   );
 }
