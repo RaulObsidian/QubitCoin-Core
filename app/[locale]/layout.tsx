@@ -1,7 +1,9 @@
 import {notFound} from 'next/navigation';
+import {getRequestConfig} from 'next-intl/server';
 import {routing} from '../../i18n';
+import {NextIntlProvider} from 'next-intl';
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: {
@@ -15,10 +17,16 @@ export default function LocaleLayout({
     notFound();
   }
 
+  // Get messages for the current locale
+  const config = await getRequestConfig({locale});
+  const messages = config.messages;
+
   return (
     <html lang={locale}>
       <body className="min-h-screen bg-gradient-to-br from-nebulae-black to-black">
-        {children}
+        <NextIntlProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlProvider>
       </body>
     </html>
   );
