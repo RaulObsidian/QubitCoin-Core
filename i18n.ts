@@ -1,9 +1,5 @@
 import {getRequestConfig} from 'next-intl/server';
-
-export const routing = {
-  locales: ['en'],
-  defaultLocale: 'en',
-} as const;
+import {routing} from './routing';
 
 // Función para validar si un locale es válido
 export function isValidLocale(locale: string): boolean {
