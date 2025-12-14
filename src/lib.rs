@@ -5,6 +5,10 @@ use rand::Rng;
 use sha3::{Digest, Sha3_256};
 use tiny_keccak::{Hasher, Keccak};
 
+// Importación de las bibliotecas post-cuánticas
+use dilithium::{Keypair, dilithium5 as Dilithium5, Signature};
+use kyber::{keygen, encapsulate, decapsulate, PublicKey as KyberPublicKey, SecretKey as KyberSecretKey};
+
 #[derive(Debug, Clone)]
 pub struct Cube {
     size: usize,
@@ -51,6 +55,44 @@ impl fmt::Display for Color {
                 Color::Green => "G",
             }
         )
+    }
+}
+
+impl Color {
+    pub fn default_for_face(face: Face) -> Self {
+        match face {
+            Face::Up => Color::White,
+            Face::Down => Color::Yellow,
+            Face::Front => Color::Red,
+            Face::Back => Color::Orange,
+            Face::Left => Color::Blue,
+            Face::Right => Color::Green,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Move {
+    U(usize),   // Up face clockwise
+    D(usize),   // Down face clockwise
+    L(usize),   // Left face clockwise
+    R(usize),   // Right face clockwise
+    F(usize),   // Front face clockwise
+    B(usize),   // Back face clockwise
+}
+
+impl Move {
+    pub fn from_face_and_count(face: Face, count: usize) -> Self {
+        // Normalize count to 0, 1, 2, or 3 (0 = no move, 1 = clockwise, 2 = 180°, 3 = counter-clockwise)
+        let normalized_count = count % 4;
+        match face {
+            Face::Up => Move::U(normalized_count),
+            Face::Down => Move::D(normalized_count),
+            Face::Left => Move::L(normalized_count),
+            Face::Right => Move::R(normalized_count),
+            Face::Front => Move::F(normalized_count),
+            Face::Back => Move::B(normalized_count),
+        }
     }
 }
 
@@ -257,10 +299,10 @@ impl Cube {
                 self.corners[7] = temp;
 
                 // Update corner orientations
-                self.corners[4].1 = (self.corners[4].1 + 1) % 3;
-                self.corners[5].1 = (self.corners[5].1 + 2) % 3;
-                self.corners[6].1 = (self.corners[6].1 + 1) % 3;
-                self.corners[7].1 = (self.corners[7].1 + 2) % 3;
+                self.corners[4].1 = (self.corners[4].1 + 2) % 3;
+                self.corners[5].1 = (self.corners[5].1 + 1) % 3;
+                self.corners[6].1 = (self.corners[6].1 + 2) % 3;
+                self.corners[7].1 = (self.corners[7].1 + 1) % 3;
 
                 // Update edge permutation for D face rotation
                 // The 4 edges on the Down face cycle positions
@@ -472,42 +514,6 @@ impl Cube {
         // Compare the hash with the target
         // This implementation correctly compares the full 32-byte hash
         result <= target_hash
-    }
-}
-
-impl Color {
-    pub fn default_for_face(face: Face) -> Self {
-        match face {
-            Face::Up => Color::White,
-            Face::Down => Color::Yellow,
-            Face::Front => Color::Red,
-            Face::Back => Color::Orange,
-            Face::Left => Color::Blue,
-            Face::Right => Color::Green,
-        }
-    }
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Move {
-    U(usize),   // Up face clockwise
-    D(usize),   // Down face clockwise
-    L(usize),   // Left face clockwise
-    R(usize),   // Right face clockwise
-    F(usize),   // Front face clockwise
-    B(usize),   // Back face clockwise
-}
-
-impl Move {
-    pub fn from_face_and_count(face: Face, count: usize) -> Self {
-        match face {
-            Face::Up => Move::U(count % 4), // Normalize count to 0, 1, 2, or 3
-            Face::Down => Move::D(count % 4),
-            Face::Left => Move::L(count % 4),
-            Face::Right => Move::R(count % 4),
-            Face::Front => Move::F(count % 4),
-            Face::Back => Move::B(count % 4),
-        }
     }
 }
 

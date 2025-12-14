@@ -1,0 +1,40 @@
+[package]
+name = "rubikpow"
+version = "0.1.0"
+edition = "2021"
+authors = ["Raul Obsidian <raul@qbitcoin.org>"]
+description = "RubikPoW: The first Proof of Work algorithm based on Rubik's Cube permutation group theory"
+license = "Apache-2.0"
+repository = "https://github.com/RaulObsidian/QubitCoin-Core"
+
+[dependencies]
+rand = "0.8"
+sha3 = "0.10"
+tiny-keccak = "2.0"
+serde = { version = "1.0", features = ["derive"] }
+hex = "0.4"
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "rubikpow_benchmark"
+harness = false
+
+[lib]
+crate-type = ["rlib", "cdylib"]
+
+[features]
+default = []
+full = ["std"]
+std = []
+
+# Para permitir compilación a objetivos WASM o embedded
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+lto = true
+strip = true
+codegen-units = 1
