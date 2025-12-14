@@ -1,6 +1,7 @@
 import {notFound} from 'next/navigation';
 import {routing} from '../../i18n';
-import {NextIntlWrapper} from '../../src/components/ClientWrapper';
+import NextIntlProviderWrapper from '../../src/providers/NextIntlProviderWrapper';
+import {getMessages} from 'next-intl/server';
 
 export default async function LocaleLayout({
   children,
@@ -17,14 +18,14 @@ export default async function LocaleLayout({
   }
 
   // Load messages for the current locale
-  const messages = (await import(`../../messages/${locale}.json`)).default;
+  const messages = await getMessages({locale});
 
   return (
     <html lang={locale}>
       <body className="min-h-screen bg-gradient-to-br from-nebulae-black to-black">
-        <NextIntlWrapper locale={locale} messages={messages}>
+        <NextIntlProviderWrapper locale={locale} messages={messages}>
           {children}
-        </NextIntlWrapper>
+        </NextIntlProviderWrapper>
       </body>
     </html>
   );
