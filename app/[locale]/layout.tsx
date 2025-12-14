@@ -18,7 +18,7 @@ export default function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className="min-h-screen bg-gradient-to-br from-nebulae-black to-black">
+      <body className="min-h-screen bg-[#050505] text-white font-sans antialiased">
         {children}
       </body>
     </html>

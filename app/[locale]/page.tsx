@@ -105,34 +105,34 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card EN */}
-            <Link href="/whitepaper/QbitCoin-QBC _EU_EN_Final.pdf" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
+            <a href="/whitepaper/QbitCoin-QBC _EU_EN_Final.pdf" target="_blank" rel="noopener noreferrer" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
               <div className="text-4xl mb-4">🇬🇧</div>
               <h3 className="text-xl font-bold mb-2">English</h3>
               <p className="text-gray-400 mb-4">Full specification of the RubikPoW consensus mechanism</p>
               <div className="inline-block px-6 py-3 bg-gradient-to-r from-nebulae-neon-green to-nebulae-electric-blue rounded-full">
                 📄 Download Now
               </div>
-            </Link>
+            </a>
 
             {/* Card ES */}
-            <Link href="/whitepaper/QbitCoin-QBC _EU_ES_Final.pdf" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
+            <a href="/whitepaper/QbitCoin-QBC _EU_ES_Final.pdf" target="_blank" rel="noopener noreferrer" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
               <div className="text-4xl mb-4">🇪🇸</div>
               <h3 className="text-xl font-bold mb-2">Spanish</h3>
               <p className="text-gray-400 mb-4">Especificación completa del mecanismo de consenso RubikPoW</p>
               <div className="inline-block px-6 py-3 bg-gradient-to-r from-nebulae-neon-green to-nebulae-electric-blue rounded-full">
                 📄 Download Now
               </div>
-            </Link>
+            </a>
 
             {/* Card DE */}
-            <Link href="/whitepaper/QbitCoin-QBC _EU_DE_Final.pdf" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
+            <a href="/whitepaper/QbitCoin-QBC _EU_DE_Final.pdf" target="_blank" rel="noopener noreferrer" className="download-link card-glass p-8 text-center hover:scale-105 transition-all duration-300">
               <div className="text-4xl mb-4">🇩🇪</div>
               <h3 className="text-xl font-bold mb-2">German</h3>
               <p className="text-gray-400 mb-4">Vollständige Spezifikation des RubikPoW-Konsensmechanismus</p>
               <div className="inline-block px-6 py-3 bg-gradient-to-r from-nebulae-neon-green to-nebulae-electric-blue rounded-full">
                 📄 Download Now
               </div>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
