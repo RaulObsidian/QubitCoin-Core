@@ -5,7 +5,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <base href="/" />
       </head>
-      <body style={{ backgroundColor: '#050505', color: '#fff', margin: 0 }}>{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
