@@ -1,4 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body { background: #050505; color: white; }
+
+:root {
+  --grid-speed: 20s;
+}
+
+body {
+  background: #050505;
+  color: white;
+}
+
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 24px 24px;
+  }
+}
+
+.animate-grid {
+  animation: grid-move var(--grid-speed) linear infinite;
+}
