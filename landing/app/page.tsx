@@ -10,7 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
-
+    
     // Fecha objetivo: 1 de Junio de 2025 a las 00:00:00 UTC
     const targetDate = new Date(Date.UTC(2025, 5, 1)); // Mes 5 es junio (0-indexed)
 
@@ -38,8 +38,20 @@ export default function Home() {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
+    // Limpiar intervalo
     return () => clearInterval(timer);
   }, []);
+
+  const openModal = (title, content) => {
+    setModalContent({ title, content });
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  if (!mounted) return <div className="min-h-screen bg-brand-cyber-black" />;
 
   // Datos actualizados del roadmap
   const roadmapData = [
@@ -62,34 +74,23 @@ export default function Home() {
       title: "Testnet Público",
       status: "PRÓXIMAMENTE",
       statusColor: "bg-blue-500/20 text-blue-400",
-      description: "Apertura global y evaluación EIC."
+      description: "Lanzamiento global y evaluación por parte del European Innovation Council."
     },
     {
       period: "2026",
       title: "Mainnet",
       status: "OBJETIVO",
       statusColor: "bg-purple-500/20 text-brand-purple",
-      description: "Lanzamiento oficial y listado exchanges."
+      description: "Lanzamiento oficial de la red principal y listado en exchanges."
     },
     {
       period: "2027",
       title: "Hegemonía",
       status: "VISIÓN",
       statusColor: "bg-brand-accent/20 text-brand-accent",
-      description: "Adopción bancos centrales europeos."
+      description: "Adopción masiva por bancos centrales europeos y gobierno digital."
     }
   ];
-
-  const openModal = (title, content) => {
-    setModalContent({ title, content });
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
-  if (!mounted) return <div className="min-h-screen bg-brand-cyber-black" />;
 
   // Contenido para las pestañas
   const tabContents = {
@@ -102,8 +103,10 @@ export default function Home() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-          <div className="p-6 rounded-2xl border border-brand-accent/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-accent/50 transition-colors"
-            onClick={() => openModal('Comparación Algorítmica', 'Este es un ejemplo de contenido detallado sobre la comparación de algoritmos')}>
+          <div 
+            className="p-6 rounded-2xl border border-brand-accent/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-accent/50 transition-colors"
+            onClick={() => openModal('Comparación Algorítmica', 'Este es un ejemplo de contenido detallado sobre la comparación de algoritmos')}
+          >
             <h4 className="text-xl font-bold text-red-400 mb-4">Bitcoin: SHA-256</h4>
             <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
               {`Proof of Work:
@@ -115,8 +118,10 @@ while Hash > Target:
             <p className="text-gray-400 text-sm mt-2">Brute-force computation</p>
           </div>
 
-          <div className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-purple/50 transition-colors"
-            onClick={() => openModal('RubikPoW Detalles', 'Este es un ejemplo de contenido detallado sobre RubikPoW')}>
+          <div 
+            className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-purple/50 transition-colors"
+            onClick={() => openModal('RubikPoW Detalles', 'Este es un ejemplo de contenido detallado sobre RubikPoW')}
+          >
             <h4 className="text-xl font-bold text-brand-accent mb-4">QbitCoin: RubikPoW</h4>
             <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
               {`Proof of Work:
@@ -142,18 +147,24 @@ while Verification_Fails(Permutation):
       <div className="space-y-8">
         <h3 className="text-2xl font-bold text-brand-accent">Modelo Económico Deflacionario</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 backdrop-blur-md text-center cursor-pointer hover:border-green-500/50 transition-colors"
-            onClick={() => openModal('Oferta Máxima', 'Detalle sobre la oferta máxima de monedas')}>
+          <div 
+            className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 backdrop-blur-md text-center cursor-pointer hover:border-green-500/50 transition-colors"
+            onClick={() => openModal('Oferta Máxima', 'Detalle sobre la oferta máxima de monedas')}
+          >
             <div className="text-3xl font-bold text-green-400">21M</div>
             <div className="text-gray-400">Max Supply</div>
           </div>
-          <div className="p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-md text-center cursor-pointer hover:border-yellow-500/50 transition-colors"
-            onClick={() => openModal('Ciclo de Halving', 'Detalle sobre los ciclos de reducción de recompensas')}>
+          <div 
+            className="p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-md text-center cursor-pointer hover:border-yellow-500/50 transition-colors"
+            onClick={() => openModal('Ciclo de Halving', 'Detalle sobre los ciclos de reducción de recompensas')}
+          >
             <div className="text-3xl font-bold text-yellow-400">4 años</div>
             <div className="text-gray-400">Ciclo de Halving</div>
           </div>
-          <div className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-purple/5 backdrop-blur-md text-center cursor-pointer hover:border-brand-purple/50 transition-colors"
-            onClick={() => openModal('Distribución Justa', 'Detalle sobre la distribución equitativa')}>
+          <div 
+            className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-purple/5 backdrop-blur-md text-center cursor-pointer hover:border-brand-purple/50 transition-colors"
+            onClick={() => openModal('Distribución Justa', 'Detalle sobre la distribución equitativa')}
+          >
             <div className="text-3xl font-bold text-brand-purple">0%</div>
             <div className="text-gray-400">Pre-minado</div>
           </div>
@@ -162,18 +173,24 @@ while Verification_Fails(Permutation):
         <div className="mt-8">
           <h4 className="text-xl font-bold text-brand-neon-blue mb-4">Distribución Justa</h4>
           <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg cursor-pointer hover:bg-brand-cyber-gray/50 transition-colors"
-              onClick={() => openModal('Minería PoUW', 'Detalle sobre la minería Proof of Useful Work')}>
+            <div 
+              className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg cursor-pointer hover:bg-brand-cyber-gray/50 transition-colors"
+              onClick={() => openModal('Minería PoUW', 'Detalle sobre la minería Proof of Useful Work')}
+            >
               <span className="font-medium">Mineros (Proof of Useful Work)</span>
               <span className="text-brand-accent font-bold">60%</span>
             </div>
-            <div className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg cursor-pointer hover:bg-brand-cyber-gray/50 transition-colors"
-              onClick={() => openModal('Tesorería DAO', 'Detalle sobre el uso de fondos para investigación')}>
+            <div 
+              className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg cursor-pointer hover:bg-brand-cyber-gray/50 transition-colors"
+              onClick={() => openModal('Tesorería DAO', 'Detalle sobre el uso de fondos para investigación')}
+            >
               <span className="font-medium">Tesorería DAO (I+D)</span>
               <span className="text-brand-purple font-bold">25%</span>
             </div>
-            <div className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg cursor-pointer hover:bg-brand-cyber-gray/50 transition-colors"
-              onClick={() => openModal('Validadores', 'Detalle sobre el rol de los validadores')}>
+            <div 
+              className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg cursor-pointer hover:bg-brand-cyber-gray/50 transition-colors"
+              onClick={() => openModal('Validadores', 'Detalle sobre el rol de los validadores')}
+            >
               <span className="font-medium">Validadores/Seguridad</span>
               <span className="text-brand-neon-blue font-bold">15%</span>
             </div>
@@ -186,8 +203,10 @@ while Verification_Fails(Permutation):
         <h3 className="text-2xl font-bold text-brand-accent">Análisis Estratégico DAFO/SWOT</h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 backdrop-blur-md cursor-pointer hover:border-green-500/50 transition-colors"
-            onClick={() => openModal('Fortalezas', 'Detalle sobre las fortalezas del proyecto')}>
+          <div 
+            className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 backdrop-blur-md cursor-pointer hover:border-green-500/50 transition-colors"
+            onClick={() => openModal('Fortalezas', 'Detalle sobre las fortalezas del proyecto')}
+          >
             <h4 className="text-xl font-bold text-green-500 mb-4">Fortalezas (Strengths)</h4>
             <ul className="space-y-2">
               <li className="flex items-start">
@@ -205,8 +224,10 @@ while Verification_Fails(Permutation):
             </ul>
           </div>
 
-          <div className="p-6 rounded-2xl border border-blue-500/20 bg-blue-500/5 backdrop-blur-md cursor-pointer hover:border-blue-500/50 transition-colors"
-            onClick={() => openModal('Oportunidades', 'Detalle sobre las oportunidades del proyecto')}>
+          <div 
+            className="p-6 rounded-2xl border border-blue-500/20 bg-blue-500/5 backdrop-blur-md cursor-pointer hover:border-blue-500/50 transition-colors"
+            onClick={() => openModal('Oportunidades', 'Detalle sobre las oportunidades del proyecto')}
+          >
             <h4 className="text-xl font-bold text-blue-500 mb-4">Oportunidades (Opportunities)</h4>
             <ul className="space-y-2">
               <li className="flex items-start">
@@ -224,8 +245,10 @@ while Verification_Fails(Permutation):
             </ul>
           </div>
 
-          <div className="p-6 rounded-2xl border border-red-500/20 bg-red-500/5 backdrop-blur-md cursor-pointer hover:border-red-500/50 transition-colors"
-            onClick={() => openModal('Amenazas', 'Detalle sobre las amenazas para el proyecto')}>
+          <div 
+            className="p-6 rounded-2xl border border-red-500/20 bg-red-500/5 backdrop-blur-md cursor-pointer hover:border-red-500/50 transition-colors"
+            onClick={() => openModal('Amenazas', 'Detalle sobre las amenazas para el proyecto')}
+          >
             <h4 className="text-xl font-bold text-red-500 mb-4">Amenazas (Threats)</h4>
             <ul className="space-y-2">
               <li className="flex items-start">
@@ -243,8 +266,10 @@ while Verification_Fails(Permutation):
             </ul>
           </div>
 
-          <div className="p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-md cursor-pointer hover:border-yellow-500/50 transition-colors"
-            onClick={() => openModal('Debilidades', 'Detalle sobre las debilidades del proyecto')}>
+          <div 
+            className="p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-md cursor-pointer hover:border-yellow-500/50 transition-colors"
+            onClick={() => openModal('Debilidades', 'Detalle sobre las debilidades del proyecto')}
+          >
             <h4 className="text-xl font-bold text-yellow-500 mb-4">Debilidades (Weaknesses)</h4>
             <ul className="space-y-2">
               <li className="flex items-start">
@@ -303,8 +328,10 @@ while Verification_Fails(Permutation):
           </div>
         </div>
 
-        <div className="mt-8 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md cursor-pointer hover:border-brand-accent/50 transition-colors"
-          onClick={() => openModal('Alianzas Estratégicas', 'QbitCoin Labs GmbH establecerá colaboraciones con instituciones tecnológicas líderes europeas como TSMC, Infineon Technologies y centros de investigación como el Fraunhofer Institute. Nuestro objetivo es crear una industria europea de hardware criptográfico resistente a amenazas geopolíticas.')}>
+        <div 
+          className="mt-8 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md cursor-pointer hover:border-brand-accent/50 transition-colors"
+          onClick={() => openModal('Alianzas Estratégicas', 'QbitCoin Labs GmbH establecerá colaboraciones con instituciones tecnológicas líderes europeas como TSMC, Infineon Technologies y centros de investigación como el Fraunhofer Institute. Nuestro objetivo es crear una industria europea de hardware criptográfico resistente a amenazas geopolíticas.')}
+        >
           <h4 className="text-xl font-bold text-brand-accent mb-4">Alianzas Estratégicas</h4>
           <p className="text-gray-300 leading-relaxed">
             QbitCoin Labs GmbH establecerá colaboraciones con instituciones tecnológicas líderes europeas como TSMC, Infineon Technologies y centros de investigación como el Fraunhofer Institute.
@@ -333,7 +360,7 @@ while Verification_Fails(Permutation):
   `;
 
   return (
-    <div className="min-h-screen bg-brand-cyber-black text-white font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-brand-cyber-black text-white font-sans overflow-x-hidden relative">
       {/* --- BACKGROUND AURORA EFFECT --- */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-aurora-animated animate-aurora-flow"></div>
