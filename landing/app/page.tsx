@@ -4,12 +4,12 @@ import React, { useState, useEffect } from 'react';
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [activeTab, setActiveTab] = useState('finanzas');
+  const [activeTab, setActiveTab] = useState('tecnologia');
 
   useEffect(() => {
     setMounted(true);
     
-    // Fecha de lanzamiento de la Testnet: 1 de Junio de 2025
+    // Fecha de lanzamiento de la Testnet Pública: 1 de Junio de 2025
     const targetDate = new Date('2025-06-01T00:00:00Z');
     
     const calculateTimeLeft = () => {
@@ -40,28 +40,222 @@ export default function Home() {
 
   if (!mounted) return <div className="min-h-screen bg-brand-cyber-black" />;
 
-  // Datos para el gráfico de comparativa
-  const comparisonData = [
-    { category: 'Seguridad', bitcoin: 'RSA-2048 (Vulnerable)', qbitcoin: 'RubikPoW+Dilithium (Blindado)' },
-    { category: 'Velocidad', bitcoin: '10 min', qbitcoin: 'Instantáneo (DAG)' },
-    { category: 'Consumo', bitcoin: 'Derrochador', qbitcoin: 'PoUW (Reutiliza energía)' },
-    { category: 'Algoritmo', bitcoin: 'SHA-256', qbitcoin: 'Permutación Grupos (Matemáticas)' },
-  ];
+  // Contenido para las pestañas
+  const tabContents = {
+    tecnologia: (
+      <div className="space-y-8">
+        <h3 className="text-2xl font-bold text-brand-accent">RubikPoW: La Complejidad del Cubo de Rubik</h3>
+        <p className="text-gray-300 leading-relaxed">
+          El algoritmo <strong>RubikPoW</strong> se basa en el Grupo Simétrico <strong>S<sub>48</sub></strong>, que representa las permutaciones posibles de una cara del cubo 4×4×4. 
+          El espacio de estados es de aproximadamente <strong>1.57 × 10¹¹⁶</strong>, un número mayor que la cantidad estimada de átomos en el universo observable.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div className="p-6 rounded-2xl border border-brand-accent/20 bg-brand-cyber-gray/30 backdrop-blur-md">
+            <h4 className="text-xl font-bold text-red-400 mb-4">Bitcoin: SHA-256</h4>
+            <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
+              {`Proof of Work:
+Hash = SHA-256(SHA-256(Block_Header))
+while Hash > Target:
+  Block_Header.Nonce += 1
+  Hash = SHA-256(SHA-256(Block_Header))`}
+            </pre>
+            <p className="text-gray-400 text-sm mt-2">Brute-force computation</p>
+          </div>
+          
+          <div className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-cyber-gray/30 backdrop-blur-md">
+            <h4 className="text-xl font-bold text-brand-accent mb-4">QbitCoin: RubikPoW</h4>
+            <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
+              {`Proof of Work:
+Permutation = Solve_Rubik_State(random_state)
+while Verification_Fails(Permutation):
+  random_state = shuffle_permutation(random_state)
+  Permutation = Solve_Rubik_State(random_state)`}
+            </pre>
+            <p className="text-gray-400 text-sm mt-2">Permutation group theory</p>
+          </div>
+        </div>
+        
+        <div className="mt-8">
+          <h4 className="text-xl font-bold text-brand-neon-blue mb-4">Criptografía Cuántica Segura</h4>
+          <p className="text-gray-300 leading-relaxed">
+            QbitCoin implementa estándares NIST como <strong>Dilithium</strong> para firmas digitales y <strong>Kyber</strong> para intercambio de claves post-cuántico. 
+            Estos algoritmos están diseñados para resistir ataques de computadoras cuánticas, ofreciendo seguridad a largo plazo.
+          </p>
+        </div>
+      </div>
+    ),
+    economia: (
+      <div className="space-y-8">
+        <h3 className="text-2xl font-bold text-brand-accent">Modelo Económico Deflacionario</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 backdrop-blur-md text-center">
+            <div className="text-3xl font-bold text-green-400">21M</div>
+            <div className="text-gray-400">Max Supply</div>
+          </div>
+          <div className="p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-md text-center">
+            <div className="text-3xl font-bold text-yellow-400">4 años</div>
+            <div className="text-gray-400">Ciclo de Halving</div>
+          </div>
+          <div className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-purple/5 backdrop-blur-md text-center">
+            <div className="text-3xl font-bold text-brand-purple">0%</div>
+            <div className="text-gray-400">Pre-minado</div>
+          </div>
+        </div>
+        
+        <div className="mt-8">
+          <h4 className="text-xl font-bold text-brand-neon-blue mb-4">Distribución Justa</h4>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg">
+              <span className="font-medium">Mineros (Proof of Useful Work)</span>
+              <span className="text-brand-accent font-bold">60%</span>
+            </div>
+            <div className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg">
+              <span className="font-medium">Tesorería DAO (I+D)</span>
+              <span className="text-brand-purple font-bold">25%</span>
+            </div>
+            <div className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg">
+              <span className="font-medium">Validadores/Seguridad</span>
+              <span className="text-brand-neon-blue font-bold">15%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    estrategia: (
+      <div className="space-y-8">
+        <h3 className="text-2xl font-bold text-brand-accent">Análisis Estratégico DAFO/SWOT</h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h4 className="text-xl font-bold text-green-500 mb-4">Fortalezas (Strengths)</h4>
+            <ul className="space-y-2">
+              <li className="flex items-start">
+                <span className="text-green-500 mr-2">✓</span>
+                <span>Tecnología Soberana desarrollada en la UE</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-500 mr-2">✓</span>
+                <span>Equipo de Elite con experiencia en criptografía avanzada</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-500 mr-2">✓</span>
+                <span>Cumplimiento nativo con regulaciones MiCA y GDPR</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="text-xl font-bold text-blue-500 mb-4">Oportunidades (Opportunities)</h4>
+            <ul className="space-y-2">
+              <li className="flex items-start">
+                <span className="text-blue-500 mr-2">✓</span>
+                <span>El "Día Q" (Colapso de RSA-2048) crea demanda urgente</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-500 mr-2">✓</span>
+                <span>Vacío tecnológico actual en soluciones post-cuánticas</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-500 mr-2">✓</span>
+                <span>Soberanía digital europea como prioridad política</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="text-xl font-bold text-red-500 mb-4">Amenazas (Threats)</h4>
+            <ul className="space-y-2">
+              <li className="flex items-start">
+                <span className="text-red-500 mr-2">✓</span>
+                <span>Gigantes Tecnológicos (Google/IBM) con recursos ilimitados</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-red-500 mr-2">✓</span>
+                <span>Regulación hostil fuera de la UE</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-red-500 mr-2">✓</span>
+                <span>Forks no autorizados de la tecnología</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="text-xl font-bold text-yellow-500 mb-4">Debilidades (Weaknesses)</h4>
+            <ul className="space-y-2">
+              <li className="flex items-start">
+                <span className="text-yellow-500 mr-2">✓</span>
+                <span>Mayor barrera de entrada por complejidad técnica</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-yellow-500 mr-2">✓</span>
+                <span>Necesidad de hardware especializado inicialmente</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-yellow-500 mr-2">✓</span>
+                <span>Educación del mercado sobre beneficios post-cuánticos</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    ),
+    impacto: (
+      <div className="space-y-8">
+        <h3 className="text-2xl font-bold text-brand-accent">Impacto Económico y Social</h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 rounded-2xl border border-brand-accent/20 bg-brand-cyber-gray/30 backdrop-blur-md">
+            <div className="text-4xl mb-4">🏭</div>
+            <h4 className="text-xl font-bold mb-2">Minería PoUW</h4>
+            <p className="text-gray-400 text-sm">
+              El calor generado por la minería no se desperdicia, sino que se reutiliza para calefacción urbana. 
+              Los cálculos sirven para resolver problemas científicos reales como plegamiento de proteínas e IA.
+            </p>
+          </div>
+          
+          <div className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-cyber-gray/30 backdrop-blur-md">
+            <div className="text-4xl mb-4">👤</div>
+            <h4 className="text-xl font-bold mb-2">Empleo Europeo</h4>
+            <p className="text-gray-400 text-sm">
+              Previsión de crear más de 200 puestos de alta cualificación en Frankfurt, Múnich y Zúrich. 
+              Ingenieros, criptógrafos, expertos en teoría de grupos y matemáticas aplicadas.
+            </p>
+          </div>
+          
+          <div className="p-6 rounded-2xl border border-brand-neon-blue/20 bg-brand-cyber-gray/30 backdrop-blur-md">
+            <div className="text-4xl mb-4">🔧</div>
+            <h4 className="text-xl font-bold mb-2">Hardware Soberano</h4>
+            <p className="text-gray-400 text-sm">
+              Alianzas estratégicas para el diseño de ASICs europeos, reduciendo la dependencia de proveedores asiáticos. 
+              Fortalecimiento de la cadena de suministro tecnológica europea.
+            </p>
+          </div>
+        </div>
+        
+        <div className="mt-8 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
+          <h4 className="text-xl font-bold text-brand-accent mb-4">Alianzas Estratégicas</h4>
+          <p className="text-gray-300 leading-relaxed">
+            QbitCoin Labs GmbH establecerá colaboraciones con instituciones tecnológicas líderes europeas como TSMC, Infineon Technologies y centros de investigación como el Fraunhofer Institute. 
+            Nuestro objetivo es crear una industria europea de hardware criptográfico resistente a amenazas geopolíticas.
+          </p>
+        </div>
+      </div>
+    )
+  };
 
   return (
     <div className="min-h-screen bg-brand-cyber-black text-white font-sans overflow-x-hidden">
       {/* --- BACKGROUND AURORA EFFECT --- */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[length:400%_400%] animate-aurora-flow" style={{backgroundImage: 'var(--tw-gradient-stops)'}} 
-             dangerouslySetInnerHTML={{__html: ''}}
-        ></div>
         <div className="absolute inset-0 bg-aurora-animated animate-aurora-flow"></div>
       </div>
 
       {/* --- A. HERO SECTION --- */}
       <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-24 text-center">
         <div className="mb-8 inline-block border border-brand-accent/30 bg-brand-accent/5 px-6 py-2 rounded-full backdrop-blur-md animate-pulse-glow">
-          <span className="text-brand-accent text-xs font-mono tracking-[0.3em] font-bold">SOFISTICACIÓN CRÍPTICA POST-CUÁNTICA</span>
+          <span className="text-brand-accent text-xs font-mono tracking-[0.3em] font-bold">SOBERANÍA MATEMÁTICA POST-CUÁNTICA</span>
         </div>
         
         <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-brand-neon-green to-brand-purple drop-shadow-2xl animate-glow-pulse">
@@ -73,7 +267,7 @@ export default function Home() {
         </h1>
         
         <p className="text-lg md:text-xl text-gray-400 font-light mb-16 max-w-3xl mx-auto leading-relaxed px-4">
-          Mientras el mundo duerme ante la amenaza RSA-2048, QbitCoin construye el <span className="text-brand-accent font-medium">búnker digital de Europa</span>.
+          Mientras <span className="text-red-500 font-bold">RSA-2048 colapsa</span>, QbitCoin construye el <span className="text-brand-accent font-medium">búnker digital de Europa</span>.
         </p>
         
         {/* Countdown */}
@@ -99,7 +293,7 @@ export default function Home() {
         {/* Buttons */}
         <div className="flex flex-col md:flex-row gap-4">
           <button className="px-8 py-4 bg-gradient-to-r from-brand-accent to-brand-purple rounded-full text-black font-bold text-lg hover:opacity-90 transition-opacity">
-            Leer Whitepaper Institucional
+            Descargar Whitepaper (Institucional)
           </button>
           <button className="px-8 py-4 border border-white/20 bg-white/5 backdrop-blur-md rounded-full text-white font-bold text-lg hover:bg-white/10 transition-colors">
             Ver Tesis de Inversión
@@ -107,266 +301,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- B. EL PROBLEMA SECTION --- */}
-      <section className="relative z-10 py-24 px-4">
+      {/* --- B. TABS NAVIGATION SECTION --- */}
+      <section className="relative z-10 py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-300">
-            El Colapso de la Criptografía Clásica
-          </h2>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="p-8 rounded-2xl border border-red-500/20 bg-red-500/5 backdrop-blur-md">
-              <h3 className="text-2xl font-bold mb-4 text-red-400">La Amenaza RSA-2048</h3>
-              <p className="text-gray-300 leading-relaxed">
-                RSA-2048, el estándar oro de seguridad criptográfica desde hace décadas, se convierte en papel mojado frente a computadoras cuánticas suficientemente grandes. 
-                Shor's Algorithm puede factorizar números grandes en tiempo polinomial, invalidando toda la seguridad digital actual.
-              </p>
-              <div className="mt-6 p-4 bg-red-900/30 rounded-lg">
-                <p className="text-red-300 font-mono text-sm">"Cualquier organización con una computadora cuántica podría acceder a cualquier dato encriptado"</p>
-              </div>
-            </div>
-            
-            {/* Simple CSS Graph Visualization */}
-            <div className="p-8 rounded-2xl border border-brand-purple/20 bg-brand-purple/5 backdrop-blur-md">
-              <h3 className="text-2xl font-bold mb-4 text-brand-purple">Línea Temporal de la Amenaza</h3>
-              
-              <div className="relative h-64">
-                {/* Y-axis labels */}
-                <div className="absolute left-0 top-0 text-xs text-gray-400">100%</div>
-                <div className="absolute left-0 top-1/2 text-xs text-gray-400">50%</div>
-                <div className="absolute left-0 bottom-0 text-xs text-gray-400">0%</div>
-                
-                {/* X-axis labels */}
-                <div className="absolute bottom-0 left-0 text-xs text-gray-400">2020</div>
-                <div className="absolute bottom-0 left-1/4 text-xs text-gray-400">2025</div>
-                <div className="absolute bottom-0 left-1/2 text-xs text-gray-400">2030</div>
-                <div className="absolute bottom-0 left-3/4 text-xs text-gray-400">2035</div>
-                <div className="absolute bottom-0 right-0 text-xs text-gray-400">2040</div>
-                
-                {/* Security Line (descending) */}
-                <div className="absolute bottom-0 left-0 w-full h-1" style={{background: 'linear-gradient(to right, red, yellow, green)'}}></div>
-                
-                {/* Qubit Capacity Line (ascending) */}
-                <div className="absolute bottom-0 right-0 w-1 h-full" style={{background: 'linear-gradient(to top, red, orange, yellow, green)'}}></div>
-                
-                {/* "Día Q" marker */}
-                <div className="absolute bottom-1/3 left-2/3 w-4 h-4 rounded-full bg-red-500 animate-pulse"></div>
-                <div className="absolute bottom-1/3 left-2/3 text-xs text-red-400 ml-2">Día Q</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- C. LA SOLUCIÓN: RUBIK POW SECTION --- */}
-      <section className="relative z-10 py-24 px-4 bg-gradient-to-b from-transparent to-brand-cyber-gray/20">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-purple">
-            La Solución: RubikPoW
-          </h2>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="p-8 rounded-2xl border border-brand-accent/20 bg-brand-accent/5 backdrop-blur-md">
-              <h3 className="text-2xl font-bold mb-4 text-brand-accent">Algoritmo de Permutación Cuántica</h3>
-              <p className="text-gray-300 leading-relaxed">
-                Basado en la complejidad de los grupos de permutación del Cubo de Rubik n×n×n, RubikPoW es resistente a ataques cuánticos. 
-                Las permutaciones no abelianas de este sistema crean una complejidad exponencial que incluso Grover's Algorithm no puede resolver eficientemente.
-              </p>
-              <div className="mt-6 p-4 bg-brand-purple/10 rounded-lg">
-                <p className="text-brand-accent font-mono text-sm">"Seguridad matemática pura basada en teoría de grupos"</p>
-              </div>
-            </div>
-            
-            <div className="p-8 rounded-2xl border border-brand-neon-blue/20 bg-brand-neon-blue/5 backdrop-blur-md">
-              <h3 className="text-2xl font-bold mb-4 text-brand-neon-blue">Minería Científica (PoUW)</h3>
-              <p className="text-gray-300 leading-relaxed">
-                Proof of Useful Work (PoUW) no desperdicia energía en cálculos inútiles. Nuestros mineros resuelven problemas matemáticos reales, 
-                como plegamiento de proteínas, optimización logística y cálculos climáticos, mientras aseguran la red. El calor generado es reutilizado para calefacción.
-              </p>
-              <div className="mt-6 grid grid-cols-3 gap-4">
-                <div className="text-center p-4 bg-white/5 rounded-lg">
-                  <div className="text-3xl">🧬</div>
-                  <div className="text-sm text-gray-400">Bioinformática</div>
-                </div>
-                <div className="text-center p-4 bg-white/5 rounded-lg">
-                  <div className="text-3xl">🚚</div>
-                  <div className="text-sm text-gray-400">Logística</div>
-                </div>
-                <div className="text-center p-4 bg-white/5 rounded-lg">
-                  <div className="text-3xl">🌡️</div>
-                  <div className="text-sm text-gray-400">Calor Reutilizado</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- D. ECOSISTEMA DE IMPACTO SECTION (Tabs) --- */}
-      <section className="relative z-10 py-24 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-brand-neon-blue to-brand-accent">
-            Ecosistema de Impacto
-          </h2>
-          
-          {/* Tabs */}
           <div className="flex flex-wrap justify-center mb-8 gap-2">
-            <button 
-              onClick={() => setActiveTab('finanzas')}
-              className={`px-6 py-3 rounded-full text-sm font-bold transition-colors ${
-                activeTab === 'finanzas' 
-                  ? 'bg-brand-accent text-black' 
-                  : 'bg-white/10 text-gray-300 hover:bg-white/20'
-              }`}
-            >
-              Finanzas
-            </button>
-            <button 
-              onClick={() => setActiveTab('gobierno')}
-              className={`px-6 py-3 rounded-full text-sm font-bold transition-colors ${
-                activeTab === 'gobierno' 
-                  ? 'bg-brand-purple text-white' 
-                  : 'bg-white/10 text-gray-300 hover:bg-white/20'
-              }`}
-            >
-              Gobierno y Militar
-            </button>
-            <button 
-              onClick={() => setActiveTab('ciencia')}
-              className={`px-6 py-3 rounded-full text-sm font-bold transition-colors ${
-                activeTab === 'ciencia' 
-                  ? 'bg-brand-neon-blue text-white' 
-                  : 'bg-white/10 text-gray-300 hover:bg-white/20'
-              }`}
-            >
-              Ciencia y Empleo
-            </button>
+            {[
+              { id: 'tecnologia', label: 'TECNOLOGÍA', icon: '🔬' },
+              { id: 'economia', label: 'ECONOMÍA', icon: '📈' },
+              { id: 'estrategia', label: 'ESTRATEGIA', icon: '🎯' },
+              { id: 'impacto', label: 'IMPACTO', icon: '🌐' }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-6 py-3 rounded-full text-sm font-bold transition-colors flex items-center ${
+                  activeTab === tab.id
+                    ? 'bg-gradient-to-r from-brand-accent to-brand-purple text-black'
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
+                }`}
+              >
+                <span className="mr-2">{tab.icon}</span> {tab.label}
+              </button>
+            ))}
           </div>
           
           {/* Tab Content */}
-          <div className="p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
-            {activeTab === 'finanzas' && (
-              <div className="text-center">
-                <h3 className="text-2xl font-bold mb-4 text-brand-accent">Liquidación Instantánea y Cumplimiento</h3>
-                <p className="text-gray-300 mb-6">Transferencias de valor en milisegundos con plena conformidad reguladora MiCA</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="p-6 bg-brand-cyber-gray/30 rounded-xl">
-                    <div className="text-4xl mb-2">⚡</div>
-                    <h4 className="text-xl font-bold text-white">Settlement Final</h4>
-                    <p className="text-gray-400 mt-2">Liquidación en 0.001 segundos</p>
-                  </div>
-                  <div className="p-6 bg-brand-cyber-gray/30 rounded-xl">
-                    <div className="text-4xl mb-2">🏛️</div>
-                    <h4 className="text-xl font-bold text-white">Compliance Built-in</h4>
-                    <p className="text-gray-400 mt-2">Conformidad MiCA y KYC/AML</p>
-                  </div>
-                  <div className="p-6 bg-brand-cyber-gray/30 rounded-xl">
-                    <div className="text-4xl mb-2">🔗</div>
-                    <h4 className="text-xl font-bold text-white">CBDC Bridges</h4>
-                    <p className="text-gray-400 mt-2">Puertos a monedas digitales del banco central</p>
-                  </div>
-                </div>
-              </div>
-            )}
-            
-            {activeTab === 'gobierno' && (
-              <div className="text-center">
-                <h3 className="text-2xl font-bold mb-4 text-brand-purple">Trazabilidad y Seguridad Estatal</h3>
-                <p className="text-gray-300 mb-6">Identidad soberana inquebrantable y trazabilidad de cadenas críticas de suministro</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="p-6 bg-brand-cyber-gray/30 rounded-xl">
-                    <div className="text-4xl mb-2">🛡️</div>
-                    <h4 className="text-xl font-bold text-white">Identidad Soberana</h4>
-                    <p className="text-gray-400 mt-2">Autonomía de identidad digital europea</p>
-                  </div>
-                  <div className="p-6 bg-brand-cyber-gray/30 rounded-xl">
-                    <div className="text-4xl mb-2">🔍</div>
-                    <h4 className="text-xl font-bold text-white">Trazabilidad</h4>
-                    <p className="text-gray-400 mt-2">Cadena de suministro crítica</p>
-                  </div>
-                  <div className="p-6 bg-brand-cyber-gray/30 rounded-xl">
-                    <div className="text-4xl mb-2">🔒</div>
-                    <h4 className="text-xl font-bold text-white">Seguridad Gubernamental</h4>
-                    <p className="text-gray-400 mt-2">Comunicaciones blindadas</p>
-                  </div>
-                </div>
-              </div>
-            )}
-            
-            {activeTab === 'ciencia' && (
-              <div className="text-center">
-                <h3 className="text-2xl font-bold mb-4 text-brand-neon-blue">Innovación y Empleo Europeo</h3>
-                <p className="text-gray-300 mb-6">Creación de la industria europea de hardware criptográfico</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="p-6 bg-brand-cyber-gray/30 rounded-xl">
-                    <div className="text-4xl mb-2">🔬</div>
-                    <h4 className="text-xl font-bold text-white">Centros de Investigación</h4>
-                    <p className="text-gray-400 mt-2">Universidades trabajando en criptografía post-cuántica</p>
-                  </div>
-                  <div className="p-6 bg-brand-cyber-gray/30 rounded-xl">
-                    <div className="text-4xl mb-2">🏭</div>
-                    <h4 className="text-xl font-bold text-white">Hardware Criptográfico</h4>
-                    <p className="text-gray-400 mt-2">Chips ASIC diseñados en la UE</p>
-                  </div>
-                  <div className="p-6 bg-brand-cyber-gray/30 rounded-xl">
-                    <div className="text-4xl mb-2">🎓</div>
-                    <h4 className="text-xl font-bold text-white">Empleo de Alta Calidad</h4>
-                    <p className="text-gray-400 mt-2">Ingenieros y matemáticos en Europa</p>
-                  </div>
-                </div>
-              </div>
-            )}
+          <div className="p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl min-h-[500px]">
+            {tabContents[activeTab]}
           </div>
         </div>
       </section>
 
-      {/* --- E. COMPARATIVA SECTION --- */}
-      <section className="relative z-10 py-24 px-4 bg-gradient-to-b from-brand-cyber-gray/20 to-transparent">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
-            Comparativa: El Futuro vs. El Pasado
-          </h2>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b border-white/20">
-                  <th className="p-4 text-xl font-bold text-center">Característica</th>
-                  <th className="p-4 text-xl font-bold text-center text-red-400">Bitcoin (Legacy)</th>
-                  <th className="p-4 text-xl font-bold text-center text-green-400">QbitCoin (Futuro)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((item, index) => (
-                  <tr key={index} className="border-b border-white/10">
-                    <td className="p-4 font-bold">{item.category}</td>
-                    <td className="p-4 flex items-center justify-center">
-                      <span className="text-red-400 flex items-center">
-                        <span className="mr-2">✗</span> {item.bitcoin}
-                      </span>
-                    </td>
-                    <td className="p-4 flex items-center justify-center">
-                      <span className="text-green-400 flex items-center">
-                        <span className="mr-2">✓</span> {item.qbitcoin}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
-          <div className="mt-12 text-center">
-            <div className="inline-block p-6 bg-brand-cyber-gray/30 rounded-xl border border-brand-purple/30">
-              <p className="text-brand-purple font-bold text-lg">QbitCoin: La evolución natural del dinero digital</p>
-              <p className="text-gray-400 mt-2">Diseñado para Europa, blindado para el futuro</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- F. ROADMAP SECTION --- */}
-      <section className="relative z-10 py-24 px-4">
+      {/* --- C. ROADMAP SECTION --- */}
+      <section className="relative z-10 py-24 px-4 bg-gradient-to-b from-transparent to-brand-cyber-gray/20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-purple">
             Hoja de Ruta de Ejecución
@@ -377,15 +344,15 @@ export default function Home() {
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-brand-accent to-brand-purple"></div>
             
             {/* Timeline Items */}
-            <div className="space-y-24">
+            <div className="space-y-16">
               {/* Item 1 */}
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/4 mb-4 md:mb-0 text-center md:text-right">
-                  <p className="text-xl font-bold text-brand-accent">Fundación</p>
+                  <p className="text-xl font-bold text-green-400">Fundación</p>
                   <p className="text-gray-400">2024</p>
                 </div>
                 <div className="md:w-1/2 mx-8 relative">
-                  <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-brand-accent flex items-center justify-center z-10">
+                  <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-green-400 flex items-center justify-center z-10">
                     <div className="w-3 h-3 rounded-full bg-brand-cyber-black"></div>
                   </div>
                   <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
@@ -482,18 +449,66 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- G. FOOTER --- */}
+      {/* --- D. DOWNLOAD SECTION --- */}
+      <section className="relative z-10 py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">Documentación Institucional</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { lang: 'EN', flag: '🇬🇧', title: 'Whitepaper Inglés' },
+              { lang: 'ES', flag: '🇪🇸', title: 'Whitepaper Español' },
+              { lang: 'DE', flag: '🇩🇪', title: 'Whitepaper Alemán' }
+            ].map((doc, i) => (
+              <a 
+                key={doc.lang}
+                href={`/whitepaper/QbitCoin-QBC _EU_${doc.lang}_Final.pdf`} 
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 text-left transition-all duration-300 hover:border-brand-accent/50 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(0,255,157,0.1)]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/0 to-brand-purple/0 group-hover:from-brand-accent/5 group-hover:to-transparent transition-all duration-500"></div>
+                <div className="relative z-10">
+                  <div className="flex justify-between items-start mb-8">
+                    <span className="text-4xl filter drop-shadow-lg">{doc.flag}</span>
+                    <svg className="w-6 h-6 text-brand-accent opacity-40 group-hover:opacity-100 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">{doc.title}</h3>
+                  <p className="text-xs text-gray-500 font-mono tracking-wider">SHA-256: SECURED</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- E. FOOTER INSTITUCIONAL --- */}
       <footer className="relative z-10 py-12 bg-brand-cyber-gray backdrop-blur-xl border-t border-white/10">
         <div className="max-w-6xl mx-auto text-center">
+          <div className="flex flex-wrap justify-center gap-8 mb-6">
+            <div className="flex items-center">
+              <span className="text-green-500 mr-2">✓</span>
+              <span className="text-sm text-gray-400">MiCA Compliant</span>
+            </div>
+            <div className="flex items-center">
+              <span className="text-green-500 mr-2">✓</span>
+              <span className="text-sm text-gray-400">GDPR Ready</span>
+            </div>
+            <div className="flex items-center">
+              <span className="text-green-500 mr-2">✓</span>
+              <span className="text-sm text-gray-400">Made in EU</span>
+            </div>
+          </div>
+          
           <p className="text-gray-400 text-[10px] font-mono tracking-widest uppercase">
             © 2025 QbitCoin Labs GmbH • Frankfurt am Main
           </p>
           <p className="text-gray-500 text-[8px] mt-2">
             La Infraestructura Financiera de la Soberanía Matemática Europea
           </p>
-          <a href="#" className="inline-block mt-4 text-brand-accent hover:text-brand-purple font-bold text-sm">
-            Iniciativa Europea de Soberanía Digital
-          </a>
         </div>
       </footer>
     </div>
