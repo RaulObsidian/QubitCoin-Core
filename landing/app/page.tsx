@@ -10,71 +10,73 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
-    
-    // Fecha de lanzamiento de la Testnet Pública: 1 de Junio de 2025
-    const targetDate = new Date('2025-06-01T00:00:00Z');
-    
+
+    // Fecha objetivo: 1 de Junio de 2025 a las 00:00:00 UTC
+    const targetDate = new Date(Date.UTC(2025, 5, 1)); // Mes 5 es junio (0-indexed)
+
     const calculateTimeLeft = () => {
-      const difference = targetDate.getTime() - new Date().getTime();
-      
+      const now = new Date();
+      const difference = targetDate.getTime() - now.getTime();
+
       if (difference <= 0) {
         return { days: 0, hours: 0, minutes: 0, seconds: 0 };
       }
-      
+
       return {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60)
+        hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((difference % (1000 * 60)) / 1000)
       };
     };
-    
+
     // Calcular inmediatamente
     setTimeLeft(calculateTimeLeft());
-    
+
     // Actualizar cada segundo
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
-    
+
     return () => clearInterval(timer);
   }, []);
 
+  // Datos actualizados del roadmap
   const roadmapData = [
     {
-      period: "Julio - Nov 2024",
+      period: "Jul - Nov 2024",
       title: "Fundación",
       status: "COMPLETADO",
       statusColor: "bg-green-500/20 text-green-400",
-      description: "Fundación oficial en Frankfurt y publicación del whitepaper técnico."
+      description: "Fundación en Frankfurt y whitepaper técnico completo."
     },
     {
       period: "Q4 2024 - Q1 2025",
       title: "Testnet Alfa",
       status: "EN PROCESO",
       statusColor: "bg-yellow-500/20 text-yellow-400",
-      description: "Validación interna de `rubikpow_benchmarks.rs` y auditoría de seguridad."
+      description: "Validación interna de `rubikpow_benchmarks.rs` y seguridad."
     },
     {
       period: "1 Jun 2025",
       title: "Testnet Público",
       status: "PRÓXIMAMENTE",
       statusColor: "bg-blue-500/20 text-blue-400",
-      description: "Lanzamiento global para evaluación por el European Innovation Council."
+      description: "Apertura global y evaluación EIC."
     },
     {
       period: "2026",
       title: "Mainnet",
       status: "OBJETIVO",
       statusColor: "bg-purple-500/20 text-brand-purple",
-      description: "Lanzamiento oficial de la red principal y listado en exchanges."
+      description: "Lanzamiento oficial y listado exchanges."
     },
     {
       period: "2027",
       title: "Hegemonía",
       status: "VISIÓN",
       statusColor: "bg-brand-accent/20 text-brand-accent",
-      description: "Adopción masiva por bancos centrales europeos y gobierno digital."
+      description: "Adopción bancos centrales europeos."
     }
   ];
 
@@ -95,12 +97,13 @@ export default function Home() {
       <div className="space-y-8">
         <h3 className="text-2xl font-bold text-brand-accent">RubikPoW: La Complejidad del Cubo de Rubik</h3>
         <p className="text-gray-300 leading-relaxed">
-          El algoritmo <strong>RubikPoW</strong> se basa en el Grupo Simétrico <strong>S<sub>48</sub></strong>, que representa las permutaciones posibles de una cara del cubo 4×4×4. 
+          El algoritmo <strong>RubikPoW</strong> se basa en el Grupo Simétrico <strong>S<sub>48</sub></strong>, que representa las permutaciones posibles de una cara del cubo 4×4×4.
           El espacio de estados es de aproximadamente <strong>1.57 × 10¹¹⁶</strong>, un número mayor que la cantidad estimada de átomos en el universo observable.
         </p>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-          <div className="p-6 rounded-2xl border border-brand-accent/20 bg-brand-cyber-gray/30 backdrop-blur-md">
+          <div className="p-6 rounded-2xl border border-brand-accent/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-accent/50 transition-colors"
+            onClick={() => openModal('Comparación Algorítmica', 'Este es un ejemplo de contenido detallado sobre la comparación de algoritmos')}>
             <h4 className="text-xl font-bold text-red-400 mb-4">Bitcoin: SHA-256</h4>
             <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
               {`Proof of Work:
@@ -111,8 +114,9 @@ while Hash > Target:
             </pre>
             <p className="text-gray-400 text-sm mt-2">Brute-force computation</p>
           </div>
-          
-          <div className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-cyber-gray/30 backdrop-blur-md">
+
+          <div className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-purple/50 transition-colors"
+            onClick={() => openModal('RubikPoW Detalles', 'Este es un ejemplo de contenido detallado sobre RubikPoW')}>
             <h4 className="text-xl font-bold text-brand-accent mb-4">QbitCoin: RubikPoW</h4>
             <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
               {`Proof of Work:
@@ -124,11 +128,11 @@ while Verification_Fails(Permutation):
             <p className="text-gray-400 text-sm mt-2">Permutation group theory</p>
           </div>
         </div>
-        
+
         <div className="mt-8">
           <h4 className="text-xl font-bold text-brand-neon-blue mb-4">Criptografía Cuántica Segura</h4>
           <p className="text-gray-300 leading-relaxed">
-            QbitCoin implementa estándares NIST como <strong>Dilithium</strong> para firmas digitales y <strong>Kyber</strong> para intercambio de claves post-cuántico. 
+            QbitCoin implementa estándares NIST como <strong>Dilithium</strong> para firmas digitales y <strong>Kyber</strong> para intercambio de claves post-cuántico.
             Estos algoritmos están diseñados para resistir ataques de computadoras cuánticas, ofreciendo seguridad a largo plazo.
           </p>
         </div>
@@ -138,32 +142,38 @@ while Verification_Fails(Permutation):
       <div className="space-y-8">
         <h3 className="text-2xl font-bold text-brand-accent">Modelo Económico Deflacionario</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 backdrop-blur-md text-center">
+          <div className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 backdrop-blur-md text-center cursor-pointer hover:border-green-500/50 transition-colors"
+            onClick={() => openModal('Oferta Máxima', 'Detalle sobre la oferta máxima de monedas')}>
             <div className="text-3xl font-bold text-green-400">21M</div>
             <div className="text-gray-400">Max Supply</div>
           </div>
-          <div className="p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-md text-center">
+          <div className="p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-md text-center cursor-pointer hover:border-yellow-500/50 transition-colors"
+            onClick={() => openModal('Ciclo de Halving', 'Detalle sobre los ciclos de reducción de recompensas')}>
             <div className="text-3xl font-bold text-yellow-400">4 años</div>
             <div className="text-gray-400">Ciclo de Halving</div>
           </div>
-          <div className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-purple/5 backdrop-blur-md text-center">
+          <div className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-purple/5 backdrop-blur-md text-center cursor-pointer hover:border-brand-purple/50 transition-colors"
+            onClick={() => openModal('Distribución Justa', 'Detalle sobre la distribución equitativa')}>
             <div className="text-3xl font-bold text-brand-purple">0%</div>
             <div className="text-gray-400">Pre-minado</div>
           </div>
         </div>
-        
+
         <div className="mt-8">
           <h4 className="text-xl font-bold text-brand-neon-blue mb-4">Distribución Justa</h4>
           <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg">
+            <div className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg cursor-pointer hover:bg-brand-cyber-gray/50 transition-colors"
+              onClick={() => openModal('Minería PoUW', 'Detalle sobre la minería Proof of Useful Work')}>
               <span className="font-medium">Mineros (Proof of Useful Work)</span>
               <span className="text-brand-accent font-bold">60%</span>
             </div>
-            <div className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg">
+            <div className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg cursor-pointer hover:bg-brand-cyber-gray/50 transition-colors"
+              onClick={() => openModal('Tesorería DAO', 'Detalle sobre el uso de fondos para investigación')}>
               <span className="font-medium">Tesorería DAO (I+D)</span>
               <span className="text-brand-purple font-bold">25%</span>
             </div>
-            <div className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg">
+            <div className="flex items-center justify-between p-4 bg-brand-cyber-gray/30 rounded-lg cursor-pointer hover:bg-brand-cyber-gray/50 transition-colors"
+              onClick={() => openModal('Validadores', 'Detalle sobre el rol de los validadores')}>
               <span className="font-medium">Validadores/Seguridad</span>
               <span className="text-brand-neon-blue font-bold">15%</span>
             </div>
@@ -174,9 +184,10 @@ while Verification_Fails(Permutation):
     estrategia: (
       <div className="space-y-8">
         <h3 className="text-2xl font-bold text-brand-accent">Análisis Estratégico DAFO/SWOT</h3>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
+          <div className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 backdrop-blur-md cursor-pointer hover:border-green-500/50 transition-colors"
+            onClick={() => openModal('Fortalezas', 'Detalle sobre las fortalezas del proyecto')}>
             <h4 className="text-xl font-bold text-green-500 mb-4">Fortalezas (Strengths)</h4>
             <ul className="space-y-2">
               <li className="flex items-start">
@@ -193,8 +204,9 @@ while Verification_Fails(Permutation):
               </li>
             </ul>
           </div>
-          
-          <div>
+
+          <div className="p-6 rounded-2xl border border-blue-500/20 bg-blue-500/5 backdrop-blur-md cursor-pointer hover:border-blue-500/50 transition-colors"
+            onClick={() => openModal('Oportunidades', 'Detalle sobre las oportunidades del proyecto')}>
             <h4 className="text-xl font-bold text-blue-500 mb-4">Oportunidades (Opportunities)</h4>
             <ul className="space-y-2">
               <li className="flex items-start">
@@ -211,8 +223,9 @@ while Verification_Fails(Permutation):
               </li>
             </ul>
           </div>
-          
-          <div>
+
+          <div className="p-6 rounded-2xl border border-red-500/20 bg-red-500/5 backdrop-blur-md cursor-pointer hover:border-red-500/50 transition-colors"
+            onClick={() => openModal('Amenazas', 'Detalle sobre las amenazas para el proyecto')}>
             <h4 className="text-xl font-bold text-red-500 mb-4">Amenazas (Threats)</h4>
             <ul className="space-y-2">
               <li className="flex items-start">
@@ -229,8 +242,9 @@ while Verification_Fails(Permutation):
               </li>
             </ul>
           </div>
-          
-          <div>
+
+          <div className="p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-md cursor-pointer hover:border-yellow-500/50 transition-colors"
+            onClick={() => openModal('Debilidades', 'Detalle sobre las debilidades del proyecto')}>
             <h4 className="text-xl font-bold text-yellow-500 mb-4">Debilidades (Weaknesses)</h4>
             <ul className="space-y-2">
               <li className="flex items-start">
@@ -253,9 +267,9 @@ while Verification_Fails(Permutation):
     impacto: (
       <div className="space-y-8">
         <h3 className="text-2xl font-bold text-brand-accent">Impacto Económico y Social</h3>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div 
+          <div
             className="p-6 rounded-2xl border border-brand-accent/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-accent/50 transition-colors"
             onClick={() => openModal('Minería PoUW', 'La minería Proof of Useful Work (PoUW) no desperdicia energía como en Bitcoin. El calor generado se reutiliza para calefacción urbana, y los cálculos resuelven problemas científicos reales como el plegamiento de proteínas, optimización logística y cálculos climáticos.')}
           >
@@ -265,8 +279,8 @@ while Verification_Fails(Permutation):
               El calor generado no se desperdicia, sino que se reutiliza para calefacción urbana.
             </p>
           </div>
-          
-          <div 
+
+          <div
             className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-purple/50 transition-colors"
             onClick={() => openModal('Empleo Europeo', 'QbitCoin Labs GmbH prevé crear más de 200 puestos de alta cualificación en Frankfurt, Múnich y Zúrich. Ingenieros, criptógrafos, expertos en teoría de grupos y matemáticas aplicadas encontrarán oportunidades en nuestra plataforma.')}
           >
@@ -276,8 +290,8 @@ while Verification_Fails(Permutation):
               Previsión de crear más de 200 puestos de alta cualificación en Europa.
             </p>
           </div>
-          
-          <div 
+
+          <div
             className="p-6 rounded-2xl border border-brand-neon-blue/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-neon-blue/50 transition-colors"
             onClick={() => openModal('Hardware Soberano', 'Alianzas estratégicas con TSMC, Infineon Technologies y centros de investigación como el Fraunhofer Institute para el diseño de ASICs europeos. Reduciremos la dependencia de proveedores asiáticos y fortaleceremos la cadena de suministro tecnológica europea.')}
           >
@@ -288,11 +302,12 @@ while Verification_Fails(Permutation):
             </p>
           </div>
         </div>
-        
-        <div className="mt-8 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
+
+        <div className="mt-8 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md cursor-pointer hover:border-brand-accent/50 transition-colors"
+          onClick={() => openModal('Alianzas Estratégicas', 'QbitCoin Labs GmbH establecerá colaboraciones con instituciones tecnológicas líderes europeas como TSMC, Infineon Technologies y centros de investigación como el Fraunhofer Institute. Nuestro objetivo es crear una industria europea de hardware criptográfico resistente a amenazas geopolíticas.')}>
           <h4 className="text-xl font-bold text-brand-accent mb-4">Alianzas Estratégicas</h4>
           <p className="text-gray-300 leading-relaxed">
-            QbitCoin Labs GmbH establecerá colaboraciones con instituciones tecnológicas líderes europeas como TSMC, Infineon Technologies y centros de investigación como el Fraunhofer Institute. 
+            QbitCoin Labs GmbH establecerá colaboraciones con instituciones tecnológicas líderes europeas como TSMC, Infineon Technologies y centros de investigación como el Fraunhofer Institute.
             Nuestro objetivo es crear una industria europea de hardware criptográfico resistente a amenazas geopolíticas.
           </p>
         </div>
@@ -328,7 +343,7 @@ while Verification_Fails(Permutation):
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-black/70">
           <div className="relative w-full max-w-2xl bg-brand-cyber-gray border border-white/20 rounded-2xl p-8 max-h-[80vh] overflow-y-auto">
-            <button 
+            <button
               onClick={closeModal}
               className="absolute top-4 right-4 text-gray-400 hover:text-white"
             >
@@ -345,19 +360,19 @@ while Verification_Fails(Permutation):
         <div className="mb-8 inline-block border border-brand-accent/30 bg-brand-accent/5 px-6 py-2 rounded-full backdrop-blur-md animate-pulse-glow">
           <span className="text-brand-accent text-xs font-mono tracking-[0.3em] font-bold">SOBERANÍA MATEMÁTICA POST-CUÁNTICA</span>
         </div>
-        
+
         <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-brand-neon-green to-brand-purple drop-shadow-2xl animate-glow-pulse">
           LA INFRAESTRUCTURA DE LA
         </h1>
-        
+
         <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-12 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-brand-neon-blue to-brand-purple drop-shadow-2xl animate-glow-pulse">
           SOBERANÍA MATEMÁTICA
         </h1>
-        
+
         <p className="text-lg md:text-xl text-gray-400 font-light mb-16 max-w-3xl mx-auto leading-relaxed px-4">
           Mientras la <span className="text-red-500 font-bold">criptografía clásica colapsa</span>, QbitCoin construye el <span className="text-brand-accent font-medium">búnker digital de Europa</span>.
         </p>
-        
+
         {/* Countdown */}
         <div className="grid grid-cols-4 gap-4 md:gap-8 mb-16 w-full max-w-2xl">
           <div className="text-center">
@@ -377,9 +392,9 @@ while Verification_Fails(Permutation):
             <div className="text-xs md:text-sm text-gray-400 mt-2">SEGUNDOS</div>
           </div>
         </div>
-        
-        {/* Single Button - Opens Thesis Modal */}
-        <button 
+
+        {/* Botón único que abre el modal de Tesis de Inversión */}
+        <button
           className="px-8 py-4 bg-gradient-to-r from-brand-accent to-brand-purple rounded-full text-black font-bold text-lg hover:opacity-90 transition-opacity"
           onClick={() => openModal('Tesis de Inversión', thesisContent)}
         >
@@ -410,7 +425,7 @@ while Verification_Fails(Permutation):
               </button>
             ))}
           </div>
-          
+
           {/* Tab Content */}
           <div className="p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl min-h-[500px]">
             {tabContents[activeTab]}
@@ -424,11 +439,11 @@ while Verification_Fails(Permutation):
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-purple">
             Hoja de Ruta de Ejecución
           </h2>
-          
+
           <div className="relative">
             {/* Vertical timeline line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-brand-accent to-brand-purple"></div>
-            
+
             {/* Timeline Items */}
             <div className="space-y-16">
               {roadmapData.map((item, index) => (
@@ -438,13 +453,13 @@ while Verification_Fails(Permutation):
                     <p className="text-gray-400">{item.period}</p>
                   </div>
                   <div className="md:w-1/2 mx-8 relative">
-                    <div 
+                    <div
                       className="absolute -left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-brand-accent flex items-center justify-center z-10 cursor-pointer"
                       onClick={() => openModal(item.title, item.description)}
                     >
                       <div className="w-3 h-3 rounded-full bg-brand-cyber-black"></div>
                     </div>
-                    <div 
+                    <div
                       className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md cursor-pointer hover:border-brand-accent/50 transition-colors"
                       onClick={() => openModal(item.title, item.description)}
                     >
@@ -466,16 +481,16 @@ while Verification_Fails(Permutation):
       <section className="relative z-10 py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">Documentación Institucional</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { lang: 'EN', flag: '🇬🇧', title: 'Whitepaper Inglés' },
               { lang: 'ES', flag: '🇪🇸', title: 'Whitepaper Español' },
               { lang: 'DE', flag: '🇩🇪', title: 'Whitepaper Alemán' }
             ].map((doc, i) => (
-              <a 
+              <a
                 key={doc.lang}
-                href={`/whitepaper/QbitCoin-QBC _EU_${doc.lang}_Final.pdf`} 
+                href={`/whitepaper/QbitCoin-QBC _EU_${doc.lang}_Final.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 download
@@ -515,7 +530,7 @@ while Verification_Fails(Permutation):
               <span className="text-sm text-gray-400">Made in EU</span>
             </div>
           </div>
-          
+
           <p className="text-gray-400 text-[10px] font-mono tracking-widest uppercase">
             © 2025 QbitCoin Labs GmbH • Frankfurt am Main
           </p>
