@@ -2,51 +2,55 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
+  // Estos son los estados que faltaban definir
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [activeTab, setActiveTab] = useState('tecnologia');
+  const [mounted, setMounted] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({ title: '', content: '' });
+  const [activeTab, setActiveTab] = useState('tecnologia');
 
   useEffect(() => {
     setMounted(true);
     
     // Fecha objetivo: 1 de Junio de 2025 a las 00:00:00 UTC
-    const targetDate = new Date(Date.UTC(2025, 5, 1)); // Mes 5 es junio (0-indexed)
-
+    const targetDate = new Date('2025-06-01T00:00:00Z');
+    
     const calculateTimeLeft = () => {
-      const now = new Date();
-      const difference = targetDate.getTime() - now.getTime();
-
+      const difference = targetDate.getTime() - new Date().getTime();
+      
       if (difference <= 0) {
+        // Si la fecha ya pasó, devolvemos ceros
         return { days: 0, hours: 0, minutes: 0, seconds: 0 };
       }
-
-      return {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((difference % (1000 * 60)) / 1000)
-      };
+      
+      // Calcular días, horas, minutos y segundos restantes
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      
+      return { days, hours, minutes, seconds };
     };
-
-    // Calcular inmediatamente
+    
+    // Establecer inmediatamente el tiempo restante
     setTimeLeft(calculateTimeLeft());
-
+    
     // Actualizar cada segundo
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
-
-    // Limpiar intervalo
+    
+    // Limpiar intervalo al desmontar
     return () => clearInterval(timer);
-  }, []);
+  }, []); // Dependencia vacía para que se ejecute solo una vez
 
+  // Función para abrir modales
   const openModal = (title, content) => {
     setModalContent({ title, content });
     setModalOpen(true);
   };
 
+  // Función para cerrar modales
   const closeModal = () => {
     setModalOpen(false);
   };
@@ -74,21 +78,21 @@ export default function Home() {
       title: "Testnet Público",
       status: "PRÓXIMAMENTE",
       statusColor: "bg-blue-500/20 text-blue-400",
-      description: "Lanzamiento global y evaluación por parte del European Innovation Council."
+      description: "Apertura global y evaluación EIC."
     },
     {
       period: "2026",
       title: "Mainnet",
       status: "OBJETIVO",
       statusColor: "bg-purple-500/20 text-brand-purple",
-      description: "Lanzamiento oficial de la red principal y listado en exchanges."
+      description: "Lanzamiento oficial y listado exchanges."
     },
     {
       period: "2027",
       title: "Hegemonía",
       status: "VISIÓN",
       statusColor: "bg-brand-accent/20 text-brand-accent",
-      description: "Adopción masiva por bancos centrales europeos y gobierno digital."
+      description: "Adopción bancos centrales europeos."
     }
   ];
 
@@ -105,7 +109,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           <div 
             className="p-6 rounded-2xl border border-brand-accent/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-accent/50 transition-colors"
-            onClick={() => openModal('Comparación Algorítmica', 'Este es un ejemplo de contenido detallado sobre la comparación de algoritmos')}
+            onClick={() => openModal('Comparación Algorítmica', 'Este es un ejemplo de contenido detallado sobre la comparación entre SHA-256 de Bitcoin y RubikPoW de QbitCoin.')}
           >
             <h4 className="text-xl font-bold text-red-400 mb-4">Bitcoin: SHA-256</h4>
             <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
@@ -120,7 +124,7 @@ while Hash > Target:
 
           <div 
             className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-purple/50 transition-colors"
-            onClick={() => openModal('RubikPoW Detalles', 'Este es un ejemplo de contenido detallado sobre RubikPoW')}
+            onClick={() => openModal('RubikPoW Detalles', 'Este es un ejemplo de contenido detallado sobre el algoritmo RubikPoW.')}
           >
             <h4 className="text-xl font-bold text-brand-accent mb-4">QbitCoin: RubikPoW</h4>
             <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
@@ -348,13 +352,13 @@ while Verification_Fails(Permutation):
     
     Mercado de 50 Billones USD:
     El mercado global de criptomonedas supera los 50 billones de dólares, dominado por Bitcoin y Ethereum.
-    
+
     Colapso RSA-2048:
     La computación cuántica amenaza con hacer obsoletos todos los sistemas criptográficos basados en RSA-2048 en menos de 10 años.
-    
+
     Oportunidad Temprana:
     QbitCoin entra en el mercado con tecnología post-cuántica probada, posicionándose como la opción segura por excelencia.
-    
+
     Soberanía Europea:
     Producto desarrollado íntegramente en Europa, cumpliendo con regulaciones MiCA y GDPR.
   `;
@@ -520,7 +524,6 @@ while Verification_Fails(Permutation):
                 href={`/whitepaper/QbitCoin-QBC _EU_${doc.lang}_Final.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
-                download
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 text-left transition-all duration-300 hover:border-brand-accent/50 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(0,255,157,0.1)]"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/0 to-brand-purple/0 group-hover:from-brand-accent/5 group-hover:to-transparent transition-all duration-500"></div>
