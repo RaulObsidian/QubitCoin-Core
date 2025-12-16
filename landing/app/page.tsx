@@ -5,6 +5,8 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [activeTab, setActiveTab] = useState('tecnologia');
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({ title: '', content: '' });
 
   useEffect(() => {
     setMounted(true);
@@ -37,6 +39,53 @@ export default function Home() {
     
     return () => clearInterval(timer);
   }, []);
+
+  const roadmapData = [
+    {
+      period: "Julio - Nov 2024",
+      title: "Fundación",
+      status: "COMPLETADO",
+      statusColor: "bg-green-500/20 text-green-400",
+      description: "Fundación oficial en Frankfurt y publicación del whitepaper técnico."
+    },
+    {
+      period: "Q4 2024 - Q1 2025",
+      title: "Testnet Alfa",
+      status: "EN PROCESO",
+      statusColor: "bg-yellow-500/20 text-yellow-400",
+      description: "Validación interna de `rubikpow_benchmarks.rs` y auditoría de seguridad."
+    },
+    {
+      period: "1 Jun 2025",
+      title: "Testnet Público",
+      status: "PRÓXIMAMENTE",
+      statusColor: "bg-blue-500/20 text-blue-400",
+      description: "Lanzamiento global para evaluación por el European Innovation Council."
+    },
+    {
+      period: "2026",
+      title: "Mainnet",
+      status: "OBJETIVO",
+      statusColor: "bg-purple-500/20 text-brand-purple",
+      description: "Lanzamiento oficial de la red principal y listado en exchanges."
+    },
+    {
+      period: "2027",
+      title: "Hegemonía",
+      status: "VISIÓN",
+      statusColor: "bg-brand-accent/20 text-brand-accent",
+      description: "Adopción masiva por bancos centrales europeos y gobierno digital."
+    }
+  ];
+
+  const openModal = (title, content) => {
+    setModalContent({ title, content });
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   if (!mounted) return <div className="min-h-screen bg-brand-cyber-black" />;
 
@@ -206,30 +255,36 @@ while Verification_Fails(Permutation):
         <h3 className="text-2xl font-bold text-brand-accent">Impacto Económico y Social</h3>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl border border-brand-accent/20 bg-brand-cyber-gray/30 backdrop-blur-md">
+          <div 
+            className="p-6 rounded-2xl border border-brand-accent/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-accent/50 transition-colors"
+            onClick={() => openModal('Minería PoUW', 'La minería Proof of Useful Work (PoUW) no desperdicia energía como en Bitcoin. El calor generado se reutiliza para calefacción urbana, y los cálculos resuelven problemas científicos reales como el plegamiento de proteínas, optimización logística y cálculos climáticos.')}
+          >
             <div className="text-4xl mb-4">🏭</div>
             <h4 className="text-xl font-bold mb-2">Minería PoUW</h4>
             <p className="text-gray-400 text-sm">
-              El calor generado por la minería no se desperdicia, sino que se reutiliza para calefacción urbana. 
-              Los cálculos sirven para resolver problemas científicos reales como plegamiento de proteínas e IA.
+              El calor generado no se desperdicia, sino que se reutiliza para calefacción urbana.
             </p>
           </div>
           
-          <div className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-cyber-gray/30 backdrop-blur-md">
+          <div 
+            className="p-6 rounded-2xl border border-brand-purple/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-purple/50 transition-colors"
+            onClick={() => openModal('Empleo Europeo', 'QbitCoin Labs GmbH prevé crear más de 200 puestos de alta cualificación en Frankfurt, Múnich y Zúrich. Ingenieros, criptógrafos, expertos en teoría de grupos y matemáticas aplicadas encontrarán oportunidades en nuestra plataforma.')}
+          >
             <div className="text-4xl mb-4">👤</div>
             <h4 className="text-xl font-bold mb-2">Empleo Europeo</h4>
             <p className="text-gray-400 text-sm">
-              Previsión de crear más de 200 puestos de alta cualificación en Frankfurt, Múnich y Zúrich. 
-              Ingenieros, criptógrafos, expertos en teoría de grupos y matemáticas aplicadas.
+              Previsión de crear más de 200 puestos de alta cualificación en Europa.
             </p>
           </div>
           
-          <div className="p-6 rounded-2xl border border-brand-neon-blue/20 bg-brand-cyber-gray/30 backdrop-blur-md">
+          <div 
+            className="p-6 rounded-2xl border border-brand-neon-blue/20 bg-brand-cyber-gray/30 backdrop-blur-md cursor-pointer hover:border-brand-neon-blue/50 transition-colors"
+            onClick={() => openModal('Hardware Soberano', 'Alianzas estratégicas con TSMC, Infineon Technologies y centros de investigación como el Fraunhofer Institute para el diseño de ASICs europeos. Reduciremos la dependencia de proveedores asiáticos y fortaleceremos la cadena de suministro tecnológica europea.')}
+          >
             <div className="text-4xl mb-4">🔧</div>
             <h4 className="text-xl font-bold mb-2">Hardware Soberano</h4>
             <p className="text-gray-400 text-sm">
-              Alianzas estratégicas para el diseño de ASICs europeos, reduciendo la dependencia de proveedores asiáticos. 
-              Fortalecimiento de la cadena de suministro tecnológica europea.
+              Alianzas estratégicas para el diseño de ASICs europeos y reducción de dependencia.
             </p>
           </div>
         </div>
@@ -245,12 +300,45 @@ while Verification_Fails(Permutation):
     )
   };
 
+  // Contenido para el modal de Tesis de Inversión
+  const thesisContent = `
+    TESIS DE INVERSIÓN
+    
+    Mercado de 50 Billones USD:
+    El mercado global de criptomonedas supera los 50 billones de dólares, dominado por Bitcoin y Ethereum.
+    
+    Colapso RSA-2048:
+    La computación cuántica amenaza con hacer obsoletos todos los sistemas criptográficos basados en RSA-2048 en menos de 10 años.
+    
+    Oportunidad Temprana:
+    QbitCoin entra en el mercado con tecnología post-cuántica probada, posicionándose como la opción segura por excelencia.
+    
+    Soberanía Europea:
+    Producto desarrollado íntegramente en Europa, cumpliendo con regulaciones MiCA y GDPR.
+  `;
+
   return (
     <div className="min-h-screen bg-brand-cyber-black text-white font-sans overflow-x-hidden">
       {/* --- BACKGROUND AURORA EFFECT --- */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-aurora-animated animate-aurora-flow"></div>
       </div>
+
+      {/* --- MODAL GENERAL --- */}
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-black/70">
+          <div className="relative w-full max-w-2xl bg-brand-cyber-gray border border-white/20 rounded-2xl p-8 max-h-[80vh] overflow-y-auto">
+            <button 
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white"
+            >
+              ✕
+            </button>
+            <h3 className="text-2xl font-bold text-brand-accent mb-4">{modalContent.title}</h3>
+            <p className="text-gray-300 whitespace-pre-line">{modalContent.content}</p>
+          </div>
+        </div>
+      )}
 
       {/* --- A. HERO SECTION --- */}
       <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-24 text-center">
@@ -290,15 +378,13 @@ while Verification_Fails(Permutation):
           </div>
         </div>
         
-        {/* Buttons */}
-        <div className="flex flex-col md:flex-row gap-4">
-          <button className="px-8 py-4 bg-gradient-to-r from-brand-accent to-brand-purple rounded-full text-black font-bold text-lg hover:opacity-90 transition-opacity">
-            Descargar Whitepaper (Institucional)
-          </button>
-          <button className="px-8 py-4 border border-white/20 bg-white/5 backdrop-blur-md rounded-full text-white font-bold text-lg hover:bg-white/10 transition-colors">
-            Ver Tesis de Inversión
-          </button>
-        </div>
+        {/* Single Button - Opens Thesis Modal */}
+        <button 
+          className="px-8 py-4 bg-gradient-to-r from-brand-accent to-brand-purple rounded-full text-black font-bold text-lg hover:opacity-90 transition-opacity"
+          onClick={() => openModal('Tesis de Inversión', thesisContent)}
+        >
+          Ver Tesis de Inversión
+        </button>
       </section>
 
       {/* --- B. TABS NAVIGATION SECTION --- */}
@@ -345,105 +431,32 @@ while Verification_Fails(Permutation):
             
             {/* Timeline Items */}
             <div className="space-y-16">
-              {/* Item 1 */}
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/4 mb-4 md:mb-0 text-center md:text-right">
-                  <p className="text-xl font-bold text-green-400">Fundación</p>
-                  <p className="text-gray-400">2024</p>
-                </div>
-                <div className="md:w-1/2 mx-8 relative">
-                  <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-green-400 flex items-center justify-center z-10">
-                    <div className="w-3 h-3 rounded-full bg-brand-cyber-black"></div>
+              {roadmapData.map((item, index) => (
+                <div key={index} className="flex flex-col md:flex-row items-center">
+                  <div className="md:w-1/4 mb-4 md:mb-0 text-center md:text-right">
+                    <p className="text-xl font-bold text-brand-accent">{item.title}</p>
+                    <p className="text-gray-400">{item.period}</p>
                   </div>
-                  <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
-                    <h3 className="text-xl font-bold mb-2">QbitCoin Labs GmbH</h3>
-                    <p className="text-gray-400">Fundación oficial en Frankfurt, desarrollo del whitepaper y matemáticas de RubikPoW</p>
+                  <div className="md:w-1/2 mx-8 relative">
+                    <div 
+                      className="absolute -left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-brand-accent flex items-center justify-center z-10 cursor-pointer"
+                      onClick={() => openModal(item.title, item.description)}
+                    >
+                      <div className="w-3 h-3 rounded-full bg-brand-cyber-black"></div>
+                    </div>
+                    <div 
+                      className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md cursor-pointer hover:border-brand-accent/50 transition-colors"
+                      onClick={() => openModal(item.title, item.description)}
+                    >
+                      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                      <p className="text-gray-400">{item.description}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="md:w-1/4 text-center md:text-left">
-                  <span className="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">COMPLETADO</span>
-                </div>
-              </div>
-              
-              {/* Item 2 */}
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/4 mb-4 md:mb-0 text-center md:text-right">
-                  <p className="text-xl font-bold text-yellow-400">Testnet Alfa</p>
-                  <p className="text-gray-400">Q1 2025</p>
-                </div>
-                <div className="md:w-1/2 mx-8 relative">
-                  <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center z-10">
-                    <div className="w-3 h-3 rounded-full bg-brand-cyber-black"></div>
-                  </div>
-                  <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
-                    <h3 className="text-xl font-bold mb-2">Validación Técnica</h3>
-                    <p className="text-gray-400">Pruebas de seguridad con instituciones europeas y validación académica</p>
+                  <div className="md:w-1/4 text-center md:text-left">
+                    <span className={`px-3 py-1 ${item.statusColor} rounded-full text-sm`}>{item.status}</span>
                   </div>
                 </div>
-                <div className="md:w-1/4 text-center md:text-left">
-                  <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm">ACTIVO</span>
-                </div>
-              </div>
-              
-              {/* Item 3 */}
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/4 mb-4 md:mb-0 text-center md:text-right">
-                  <p className="text-xl font-bold text-brand-purple">Testnet Público</p>
-                  <p className="text-gray-400">1 Jun 2025</p>
-                </div>
-                <div className="md:w-1/2 mx-8 relative">
-                  <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-brand-purple flex items-center justify-center z-10">
-                    <div className="w-3 h-3 rounded-full bg-brand-cyber-black"></div>
-                  </div>
-                  <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
-                    <h3 className="text-xl font-bold mb-2">Lanzamiento Público</h3>
-                    <p className="text-gray-400">Acceso público al testnet, evaluación por parte del EIC y socios estratégicos</p>
-                  </div>
-                </div>
-                <div className="md:w-1/4 text-center md:text-left">
-                  <span className="px-3 py-1 bg-brand-purple/20 text-brand-purple rounded-full text-sm">PRÓXIMO</span>
-                </div>
-              </div>
-              
-              {/* Item 4 */}
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/4 mb-4 md:mb-0 text-center md:text-right">
-                  <p className="text-xl font-bold text-brand-accent">Mainnet</p>
-                  <p className="text-gray-400">2026</p>
-                </div>
-                <div className="md:w-1/2 mx-8 relative">
-                  <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-brand-accent flex items-center justify-center z-10">
-                    <div className="w-3 h-3 rounded-full bg-brand-cyber-black"></div>
-                  </div>
-                  <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
-                    <h3 className="text-xl font-bold mb-2">Lanzamiento Oficial</h3>
-                    <p className="text-gray-400">Bloque génesis, minería PoUW activa y listado en exchanges principales</p>
-                  </div>
-                </div>
-                <div className="md:w-1/4 text-center md:text-left">
-                  <span className="px-3 py-1 bg-brand-accent/20 text-brand-accent rounded-full text-sm">OBJETIVO</span>
-                </div>
-              </div>
-              
-              {/* Item 5 */}
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/4 mb-4 md:mb-0 text-center md:text-right">
-                  <p className="text-xl font-bold text-brand-neon-blue">Hegemonía</p>
-                  <p className="text-gray-400">2027</p>
-                </div>
-                <div className="md:w-1/2 mx-8 relative">
-                  <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-full bg-brand-neon-blue flex items-center justify-center z-10">
-                    <div className="w-3 h-3 rounded-full bg-brand-cyber-black"></div>
-                  </div>
-                  <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
-                    <h3 className="text-xl font-bold mb-2">Adopción Masiva</h3>
-                    <p className="text-gray-400">Integración con bancos centrales europeos, gobierno digital y ciencia colaborativa</p>
-                  </div>
-                </div>
-                <div className="md:w-1/4 text-center md:text-left">
-                  <span className="px-3 py-1 bg-brand-neon-blue/20 text-brand-neon-blue rounded-full text-sm">VISION</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -505,6 +518,9 @@ while Verification_Fails(Permutation):
           
           <p className="text-gray-400 text-[10px] font-mono tracking-widest uppercase">
             © 2025 QbitCoin Labs GmbH • Frankfurt am Main
+          </p>
+          <p className="text-brand-accent text-[8px] mt-2">
+            <a href="#" className="hover:underline">Iniciativa Europea de Soberanía Digital</a>
           </p>
           <p className="text-gray-500 text-[8px] mt-2">
             La Infraestructura Financiera de la Soberanía Matemática Europea
