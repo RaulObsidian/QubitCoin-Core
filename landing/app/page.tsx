@@ -267,7 +267,7 @@ while Verification_Fails(Permutation):
         </h1>
         
         <p className="text-lg md:text-xl text-gray-400 font-light mb-16 max-w-3xl mx-auto leading-relaxed px-4">
-          Mientras <span className="text-red-500 font-bold">RSA-2048 colapsa</span>, QbitCoin construye el <span className="text-brand-accent font-medium">búnker digital de Europa</span>.
+          Mientras la <span className="text-red-500 font-bold">criptografía clásica colapsa</span>, QbitCoin construye el <span className="text-brand-accent font-medium">búnker digital de Europa</span>.
         </p>
         
         {/* Countdown */}
