@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 export default function Home() {
   // Estados
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState({ days: '--', hours: '--', minutes: '--', seconds: '--' });
   const [mounted, setMounted] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [investmentModalOpen, setInvestmentModalOpen] = useState(false);
@@ -22,7 +22,7 @@ export default function Home() {
 
       if (difference <= 0) {
         // Si la fecha ya pasó, devolvemos ceros
-        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+        return { days: '00', hours: '00', minutes: '00', seconds: '00' };
       }
 
       // Calcular días, horas, minutos y segundos restantes
@@ -31,7 +31,12 @@ export default function Home() {
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-      return { days, hours, minutes, seconds };
+      return {
+        days: String(days).padStart(2, '0'),
+        hours: String(hours).padStart(2, '0'),
+        minutes: String(minutes).padStart(2, '0'),
+        seconds: String(seconds).padStart(2, '0')
+      };
     };
 
     // Actualizar inmediatamente
@@ -444,19 +449,19 @@ while Verification_Fails(Permutation):
         {/* Countdown */}
         <div className="grid grid-cols-4 gap-4 md:gap-8 mb-16 w-full max-w-2xl">
           <div className="text-center">
-            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">{String(timeLeft.days).padStart(2, '0')}</div>
+            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">{timeLeft.days}</div>
             <div className="text-xs md:text-sm text-gray-400 mt-2">DÍAS</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">{String(timeLeft.hours).padStart(2, '0')}</div>
+            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">{timeLeft.hours}</div>
             <div className="text-xs md:text-sm text-gray-400 mt-2">HORAS</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">{String(timeLeft.minutes).padStart(2, '0')}</div>
+            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">{timeLeft.minutes}</div>
             <div className="text-xs md:text-sm text-gray-400 mt-2">MINUTOS</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">{String(timeLeft.seconds).padStart(2, '0')}</div>
+            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">{timeLeft.seconds}</div>
             <div className="text-xs md:text-sm text-gray-400 mt-2">SEGUNDOS</div>
           </div>
         </div>
