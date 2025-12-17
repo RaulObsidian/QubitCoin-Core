@@ -11,35 +11,35 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
-    
+
     // Fecha objetivo: 1 de Junio de 2025 a las 00:00:00 UTC
-    const targetDate = new Date('2025-06-01T00:00:00Z');
-    
-    const calculateTimeLeft = () => {
-      const difference = targetDate.getTime() - new Date().getTime();
-      
+    const targetDate = new Date('2025-06-01T00:00:00Z').getTime();
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
       if (difference <= 0) {
         // Si la fecha ya pasó, devolvemos ceros
-        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
       }
-      
+
       // Calcular días, horas, minutos y segundos restantes
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
       const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-      
-      return { days, hours, minutes, seconds };
+
+      setTimeLeft({ days, hours, minutes, seconds });
     };
-    
-    // Establecer inmediatamente el tiempo restante
-    setTimeLeft(calculateTimeLeft());
-    
+
+    // Actualizar inmediatamente
+    updateTimer();
+
     // Actualizar cada segundo
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-    
+    const timer = setInterval(updateTimer, 1000);
+
     // Limpiar intervalo al desmontar
     return () => clearInterval(timer);
   }, []); // Dependencia vacía para que se ejecute solo una vez
