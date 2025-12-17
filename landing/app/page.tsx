@@ -13,12 +13,12 @@ export default function Home() {
   useEffect(() => {
     setMounted(true);
 
-    // Fecha objetivo: 1 de Junio de 2025 a las 00:00:00 UTC
-    const targetDate = new Date('2025-06-01T00:00:00Z').getTime();
+    // Fecha objetivo: 1 de Junio de 2025 a las 00:00:00 UTC (timestamp hardcodeado)
+    const targetTimestamp = 1748736000000; // Valor calculado para 1 de Junio de 2025 en milisegundos
 
     const calculateTimeLeft = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
+      const now = Date.now();
+      const difference = targetTimestamp - now;
 
       if (difference <= 0) {
         // Si la fecha ya pasó, devolvemos ceros
