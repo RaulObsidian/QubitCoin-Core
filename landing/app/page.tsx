@@ -1,9 +1,33 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+
+// Importar el componente de contador sin SSR
+const Countdown = dynamic(() => import('./components/Countdown'), {
+  ssr: false,
+  loading: () => (
+    <div className="grid grid-cols-4 gap-4 md:gap-8 mb-16 w-full max-w-2xl">
+      <div className="text-center">
+        <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">--</div>
+        <div className="text-xs md:text-sm text-gray-400 mt-2">DÍAS</div>
+      </div>
+      <div className="text-center">
+        <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">--</div>
+        <div className="text-xs md:text-sm text-gray-400 mt-2">HORAS</div>
+      </div>
+      <div className="text-center">
+        <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">--</div>
+        <div className="text-xs md:text-sm text-gray-400 mt-2">MINUTOS</div>
+      </div>
+      <div className="text-center">
+        <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">--</div>
+        <div className="text-xs md:text-sm text-gray-400 mt-2">SEGUNDOS</div>
+      </div>
+    </div>
+  )
+});
 
 export default function Home() {
-  // Estados
-  const [timeLeft, setTimeLeft] = useState({ days: '--', hours: '--', minutes: '--', seconds: '--' });
   const [mounted, setMounted] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [investmentModalOpen, setInvestmentModalOpen] = useState(false);
@@ -12,44 +36,7 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
-
-    // Fecha objetivo: 1 de Junio de 2025 a las 00:00:00 UTC (timestamp hardcodeado)
-    const targetTimestamp = 1748736000000; // Valor calculado para 1 de Junio de 2025 en milisegundos
-
-    const calculateTimeLeft = () => {
-      const now = Date.now();
-      const difference = targetTimestamp - now;
-
-      if (difference <= 0) {
-        // Si la fecha ya pasó, devolvemos ceros
-        return { days: '00', hours: '00', minutes: '00', seconds: '00' };
-      }
-
-      // Calcular días, horas, minutos y segundos restantes
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-      return {
-        days: String(days).padStart(2, '0'),
-        hours: String(hours).padStart(2, '0'),
-        minutes: String(minutes).padStart(2, '0'),
-        seconds: String(seconds).padStart(2, '0')
-      };
-    };
-
-    // Actualizar inmediatamente
-    setTimeLeft(calculateTimeLeft());
-
-    // Actualizar cada segundo
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    // Limpiar intervalo al desmontar
-    return () => clearInterval(timer);
-  }, []); // Dependencia vacía para ejecutar solo una vez
+  }, []); // Dependencia vacía para que se ejecute solo una vez al montar
 
   // Función para abrir modales
   const openModal = (title, content) => {
@@ -71,67 +58,7 @@ export default function Home() {
     setInvestmentModalOpen(false);
   };
 
-  // Contenido para el modal de Tesis de Inversión
-  const thesisContent = `
-    RESUMEN EJECUTIVO: TESIS DE INVERSIÓN
-
-    Mercado de 50 Billones USD:
-    El mercado global de criptomonedas supera los 50 billones de dólares, dominado principalmente por Bitcoin y Ethereum. 
-    La verdadera oportunidad reside en la TOKENIZACIÓN DE ACTIVOS DEL MUNDO REAL (RWA) y la infraestructura financiera institucional.
-
-    Amenaza Post-Cuántica:
-    La computación cuántica amenaza con hacer obsoletos todos los sistemas criptográficos basados en RSA-2048 en menos de 10 años. 
-    La amenaza "Harvest Now, Decrypt Later" es real: datos encriptados hoy pueden ser desencriptados en el futuro.
-
-    Oportunidad Temprana:
-    QbitCoin entra en el mercado con tecnología POST-CUÁNTICA probada, posicionándose como la opción segura por excelencia.
-    La tecnología RubikPoW basada en teoría de grupos es intrínsecamente resistente a ataques cuánticos.
-
-    Soberanía Europea:
-    Producto desarrollado íntegramente en Europa, cumpliendo con regulaciones MiCA y GDPR.
-    Garantiza que la infraestructura crítica financiera europea permanezca bajo jurisdicción europea.
-  `;
-
   if (!mounted) return <div className="min-h-screen bg-[#050505]" />;
-
-  // Datos actualizados del roadmap
-  const roadmapData = [
-    {
-      period: "Jul - Nov 2024",
-      title: "Fundación",
-      status: "COMPLETADO",
-      statusColor: "bg-green-500/20 text-green-400",
-      description: "Fundación en Frankfurt y whitepaper técnico completo."
-    },
-    {
-      period: "Q4 2024 - Q1 2025",
-      title: "Testnet Alfa",
-      status: "EN PROCESO",
-      statusColor: "bg-yellow-500/20 text-yellow-400",
-      description: "Validación interna de `rubikpow_benchmarks.rs` y seguridad."
-    },
-    {
-      period: "1 Jun 2025",
-      title: "Testnet Público",
-      status: "PRÓXIMO",
-      statusColor: "bg-blue-500/20 text-blue-400",
-      description: "Apertura global y evaluación EIC."
-    },
-    {
-      period: "2026",
-      title: "Mainnet",
-      status: "OBJETIVO",
-      statusColor: "bg-purple-500/20 text-purple-400",
-      description: "Lanzamiento oficial y listado exchanges."
-    },
-    {
-      period: "2027",
-      title: "Hegemonía",
-      status: "VISIÓN",
-      statusColor: "bg-[#00ff9d]/20 text-[#00ff9d]",
-      description: "Adopción bancos centrales europeos."
-    }
-  ];
 
   // Contenido para las pestañas
   const tabContents = {
@@ -146,7 +73,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           <div
             className="p-6 rounded-2xl border border-[#00ff9d]/20 bg-[#0a0a0a]/30 backdrop-blur-md cursor-pointer hover:border-[#00ff9d]/50 transition-colors"
-            onClick={() => openModal('Comparación Algorítmica', 'Comparación entre SHA-256 de Bitcoin y RubikPoW de QbitCoin')}
+            onClick={() => openModal('Comparación Algorítmica', 'Este es un ejemplo de contenido detallado sobre la comparación entre SHA-256 de Bitcoin y RubikPoW de QbitCoin.')}
           >
             <h4 className="text-xl font-bold text-red-400 mb-4">Bitcoin: SHA-256</h4>
             <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
@@ -161,7 +88,7 @@ while Hash > Target:
 
           <div
             className="p-6 rounded-2xl border border-[#7000ff]/20 bg-[#0a0a0a]/30 backdrop-blur-md cursor-pointer hover:border-[#7000ff]/50 transition-colors"
-            onClick={() => openModal('RubikPoW Detalles', 'Detalles sobre el algoritmo RubikPoW')}
+            onClick={() => openModal('RubikPoW Detalles', 'Este es un ejemplo de contenido detallado sobre el algoritmo RubikPoW.')}
           >
             <h4 className="text-xl font-bold text-[#00ff9d] mb-4">QbitCoin: RubikPoW</h4>
             <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
@@ -383,25 +310,22 @@ while Verification_Fails(Permutation):
     )
   };
 
-  // Componente Modal para mostrar contenido detallado
-  const Modal = ({ isOpen, onClose, title, content }) => {
-    if (!isOpen) return null;
+  // Contenido para el modal de Tesis de Inversión
+  const thesisContent = `
+    RESUMEN EJECUTIVO: TESIS DE INVERSIÓN
 
-    return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-black/70">
-        <div className="relative w-full max-w-3xl bg-[#0a0a0a] border border-[#00ff9d]/30 rounded-2xl p-8 max-h-[80vh] overflow-y-auto shadow-[0_0_50px_rgba(0,255,157,0.15)]">
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl"
-          >
-            ✕
-          </button>
-          <h3 className="text-2xl font-bold text-[#00ff9d] mb-6">{title}</h3>
-          <div className="text-gray-300 leading-relaxed whitespace-pre-line">{content}</div>
-        </div>
-      </div>
-    );
-  };
+    Mercado de 50 Billones USD:
+    El mercado global de criptomonedas supera los 50 billones de dólares, dominado por Bitcoin y Ethereum.
+
+    Colapso RSA-2048:
+    La computación cuántica amenaza con hacer obsoletos todos los sistemas criptográficos basados en RSA-2048 en menos de 10 años.
+
+    Oportunidad Temprana:
+    QbitCoin entra en el mercado con tecnología post-cuántica probada, posicionándose como la opción segura por excelencia.
+
+    Soberanía Europea:
+    Producto desarrollado íntegramente en Europa, cumpliendo con regulaciones MiCA y GDPR.
+  `;
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden relative">
@@ -413,58 +337,64 @@ while Verification_Fails(Permutation):
       </div>
 
       {/* --- MODAL GENERAL --- */}
-      <Modal 
-        isOpen={modalOpen} 
-        onClose={closeModal} 
-        title={modalContent.title} 
-        content={modalContent.content} 
-      />
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-black/70">
+          <div className="relative w-full max-w-2xl bg-[#0a0a0a] border border-[#00ff9d]/30 rounded-2xl p-8 max-h-[80vh] overflow-y-auto shadow-[0_0_50px_rgba(0,255,157,0.15)]">
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl"
+            >
+              ✕
+            </button>
+            <h3 className="text-2xl font-bold text-[#00ff9d] mb-4">{modalContent.title}</h3>
+            <div 
+              className="text-gray-300 whitespace-pre-line"
+              dangerouslySetInnerHTML={{ __html: modalContent.content.replace(/\n/g, '<br />') }}
+            />
+          </div>
+        </div>
+      )}
 
       {/* --- MODAL TESIS DE INVERSIÓN --- */}
-      <Modal 
-        isOpen={investmentModalOpen} 
-        onClose={closeInvestmentModal} 
-        title="Tesis de Inversión" 
-        content={thesisContent} 
-      />
+      {investmentModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-black/70">
+          <div className="relative w-full max-w-3xl bg-[#0a0a0a] border border-[#00ff9d]/30 rounded-2xl p-8 max-h-[80vh] overflow-y-auto shadow-[0_0_50px_rgba(0,255,157,0.15)]">
+            <button
+              onClick={closeInvestmentModal}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl"
+            >
+              ✕
+            </button>
+            <h3 className="text-3xl font-bold text-[#00ff9d] mb-6">Tesis de Inversión</h3>
+            <div className="text-gray-300 leading-relaxed space-y-4 whitespace-pre-line">
+              {thesisContent.split('\n\n').map((paragraph, idx) => (
+                <p key={idx}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* --- A. HERO SECTION --- */}
       <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-24 text-center">
-        <div className="mb-8 inline-block border border-[#00ff9d]/30 bg-[#00ff9d]/5 px-6 py-2 rounded-full backdrop-blur-md">
+        <div className="mb-8 inline-block border border-[#00ff9d]/30 bg-[#00ff9d]/10 px-6 py-2 rounded-full backdrop-blur-md animate-pulse-glow">
           <span className="text-[#00ff9d] text-xs font-mono tracking-[0.3em] font-bold">SOBERANÍA MATEMÁTICA POST-CUÁNTICA</span>
         </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00ff9d] to-[#7000ff]">
+        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00ff9d] to-[#7000ff] drop-shadow-2xl">
           LA INFRAESTRUCTURA DE LA
         </h1>
 
-        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-12 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00eeff] to-[#7000ff]">
+        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-12 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00eeff] to-[#7000ff] drop-shadow-2xl">
           SOBERANÍA MATEMÁTICA
         </h1>
 
-        <p className="text-lg md:text-xl text-gray-400 font-light mb-16 max-w-3xl mx-auto leading-relaxed px-4">
+        <p className="text-lg md:text-xl text-gray-400 font-light mb-12 max-w-3xl mx-auto leading-relaxed px-4">
           Mientras la <span className="text-red-500 font-bold">criptografía clásica colapsa</span>, QbitCoin construye el <span className="text-[#00ff9d] font-medium">búnker digital de Europa</span>.
         </p>
 
         {/* Countdown */}
-        <div className="grid grid-cols-4 gap-4 md:gap-8 mb-16 w-full max-w-2xl">
-          <div className="text-center">
-            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">{timeLeft.days}</div>
-            <div className="text-xs md:text-sm text-gray-400 mt-2">DÍAS</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">{timeLeft.hours}</div>
-            <div className="text-xs md:text-sm text-gray-400 mt-2">HORAS</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">{timeLeft.minutes}</div>
-            <div className="text-xs md:text-sm text-gray-400 mt-2">MINUTOS</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">{timeLeft.seconds}</div>
-            <div className="text-xs md:text-sm text-gray-400 mt-2">SEGUNDOS</div>
-          </div>
-        </div>
+        <Countdown />
 
         {/* Botón que abre el modal de Tesis de Inversión */}
         <button
@@ -519,7 +449,43 @@ while Verification_Fails(Permutation):
 
             {/* Timeline Items */}
             <div className="space-y-16">
-              {roadmapData.map((item, index) => (
+              {[
+                {
+                  period: "Jul - Nov 2024",
+                  title: "Fundación",
+                  status: "COMPLETADO",
+                  statusColor: "bg-green-500/20 text-green-400",
+                  description: "Fundación en Frankfurt y whitepaper técnico completo.",
+                },
+                {
+                  period: "Q4 2024 - Q1 2025",
+                  title: "Testnet Alfa",
+                  status: "EN PROCESO",
+                  statusColor: "bg-yellow-500/20 text-yellow-400",
+                  description: "Validación interna de `rubikpow_benchmarks.rs` y seguridad.",
+                },
+                {
+                  period: "1 Jun 2025",
+                  title: "Testnet Público",
+                  status: "PRÓXIMAMENTE",
+                  statusColor: "bg-blue-500/20 text-blue-400",
+                  description: "Apertura global y evaluación EIC.",
+                },
+                {
+                  period: "2026",
+                  title: "Mainnet",
+                  status: "OBJETIVO",
+                  statusColor: "bg-purple-500/20 text-brand-purple",
+                  description: "Lanzamiento oficial y listado exchanges.",
+                },
+                {
+                  period: "2027",
+                  title: "Hegemonía",
+                  status: "VISIÓN",
+                  statusColor: "bg-[#00ff9d]/20 text-[#00ff9d]",
+                  description: "Adopción bancos centrales europeos.",
+                }
+              ].map((item, index) => (
                 <div key={index} className="flex flex-col md:flex-row items-center">
                   <div className="md:w-1/4 mb-4 md:mb-0 text-center md:text-right">
                     <p className="text-xl font-bold text-[#00ff9d]">{item.title}</p>
