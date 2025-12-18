@@ -52,9 +52,9 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
 };
 
 export default function CountdownComponent() {
-  // Fecha objetivo: 1 de junio de 2025 a las 00:00:00 UTC
-  const targetDate = new Date(2025, 5, 1, 0, 0, 0); // Mes 5 es junio (0-indexed)
-  
+  // Fecha objetivo: 1 de junio de 2026 a las 00:00:00 UTC
+  const targetDate = new Date('2026-06-01T00:00:00Z').getTime(); // Timestamp seguro para 2026
+
   return (
     <Countdown
       date={targetDate}
