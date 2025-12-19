@@ -561,11 +561,11 @@ while Verification_Fails(Permutation):
                          cx="50%"
                          cy="50%"
                          innerRadius={140}
-                         outerRadius={200}
+                         outerRadius={180}
                          paddingAngle={3}
                          dataKey="value"
                          nameKey="name"
-                         label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                         label={false}
                          labelLine={false}
                        >
                          {[
