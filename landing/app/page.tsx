@@ -1,20 +1,43 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
+import Countdown from 'react-countdown';
 
-// Importar el componente de contador sin SSR para evitar errores de hidratación
-const Countdown = dynamic(() => import('./components/Countdown'), {
-  ssr: false,
-  loading: () => (
-    <div className="grid grid-cols-4 gap-4 md:gap-8 mb-16 w-full max-w-2xl animate-pulse">
-       {[...Array(4)].map((_, i) => (
+// Renderizador del contador
+const renderer = ({ days, hours, minutes, seconds, completed }) => {
+  if (completed) {
+    return (
+      <div className="grid grid-cols-4 gap-4 md:gap-8 mb-16 w-full max-w-2xl">
+        {['DÍAS', 'HORAS', 'MINUTOS', 'SEGUNDOS'].map((label, i) => (
           <div key={i} className="text-center">
-             <div className="text-3xl md:text-5xl font-mono font-bold text-white/50 bg-black/30 p-4 rounded-xl border border-white/10">--</div>
+            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">00</div>
+            <div className="text-xs md:text-sm text-gray-400 mt-2">{label}</div>
           </div>
-       ))}
-    </div>
-  )
-});
+        ))}
+      </div>
+    );
+  } else {
+    return (
+      <div className="grid grid-cols-4 gap-4 md:gap-8 mb-16 w-full max-w-2xl animate-fade-in-up">
+        <div className="text-center">
+          <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(days).padStart(2, '0')}</div>
+          <div className="text-xs md:text-sm text-gray-400 mt-2">DÍAS</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(hours).padStart(2, '0')}</div>
+          <div className="text-xs md:text-sm text-gray-400 mt-2">HORAS</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(minutes).padStart(2, '0')}</div>
+          <div className="text-xs md:text-sm text-gray-400 mt-2">MINUTOS</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(seconds).padStart(2, '0')}</div>
+          <div className="text-xs md:text-sm text-gray-400 mt-2">SEGUNDOS</div>
+        </div>
+      </div>
+    );
+  }
+};
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -414,10 +437,18 @@ while Verification_Fails(Permutation):
           Mientras la <span className="text-red-500 font-bold">criptografía clásica colapsa</span>, QbitCoin construye el <span className="text-[#00ff9d] font-medium">búnker digital de Europa</span>.
         </p>
 
+        {/* Contador principal */}
+        <div className="w-full max-w-2xl mx-auto">
+          <Countdown
+            date={1780185600000} // Timestamp fijo: 1 de Junio de 2026
+            renderer={renderer}
+          />
+        </div>
+
         {/* Botón CTA que abre el modal de Tesis */}
         <button
           onClick={() => openModal('Tesis de Inversión', thesisContent)}
-          className="px-8 py-4 bg-gradient-to-r from-[#00ff9d] to-[#7000ff] rounded-full text-black font-bold text-lg hover:opacity-90 transition-opacity mt-4"
+          className="px-8 py-4 bg-gradient-to-r from-[#00ff9d] to-[#7000ff] rounded-full text-black font-bold text-lg hover:opacity-90 transition-opacity"
         >
           Ver Tesis de Inversión
         </button>
