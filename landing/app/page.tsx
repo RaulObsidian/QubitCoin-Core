@@ -528,6 +528,63 @@ while Verification_Fails(Permutation):
         </div>
       </section>
 
+      {/* TOKENOMICS SECTION */}
+      <section className="relative z-10 py-24 px-4 bg-[#0a0a0a]">
+        <div className="max-w-6xl mx-auto">
+           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center text-white">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-[#7000ff]">Economía Deflacionaria</span>
+           </h2>
+
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* Gráfico Visual (Representación CSS) */}
+              <div className="relative h-80 w-80 mx-auto md:ml-auto">
+                 <div className="absolute inset-0 rounded-full border-[20px] border-[#00ff9d]/20 animate-spin-slow"></div>
+                 <div className="absolute inset-4 rounded-full border-[20px] border-[#7000ff]/20 animate-reverse-spin"></div>
+                 <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <span className="text-4xl font-bold text-white">21M</span>
+                    <span className="text-xs text-gray-400 tracking-widest">MAX SUPPLY</span>
+                 </div>
+              </div>
+
+              {/* Datos de Distribución */}
+              <div className="space-y-6">
+                 <div className="p-6 rounded-xl border border-white/10 bg-white/5 hover:border-[#00ff9d] transition-all">
+                    <div className="flex justify-between items-center mb-2">
+                       <h3 className="font-bold text-xl text-white">Minería PoUW</h3>
+                       <span className="text-[#00ff9d] font-mono font-bold">60%</span>
+                    </div>
+                    <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                       <div className="bg-[#00ff9d] h-full" style={{ width: '60%' }}></div>
+                    </div>
+                    <p className="text-xs text-gray-400 mt-2">Recompensas por cálculo útil (Científico/Industrial).</p>
+                 </div>
+
+                 <div className="p-6 rounded-xl border border-white/10 bg-white/5 hover:border-[#7000ff] transition-all">
+                    <div className="flex justify-between items-center mb-2">
+                       <h3 className="font-bold text-xl text-white">Tesorería DAO (I+D)</h3>
+                       <span className="text-[#7000ff] font-mono font-bold">25%</span>
+                    </div>
+                    <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                       <div className="bg-[#7000ff] h-full" style={{ width: '25%' }}></div>
+                    </div>
+                    <p className="text-xs text-gray-400 mt-2">Financiación de hardware soberano y desarrollo.</p>
+                 </div>
+
+                 <div className="p-6 rounded-xl border border-white/10 bg-white/5 hover:border-blue-400 transition-all">
+                    <div className="flex justify-between items-center mb-2">
+                       <h3 className="font-bold text-xl text-white">Validadores & Seguridad</h3>
+                       <span className="text-blue-400 font-mono font-bold">15%</span>
+                    </div>
+                    <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                       <div className="bg-blue-400 h-full" style={{ width: '15%' }}></div>
+                    </div>
+                    <p className="text-xs text-gray-400 mt-2">Incentivos para la seguridad de la red post-cuántica.</p>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </section>
+
       {/* DOWNLOAD SECTION */}
       <section className="relative z-10 py-24 px-4">
         <div className="max-w-6xl mx-auto">
