@@ -1,7 +1,22 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Countdown from 'react-countdown';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, Sector } from 'recharts';
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Tooltip as RechartsTooltip,
+  Sector,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Legend,
+  AreaChart,
+  Area
+} from 'recharts';
 
 // Renderizador del contador
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -634,6 +649,117 @@ while Verification_Fails(Permutation):
                  ))}
                </div>
             </div>
+         </div>
+      </section>
+
+      {/* === MARKET INTELLIGENCE SECTION === */}
+      <section className="relative z-10 py-32 px-4 bg-gradient-to-b from-[#0a0a0a] to-[#050505]">
+         <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+               <h2 className="text-4xl md:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
+                  Proyecciones de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-blue-500">Impacto Global</span>
+               </h2>
+               <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                  QbitCoin se posiciona para capturar valor crítico en la transición hacia la economía cuántica y la tokenización masiva (RWA).
+               </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+               {/* GRÁFICO 1: CRECIMIENTO DEL MERCADO RWA (TAM) */}
+               <div className="p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm relative overflow-hidden group hover:border-[#00ff9d]/30 transition-all">
+                  <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
+                     <div className="text-[#00ff9d] text-xs font-mono border border-[#00ff9d] px-2 py-1 rounded">DATA: BCG/BLACKROCK</div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">Tokenización RWA (2024-2030)</h3>
+                  <p className="text-sm text-gray-400 mb-8">Proyección del mercado global de activos tokenizados. El objetivo es alcanzar los $30T.</p>
+
+                  <div className="h-[300px] w-full">
+                     <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={[
+                           { year: '2024', valor: 0.8 },
+                           { year: '2025', valor: 2.5 },
+                           { year: '2026', valor: 5.2 },
+                           { year: '2027', valor: 10.5 },
+                           { year: '2028', valor: 18.0 },
+                           { year: '2029', valor: 24.5 },
+                           { year: '2030', valor: 30.0 }, // Proyección de $30 Trillones
+                        ]}>
+                           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                           <XAxis dataKey="year" stroke="#6b7280" style={{ fontSize: '12px' }} />
+                           <YAxis stroke="#6b7280" style={{ fontSize: '12px' }} tickFormatter={(value) => `$${value}T`} />
+                           <Tooltip
+                              contentStyle={{ backgroundColor: '#111', border: '1px solid #333', borderRadius: '8px' }}
+                              itemStyle={{ color: '#00ff9d' }}
+                              formatter={(value) => [`$${value} Trillones`, 'Mercado RWA']}
+                           />
+                           <Bar dataKey="valor" fill="url(#colorGradientBar)" radius={[4, 4, 0, 0]} />
+                           <defs>
+                              <linearGradient id="colorGradientBar" x1="0" y1="0" x2="0" y2="1">
+                                 <stop offset="5%" stopColor="#00ff9d" stopOpacity={0.8}/>
+                                 <stop offset="95%" stopColor="#00ff9d" stopOpacity={0.2}/>
+                              </linearGradient>
+                           </defs>
+                        </BarChart>
+                     </ResponsiveContainer>
+                  </div>
+               </div>
+
+               {/* GRÁFICO 2: ADOPCIÓN QBITCOIN (TVL PROYECTADO) */}
+               <div className="p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm relative overflow-hidden group hover:border-[#7000ff]/30 transition-all">
+                  <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
+                     <div className="text-[#7000ff] text-xs font-mono border border-[#7000ff] px-2 py-1 rounded">MODELO: ADOPCIÓN EXPONENCIAL</div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">Crecimiento de Red (TVL)</h3>
+                  <p className="text-sm text-gray-400 mb-8">Valor Total Bloqueado estimado tras el lanzamiento de Mainnet y puentes institucionales.</p>
+
+                  <div className="h-[300px] w-full">
+                     <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={[
+                           { year: '2025', tvl: 0.5 },
+                           { year: '2026', tvl: 5 },  // Salto por Mainnet
+                           { year: '2027', tvl: 25 }, // Adopción Bancaria
+                           { year: '2028', tvl: 80 },
+                           { year: '2029', tvl: 200 },
+                           { year: '2030', tvl: 500 },
+                        ]}>
+                           <defs>
+                              <linearGradient id="colorTvL" x1="0" y1="0" x2="0" y2="1">
+                                 <stop offset="5%" stopColor="#7000ff" stopOpacity={0.8}/>
+                                 <stop offset="95%" stopColor="#7000ff" stopOpacity={0}/>
+                              </linearGradient>
+                           </defs>
+                           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                           <XAxis dataKey="year" stroke="#6b7280" style={{ fontSize: '12px' }} />
+                           <YAxis stroke="#6b7280" style={{ fontSize: '12px' }} tickFormatter={(value) => `€${value}B`} />
+                           <Tooltip
+                              contentStyle={{ backgroundColor: '#111', border: '1px solid #333', borderRadius: '8px' }}
+                              itemStyle={{ color: '#a78bfa' }}
+                              formatter={(value) => [`€${value} Billones`, 'TVL Proyectado']}
+                           />
+                           <Area type="monotone" dataKey="tvl" stroke="#7000ff" strokeWidth={3} fillOpacity={1} fill="url(#colorTvL)" />
+                        </AreaChart>
+                     </ResponsiveContainer>
+                  </div>
+               </div>
+
+            </div>
+
+            {/* BARRA DE DATOS KPI FINAL */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+               {[
+                  { label: "CAGR Mercado RWA", value: "+46%", color: "text-[#00ff9d]" },
+                  { label: "Riesgo Cuántico", value: "CRÍTICO", color: "text-red-500 animate-pulse" },
+                  { label: "Target Share EU", value: "5-8%", color: "text-blue-400" },
+                  { label: "Horizonte ROI", value: "5 Años", color: "text-purple-400" }
+               ].map((kpi, i) => (
+                  <div key={i} className="p-6 rounded-2xl bg-black/40 border border-white/5 text-center">
+                     <div className={`text-3xl font-black mb-2 ${kpi.color}`}>{kpi.value}</div>
+                     <div className="text-xs text-gray-500 font-mono tracking-wider uppercase">{kpi.label}</div>
+                  </div>
+               ))}
+            </div>
+
          </div>
       </section>
 
