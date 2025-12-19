@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Countdown from 'react-countdown';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, Sector } from 'recharts';
 
 // Renderizador del contador
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -528,61 +529,112 @@ while Verification_Fails(Permutation):
         </div>
       </section>
 
-      {/* TOKENOMICS SECTION */}
-      <section className="relative z-10 py-24 px-4 bg-[#0a0a0a]">
-        <div className="max-w-6xl mx-auto">
-           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center text-white">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-[#7000ff]">Economía Deflacionaria</span>
-           </h2>
+      {/* === TOKENOMICS SECTION PROFESIONAL V2 === */}
+      <section className="relative z-10 py-32 px-4 bg-[#0a0a0a] overflow-hidden">
+         {/* Fondo sutil de partículas o grid para dar profundidad */}
+         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5"></div>
 
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              {/* Gráfico Visual (Representación CSS) */}
-              <div className="relative h-80 w-80 mx-auto md:ml-auto">
-                 <div className="absolute inset-0 rounded-full border-[20px] border-[#00ff9d]/20 animate-spin-slow"></div>
-                 <div className="absolute inset-4 rounded-full border-[20px] border-[#7000ff]/20 animate-reverse-spin"></div>
-                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-4xl font-bold text-white">21M</span>
-                    <span className="text-xs text-gray-400 tracking-widest">MAX SUPPLY</span>
-                 </div>
-              </div>
+         <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-20">
+               <h2 className="text-5xl md:text-6xl font-black mb-4 text-white uppercase tracking-tighter">
+                  Arquitectura <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-[#7000ff]">Económica</span>
+               </h2>
+               <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                  Modelo deflacionario diseñado para la soberanía tecnológica y la sostenibilidad a largo plazo.
+               </p>
+            </div>
 
-              {/* Datos de Distribución */}
-              <div className="space-y-6">
-                 <div className="p-6 rounded-xl border border-white/10 bg-white/5 hover:border-[#00ff9d] transition-all">
-                    <div className="flex justify-between items-center mb-2">
-                       <h3 className="font-bold text-xl text-white">Minería PoUW</h3>
-                       <span className="text-[#00ff9d] font-mono font-bold">60%</span>
-                    </div>
-                    <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
-                       <div className="bg-[#00ff9d] h-full" style={{ width: '60%' }}></div>
-                    </div>
-                    <p className="text-xs text-gray-400 mt-2">Recompensas por cálculo útil (Científico/Industrial).</p>
-                 </div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+               {/* --- COLUMNA IZQUIERDA: GRÁFICO INTERACTIVO (Recharts) --- */}
+               <div className="lg:col-span-7 flex flex-col items-center justify-center">
+                 <div className="w-full h-[500px] relative z-20">
+                   <ResponsiveContainer width="100%" height="100%">
+                     <PieChart>
+                       <Pie
+                         data={[
+                           { name: 'Minería PoUW (Científica)', value: 45, color: '#00ff9d' },
+                           { name: 'Tesorería DAO & I+D', value: 20, color: '#7000ff' },
+                           { name: 'Equipo & Asesores (Vesting)', value: 15, color: '#00a8ff' },
+                           { name: 'Fondo de Liquidez & Exchange', value: 10, color: '#ff00e6' },
+                           { name: 'Validadores & Seguridad Red', value: 10, color: '#ffbd00' },
+                         ]}
+                         cx="50%"
+                         cy="50%"
+                         innerRadius={140}
+                         outerRadius={200}
+                         paddingAngle={3}
+                         dataKey="value"
+                         nameKey="name"
+                         label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                         labelLine={false}
+                       >
+                         {[
+                           { name: 'Minería PoUW (Científica)', value: 45, color: '#00ff9d' },
+                           { name: 'Tesorería DAO & I+D', value: 20, color: '#7000ff' },
+                           { name: 'Equipo & Asesores (Vesting)', value: 15, color: '#00a8ff' },
+                           { name: 'Fondo de Liquidez & Exchange', value: 10, color: '#ff00e6' },
+                           { name: 'Validadores & Seguridad Red', value: 10, color: '#ffbd00' },
+                         ].map((entry, index) => (
+                           <Cell key={`cell-${index}`} fill={entry.color} style={{ outline: 'none' }} />
+                         ))}
+                       </Pie>
+                       <RechartsTooltip
+                         contentStyle={{
+                           backgroundColor: '#0a0a0a',
+                           border: '1px solid rgba(255,255,255,0.1)',
+                           borderRadius: '12px',
+                           boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                           color: '#fff'
+                         }}
+                         itemStyle={{ color: '#fff' }}
+                         formatter={(value, name, props) => [`${value}%`, '']}
+                         labelFormatter={(value) => `Distribución: ${value}`}
+                       />
+                     </PieChart>
+                   </ResponsiveContainer>
 
-                 <div className="p-6 rounded-xl border border-white/10 bg-white/5 hover:border-[#7000ff] transition-all">
-                    <div className="flex justify-between items-center mb-2">
-                       <h3 className="font-bold text-xl text-white">Tesorería DAO (I+D)</h3>
-                       <span className="text-[#7000ff] font-mono font-bold">25%</span>
-                    </div>
-                    <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
-                       <div className="bg-[#7000ff] h-full" style={{ width: '25%' }}></div>
-                    </div>
-                    <p className="text-xs text-gray-400 mt-2">Financiación de hardware soberano y desarrollo.</p>
-                 </div>
+                   {/* Etiqueta central personalizada */}
+                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                     <div className="text-5xl font-black text-white">21M</div>
+                     <div className="text-sm text-gray-400 tracking-widest">MAX SUPPLY</div>
+                   </div>
 
-                 <div className="p-6 rounded-xl border border-white/10 bg-white/5 hover:border-blue-400 transition-all">
-                    <div className="flex justify-between items-center mb-2">
-                       <h3 className="font-bold text-xl text-white">Validadores & Seguridad</h3>
-                       <span className="text-blue-400 font-mono font-bold">15%</span>
-                    </div>
-                    <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
-                       <div className="bg-blue-400 h-full" style={{ width: '15%' }}></div>
-                    </div>
-                    <p className="text-xs text-gray-400 mt-2">Incentivos para la seguridad de la red post-cuántica.</p>
+                   {/* Círculos decorativos de fondo */}
+                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full border border-[#00ff9d]/10 animate-spin-slow"></div>
+                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] rounded-full border border-[#7000ff]/10 animate-spin-slow-reverse"></div>
                  </div>
-              </div>
-           </div>
-        </div>
+               </div>
+
+               {/* --- COLUMNA DERECHA: LISTA INTERACTIVA (CLICKABLE) --- */}
+               <div className="lg:col-span-5 space-y-4">
+                 {[
+                   { name: 'Minería PoUW (Científica)', value: 45, color: '#00ff9d', detail: 'Recompensas directas para nodos que aportan poder de cálculo útil a la red (Q-HPC). Emisión decreciente tipo Halving.' },
+                   { name: 'Tesorería DAO & I+D', value: 20, color: '#7000ff', detail: 'Fondo gobernado por la comunidad para financiar desarrollo de hardware cuántico-resistente, grants y expansión del ecosistema.' },
+                   { name: 'Equipo & Asesores (Vesting)', value: 15, color: '#00a8ff', detail: 'Asignación para fundadores y expertos clave. Bloqueado por 2 años con liberación lineal posterior para alinear incentivos.' },
+                   { name: 'Fondo de Liquidez & Exchange', value: 10, color: '#ff00e6', detail: 'Provisión de liquidez inicial en DEX/CEX para asegurar estabilidad de mercado y accesibilidad del token QBIT.' },
+                   { name: 'Validadores & Seguridad Red', value: 10, color: '#ffbd00', detail: 'Incentivos exclusivos para nodos validadores que aseguran el consenso RubikPoW y la finalidad de las transacciones.' },
+                 ].map((item, index) => (
+                   <button
+                     key={index}
+                     className="w-full text-left group p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00ff9d] transition-all duration-300 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(0,255,157,0.1)] flex justify-between items-center relative overflow-hidden"
+                     onClick={() => openModal(item.name, `${item.name}\n\n${item.value}% del Supply Total\n\n${item.detail}`)}
+                   >
+                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 transform -translate-x-full group-hover:translate-x-0"></div>
+                     <div className="flex items-center gap-4 relative z-10">
+                       <div className="h-4 w-4 rounded-full shadow-[0_0_10px_currentColor]" style={{ backgroundColor: item.color }}></div>
+                       <span className="font-bold text-lg text-white group-hover:text-gray-100 transition-colors">{item.name}</span>
+                     </div>
+                     <div className="flex items-center gap-3 relative z-10">
+                       <span className="font-mono text-2xl font-black" style={{ color: item.color }}>{item.value}%</span>
+                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-gray-500 group-hover:text-[#00ff9d] transition-colors transform group-hover:translate-x-1 duration-300">
+                         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                       </svg>
+                     </div>
+                   </button>
+                 ))}
+               </div>
+            </div>
+         </div>
       </section>
 
       {/* DOWNLOAD SECTION */}
