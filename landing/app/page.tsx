@@ -1,105 +1,74 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+
+// Importar el componente de contador sin SSR para evitar errores de hidratación
+const Countdown = dynamic(() => import('./components/Countdown'), {
+  ssr: false,
+  loading: () => (
+    <div className="grid grid-cols-4 gap-4 md:gap-8 mb-16 w-full max-w-2xl animate-pulse">
+       {[...Array(4)].map((_, i) => (
+          <div key={i} className="text-center">
+             <div className="text-3xl md:text-5xl font-mono font-bold text-white/50 bg-black/30 p-4 rounded-xl border border-white/10">--</div>
+          </div>
+       ))}
+    </div>
+  )
+});
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [activeTab, setActiveTab] = useState('tecnologia');
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({ title: '', content: '' });
   const [investmentModalOpen, setInvestmentModalOpen] = useState(false);
-  const [selectedRoadmapItem, setSelectedRoadmapItem] = useState(null);
+  const [activeTab, setActiveTab] = useState('tecnologia');
 
   useEffect(() => {
     setMounted(true);
+  }, []);
 
-    // Fecha objetivo: 1 de Junio de 2025 a las 00:00:00 UTC
-    const targetDate = new Date('2025-06-01T00:00:00Z').getTime();
-
-    const calculateTimeLeft = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference <= 0) {
-        // Si la fecha ya pasó, devolvemos ceros
-        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-      }
-
-      // Calcular días, horas, minutos y segundos restantes
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-      return { days, hours, minutes, seconds };
-    };
-
-    // Establecer inmediatamente el tiempo restante
-    setTimeLeft(calculateTimeLeft());
-
-    // Actualizar cada segundo
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    // Limpiar intervalo al desmontar
-    return () => clearInterval(timer);
-  }, []); // Dependencia vacía para que se ejecute solo una vez al montar
-
-  // Función para abrir modales
   const openModal = (title, content) => {
     setModalContent({ title, content });
     setModalOpen(true);
   };
 
-  // Función para cerrar modales
   const closeModal = () => {
     setModalOpen(false);
   };
 
-  // Función para abrir el modal de tesis de inversión
   const openInvestmentModal = () => {
     setInvestmentModalOpen(true);
   };
 
-  // Función para cerrar el modal de tesis de inversión
   const closeInvestmentModal = () => {
     setInvestmentModalOpen(false);
   };
 
-  // Función para abrir modal de roadmap
-  const openRoadmapModal = (item) => {
-    setSelectedRoadmapItem(item);
-    setModalOpen(true);
-  };
-
-  if (!mounted) return <div className="min-h-screen bg-[#050505]" />;
-
-  // Datos actualizados del roadmap
+  // DATOS DEL ROADMAP (CORREGIDOS 2025-2027)
   const roadmapData = [
     {
-      period: "Jul - Nov 2024",
+      period: "Jul - Nov 2025",
       title: "Fundación",
       status: "COMPLETADO",
       statusColor: "bg-green-500/20 text-green-400",
       description: "Fundación en Frankfurt y whitepaper técnico completo."
     },
     {
-      period: "Q4 2024 - Q1 2025",
+      period: "Q4 2025 - Q1 2026",
       title: "Testnet Alfa",
       status: "EN PROCESO",
       statusColor: "bg-yellow-500/20 text-yellow-400",
-      description: "Validación interna de `rubikpow_benchmarks.rs` y seguridad."
+      description: "Validación interna de rubikpow_benchmarks.rs y seguridad."
     },
     {
-      period: "1 Jun 2025",
+      period: "1 Jun 2026",
       title: "Testnet Público",
       status: "PRÓXIMAMENTE",
       statusColor: "bg-blue-500/20 text-blue-400",
       description: "Apertura global y evaluación EIC."
     },
     {
-      period: "2026",
+      period: "Q3 2026 - Q4 2026",
       title: "Mainnet",
       status: "OBJETIVO",
       statusColor: "bg-purple-500/20 text-brand-purple",
@@ -113,6 +82,38 @@ export default function Home() {
       description: "Adopción bancos centrales europeos."
     }
   ];
+
+  const thesisContent = `
+    RESUMEN EJECUTIVO: TESIS DE INVERSIÓN
+
+    Mercado de 50 Billones USD:
+    El mercado global de criptomonedas supera los 50 billones de dólares. La verdadera oportunidad reside en la tokenización de activos del mundo real (RWA). Se proyecta que para 2030, el 10% del PIB mundial estará almacenado en tecnologías DLT.
+
+    Colapso RSA-2048:
+    La computación cuántica amenaza con hacer obsoletos todos los sistemas criptográficos basados en RSA-2048. QbitCoin se anticipa al "Día Q" migrando a esquemas de firma post-cuántica (PQC).
+
+    Oportunidad Temprana:
+    Bitcoin tiene la ventaja del primer movimiento, pero QbitCoin tiene la ventaja del último movimiento tecnológico con arquitectura RubikPoW nativa.
+
+    Soberanía Europea:
+    Producto desarrollado íntegramente en Europa, cumpliendo con regulaciones MiCA y GDPR.
+  `;
+
+  // Componente Modal Genérico
+  const Modal = ({ isOpen, onClose, title, content }) => {
+    if (!isOpen) return null;
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-black/70 animate-fade-in">
+        <div className="relative w-full max-w-3xl bg-[#0a0a0a] border border-[#00ff9d]/30 rounded-2xl p-8 max-h-[80vh] overflow-y-auto shadow-[0_0_50px_rgba(0,255,157,0.15)]">
+          <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">✕</button>
+          <h3 className="text-2xl font-bold text-[#00ff9d] mb-4">{title}</h3>
+          <div className="text-gray-300 leading-relaxed whitespace-pre-line" dangerouslySetInnerHTML={{ __html: content }} />
+        </div>
+      </div>
+    );
+  };
+
+  if (!mounted) return <div className="min-h-screen bg-[#050505]" />;
 
   // Contenido para las pestañas
   const tabContents = {
@@ -364,122 +365,65 @@ while Verification_Fails(Permutation):
     )
   };
 
-  // Contenido para el modal de Tesis de Inversión
-  const thesisContent = `
-    RESUMEN EJECUTIVO: TESIS DE INVERSIÓN
-
-    Mercado de 50 Billones USD:
-    El mercado global de criptomonedas supera los 50 billones de dólares, dominado por Bitcoin y Ethereum.
-    La verdadera oportunidad reside en la tokenización de activos del mundo real (RWA) y la infraestructura financiera institucional.
-    Se proyecta que para 2030, el 10% del PIB mundial estará almacenado en tecnologías DLT.
-
-    Amenaza RSA-2048:
-    La amenaza "Harvest Now, Decrypt Later" es real. La computación cuántica amenaza con hacer obsoletos todos los sistemas criptográficos basados en RSA-2048 en menos de 10 años.
-
-    Oportunidad Temprana:
-    QbitCoin entra en el mercado con tecnología post-cuántica probada, posicionándose como la opción segura por excelencia.
-    Bitcoin tiene la ventaja del primer movimiento, pero QbitCoin tiene la ventaja del último movimiento tecnológico.
-
-    Soberanía Europea:
-    Producto desarrollado íntegramente en Europa, cumpliendo con regulaciones MiCA y GDPR.
-  `;
-
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden relative">
-      {/* --- BACKGROUND AURORA EFFECT --- */}
+      
+      {/* Background Aurora */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#00ff9d]/10 via-[#050505] to-[#050505]"></div>
         <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#7000ff]/20 rounded-full blur-[100px] animate-pulse"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#00ff9d]/10 rounded-full blur-[100px] animate-pulse" style={{animationDelay: '2s'}}></div>
       </div>
 
-      {/* --- MODAL GENERAL --- */}
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-black/70">
-          <div className="relative w-full max-w-2xl bg-[#0a0a0a] border border-[#00ff9d]/30 rounded-2xl p-8 max-h-[80vh] overflow-y-auto shadow-[0_0_50px_rgba(0,255,157,0.15)]">
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl"
-            >
-              ✕
-            </button>
-            <h3 className="text-2xl font-bold text-[#00ff9d] mb-4">{modalContent.title}</h3>
-            <div 
-              className="text-gray-300 whitespace-pre-line"
-              dangerouslySetInnerHTML={{ __html: modalContent.content.replace(/\n/g, '<br />') }}
-            />
-          </div>
-        </div>
-      )}
-
-      {/* --- MODAL TESIS DE INVERSIÓN --- */}
+      {/* Modales */}
+      <Modal 
+        isOpen={modalOpen} 
+        onClose={closeModal} 
+        title={modalContent.title} 
+        content={modalContent.content} 
+      />
+      
+      {/* Modal Tesis (Custom) */}
       {investmentModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-black/70">
-          <div className="relative w-full max-w-3xl bg-[#0a0a0a] border border-[#00ff9d]/30 rounded-2xl p-8 max-h-[80vh] overflow-y-auto shadow-[0_0_50px_rgba(0,255,157,0.15)]">
-            <button
-              onClick={closeInvestmentModal}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl"
-            >
-              ✕
-            </button>
-            <h3 className="text-3xl font-bold text-[#00ff9d] mb-6">Tesis de Inversión</h3>
-            <div className="text-gray-300 leading-relaxed space-y-4 whitespace-pre-line">
-              {thesisContent.split('\n\n').map((paragraph, idx) => (
-                <p key={idx}>{paragraph}</p>
-              ))}
-            </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-black/80">
+          <div className="relative w-full max-w-3xl bg-[#0a0a0a] border border-[#7000ff]/30 rounded-2xl p-8 max-h-[80vh] overflow-y-auto shadow-[0_0_50px_rgba(112,0,255,0.15)]">
+             <button onClick={closeInvestmentModal} className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">✕</button>
+             <h3 className="text-3xl font-bold text-[#00ff9d] mb-6">Tesis de Inversión</h3>
+             <div className="text-gray-300 leading-relaxed space-y-4 whitespace-pre-line">
+                {thesisContent.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
+             </div>
           </div>
         </div>
       )}
 
-      {/* --- A. HERO SECTION --- */}
+      {/* HERO SECTION */}
       <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-24 text-center">
         <div className="mb-8 inline-block border border-[#00ff9d]/30 bg-[#00ff9d]/10 px-6 py-2 rounded-full backdrop-blur-md animate-pulse-glow">
           <span className="text-[#00ff9d] text-xs font-mono tracking-[0.3em] font-bold">SOBERANÍA MATEMÁTICA POST-CUÁNTICA</span>
         </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00ff9d] to-[#7000ff] drop-shadow-2xl">
+        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00ff9d] to-[#7000ff] drop-shadow-2xl animate-glow-pulse">
           LA INFRAESTRUCTURA DE LA
         </h1>
 
-        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-12 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00eeff] to-[#7000ff] drop-shadow-2xl">
+        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-12 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00eeff] to-[#7000ff] drop-shadow-2xl animate-glow-pulse">
           SOBERANÍA MATEMÁTICA
         </h1>
 
-        <p className="text-lg md:text-xl text-gray-400 font-light mb-16 max-w-3xl mx-auto leading-relaxed px-4">
+        <p className="text-lg md:text-xl text-gray-400 font-light mb-12 max-w-3xl mx-auto leading-relaxed px-4">
           Mientras la <span className="text-red-500 font-bold">criptografía clásica colapsa</span>, QbitCoin construye el <span className="text-[#00ff9d] font-medium">búnker digital de Europa</span>.
         </p>
 
-        {/* Countdown */}
-        <div className="grid grid-cols-4 gap-4 md:gap-8 mb-16 w-full max-w-2xl">
-          <div className="text-center">
-            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(timeLeft.days).padStart(2, '0')}</div>
-            <div className="text-xs md:text-sm text-gray-400 mt-2">DÍAS</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(timeLeft.hours).padStart(2, '0')}</div>
-            <div className="text-xs md:text-sm text-gray-400 mt-2">HORAS</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(timeLeft.minutes).padStart(2, '0')}</div>
-            <div className="text-xs md:text-sm text-gray-400 mt-2">MINUTOS</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(timeLeft.seconds).padStart(2, '0')}</div>
-            <div className="text-xs md:text-sm text-gray-400 mt-2">SEGUNDOS</div>
-          </div>
-        </div>
-
-        {/* Botón que abre el modal de Tesis de Inversión */}
+        {/* Botón CTA que abre el modal de Tesis */}
         <button
-          className="px-8 py-4 bg-gradient-to-r from-[#00ff9d] to-[#7000ff] rounded-full text-black font-bold text-lg hover:opacity-90 transition-opacity"
-          onClick={openInvestmentModal}
+          onClick={() => openModal('Tesis de Inversión', thesisContent)}
+          className="px-8 py-4 bg-gradient-to-r from-[#00ff9d] to-[#7000ff] rounded-full text-black font-bold text-lg hover:opacity-90 transition-opacity mt-4"
         >
           Ver Tesis de Inversión
         </button>
       </section>
 
-      {/* --- B. TABS NAVIGATION SECTION --- */}
+      {/* TABS NAVIGATION */}
       <section className="relative z-10 py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap justify-center mb-8 gap-2">
@@ -510,7 +454,7 @@ while Verification_Fails(Permutation):
         </div>
       </section>
 
-      {/* --- C. ROADMAP SECTION --- */}
+      {/* ROADMAP SECTION */}
       <section className="relative z-10 py-24 px-4 bg-gradient-to-b from-transparent to-[#0a0a0a]">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-[#7000ff]">
@@ -518,10 +462,9 @@ while Verification_Fails(Permutation):
           </h2>
 
           <div className="relative">
-            {/* Vertical timeline line */}
+            {/* Línea vertical */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-[#00ff9d] to-[#7000ff]"></div>
-
-            {/* Timeline Items */}
+            
             <div className="space-y-16">
               {roadmapData.map((item, index) => (
                 <div key={index} className="flex flex-col md:flex-row items-center">
@@ -554,7 +497,7 @@ while Verification_Fails(Permutation):
         </div>
       </section>
 
-      {/* --- D. DOWNLOAD SECTION --- */}
+      {/* DOWNLOAD SECTION */}
       <section className="relative z-10 py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">Documentación Institucional</h2>
@@ -570,7 +513,6 @@ while Verification_Fails(Permutation):
                 href={`/whitepaper/QbitCoin-QBC _EU_${doc.lang}_Final.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
-                download
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 text-left transition-all duration-300 hover:border-[#00ff9d]/50 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(0,255,157,0.1)]"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#00ff9d]/0 to-[#7000ff]/0 group-hover:from-[#00ff9d]/5 group-hover:to-transparent transition-all duration-500"></div>
@@ -590,7 +532,7 @@ while Verification_Fails(Permutation):
         </div>
       </section>
 
-      {/* --- E. FOOTER INSTITUCIONAL --- */}
+      {/* FOOTER */}
       <footer className="relative z-10 py-12 bg-[#0a0a0a] backdrop-blur-xl border-t border-white/10">
         <div className="max-w-6xl mx-auto text-center">
           <div className="flex flex-wrap justify-center gap-8 mb-6">
@@ -611,7 +553,7 @@ while Verification_Fails(Permutation):
           <p className="text-gray-400 text-[10px] font-mono tracking-widest uppercase">
             © 2025 QbitCoin Labs GmbH • Frankfurt am Main
           </p>
-          <p className="text-brand-accent text-[8px] mt-2">
+          <p className="text-[#00ff9d] text-[8px] mt-2">
             <a href="#" className="hover:underline">Iniciativa Europea de Soberanía Digital</a>
           </p>
           <p className="text-gray-500 text-[8px] mt-2">
