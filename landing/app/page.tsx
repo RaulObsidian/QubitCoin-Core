@@ -690,7 +690,7 @@ while Verification_Fails(Permutation):
                     style={{ fontSize: '12px' }}
                     tickFormatter={(value) => `$${value}T`}
                   />
-                  <Tooltip
+                  <RechartsTooltip
                     contentStyle={{
                       backgroundColor: '#0a0a0a',
                       border: '1px solid rgba(255,255,255,0.1)',
