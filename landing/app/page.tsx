@@ -4,10 +4,15 @@ import Countdown from 'react-countdown';
 import {
   PieChart,
   Pie,
+  BarChart,
+  Bar,
   Cell,
   ResponsiveContainer,
   Tooltip as RechartsTooltip,
-  Sector
+  Sector,
+  XAxis,
+  YAxis,
+  CartesianGrid
 } from 'recharts';
 
 // Renderizador del contador
@@ -642,6 +647,99 @@ while Verification_Fails(Permutation):
                </div>
             </div>
          </div>
+      </section>
+
+      {/* === PROYECCIONES DE MERCADO SECTION === */}
+      <section className="relative z-10 py-32 px-4 bg-gradient-to-b from-[#050505] to-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-black mb-4 text-white uppercase tracking-tighter">
+              Proyecciones de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-blue-500">Mercado</span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              QbitCoin captura valor en la transición hacia la tokenización de activos reales (RWA) y la infraestructura cuántica-resistente.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <div className="w-full h-[400px] max-w-4xl">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={[
+                    { year: '2024', valor: 0.8 },
+                    { year: '2025', valor: 2.5 },
+                    { year: '2026', valor: 5.2 },
+                    { year: '2027', valor: 10.5 },
+                    { year: '2028', valor: 18.0 },
+                    { year: '2029', valor: 24.5 },
+                    { year: '2030', valor: 30.0 },
+                  ]}
+                  margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <XAxis
+                    dataKey="year"
+                    stroke="#6b7280"
+                    style={{ fontSize: '12px' }}
+                    angle={-45}
+                    textAnchor="end"
+                    height={60}
+                  />
+                  <YAxis
+                    stroke="#6b7280"
+                    style={{ fontSize: '12px' }}
+                    tickFormatter={(value) => `$${value}T`}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: '#0a0a0a',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      borderRadius: '12px',
+                      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                      color: '#fff'
+                    }}
+                    itemStyle={{ color: '#fff' }}
+                    formatter={(value) => [`$${value} Trillones`, 'Mercado RWA']}
+                  />
+                  <Bar
+                    dataKey="valor"
+                    name="Mercado RWA"
+                    fill="url(#colorGradientBar)"
+                    radius={[4, 4, 0, 0]}
+                    className="cursor-pointer"
+                  >
+                    {[
+                      { year: '2024', valor: 0.8 },
+                      { year: '2025', valor: 2.5 },
+                      { year: '2026', valor: 5.2 },
+                      { year: '2027', valor: 10.5 },
+                      { year: '2028', valor: 18.0 },
+                      { year: '2029', valor: 24.5 },
+                      { year: '2030', valor: 30.0 },
+                    ].map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill="#00ff9d" />
+                    ))}
+                  </Bar>
+                  <defs>
+                    <linearGradient id="colorGradientBar" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#00ff9d" stopOpacity={0.8}/>
+                      <stop offset="95%" stopColor="#00ff9d" stopOpacity={0.2}/>
+                    </linearGradient>
+                  </defs>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div className="mt-12 text-center max-w-3xl">
+              <h3 className="text-2xl font-bold text-brand-accent mb-4">Mercado de Activos Reales Tokenizados (RWA)</h3>
+              <p className="text-gray-300 leading-relaxed">
+                El mercado de activos reales tokenizados (Real World Assets - RWA) está experimentando un crecimiento exponencial.
+                Se proyecta que alcance los <span className="text-brand-accent font-bold">$30 Trillones</span> para 2030, representando una oportunidad
+                crítica para infraestructuras financieras post-cuánticas como QbitCoin.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* DOWNLOAD SECTION */}
