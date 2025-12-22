@@ -816,8 +816,8 @@ while Verification_Fails(Permutation):
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={[
-                    { name: 'Bitcoin (PoW)', desperdicio: 95, utilidad: 5, color: '#ef4444' },
-                    { name: 'QbitCoin (PoUW)', desperdicio: 10, utilidad: 90, color: '#00ff9d' },
+                    { name: 'Bitcoin (PoW)', desperdicio: 95, utilidad: 5 },
+                    { name: 'QbitCoin (PoUW)', desperdicio: 10, utilidad: 90 },
                   ]}
                   margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
                 >
@@ -840,13 +840,12 @@ while Verification_Fails(Permutation):
                       boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
                       color: '#fff'
                     }}
-                    itemStyle={{ color: '#fff' }}
-                    formatter={(value, name, props) => [`${value}%`, name === 'desperdicio' ? 'Desperdicio Energético' : 'Utilidad Científica']}
+                    formatter={(value, name) => [`${value}%`, name === 'desperdicio' ? 'Energía Desperdiciada' : 'Utilidad Científica']}
                     labelFormatter={(value) => `Proyecto: ${value}`}
                   />
                   <Bar
                     dataKey="desperdicio"
-                    name="Desperdicio Energético"
+                    name="Energía Desperdiciada"
                     fill="#ef4444"
                     radius={[4, 4, 0, 0]}
                     className="cursor-pointer"
@@ -858,16 +857,6 @@ while Verification_Fails(Permutation):
                     radius={[4, 4, 0, 0]}
                     className="cursor-pointer"
                   />
-                  <defs>
-                    <linearGradient id="colorGradientDesperdicio" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8}/>
-                      <stop offset="95%" stopColor="#ef4444" stopOpacity={0.2}/>
-                    </linearGradient>
-                    <linearGradient id="colorGradientUtilidad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#00ff9d" stopOpacity={0.8}/>
-                      <stop offset="95%" stopColor="#00ff9d" stopOpacity={0.2}/>
-                    </linearGradient>
-                  </defs>
                 </BarChart>
               </ResponsiveContainer>
             </div>
