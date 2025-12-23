@@ -816,18 +816,8 @@ while Verification_Fails(Permutation):
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={[
-                    {
-                      name: 'Bitcoin (PoW)',
-                      valor: 95,
-                      tipo: 'Energía Desperdiciada',
-                      color: '#ef4444'
-                    },
-                    {
-                      name: 'QbitCoin (PoUW)',
-                      valor: 90,
-                      tipo: 'Utilidad Científica',
-                      color: '#00ff9d'
-                    }
+                    { name: 'Bitcoin (PoW)', desperdicio: 95, utilidad: 5 },
+                    { name: 'QbitCoin (PoUW)', desperdicio: 10, utilidad: 90 }
                   ]}
                   margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
                 >
@@ -844,29 +834,27 @@ while Verification_Fails(Permutation):
                   />
                   <RechartsTooltip
                     cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-                    content={({ active, payload }) => {
-                      if (active && payload && payload.length) {
-                        const data = payload[0].payload;
-                        return (
-                          <div className="bg-[#0a0a0a] border border-white/10 p-3 rounded-xl shadow-2xl">
-                            <p className="text-white font-bold mb-1">{data.name}</p>
-                            <p style={{ color: data.color }} className="text-sm">
-                              {data.tipo}: <span className="font-mono font-bold text-lg">{data.valor}%</span>
-                            </p>
-                          </div>
-                        );
-                      }
-                      return null;
+                    contentStyle={{
+                      backgroundColor: '#0a0a0a',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      borderRadius: '12px',
+                      color: '#fff'
                     }}
                   />
-                  <Bar dataKey="valor" radius={[4, 4, 0, 0]}>
-                    {[
-                      { color: '#ef4444' },
-                      { color: '#00ff9d' }
-                    ].map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Bar>
+                  <Bar
+                    dataKey="desperdicio"
+                    name="Energía Desperdiciada"
+                    fill="#ef4444"
+                    radius={[4, 4, 0, 0]}
+                    className="cursor-pointer"
+                  />
+                  <Bar
+                    dataKey="utilidad"
+                    name="Utilidad Científica"
+                    fill="#00ff9d"
+                    radius={[4, 4, 0, 0]}
+                    className="cursor-pointer"
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>
