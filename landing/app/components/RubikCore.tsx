@@ -122,33 +122,35 @@ const RubikGroup = () => {
 
 export default function RubikCore() {
   return (
-    <div className="w-full h-[500px] relative">
-      <Canvas dpr={[1, 2]}>
-        <PerspectiveCamera makeDefault position={[0, 0, 6]} />
-        <OrbitControls enableZoom={false} />
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} color="#00ff9d" />
-        <pointLight position={[-10, -10, -10]} intensity={1} color="#7000ff" />
-        <Float speed={2} rotationIntensity={0.2} floatIntensity={0.2}>
-           <RubikGroup />
-        </Float>
-        <Environment preset="city" />
-      </Canvas>
-      
-      <div className="absolute bottom-24 left-0 right-0 text-center px-4">
-        <div className="inline-block px-6 py-3 bg-black/60 backdrop-blur-md rounded-xl border border-white/10 max-w-2xl">
-           <p className="text-white text-sm font-mono mb-1">
-             <span className="text-[#00ff9d] animate-pulse">● MINING IN PROGRESS</span> | HASHING POWER: 4.2 kSol/s
-           </p>
-           <p className="text-gray-400 text-xs">
-             El núcleo permuta combinaciones del Grupo S48. Pasa el ratón sobre los bloques para inspeccionar el estado de validación en tiempo real.
-           </p>
+    <div className="w-full">
+      <div className="h-[500px] relative">
+        <Canvas dpr={[1, 2]}>
+          <PerspectiveCamera makeDefault position={[0, 0, 6]} />
+          <OrbitControls enableZoom={false} />
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} intensity={1} color="#00ff9d" />
+          <pointLight position={[-10, -10, -10]} intensity={1} color="#7000ff" />
+          <Float speed={2} rotationIntensity={0.2} floatIntensity={0.2}>
+             <RubikGroup />
+          </Float>
+          <Environment preset="city" />
+        </Canvas>
+        
+        <div className="absolute bottom-4 left-0 right-0 text-center px-4">
+          <div className="inline-block px-6 py-3 bg-black/60 backdrop-blur-md rounded-xl border border-white/10 max-w-2xl">
+             <p className="text-white text-sm font-mono mb-1">
+               <span className="text-[#00ff9d] animate-pulse">● MINING IN PROGRESS</span> | HASHING POWER: 4.2 kSol/s
+             </p>
+             <p className="text-gray-400 text-xs">
+               El núcleo permuta combinaciones del Grupo S48. Pasa el ratón sobre los bloques para inspeccionar el estado de validación en tiempo real.
+             </p>
+          </div>
         </div>
       </div>
       
-      {/* TARJETA DE EXPLICACIÓN TÉCNICA */}
-      <div className="absolute bottom-4 left-0 right-0 text-center px-4">
-        <div className="inline-block px-6 py-4 bg-[#0a0a0a]/80 backdrop-blur-md rounded-xl border border-[#00ff9d]/30 max-w-3xl">
+      {/* TARJETA DE EXPLICACIÓN TÉCNICA - Fuera del contenedor del cubo */}
+      <div className="mt-6 px-4">
+        <div className="inline-block px-6 py-4 bg-[#0a0a0a]/80 backdrop-blur-md rounded-xl border border-[#00ff9d]/30 max-w-4xl w-full">
           <h4 className="text-[#00ff9d] font-bold text-sm mb-2 font-mono tracking-wider">ARQUITECTURA DE PERMUTACIÓN VECTORIAL</h4>
           <p className="text-gray-300 text-xs font-mono mb-2 leading-relaxed">
             El visualizador muestra una instancia simplificada (3×3×3) del protocolo. En producción, 
