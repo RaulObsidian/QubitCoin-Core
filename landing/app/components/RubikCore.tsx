@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, useEffect, useMemo } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera, Environment, Float, Html } from '@react-three/drei';
 import * as THREE from 'three';
@@ -13,31 +13,18 @@ const generateBlockData = () => ({
   reward: "50 QBC"
 });
 
-const Cubie = ({ position, isMining }: { position: [number, number, number], isMining: boolean }) => {
+const Cubie = ({ position, isMining, activeIndices }: { position: [number, number, number], isMining: boolean, activeIndices: [number, number, number] }) => {
   const mesh = useRef<THREE.Mesh>(null);
   const [hovered, setHover] = useState(false);
   const [isValidated, setIsValidated] = useState(false);
   const [blockData] = useState(generateBlockData());
   
-  // Color dinámico: Si está validado es verde, si mina cambia, si no es oscuro
-  const [dynamicColor, setDynamicColor] = useState("#7000ff");
-
-  // Efecto de Minería (Cambio de colores) y Validación aleatoria
-  useEffect(() => {
-    if (isMining) {
-      const interval = setInterval(() => {
-        // 5% de probabilidad de validar un bloque en cada ciclo
-        if (Math.random() > 0.95) {
-           setIsValidated(true);
-           setDynamicColor("#00ff9d"); // VERDE (Validado)
-           setTimeout(() => setIsValidated(false), 2000); // Reset después de 2s
-        } else if (!isValidated) {
-           setDynamicColor(Math.random() > 0.5 ? "#7000ff" : "#3b82f6"); // Minando (Morado/Azul)
-        }
-      }, 500 + Math.random() * 1000);
-      return () => clearInterval(interval);
-    }
-  }, [isMining, isValidated]);
+  // Determinar si este bloque está en una fila/columna activa
+  const [x, y, z] = position;
+  const isActive = activeIndices[0] === x || activeIndices[1] === y || activeIndices[2] === z;
+  
+  // Color dinámico: Si está validado es verde, si está activo destaca, si no es oscuro
+  const dynamicColor = isValidated ? "#00ff9d" : isActive ? "#00ff9d" : "#7000ff";
 
   return (
     <group>
@@ -55,8 +42,8 @@ const Cubie = ({ position, isMining }: { position: [number, number, number], isM
           roughness={0.1}
           transparent
           opacity={0.95}
-          emissive={isValidated ? "#00ff9d" : "#000000"}
-          emissiveIntensity={isValidated ? 0.5 : 0}
+          emissive={isValidated ? "#00ff9d" : isActive ? "#00ff9d" : "#000000"}
+          emissiveIntensity={isValidated ? 0.5 : isActive ? 0.3 : 0}
         />
         <lineSegments>
           <edgesGeometry args={[new THREE.BoxGeometry(0.9, 0.9, 0.9)]} />
@@ -86,6 +73,32 @@ const Cubie = ({ position, isMining }: { position: [number, number, number], isM
 
 const RubikGroup = () => {
   const group = useRef<THREE.Group>(null);
+  const [activeIndices, setActiveIndices] = useState<[number, number, number]>([0, 0, 0]);
+  const [isMining, setIsMining] = useState(true);
+
+  // Simulación de movimiento de filas/columnas
+  useEffect(() => {
+    if (isMining) {
+      const interval = setInterval(() => {
+        // Seleccionar aleatoriamente un eje (0=X, 1=Y, 2=Z) y un índice (-1, 0, 1)
+        const axis = Math.floor(Math.random() * 3);
+        const index = Math.floor(Math.random() * 3) - 1;
+        
+        // Actualizar los índices activos (solo un eje a la vez)
+        const newActiveIndices: [number, number, number] = [0, 0, 0];
+        newActiveIndices[axis] = index;
+        setActiveIndices(newActiveIndices);
+        
+        // 3% de probabilidad de validar un bloque
+        if (Math.random() > 0.97) {
+          // Aquí no podemos controlar directamente el estado de validación de un cubo desde aquí
+          // pero mostraremos visualmente la activación de una fila/columna
+        }
+      }, 800); // Actualizar cada 800ms
+      
+      return () => clearInterval(interval);
+    }
+  }, [isMining]);
 
   useFrame((state, delta) => {
     if (group.current) {
@@ -101,7 +114,7 @@ const RubikGroup = () => {
   return (
     <group ref={group}>
       {positions.map((pos, i) => (
-        <Cubie key={i} position={pos} isMining={true} />
+        <Cubie key={i} position={pos} isMining={isMining} activeIndices={activeIndices} />
       ))}
     </group>
   );
@@ -122,7 +135,7 @@ export default function RubikCore() {
         <Environment preset="city" />
       </Canvas>
       
-      <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none px-4">
+      <div className="absolute bottom-24 left-0 right-0 text-center px-4">
         <div className="inline-block px-6 py-3 bg-black/60 backdrop-blur-md rounded-xl border border-white/10 max-w-2xl">
            <p className="text-white text-sm font-mono mb-1">
              <span className="text-[#00ff9d] animate-pulse">● MINING IN PROGRESS</span> | HASHING POWER: 4.2 kSol/s
@@ -130,6 +143,32 @@ export default function RubikCore() {
            <p className="text-gray-400 text-xs">
              El núcleo permuta combinaciones del Grupo S48. Pasa el ratón sobre los bloques para inspeccionar el estado de validación en tiempo real.
            </p>
+        </div>
+      </div>
+      
+      {/* TARJETA DE EXPLICACIÓN TÉCNICA */}
+      <div className="absolute bottom-4 left-0 right-0 text-center px-4">
+        <div className="inline-block px-6 py-4 bg-[#0a0a0a]/80 backdrop-blur-md rounded-xl border border-[#00ff9d]/30 max-w-3xl">
+          <h4 className="text-[#00ff9d] font-bold text-sm mb-2 font-mono tracking-wider">ARQUITECTURA DE PERMUTACIÓN VECTORIAL</h4>
+          <p className="text-gray-300 text-xs font-mono mb-2 leading-relaxed">
+            El visualizador muestra una instancia simplificada (3×3×3) del protocolo. En producción, 
+            RubikPoW opera sobre matrices multidimensionales escalables (N×N×N), donde N se ajusta 
+            dinámicamente según la dificultad de la red.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-[8px] text-left">
+            <div className="bg-white/5 p-2 rounded border border-white/10">
+              <div className="text-[#00ff9d] font-bold mb-1">Mecánica:</div>
+              <div className="text-gray-400">Rotación de vectores fila/columna (Slices) para generar entropía.</div>
+            </div>
+            <div className="bg-white/5 p-2 rounded border border-white/10">
+              <div className="text-[#00ff9d] font-bold mb-1">Validación:</div>
+              <div className="text-gray-400">Prueba de Trabajo Útil (PoUW) aplicada a investigación científica.</div>
+            </div>
+            <div className="bg-white/5 p-2 rounded border border-white/10">
+              <div className="text-[#00ff9d] font-bold mb-1">Seguridad:</div>
+              <div className="text-gray-400">Resistencia cuántica mediante complejidad factorial.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
