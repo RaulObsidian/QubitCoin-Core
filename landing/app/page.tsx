@@ -19,6 +19,8 @@ import {
   linearGradient,
   stop
 } from 'recharts';
+import dynamic from 'next/dynamic';
+const RubikCore = dynamic(() => import('./components/RubikCore'), { ssr: false });
 
 // Renderizador del contador
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -1114,6 +1116,23 @@ while Verification_Fails(Permutation):
             </div>
           </div>
         </div>
+      </section>
+
+      {/* SECCIÓN VISUALIZACIÓN 3D */}
+      <section className="relative z-10 py-24 px-4 bg-gradient-to-b from-[#050505] to-[#0a0a0a] overflow-hidden">
+         <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 text-white">
+               El Corazón de la <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-[#7000ff]">Soberanía</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto mb-12">
+               Visualización en tiempo real de la estructura de permutación S48. Cada giro representa un intento de validación criptográfica resistente a computación cuántica.
+            </p>
+
+            {/* Contenedor del Canvas 3D */}
+            <div className="w-full max-w-3xl mx-auto h-[500px] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#00ff9d]/5 via-black/40 to-black rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden">
+               <RubikCore />
+            </div>
+         </div>
       </section>
 
       {/* DOWNLOAD SECTION */}
