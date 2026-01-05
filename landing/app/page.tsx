@@ -925,7 +925,7 @@ while Verification_Fails(Permutation):
                         borderRadius: '12px',
                         color: '#fff'
                       }}
-                      formatter={(value) => [`10^${value}`, 'Exponente']}
+                      formatter={(value) => [`10^${value}`, 'Exponent']}
                       labelFormatter={(value) => `Elemento: ${value}`}
                     />
                     <Bar
