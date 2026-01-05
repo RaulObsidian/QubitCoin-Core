@@ -950,7 +950,7 @@ while Verification_Fails(Permutation):
               <div className="mt-6 text-center">
                 <p className="text-gray-300 text-sm leading-relaxed">
                   El Grupo Simétrico S48 de QbitCoin (10<sup>116</sup>) supera en 36 órdenes de magnitud al número de átomos
-                  en el universo observable (10<sup>80</sup>), proporcionando resistencia cuántica incluso frente a Grover's Algorithm.
+                  in the observable universe (10<sup>80</sup>), proporcionando resistencia cuántica incluso frente a Grover's Algorithm.
                 </p>
               </div>
             </div>
