@@ -1172,21 +1172,6 @@ while Verification_Fails(Permutation):
       {/* FOOTER */}
       <footer className="relative z-10 py-12 bg-[#0a0a0a] backdrop-blur-xl border-t border-white/10">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="flex flex-wrap justify-center gap-8 mb-6">
-            <div className="flex items-center">
-              <span className="text-green-500 mr-2">✓</span>
-              <span className="text-sm text-gray-400">MiCA Compliant</span>
-            </div>
-            <div className="flex items-center">
-              <span className="text-green-500 mr-2">✓</span>
-              <span className="text-sm text-gray-400">GDPR Ready</span>
-            </div>
-            <div className="flex items-center">
-              <span className="text-green-500 mr-2">✓</span>
-              <span className="text-sm text-gray-400">Made in EU</span>
-            </div>
-          </div>
-
           <div className="mt-8 pt-6 border-t border-white/10">
             <div className="flex flex-wrap justify-center gap-8 mb-6">
               <div className="flex items-center gap-3">
