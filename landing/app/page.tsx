@@ -91,38 +91,38 @@ export default function Home() {
   const roadmapData = [
     {
       period: "Jul - Nov 2025",
-      title: "Fundación",
-      status: "COMPLETADO",
+      title: "Foundation",
+      status: "COMPLETED",
       statusColor: "bg-green-500/20 text-green-400",
-      description: "Fundación en Frankfurt y whitepaper técnico completo."
+      description: "Foundation in Frankfurt and complete technical whitepaper."
     },
     {
       period: "Q4 2025 - Q1 2026",
-      title: "Testnet Alfa",
-      status: "EN PROCESO",
+      title: "Alpha Testnet",
+      status: "IN PROGRESS",
       statusColor: "bg-yellow-500/20 text-yellow-400",
-      description: "Validación interna de rubikpow_benchmarks.rs y seguridad."
+      description: "Internal validation of rubikpow_benchmarks.rs and security."
     },
     {
       period: "1 Jun 2026",
-      title: "Testnet Público",
-      status: "PRÓXIMAMENTE",
+      title: "Public Testnet",
+      status: "UPCOMING",
       statusColor: "bg-blue-500/20 text-blue-400",
-      description: "Apertura global y evaluación EIC."
+      description: "Global opening and EIC evaluation."
     },
     {
       period: "Q3 2026 - Q4 2026",
       title: "Mainnet",
-      status: "OBJETIVO",
+      status: "TARGET",
       statusColor: "bg-purple-500/20 text-brand-purple",
-      description: "Lanzamiento oficial y listado exchanges."
+      description: "Official launch and exchange listings."
     },
     {
       period: "2027",
-      title: "Hegemonía",
-      status: "VISIÓN",
+      title: "Hegemony",
+      status: "VISION",
       statusColor: "bg-[#00ff9d]/20 text-[#00ff9d]",
-      description: "Adopción bancos centrales europeos."
+      description: "European central banks adoption."
     }
   ];
 
@@ -509,7 +509,7 @@ while Verification_Fails(Permutation):
       <section className="relative z-10 py-24 px-4 bg-gradient-to-b from-transparent to-[#0a0a0a]">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-[#7000ff]">
-            Hoja de Ruta de Ejecución
+            Execution Roadmap
           </h2>
 
           <div className="relative">
@@ -571,11 +571,11 @@ while Verification_Fails(Permutation):
                      <PieChart>
                        <Pie
                          data={[
-                           { name: 'Minería PoUW (Científica)', value: 45, color: '#00ff9d' },
-                           { name: 'Tesorería DAO & I+D', value: 20, color: '#7000ff' },
-                           { name: 'Equipo & Asesores (Vesting)', value: 15, color: '#00a8ff' },
-                           { name: 'Fondo de Liquidez & Exchange', value: 10, color: '#ff00e6' },
-                           { name: 'Validadores & Seguridad Red', value: 10, color: '#ffbd00' },
+                           { name: 'PoUW Mining (Scientific)', value: 45, color: '#00ff9d' },
+                           { name: 'DAO Treasury & R&D', value: 20, color: '#7000ff' },
+                           { name: 'Team & Advisors (Vesting)', value: 15, color: '#00a8ff' },
+                           { name: 'Liquidity Fund & Exchange', value: 10, color: '#ff00e6' },
+                           { name: 'Validators & Network Security', value: 10, color: '#ffbd00' },
                          ]}
                          cx="50%"
                          cy="50%"
@@ -588,11 +588,11 @@ while Verification_Fails(Permutation):
                          labelLine={false}
                        >
                          {[
-                           { name: 'Minería PoUW (Científica)', value: 45, color: '#00ff9d' },
-                           { name: 'Tesorería DAO & I+D', value: 20, color: '#7000ff' },
-                           { name: 'Equipo & Asesores (Vesting)', value: 15, color: '#00a8ff' },
-                           { name: 'Fondo de Liquidez & Exchange', value: 10, color: '#ff00e6' },
-                           { name: 'Validadores & Seguridad Red', value: 10, color: '#ffbd00' },
+                           { name: 'PoUW Mining (Scientific)', value: 45, color: '#00ff9d' },
+                           { name: 'DAO Treasury & R&D', value: 20, color: '#7000ff' },
+                           { name: 'Team & Advisors (Vesting)', value: 15, color: '#00a8ff' },
+                           { name: 'Liquidity Fund & Exchange', value: 10, color: '#ff00e6' },
+                           { name: 'Validators & Network Security', value: 10, color: '#ffbd00' },
                          ].map((entry, index) => (
                            <Cell key={`cell-${index}`} fill={entry.color} style={{ outline: 'none' }} />
                          ))}
@@ -627,16 +627,16 @@ while Verification_Fails(Permutation):
                {/* --- COLUMNA DERECHA: LISTA INTERACTIVA (CLICKABLE) --- */}
                <div className="lg:col-span-5 space-y-4">
                  {[
-                   { name: 'Minería PoUW (Científica)', value: 45, color: '#00ff9d', detail: 'Recompensas directas para nodos que aportan poder de cálculo útil a la red (Q-HPC). Emisión decreciente tipo Halving.' },
-                   { name: 'Tesorería DAO & I+D', value: 20, color: '#7000ff', detail: 'Fondo gobernado por la comunidad para financiar desarrollo de hardware cuántico-resistente, grants y expansión del ecosistema.' },
-                   { name: 'Equipo & Asesores (Vesting)', value: 15, color: '#00a8ff', detail: 'Asignación para fundadores y expertos clave. Bloqueado por 2 años con liberación lineal posterior para alinear incentivos.' },
-                   { name: 'Fondo de Liquidez & Exchange', value: 10, color: '#ff00e6', detail: 'Provisión de liquidez inicial en DEX/CEX para asegurar estabilidad de mercado y accesibilidad del token QBIT.' },
-                   { name: 'Validadores & Seguridad Red', value: 10, color: '#ffbd00', detail: 'Incentivos exclusivos para nodos validadores que aseguran el consenso RubikPoW y la finalidad de las transacciones.' },
+                   { name: 'PoUW Mining (Scientific)', value: 45, color: '#00ff9d', detail: 'Direct rewards for nodes providing useful computing power to the network (Q-HPC). Decreasing emission like Halving.' },
+                   { name: 'DAO Treasury & R&D', value: 20, color: '#7000ff', detail: 'Community-governed fund to finance quantum-resistant hardware development, grants, and ecosystem expansion.' },
+                   { name: 'Team & Advisors (Vesting)', value: 15, color: '#00a8ff', detail: 'Allocation for founders and key experts. Locked for 2 years with linear release afterward to align incentives.' },
+                   { name: 'Liquidity Fund & Exchange', value: 10, color: '#ff00e6', detail: 'Initial liquidity provision on DEX/CEX to ensure market stability and QBIT token accessibility.' },
+                   { name: 'Validators & Network Security', value: 10, color: '#ffbd00', detail: 'Exclusive incentives for validator nodes ensuring RubikPoW consensus and transaction finality.' },
                  ].map((item, index) => (
                    <button
                      key={index}
                      className="w-full text-left group p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00ff9d] transition-all duration-300 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(0,255,157,0.1)] flex justify-between items-center relative overflow-hidden"
-                     onClick={() => openModal(item.name, `${item.name}\n\n${item.value}% del Supply Total\n\n${item.detail}`)}
+                     onClick={() => openModal(item.name, `${item.name}\n\n${item.value}% of Total Supply\n\n${item.detail}`)}
                    >
                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 transform -translate-x-full group-hover:translate-x-0"></div>
                      <div className="flex items-center gap-4 relative z-10">
@@ -661,10 +661,10 @@ while Verification_Fails(Permutation):
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-black mb-4 text-white uppercase tracking-tighter">
-              Proyecciones de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-blue-500">Mercado</span>
+              Market <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-blue-500">Projections</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              QbitCoin captura valor en la transición hacia la tokenización de activos reales (RWA) y la infraestructura cuántica-resistente.
+              QbitCoin captures value in the transition to real-world asset tokenization (RWA) and quantum-resistant infrastructure.
             </p>
           </div>
 
@@ -706,11 +706,11 @@ while Verification_Fails(Permutation):
                       color: '#fff'
                     }}
                     itemStyle={{ color: '#fff' }}
-                    formatter={(value) => [`$${value} Trillones`, 'Mercado RWA']}
+                    formatter={(value) => [`$${value} Trillions`, 'RWA Market']}
                   />
                   <Bar
                     dataKey="valor"
-                    name="Mercado RWA"
+                    name="RWA Market"
                     fill="url(#colorGradientBar)"
                     radius={[4, 4, 0, 0]}
                     className="cursor-pointer"
@@ -738,11 +738,11 @@ while Verification_Fails(Permutation):
             </div>
 
             <div className="mt-12 text-center max-w-3xl">
-              <h3 className="text-2xl font-bold text-brand-accent mb-4">Mercado de Activos Reales Tokenizados (RWA)</h3>
+              <h3 className="text-2xl font-bold text-brand-accent mb-4">Real World Assets Tokenization Market (RWA)</h3>
               <p className="text-gray-300 leading-relaxed">
-                El mercado de activos reales tokenizados (Real World Assets - RWA) está experimentando un crecimiento exponencial.
-                Se proyecta que alcance los <span className="text-brand-accent font-bold">$30 Trillones</span> para 2030, representando una oportunidad
-                crítica para infraestructuras financieras post-cuánticas como QbitCoin.
+                The real-world assets tokenization market (Real World Assets - RWA) is experiencing exponential growth.
+                It is projected to reach <span className="text-brand-accent font-bold">$30 Trillions</span> by 2030, representing a critical
+                opportunity for post-quantum financial infrastructures like QbitCoin.
               </p>
             </div>
 
@@ -805,11 +805,11 @@ while Verification_Fails(Permutation):
             </div>
 
             <div className="mt-12 text-center max-w-3xl">
-              <h3 className="text-2xl font-bold text-[#7000ff] mb-4">Valor Total Bloqueado (TVL) Proyectado</h3>
+              <h3 className="text-2xl font-bold text-[#7000ff] mb-4">Projected Total Value Locked (TVL)</h3>
               <p className="text-gray-300 leading-relaxed">
-                La curva de adopción muestra un crecimiento exponencial a partir del lanzamiento de la Mainnet,
-                con un incremento agresivo (curva "hockey stick") que demuestra la escalabilidad del proyecto
-                y la rápida adopción por parte de instituciones y usuarios.
+                The adoption curve shows exponential growth starting from the Mainnet launch,
+                with aggressive increase ("hockey stick" curve) demonstrating the project's scalability
+                and rapid adoption by institutions and users.
               </p>
             </div>
 
@@ -845,14 +845,14 @@ while Verification_Fails(Permutation):
                   />
                   <Bar
                     dataKey="desperdicio"
-                    name="Energía Desperdiciada"
+                    name="Wasted Energy"
                     fill="#ef4444"
                     radius={[4, 4, 0, 0]}
                     className="cursor-pointer"
                   />
                   <Bar
                     dataKey="utilidad"
-                    name="Utilidad Científica"
+                    name="Scientific Utility"
                     fill="#00ff9d"
                     radius={[4, 4, 0, 0]}
                     className="cursor-pointer"
@@ -862,11 +862,11 @@ while Verification_Fails(Permutation):
             </div>
 
             <div className="mt-12 text-center max-w-3xl">
-              <h3 className="text-2xl font-bold text-[#00ff9d] mb-4">Comparativa de Sostenibilidad Energética</h3>
+              <h3 className="text-2xl font-bold text-[#00ff9d] mb-4">Energy Sustainability Comparison</h3>
               <p className="text-gray-300 leading-relaxed">
-                Mientras Bitcoin desperdicia energía eléctrica en cálculos únicos (95% de desperdicio),
-                QbitCoin reutiliza la energía para cálculos científicos útiles (90% de utilidad),
-                cumpliendo con los objetivos del Green Deal Europeo.
+                While Bitcoin wastes electrical energy on single calculations (95% waste),
+                QbitCoin reuses energy for useful scientific calculations (90% utility),
+                meeting European Green Deal objectives.
               </p>
             </div>
           </div>
@@ -1192,10 +1192,10 @@ while Verification_Fails(Permutation):
             © 2025 QbitCoin Labs GmbH • Frankfurt am Main
           </p>
           <p className="text-[#00ff9d] text-[8px] mt-2">
-            <a href="#" className="hover:underline">Iniciativa Europea de Soberanía Digital</a>
+            <a href="#" className="hover:underline">European Digital Sovereignty Initiative</a>
           </p>
           <p className="text-gray-500 text-[8px] mt-2">
-            La Infraestructura Financiera de la Soberanía Matemática Europea
+            The Financial Infrastructure of European Mathematical Sovereignty
           </p>
         </div>
       </footer>
