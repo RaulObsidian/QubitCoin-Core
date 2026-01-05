@@ -887,9 +887,9 @@ while Verification_Fails(Permutation):
 
           {/* GRID DE GRÁFICOS TÉCNICOS */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-            {/* GRÁFICO IZQUIERDO: Escala de Complejidad (State Space) */}
+            {/* GRÁFICO IZQUIERDO: Complexity Scale (State Space) */}
             <div className="bg-[#0a0a0a]/30 backdrop-blur-md rounded-2xl border border-white/10 p-8">
-              <h3 className="text-2xl font-bold text-center text-[#00ff9d] mb-8">Escala de Complejidad (State Space)</h3>
+              <h3 className="text-2xl font-bold text-center text-[#00ff9d] mb-8">Complexity Scale (State Space)</h3>
               <div className="w-full h-[400px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart
