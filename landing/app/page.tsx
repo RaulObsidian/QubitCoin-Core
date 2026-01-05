@@ -896,7 +896,7 @@ while Verification_Fails(Permutation):
                     layout="vertical"
                     data={[
                       { name: 'Bitcoin (SHA-256)', valor: 77, tipo: 'bitcoin' },
-                      { name: 'Átomos en el Universo', valor: 80, tipo: 'universo' },
+                      { name: 'Atoms in the Universe', valor: 80, tipo: 'universo' },
                       { name: 'QbitCoin (Rubik S48)', valor: 116, tipo: 'qubitcoin' },
                     ]}
                     margin={{ top: 20, right: 30, left: 150, bottom: 60 }}
@@ -926,7 +926,7 @@ while Verification_Fails(Permutation):
                         color: '#fff'
                       }}
                       formatter={(value) => [`10^${value}`, 'Exponent']}
-                      labelFormatter={(value) => `Elemento: ${value}`}
+                      labelFormatter={(value) => `Item: ${value}`}
                     />
                     <Bar
                       dataKey="valor"
@@ -935,7 +935,7 @@ while Verification_Fails(Permutation):
                     >
                       {[
                         { name: 'Bitcoin (SHA-256)', valor: 77, tipo: 'bitcoin' },
-                        { name: 'Átomos en el Universo', valor: 80, tipo: 'universo' },
+                        { name: 'Atoms in the Universe', valor: 80, tipo: 'universo' },
                         { name: 'QbitCoin (Rubik S48)', valor: 116, tipo: 'qubitcoin' },
                       ].map((entry, index) => (
                         <Cell
@@ -962,8 +962,8 @@ while Verification_Fails(Permutation):
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart
                     data={[
-                      { name: 'Resolución (Mining)', tiempo: 10000, tipo: 'resolucion' },
-                      { name: 'Verificación (Nodos)', tiempo: 45, tipo: 'verificacion' },
+                      { name: 'Resolution (Mining)', tiempo: 10000, tipo: 'resolucion' },
+                      { name: 'Verification (Nodes)', tiempo: 45, tipo: 'verificacion' },
                     ]}
                     margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
                   >
