@@ -1188,31 +1188,31 @@ while Verification_Fails(Permutation):
           </div>
 
           <div className="mt-8 pt-6 border-t border-white/10">
-            <p className="text-gray-300 text-sm font-mono tracking-wide mb-4">
-              © 2025 QbitCoin Labs GmbH • Frankfurt am Main
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-6 mb-4">
-              <div className="flex items-center gap-2">
-                <span className="text-green-400 text-lg">✓</span>
-                <span className="text-gray-300 text-sm">MiCA Compliant</span>
+            <div className="flex flex-wrap justify-center gap-8 mb-6">
+              <div className="flex items-center gap-3">
+                <span className="text-[#00ff9d] text-xl font-bold">✓</span>
+                <span className="text-white font-bold text-base bg-gradient-to-r from-[#00ff9d] to-[#7000ff] bg-clip-text text-transparent">MiCA Compliant</span>
               </div>
 
-              <div className="flex items-center gap-2">
-                <span className="text-green-400 text-lg">✓</span>
-                <span className="text-gray-300 text-sm">GDPR Ready</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#00ff9d] text-xl font-bold">✓</span>
+                <span className="text-white font-bold text-base bg-gradient-to-r from-[#00ff9d] to-[#7000ff] bg-clip-text text-transparent">GDPR Ready</span>
               </div>
 
-              <div className="flex items-center gap-2">
-                <span className="text-green-400 text-lg">✓</span>
-                <span className="text-gray-300 text-sm">Made in EU</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#00ff9d] text-xl font-bold">✓</span>
+                <span className="text-white font-bold text-base bg-gradient-to-r from-[#00ff9d] to-[#7000ff] bg-clip-text text-transparent">Made in EU</span>
               </div>
             </div>
 
-            <p className="text-[#00ff9d] text-sm font-medium">
-              <a href="#" className="hover:text-white transition-colors">European Digital Sovereignty Initiative</a>
+            <p className="text-gray-300 text-base font-mono tracking-wide mb-6">
+              © 2025 QbitCoin Labs GmbH • Frankfurt am Main
             </p>
-            <p className="text-gray-400 text-sm mt-2 max-w-2xl mx-auto">
+
+            <p className="text-[#00ff9d] text-lg font-black mb-2">
+              <a href="#" className="hover:text-white transition-colors bg-gradient-to-r from-[#00ff9d] to-[#7000ff] bg-clip-text text-transparent">European Digital Sovereignty Initiative</a>
+            </p>
+            <p className="text-gray-400 text-base font-medium max-w-2xl mx-auto">
               The Financial Infrastructure of European Mathematical Sovereignty
             </p>
           </div>
