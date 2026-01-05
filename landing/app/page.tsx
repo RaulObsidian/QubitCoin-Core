@@ -127,19 +127,19 @@ export default function Home() {
   ];
 
   const thesisContent = `
-    RESUMEN EJECUTIVO: TESIS DE INVERSIÓN
+    EXECUTIVE SUMMARY: INVESTMENT THESIS
 
-    Mercado de 50 Billones USD:
-    El mercado global de criptomonedas supera los 50 billones de dólares. La verdadera oportunidad reside en la tokenización de activos del mundo real (RWA). Se proyecta que para 2030, el 10% del PIB mundial estará almacenado en tecnologías DLT.
+    50 Trillion USD Market:
+    The global cryptocurrency market exceeds 50 trillion dollars. The real opportunity lies in real-world asset tokenization (RWA). It is projected that by 2030, 10% of global GDP will be stored in DLT technologies.
 
-    Colapso RSA-2048:
-    La computación cuántica amenaza con hacer obsoletos todos los sistemas criptográficos basados en RSA-2048. QbitCoin se anticipa al "Día Q" migrando a esquemas de firma post-cuántica (PQC).
+    RSA-2048 Collapse:
+    Quantum computing threatens to obsolete all RSA-2048-based cryptographic systems. QbitCoin anticipates "Q-Day" by migrating to post-quantum cryptography (PQC) signature schemes.
 
-    Oportunidad Temprana:
-    Bitcoin tiene la ventaja del primer movimiento, pero QbitCoin tiene la ventaja del último movimiento tecnológico con arquitectura RubikPoW nativa.
+    Early Opportunity:
+    Bitcoin has the first-mover advantage, but QbitCoin has the technological last-mover advantage with native RubikPoW architecture.
 
-    Soberanía Europea:
-    Producto desarrollado íntegramente en Europa, cumpliendo con regulaciones MiCA y GDPR.
+    European Sovereignty:
+    Product developed entirely in Europe, compliant with MiCA and GDPR regulations.
   `;
 
   // Componente Modal Genérico
@@ -162,16 +162,16 @@ export default function Home() {
   const tabContents = {
     tecnologia: (
       <div className="space-y-8">
-        <h3 className="text-2xl font-bold text-[#00ff9d]">RubikPoW: La Complejidad del Cubo de Rubik</h3>
+        <h3 className="text-2xl font-bold text-[#00ff9d]">RubikPoW: The Complexity of the Rubik's Cube</h3>
         <p className="text-gray-300 leading-relaxed">
-          El algoritmo <strong>RubikPoW</strong> se basa en el Grupo Simétrico <strong>S<sub>48</sub></strong>, que representa las permutaciones posibles de una cara del cubo 4×4×4.
-          El espacio de estados es de aproximadamente <strong>1.57 × 10¹¹⁶</strong>, un número mayor que la cantidad estimada de átomos en el universo observable.
+          The <strong>RubikPoW</strong> algorithm is based on the Symmetric Group <strong>S<sub>48</sub></strong>, which represents the possible permutations of one face of a 4×4×4 cube.
+          The state space is approximately <strong>1.57 × 10¹¹⁶</strong>, a number greater than the estimated number of atoms in the observable universe.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           <div
             className="p-6 rounded-2xl border border-[#00ff9d]/20 bg-[#0a0a0a]/30 backdrop-blur-md cursor-pointer hover:border-[#00ff9d]/50 transition-colors"
-            onClick={() => openModal('Comparación Algorítmica', 'Este es un ejemplo de contenido detallado sobre la comparación entre SHA-256 de Bitcoin y RubikPoW de QbitCoin.')}
+            onClick={() => openModal('Algorithm Comparison', 'This is an example of detailed content about the comparison between Bitcoin\'s SHA-256 and QbitCoin\'s RubikPoW.')}
           >
             <h4 className="text-xl font-bold text-red-400 mb-4">Bitcoin: SHA-256</h4>
             <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
@@ -186,7 +186,7 @@ while Hash > Target:
 
           <div
             className="p-6 rounded-2xl border border-[#7000ff]/20 bg-[#0a0a0a]/30 backdrop-blur-md cursor-pointer hover:border-[#7000ff]/50 transition-colors"
-            onClick={() => openModal('RubikPoW Detalles', 'Este es un ejemplo de contenido detallado sobre el algoritmo RubikPoW.')}
+            onClick={() => openModal('RubikPoW Details', 'This is an example of detailed content about the RubikPoW algorithm.')}
           >
             <h4 className="text-xl font-bold text-[#00ff9d] mb-4">QbitCoin: RubikPoW</h4>
             <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
@@ -201,63 +201,63 @@ while Verification_Fails(Permutation):
         </div>
 
         <div className="mt-8">
-          <h4 className="text-xl font-bold text-[#00eeff] mb-4">Criptografía Cuántica Segura</h4>
+          <h4 className="text-xl font-bold text-[#00eeff] mb-4">Quantum-Safe Cryptography</h4>
           <p className="text-gray-300 leading-relaxed">
-            QbitCoin implementa estándares NIST como <strong>Dilithium</strong> para firmas digitales y <strong>Kyber</strong> para intercambio de claves post-cuántico.
-            Estos algoritmos están diseñados para resistir ataques de computadoras cuánticas, ofreciendo seguridad a largo plazo.
+            QbitCoin implements NIST standards such as <strong>Dilithium</strong> for digital signatures and <strong>Kyber</strong> for post-quantum key exchange.
+            These algorithms are designed to resist quantum computer attacks, providing long-term security.
           </p>
         </div>
       </div>
     ),
     economia: (
       <div className="space-y-8">
-        <h3 className="text-2xl font-bold text-[#00ff9d]">Modelo Económico Deflacionario</h3>
+        <h3 className="text-2xl font-bold text-[#00ff9d]">Deflationary Economic Model</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div
             className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 backdrop-blur-md text-center cursor-pointer hover:border-green-500/50 transition-colors"
-            onClick={() => openModal('Oferta Máxima', 'Detalle sobre la oferta máxima de monedas')}
+            onClick={() => openModal('Max Supply', 'Details about the maximum coin supply')}
           >
             <div className="text-3xl font-bold text-green-400">21M</div>
             <div className="text-gray-400">Max Supply</div>
           </div>
           <div
             className="p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-md text-center cursor-pointer hover:border-yellow-500/50 transition-colors"
-            onClick={() => openModal('Ciclo de Halving', 'Detalle sobre los ciclos de reducción de recompensas')}
+            onClick={() => openModal('Halving Cycle', 'Details about the reward reduction cycles')}
           >
-            <div className="text-3xl font-bold text-yellow-400">4 años</div>
-            <div className="text-gray-400">Ciclo de Halving</div>
+            <div className="text-3xl font-bold text-yellow-400">4 years</div>
+            <div className="text-gray-400">Halving Cycle</div>
           </div>
           <div
             className="p-6 rounded-2xl border border-[#7000ff]/20 bg-[#7000ff]/5 backdrop-blur-md text-center cursor-pointer hover:border-[#7000ff]/50 transition-colors"
-            onClick={() => openModal('Distribución Justa', 'Detalle sobre la distribución equitativa')}
+            onClick={() => openModal('Fair Distribution', 'Details about the fair distribution')}
           >
             <div className="text-3xl font-bold text-[#7000ff]">0%</div>
-            <div className="text-gray-400">Pre-minado</div>
+            <div className="text-gray-400">Pre-mine</div>
           </div>
         </div>
 
         <div className="mt-8">
-          <h4 className="text-xl font-bold text-[#00eeff] mb-4">Distribución Justa</h4>
+          <h4 className="text-xl font-bold text-[#00eeff] mb-4">Fair Distribution</h4>
           <div className="space-y-4">
             <div
               className="flex items-center justify-between p-4 bg-[#0a0a0a]/30 rounded-lg cursor-pointer hover:bg-[#0a0a0a]/50 transition-colors"
-              onClick={() => openModal('Minería PoUW', 'Detalle sobre la minería Proof of Useful Work')}
+              onClick={() => openModal('PoUW Mining', 'Details about Proof of Useful Work mining')}
             >
-              <span className="font-medium">Mineros (Proof of Useful Work)</span>
+              <span className="font-medium">Miners (Proof of Useful Work)</span>
               <span className="text-[#00ff9d] font-bold">60%</span>
             </div>
             <div
               className="flex items-center justify-between p-4 bg-[#0a0a0a]/30 rounded-lg cursor-pointer hover:bg-[#0a0a0a]/50 transition-colors"
-              onClick={() => openModal('Tesorería DAO', 'Detalle sobre el uso de fondos para investigación')}
+              onClick={() => openModal('DAO Treasury', 'Details about research fund usage')}
             >
-              <span className="font-medium">Tesorería DAO (I+D)</span>
+              <span className="font-medium">DAO Treasury (R&D)</span>
               <span className="text-[#7000ff] font-bold">25%</span>
             </div>
             <div
               className="flex items-center justify-between p-4 bg-[#0a0a0a]/30 rounded-lg cursor-pointer hover:bg-[#0a0a0a]/50 transition-colors"
-              onClick={() => openModal('Validadores', 'Detalle sobre el rol de los validadores')}
+              onClick={() => openModal('Validators', 'Details about validator roles')}
             >
-              <span className="font-medium">Validadores/Seguridad</span>
+              <span className="font-medium">Validators/Security</span>
               <span className="text-[#00eeff] font-bold">15%</span>
             </div>
           </div>
@@ -266,89 +266,89 @@ while Verification_Fails(Permutation):
     ),
     estrategia: (
       <div className="space-y-8">
-        <h3 className="text-2xl font-bold text-[#00ff9d]">Análisis Estratégico DAFO/SWOT</h3>
+        <h3 className="text-2xl font-bold text-[#00ff9d]">Strategic SWOT Analysis</h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div
             className="p-6 rounded-2xl border border-green-500/20 bg-green-500/5 backdrop-blur-md cursor-pointer hover:border-green-500/50 transition-colors"
-            onClick={() => openModal('Fortalezas', 'Detalle sobre las fortalezas del proyecto')}
+            onClick={() => openModal('Strengths', 'Details about project strengths')}
           >
-            <h4 className="text-xl font-bold text-green-500 mb-4">Fortalezas (Strengths)</h4>
+            <h4 className="text-xl font-bold text-green-500 mb-4">Strengths</h4>
             <ul className="space-y-2">
               <li className="flex items-start">
                 <span className="text-green-500 mr-2">✓</span>
-                <span>Tecnología Soberana desarrollada en la UE</span>
+                <span>Sovereign Technology developed in the EU</span>
               </li>
               <li className="flex items-start">
                 <span className="text-green-500 mr-2">✓</span>
-                <span>Equipo de Elite con experiencia en criptografía avanzada</span>
+                <span>Elite Team with experience in advanced cryptography</span>
               </li>
               <li className="flex items-start">
                 <span className="text-green-500 mr-2">✓</span>
-                <span>Cumplimiento nativo con regulaciones MiCA y GDPR</span>
+                <span>Native compliance with MiCA and GDPR regulations</span>
               </li>
             </ul>
           </div>
 
           <div
             className="p-6 rounded-2xl border border-blue-500/20 bg-blue-500/5 backdrop-blur-md cursor-pointer hover:border-blue-500/50 transition-colors"
-            onClick={() => openModal('Oportunidades', 'Detalle sobre las oportunidades del proyecto')}
+            onClick={() => openModal('Opportunities', 'Details about project opportunities')}
           >
-            <h4 className="text-xl font-bold text-blue-500 mb-4">Oportunidades (Opportunities)</h4>
+            <h4 className="text-xl font-bold text-blue-500 mb-4">Opportunities</h4>
             <ul className="space-y-2">
               <li className="flex items-start">
                 <span className="text-blue-500 mr-2">✓</span>
-                <span>El "Día Q" (Colapso de RSA-2048) crea demanda urgente</span>
+                <span>"Q-Day" (Collapse of RSA-2048) creates urgent demand</span>
               </li>
               <li className="flex items-start">
                 <span className="text-blue-500 mr-2">✓</span>
-                <span>Vacío tecnológico actual en soluciones post-cuánticas</span>
+                <span>Current technology gap in post-quantum solutions</span>
               </li>
               <li className="flex items-start">
                 <span className="text-blue-500 mr-2">✓</span>
-                <span>Soberanía digital europea como prioridad política</span>
+                <span>European digital sovereignty as political priority</span>
               </li>
             </ul>
           </div>
 
           <div
             className="p-6 rounded-2xl border border-red-500/20 bg-red-500/5 backdrop-blur-md cursor-pointer hover:border-red-500/50 transition-colors"
-            onClick={() => openModal('Amenazas', 'Detalle sobre las amenazas para el proyecto')}
+            onClick={() => openModal('Threats', 'Details about project threats')}
           >
-            <h4 className="text-xl font-bold text-red-500 mb-4">Amenazas (Threats)</h4>
+            <h4 className="text-xl font-bold text-red-500 mb-4">Threats</h4>
             <ul className="space-y-2">
               <li className="flex items-start">
                 <span className="text-red-500 mr-2">✓</span>
-                <span>Gigantes Tecnológicos (Google/IBM) con recursos ilimitados</span>
+                <span>Technology Giants (Google/IBM) with unlimited resources</span>
               </li>
               <li className="flex items-start">
                 <span className="text-red-500 mr-2">✓</span>
-                <span>Regulación hostil fuera de la UE</span>
+                <span>Hostile regulation outside the EU</span>
               </li>
               <li className="flex items-start">
                 <span className="text-red-500 mr-2">✓</span>
-                <span>Forks no autorizados de la tecnología</span>
+                <span>Unauthorized forks of the technology</span>
               </li>
             </ul>
           </div>
 
           <div
             className="p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-md cursor-pointer hover:border-yellow-500/50 transition-colors"
-            onClick={() => openModal('Debilidades', 'Detalle sobre las debilidades del proyecto')}
+            onClick={() => openModal('Weaknesses', 'Details about project weaknesses')}
           >
-            <h4 className="text-xl font-bold text-yellow-500 mb-4">Debilidades (Weaknesses)</h4>
+            <h4 className="text-xl font-bold text-yellow-500 mb-4">Weaknesses</h4>
             <ul className="space-y-2">
               <li className="flex items-start">
                 <span className="text-yellow-500 mr-2">✓</span>
-                <span>Mayor barrera de entrada por complejidad técnica</span>
+                <span>Higher entry barrier due to technical complexity</span>
               </li>
               <li className="flex items-start">
                 <span className="text-yellow-500 mr-2">✓</span>
-                <span>Necesidad de hardware especializado inicialmente</span>
+                <span>Need for specialized hardware initially</span>
               </li>
               <li className="flex items-start">
                 <span className="text-yellow-500 mr-2">✓</span>
-                <span>Educación del mercado sobre beneficios post-cuánticos</span>
+                <span>Market education on post-quantum benefits</span>
               </li>
             </ul>
           </div>
@@ -357,51 +357,51 @@ while Verification_Fails(Permutation):
     ),
     impacto: (
       <div className="space-y-8">
-        <h3 className="text-2xl font-bold text-[#00ff9d]">Impacto Económico y Social</h3>
+        <h3 className="text-2xl font-bold text-[#00ff9d]">Economic and Social Impact</h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div
             className="p-6 rounded-2xl border border-[#00ff9d]/20 bg-[#0a0a0a]/30 backdrop-blur-md cursor-pointer hover:border-[#00ff9d]/50 transition-colors"
-            onClick={() => openModal('Minería PoUW', 'La minería Proof of Useful Work (PoUW) no desperdicia energía como en Bitcoin. El calor generado se reutiliza para calefacción urbana, y los cálculos resuelven problemas científicos reales como el plegamiento de proteínas, optimización logística y cálculos climáticos.')}
+            onClick={() => openModal('PoUW Mining', 'Proof of Useful Work (PoUW) mining does not waste energy like Bitcoin. Generated heat is reused for urban heating, and calculations solve real scientific problems such as protein folding, logistics optimization, and climate calculations.')}
           >
             <div className="text-4xl mb-4">🏭</div>
-            <h4 className="text-xl font-bold mb-2">Minería PoUW</h4>
+            <h4 className="text-xl font-bold mb-2">PoUW Mining</h4>
             <p className="text-gray-400 text-sm">
-              El calor generado no se desperdicia, sino que se reutiliza para calefacción urbana.
+              Generated heat is not wasted, but reused for urban heating.
             </p>
           </div>
 
           <div
             className="p-6 rounded-2xl border border-[#7000ff]/20 bg-[#0a0a0a]/30 backdrop-blur-md cursor-pointer hover:border-[#7000ff]/50 transition-colors"
-            onClick={() => openModal('Empleo Europeo', 'QbitCoin Labs GmbH prevé crear más de 200 puestos de alta cualificación en Frankfurt, Múnich y Zúrich. Ingenieros, criptógrafos, expertos en teoría de grupos y matemáticas aplicadas encontrarán oportunidades en nuestra plataforma.')}
+            onClick={() => openModal('European Employment', 'QbitCoin Labs GmbH plans to create over 200 high-skilled positions in Frankfurt, Munich, and Zurich. Engineers, cryptographers, group theory experts, and applied mathematicians will find opportunities on our platform.')}
           >
             <div className="text-4xl mb-4">👤</div>
-            <h4 className="text-xl font-bold mb-2">Empleo Europeo</h4>
+            <h4 className="text-xl font-bold mb-2">European Employment</h4>
             <p className="text-gray-400 text-sm">
-              Previsión de crear más de 200 puestos de alta cualificación en Europa.
+              Planning to create over 200 high-skilled positions in Europe.
             </p>
           </div>
 
           <div
             className="p-6 rounded-2xl border border-[#00eeff]/20 bg-[#0a0a0a]/30 backdrop-blur-md cursor-pointer hover:border-[#00eeff]/50 transition-colors"
-            onClick={() => openModal('Hardware Soberano', 'Alianzas estratégicas con TSMC, Infineon Technologies y centros de investigación como el Fraunhofer Institute para el diseño de ASICs europeos. Reduciremos la dependencia de proveedores asiáticos y fortaleceremos la cadena de suministro tecnológica europea.')}
+            onClick={() => openModal('Sovereign Hardware', 'Strategic alliances with TSMC, Infineon Technologies, and research centers such as the Fraunhofer Institute for European ASIC design. We will reduce dependence on Asian suppliers and strengthen the European technology supply chain.')}
           >
             <div className="text-4xl mb-4">🔧</div>
-            <h4 className="text-xl font-bold mb-2">Hardware Soberano</h4>
+            <h4 className="text-xl font-bold mb-2">Sovereign Hardware</h4>
             <p className="text-gray-400 text-sm">
-              Alianzas estratégicas para el diseño de ASICs europeos y reducción de dependencia.
+              Strategic alliances for European ASIC design and dependency reduction.
             </p>
           </div>
         </div>
 
         <div
           className="mt-8 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md cursor-pointer hover:border-[#00ff9d]/50 transition-colors"
-          onClick={() => openModal('Alianzas Estratégicas', 'QbitCoin Labs GmbH establecerá colaboraciones con instituciones tecnológicas líderes europeas como TSMC, Infineon Technologies y centros de investigación como el Fraunhofer Institute. Nuestro objetivo es crear una industria europea de hardware criptográfico resistente a amenazas geopolíticas.')}
+          onClick={() => openModal('Strategic Alliances', 'QbitCoin Labs GmbH will establish collaborations with leading European technology institutions such as TSMC, Infineon Technologies, and research centers such as the Fraunhofer Institute. Our goal is to create a European cryptographic hardware industry resilient to geopolitical threats.')}
         >
-          <h4 className="text-xl font-bold text-[#00ff9d] mb-4">Alianzas Estratégicas</h4>
+          <h4 className="text-xl font-bold text-[#00ff9d] mb-4">Strategic Alliances</h4>
           <p className="text-gray-300 leading-relaxed">
-            QbitCoin Labs GmbH establecerá colaboraciones con instituciones tecnológicas líderes europeas como TSMC, Infineon Technologies y centros de investigación como el Fraunhofer Institute.
-            Nuestro objetivo es crear una industria europea de hardware criptográfico resistente a amenazas geopolíticas.
+            QbitCoin Labs GmbH will establish collaborations with leading European technology institutions such as TSMC, Infineon Technologies, and research centers such as the Fraunhofer Institute.
+            Our goal is to create a European cryptographic hardware industry resilient to geopolitical threats.
           </p>
         </div>
       </div>
@@ -431,7 +431,7 @@ while Verification_Fails(Permutation):
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-black/80">
           <div className="relative w-full max-w-3xl bg-[#0a0a0a] border border-[#7000ff]/30 rounded-2xl p-8 max-h-[80vh] overflow-y-auto shadow-[0_0_50px_rgba(112,0,255,0.15)]">
              <button onClick={closeInvestmentModal} className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">✕</button>
-             <h3 className="text-3xl font-bold text-[#00ff9d] mb-6">Tesis de Inversión</h3>
+             <h3 className="text-3xl font-bold text-[#00ff9d] mb-6">Investment Thesis</h3>
              <div className="text-gray-300 leading-relaxed space-y-4 whitespace-pre-line">
                 {thesisContent.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
              </div>
@@ -442,19 +442,19 @@ while Verification_Fails(Permutation):
       {/* HERO SECTION */}
       <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-24 text-center">
         <div className="mb-8 inline-block border border-[#00ff9d]/30 bg-[#00ff9d]/10 px-6 py-2 rounded-full backdrop-blur-md animate-pulse-glow">
-          <span className="text-[#00ff9d] text-xs font-mono tracking-[0.3em] font-bold">SOBERANÍA MATEMÁTICA POST-CUÁNTICA</span>
+          <span className="text-[#00ff9d] text-xs font-mono tracking-[0.3em] font-bold">POST-QUANTUM MATHEMATICAL SOVEREIGNTY</span>
         </div>
 
         <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00ff9d] to-[#7000ff] drop-shadow-2xl animate-glow-pulse">
-          LA INFRAESTRUCTURA DE LA
+          THE INFRASTRUCTURE OF
         </h1>
 
         <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-12 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00eeff] to-[#7000ff] drop-shadow-2xl animate-glow-pulse">
-          SOBERANÍA MATEMÁTICA
+          MATHEMATICAL SOVEREIGNTY
         </h1>
 
         <p className="text-lg md:text-xl text-gray-400 font-light mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-          Mientras la <span className="text-red-500 font-bold">criptografía clásica colapsa</span>, QbitCoin construye el <span className="text-[#00ff9d] font-medium">búnker digital de Europa</span>.
+          As <span className="text-red-500 font-bold">classical cryptography collapses</span>, QbitCoin builds <span className="text-[#00ff9d] font-medium">Europe's digital bunker</span>.
         </p>
 
         {/* Contador principal */}
@@ -467,10 +467,10 @@ while Verification_Fails(Permutation):
 
         {/* Botón CTA que abre el modal de Tesis */}
         <button
-          onClick={() => openModal('Tesis de Inversión', thesisContent)}
+          onClick={() => openModal('Investment Thesis', thesisContent)}
           className="px-8 py-4 bg-gradient-to-r from-[#00ff9d] to-[#7000ff] rounded-full text-black font-bold text-lg hover:opacity-90 transition-opacity"
         >
-          Ver Tesis de Inversión
+          View Investment Thesis
         </button>
       </section>
 
@@ -479,10 +479,10 @@ while Verification_Fails(Permutation):
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap justify-center mb-8 gap-2">
             {[
-              { id: 'tecnologia', label: 'TECNOLOGÍA', icon: '🔬' },
-              { id: 'economia', label: 'ECONOMÍA', icon: '📈' },
-              { id: 'estrategia', label: 'ESTRATEGIA', icon: '🎯' },
-              { id: 'impacto', label: 'IMPACTO', icon: '🌐' }
+              { id: 'tecnologia', label: 'TECHNOLOGY', icon: '🔬' },
+              { id: 'economia', label: 'ECONOMICS', icon: '📈' },
+              { id: 'estrategia', label: 'STRATEGY', icon: '🎯' },
+              { id: 'impacto', label: 'IMPACT', icon: '🌐' }
             ].map(tab => (
               <button
                 key={tab.id}
@@ -556,10 +556,10 @@ while Verification_Fails(Permutation):
          <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-20">
                <h2 className="text-5xl md:text-6xl font-black mb-4 text-white uppercase tracking-tighter">
-                  Arquitectura <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-[#7000ff]">Económica</span>
+                  Economic <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-[#7000ff]">Architecture</span>
                </h2>
                <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                  Modelo deflacionario diseñado para la soberanía tecnológica y la sostenibilidad a largo plazo.
+                  Deflationary model designed for technological sovereignty and long-term sustainability.
                </p>
             </div>
 
@@ -873,15 +873,15 @@ while Verification_Fails(Permutation):
         </div>
       </section>
 
-      {/* === VALIDACIÓN TÉCNICA SECTION === */}
+      {/* === TECHNICAL VALIDATION SECTION === */}
       <section className="relative z-10 py-32 px-4 bg-gradient-to-b from-[#050505] to-[#0a0a0a]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-black mb-4 text-white uppercase tracking-tighter">
-              Validación Técnica & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-blue-500">Benchmarks</span>
+              Technical Validation & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-blue-500">Benchmarks</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Evidencia científica que demuestra la superioridad criptográfica de RubikPoW basada en el Grupo Simétrico S48
+              Scientific evidence demonstrating the cryptographic superiority of RubikPoW based on the Symmetric Group S48
             </p>
           </div>
 
@@ -1138,13 +1138,13 @@ while Verification_Fails(Permutation):
       {/* DOWNLOAD SECTION */}
       <section className="relative z-10 py-24 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">Documentación Institucional</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">Institutional Documentation</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { lang: 'EN', flag: '🇬🇧', title: 'Whitepaper Inglés' },
-              { lang: 'ES', flag: '🇪🇸', title: 'Whitepaper Español' },
-              { lang: 'DE', flag: '🇩🇪', title: 'Whitepaper Alemán' }
+              { lang: 'EN', flag: '🇬🇧', title: 'English Whitepaper' },
+              { lang: 'ES', flag: '🇪🇸', title: 'Spanish Whitepaper' },
+              { lang: 'DE', flag: '🇩🇪', title: 'German Whitepaper' }
             ].map((doc, i) => (
               <a
                 key={doc.lang}
