@@ -1176,22 +1176,22 @@ while Verification_Fails(Permutation):
             <div className="flex flex-wrap justify-center gap-8 mb-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#00ff9d] text-xl font-bold">✓</span>
-                <span className="text-white font-bold text-base bg-gradient-to-r from-[#00ff9d] to-[#7000ff] bg-clip-text text-transparent">MiCA Compliant</span>
+                <span className="text-white font-bold text-base bg-gradient-to-r from-[#00ff9d] to-[#7000ff] bg-clip-text text-transparent hover:text-[#00ff9d] transition-all duration-300">MiCA Compliant</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <span className="text-[#00ff9d] text-xl font-bold">✓</span>
-                <span className="text-white font-bold text-base bg-gradient-to-r from-[#00ff9d] to-[#7000ff] bg-clip-text text-transparent">GDPR Ready</span>
+                <span className="text-white font-bold text-base bg-gradient-to-r from-[#00ff9d] to-[#7000ff] bg-clip-text text-transparent hover:text-[#00ff9d] transition-all duration-300">GDPR Ready</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <span className="text-[#00ff9d] text-xl font-bold">✓</span>
-                <span className="text-white font-bold text-base bg-gradient-to-r from-[#00ff9d] to-[#7000ff] bg-clip-text text-transparent">Made in EU</span>
+                <span className="text-white font-bold text-base bg-gradient-to-r from-[#00ff9d] to-[#7000ff] bg-clip-text text-transparent hover:text-[#00ff9d] transition-all duration-300">Made in EU</span>
               </div>
             </div>
 
             <p className="text-gray-300 text-base font-mono tracking-wide mb-6">
-              © 2025 QbitCoin Labs GmbH • Frankfurt am Main
+              © 2025 QubitCoin Labs GmbH • Frankfurt am Main
             </p>
 
             <p className="text-[#00ff9d] text-lg font-black mb-2">
