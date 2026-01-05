@@ -783,7 +783,7 @@ while Verification_Fails(Permutation):
                       color: '#fff'
                     }}
                     itemStyle={{ color: '#fff' }}
-                    formatter={(value) => [`€${value} Billones`, 'TVL']}
+                    formatter={(value) => [`€${value} Billions`, 'TVL']}
                   />
                   <Area
                     type="monotone"
@@ -986,17 +986,17 @@ while Verification_Fails(Permutation):
                         borderRadius: '12px',
                         color: '#fff'
                       }}
-                      formatter={(value) => [`${value}ms`, 'Tiempo']}
-                      labelFormatter={(value) => `Operación: ${value}`}
+                      formatter={(value) => [`${value}ms`, 'Time']}
+                      labelFormatter={(value) => `Operation: ${value}`}
                     />
                     <Bar
                       dataKey="tiempo"
-                      name="Tiempo de Procesamiento"
+                      name="Processing Time"
                       className="cursor-pointer"
                     >
                       {[
-                        { name: 'Resolución (Mining)', tiempo: 10000, tipo: 'resolucion' },
-                        { name: 'Verificación (Nodos)', tiempo: 45, tipo: 'verificacion' },
+                        { name: 'Resolution (Mining)', tiempo: 10000, tipo: 'resolucion' },
+                        { name: 'Verification (Nodes)', tiempo: 45, tipo: 'verificacion' },
                       ].map((entry, index) => (
                         <Cell
                           key={`cell-${index}`}
@@ -1009,8 +1009,8 @@ while Verification_Fails(Permutation):
               </div>
               <div className="mt-6 text-center">
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  Mientras la resolución del puzzle requiere trabajo exhaustivo (Proof of Useful Work),
-                  la verificación se ejecuta en tiempo polinómico O(n), permitiendo finalidad instantánea.
+                  While puzzle resolution requires exhaustive work (Proof of Useful Work),
+                  verification executes in polynomial time O(n), enabling instant finality.
                 </p>
               </div>
             </div>
@@ -1088,17 +1088,17 @@ while Verification_Fails(Permutation):
 
                 <div className="grid grid-cols-2 gap-2 mb-4">
                    <div className="bg-white/5 rounded p-2 text-center">
-                      <div className="text-[10px] text-gray-500">FINALIDAD</div>
+                      <div className="text-[10px] text-gray-500">FINALITY</div>
                       <div className="text-blue-400 font-bold">&lt; 2s</div>
                    </div>
                    <div className="bg-white/5 rounded p-2 text-center">
-                      <div className="text-[10px] text-gray-500">EFICIENCIA</div>
+                      <div className="text-[10px] text-gray-500">EFFICIENCY</div>
                       <div className="text-green-400 font-bold">99.4%</div>
                    </div>
                 </div>
 
                 <p className="text-xs text-gray-400 border-t border-white/10 pt-3 leading-relaxed">
-                   <span className="text-blue-500">❄️</span> Calor residual reutilizado al 95%.
+                   <span className="text-blue-500">❄️</span> Residual heat reused at 95%.
                 </p>
              </div>
 
@@ -1107,11 +1107,11 @@ while Verification_Fails(Permutation):
           {/* TEXTO EXPLICATIVO TÉCNICO */}
           <div className="mt-16 text-center max-w-4xl mx-auto">
             <div className="p-8 rounded-2xl border border-[#00ff9d]/20 bg-[#0a0a0a]/30 backdrop-blur-md">
-              <h4 className="text-2xl font-bold text-[#00eeff] mb-4">Fundamento Criptográfico</h4>
+              <h4 className="text-2xl font-bold text-[#00eeff] mb-4">Cryptographic Foundation</h4>
               <p className="text-gray-300 leading-relaxed font-mono text-base">
-                El algoritmo RubikPoW opera sobre el Grupo Simétrico S48. Los benchmarks confirman una asimetría computacional perfecta:
-                mientras la búsqueda de la permutación objetivo requiere trabajo exhaustivo (Proof of Useful Work),
-                la verificación de la solución se ejecuta en tiempo polinómico O(n), permitiendo finalidad instantánea en hardware de consumo.
+                The RubikPoW algorithm operates on the Symmetric Group S48. Benchmarks confirm perfect computational asymmetry:
+                while the search for the target permutation requires exhaustive work (Proof of Useful Work),
+                solution verification executes in polynomial time O(n), enabling instant finality on consumer hardware.
               </p>
             </div>
           </div>
@@ -1122,10 +1122,10 @@ while Verification_Fails(Permutation):
       <section className="relative z-10 py-24 px-4 bg-gradient-to-b from-[#050505] to-[#0a0a0a] overflow-hidden">
          <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-white">
-               El Corazón de la <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-[#7000ff]">Soberanía</span>
+               The Heart of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-[#7000ff]">Sovereignty</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-12">
-               Visualización en tiempo real de la estructura de permutación S48. Cada giro representa un intento de validación criptográfica resistente a computación cuántica.
+               Real-time visualization of the S48 permutation structure. Each rotation represents an attempt at quantum-resistant cryptographic validation.
             </p>
 
             {/* Contenedor del Canvas 3D */}
