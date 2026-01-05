@@ -949,15 +949,14 @@ while Verification_Fails(Permutation):
               </div>
               <div className="mt-6 text-center">
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  El Grupo Simétrico S48 de QbitCoin (10<sup>116</sup>) supera en 36 órdenes de magnitud al número de átomos
-                  in the observable universe (10<sup>80</sup>), proporcionando resistencia cuántica incluso frente a Grover's Algorithm.
+                  QbitCoin's Symmetric Group S48 (10<sup>116</sup>) exceeds the number of atoms in the observable universe by 36 orders of magnitude (10<sup>80</sup>), providing quantum resistance even against Grover's Algorithm.
                 </p>
               </div>
             </div>
 
             {/* GRÁFICO DERECHO: Asimetría PoUW (Generación vs Verificación) */}
             <div className="bg-[#0a0a0a]/30 backdrop-blur-md rounded-2xl border border-white/10 p-8">
-              <h3 className="text-2xl font-bold text-center text-[#00ff9d] mb-8">Asimetría Computacional (PoUW)</h3>
+              <h3 className="text-2xl font-bold text-center text-[#00ff9d] mb-8">Computational Asymmetry (PoUW)</h3>
               <div className="w-full h-[400px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart
