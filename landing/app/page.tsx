@@ -887,9 +887,9 @@ while Verification_Fails(Permutation):
 
           {/* GRID DE GRÁFICOS TÉCNICOS */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-            {/* GRÁFICO IZQUIERDO: Escala de Complejidad (Espacio de Estados) */}
+            {/* GRÁFICO IZQUIERDO: Escala de Complejidad (State Space) */}
             <div className="bg-[#0a0a0a]/30 backdrop-blur-md rounded-2xl border border-white/10 p-8">
-              <h3 className="text-2xl font-bold text-center text-[#00ff9d] mb-8">Escala de Complejidad (Espacio de Estados)</h3>
+              <h3 className="text-2xl font-bold text-center text-[#00ff9d] mb-8">Escala de Complejidad (State Space)</h3>
               <div className="w-full h-[400px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart
@@ -930,7 +930,7 @@ while Verification_Fails(Permutation):
                     />
                     <Bar
                       dataKey="valor"
-                      name="Espacio de Estados"
+                      name="State Space"
                       className="cursor-pointer"
                     >
                       {[
@@ -1024,7 +1024,7 @@ while Verification_Fails(Permutation):
                 <div className="flex justify-between items-start mb-4">
                    <div>
                       <div className="text-[#00ff9d] text-xs font-mono mb-1">SYS.ENTROPY</div>
-                      <h4 className="text-white text-lg font-bold">Espacio de Estados</h4>
+                      <h4 className="text-white text-lg font-bold">State Space</h4>
                    </div>
                    <div className="w-12 h-12 rounded-full border-4 border-[#00ff9d]/20 flex items-center justify-center relative">
                       <div className="absolute inset-0 rounded-full border-4 border-[#00ff9d] border-t-transparent animate-spin-slow"></div>
@@ -1043,7 +1043,7 @@ while Verification_Fails(Permutation):
                 </div>
 
                 <p className="text-xs text-gray-400 border-t border-white/10 pt-3 leading-relaxed">
-                   <span className="text-[#00ff9d]">✓</span> Supera seguridad NIST PQC Nivel 5.
+                   <span className="text-[#00ff9d]">✓</span> Exceeds NIST PQC Security Level 5.
                 </p>
              </div>
 
@@ -1063,12 +1063,12 @@ while Verification_Fails(Permutation):
                 <div className="text-3xl font-mono font-black text-white mb-2">4.2 <span className="text-lg text-gray-500">kSol/s</span></div>
 
                 <div className="flex items-center gap-2 mb-4">
-                   <span className="px-2 py-0.5 rounded bg-[#7000ff]/20 text-[#7000ff] text-xs font-bold">12ms Latencia</span>
+                   <span className="px-2 py-0.5 rounded bg-[#7000ff]/20 text-[#7000ff] text-xs font-bold">12ms Latency</span>
                    <span className="text-xs text-gray-500">Threadripper PRO</span>
                 </div>
 
                 <p className="text-xs text-gray-400 border-t border-white/10 pt-3 leading-relaxed">
-                   <span className="text-[#7000ff]">⚡</span> Optimizado para CPU Server-Grade.
+                   <span className="text-[#7000ff]">⚡</span> Optimized for Server-Grade CPU.
                 </p>
              </div>
 
