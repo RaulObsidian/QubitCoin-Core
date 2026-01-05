@@ -1187,15 +1187,35 @@ while Verification_Fails(Permutation):
             </div>
           </div>
 
-          <p className="text-gray-400 text-[10px] font-mono tracking-widest uppercase">
-            © 2025 QbitCoin Labs GmbH • Frankfurt am Main
-          </p>
-          <p className="text-[#00ff9d] text-[8px] mt-2">
-            <a href="#" className="hover:underline">European Digital Sovereignty Initiative</a>
-          </p>
-          <p className="text-gray-500 text-[8px] mt-2">
-            The Financial Infrastructure of European Mathematical Sovereignty
-          </p>
+          <div className="mt-8 pt-6 border-t border-white/10">
+            <p className="text-gray-300 text-sm font-mono tracking-wide mb-4">
+              © 2025 QbitCoin Labs GmbH • Frankfurt am Main
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-6 mb-4">
+              <div className="flex items-center gap-2">
+                <span className="text-green-400 text-lg">✓</span>
+                <span className="text-gray-300 text-sm">MiCA Compliant</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="text-green-400 text-lg">✓</span>
+                <span className="text-gray-300 text-sm">GDPR Ready</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="text-green-400 text-lg">✓</span>
+                <span className="text-gray-300 text-sm">Made in EU</span>
+              </div>
+            </div>
+
+            <p className="text-[#00ff9d] text-sm font-medium">
+              <a href="#" className="hover:text-white transition-colors">European Digital Sovereignty Initiative</a>
+            </p>
+            <p className="text-gray-400 text-sm mt-2 max-w-2xl mx-auto">
+              The Financial Infrastructure of European Mathematical Sovereignty
+            </p>
+          </div>
         </div>
       </footer>
     </div>
