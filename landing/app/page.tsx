@@ -27,7 +27,7 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
   if (completed) {
     return (
       <div className="grid grid-cols-4 gap-4 md:gap-8 mb-16 w-full max-w-2xl">
-        {['DÍAS', 'HORAS', 'MINUTOS', 'SEGUNDOS'].map((label, i) => (
+        {['DAYS', 'HOURS', 'MINUTES', 'SECONDS'].map((label, i) => (
           <div key={i} className="text-center">
             <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">00</div>
             <div className="text-xs md:text-sm text-gray-400 mt-2">{label}</div>
@@ -40,19 +40,19 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
       <div className="grid grid-cols-4 gap-4 md:gap-8 mb-16 w-full max-w-2xl animate-fade-in-up">
         <div className="text-center">
           <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(days).padStart(2, '0')}</div>
-          <div className="text-xs md:text-sm text-gray-400 mt-2">DÍAS</div>
+          <div className="text-xs md:text-sm text-gray-400 mt-2">DAYS</div>
         </div>
         <div className="text-center">
           <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(hours).padStart(2, '0')}</div>
-          <div className="text-xs md:text-sm text-gray-400 mt-2">HORAS</div>
+          <div className="text-xs md:text-sm text-gray-400 mt-2">HOURS</div>
         </div>
         <div className="text-center">
           <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(minutes).padStart(2, '0')}</div>
-          <div className="text-xs md:text-sm text-gray-400 mt-2">MINUTOS</div>
+          <div className="text-xs md:text-sm text-gray-400 mt-2">MINUTES</div>
         </div>
         <div className="text-center">
           <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(seconds).padStart(2, '0')}</div>
-          <div className="text-xs md:text-sm text-gray-400 mt-2">SEGUNDOS</div>
+          <div className="text-xs md:text-sm text-gray-400 mt-2">SECONDS</div>
         </div>
       </div>
     );
