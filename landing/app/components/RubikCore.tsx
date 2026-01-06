@@ -13,7 +13,7 @@ const generateBlockData = () => ({
   reward: "50 QBC"
 });
 
-const Cubie = ({ position, isMining, activeIndices, onClick }: { position: [number, number, number], isMining: boolean, activeIndices: [number, number, number], onClick: (data: any) => void }) => {
+const Cubie = ({ position, isMining, activeIndices, onClick, isSelected }: { position: [number, number, number], isMining: boolean, activeIndices: [number, number, number], onClick: (data: any) => void, isSelected: boolean }) => {
   const mesh = useRef<THREE.Mesh>(null);
   const [hovered, setHover] = useState(false);
   const [selected, setSelected] = useState(false);
@@ -27,10 +27,10 @@ const Cubie = ({ position, isMining, activeIndices, onClick }: { position: [numb
   // Color dinámico: Si está validado es verde, si está activo destaca, si no es oscuro
   const dynamicColor = isValidated ? "#00ff9d" : isActive ? "#00ff9d" : "#7000ff";
 
-  // Color del material basado en estado
-  const materialColor = selected ? "#ffffff" : (isValidated ? "#00ff9d" : "#0a0a0a");
-  const emissiveColor = selected ? "#ffffff" : (isValidated ? "#00ff9d" : isActive ? "#00ff9d" : "#000000");
-  const emissiveIntensity = selected ? 0.8 : (isValidated ? 0.5 : isActive ? 0.3 : 0);
+  // Color del material basado en estado - usando neón violeta para selección
+  const materialColor = isSelected ? "#8b00ff" : (isValidated ? "#00ff9d" : "#0a0a0a"); // Neón violeta para selección
+  const emissiveColor = isSelected ? "#8b00ff" : (isValidated ? "#00ff9d" : isActive ? "#00ff9d" : "#000000");
+  const emissiveIntensity = isSelected ? 0.8 : (isValidated ? 0.5 : isActive ? 0.3 : 0);
 
   return (
     <group>
@@ -38,8 +38,7 @@ const Cubie = ({ position, isMining, activeIndices, onClick }: { position: [numb
         ref={mesh}
         position={position}
         onClick={(e) => {
-          e.stopPropagation();
-          setSelected(!selected);
+          e.stopPropagation(); // Detener propagación para evitar clics múltiples
           onClick({...blockData, position, isValidated});
         }}
         onPointerOver={(e) => { e.stopPropagation(); setHover(true); }}
@@ -48,13 +47,13 @@ const Cubie = ({ position, isMining, activeIndices, onClick }: { position: [numb
       >
         <boxGeometry args={[0.9, 0.9, 0.9]} />
         <meshStandardMaterial
-          color={selected ? "#ffffff" : (isValidated ? "#00ff9d" : "#0a0a0a")} // Cuerpo blanco si seleccionado, verde si validado, negro si no
+          color={materialColor} // Neón violeta si seleccionado, verde si validado, negro si no
           metalness={0.9}
           roughness={0.1}
           transparent
           opacity={0.95}
-          emissive={selected ? "#ffffff" : (isValidated ? "#00ff9d" : isActive ? "#00ff9d" : "#000000")}
-          emissiveIntensity={selected ? 0.8 : (isValidated ? 0.5 : isActive ? 0.3 : 0)}
+          emissive={emissiveColor}
+          emissiveIntensity={emissiveIntensity} // Intensidad aumentada para efecto de brillo
         />
         <lineSegments>
           <edgesGeometry args={[new THREE.BoxGeometry(0.9, 0.9, 0.9)]} />
@@ -112,15 +111,25 @@ const RubikGroup = ({ onBlockSelect }: { onBlockSelect: (data: any) => void }) =
 
   return (
     <group ref={group}>
-      {positions.map((pos, i) => (
-        <Cubie
-          key={i}
-          position={pos}
-          isMining={isMining}
-          activeIndices={activeIndices}
-          onClick={onBlockSelect}
-        />
-      ))}
+      {positions.map((pos, i) => {
+        // Verificar si este cubo está seleccionado
+        const isSelected = selectedBlock &&
+                          selectedBlock.position &&
+                          pos[0] === selectedBlock.position[0] &&
+                          pos[1] === selectedBlock.position[1] &&
+                          pos[2] === selectedBlock.position[2];
+
+        return (
+          <Cubie
+            key={i}
+            position={pos}
+            isMining={isMining}
+            activeIndices={activeIndices}
+            onClick={onBlockSelect}
+            isSelected={isSelected}
+          />
+        );
+      })}
     </group>
   );
 };
@@ -129,7 +138,15 @@ export default function RubikCore() {
   const [selectedBlock, setSelectedBlock] = useState<any>(null);
 
   const handleBlockSelect = (data: any) => {
-    setSelectedBlock(data);
+    // Si se hace clic en el mismo bloque que ya está seleccionado, lo deseleccionamos (toggle)
+    if (selectedBlock && selectedBlock.position && data.position &&
+        selectedBlock.position[0] === data.position[0] &&
+        selectedBlock.position[1] === data.position[1] &&
+        selectedBlock.position[2] === data.position[2]) {
+      setSelectedBlock(null);
+    } else {
+      setSelectedBlock(data);
+    }
   };
 
   return (
