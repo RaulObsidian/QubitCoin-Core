@@ -126,7 +126,7 @@ export default function RubikCore() {
       <div className="h-[500px]">
         <Canvas dpr={[1, 2]}>
           <PerspectiveCamera makeDefault position={[0, 0, 6]} />
-          <OrbitControls enableZoom={false} />
+          <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} autoRotate={true} autoRotateSpeed={0.5} />
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} intensity={1} color="#00ff9d" />
           <pointLight position={[-10, -10, -10]} intensity={1} color="#7000ff" />
