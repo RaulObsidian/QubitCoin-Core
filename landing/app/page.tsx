@@ -21,6 +21,7 @@ import {
 } from 'recharts';
 import dynamic from 'next/dynamic';
 const RubikCore = dynamic(() => import('./components/RubikCore'), { ssr: false });
+const SecurityGrid = dynamic(() => import('./components/SecurityGrid'), { ssr: false });
 
 // Renderizador del contador
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -1133,6 +1134,9 @@ while Verification_Fails(Permutation):
             </div>
          </div>
       </section>
+
+      {/* SECURITY GRID SECTION */}
+      <SecurityGrid />
 
       {/* DOWNLOAD SECTION */}
       <section className="relative z-10 py-24 px-4">
