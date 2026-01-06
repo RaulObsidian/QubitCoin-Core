@@ -58,10 +58,10 @@ const Cubie = ({ position, isMining, activeIndices, onClick, isSelected }: { pos
         <lineSegments>
           <edgesGeometry args={[new THREE.BoxGeometry(0.9, 0.9, 0.9)]} />
           <lineBasicMaterial
-            color={selected ? "#ffffff" : (isValidated ? "#ffffff" : dynamicColor)}
-            linewidth={selected ? 3 : 2}
+            color={isSelected ? "#ffffff" : (isValidated ? "#ffffff" : dynamicColor)}
+            linewidth={isSelected ? 3 : 2}
             transparent
-            opacity={selected ? 0.8 : 0.6}
+            opacity={isSelected ? 0.8 : 0.6}
           />
         </lineSegments>
       </mesh>
@@ -69,7 +69,7 @@ const Cubie = ({ position, isMining, activeIndices, onClick, isSelected }: { pos
   );
 };
 
-const RubikGroup = ({ onBlockSelect }: { onBlockSelect: (data: any) => void }) => {
+const RubikGroup = ({ onBlockSelect, selectedBlock }: { onBlockSelect: (data: any) => void, selectedBlock: any }) => {
   const group = useRef<THREE.Group>(null);
   const [activeIndices, setActiveIndices] = useState<[number, number, number]>([0, 0, 0]);
   const [isMining, setIsMining] = useState(true);
@@ -168,7 +168,7 @@ export default function RubikCore() {
               <pointLight position={[10, 10, 10]} intensity={1} color="#00ff9d" />
               <pointLight position={[-10, -10, -10]} intensity={1} color="#7000ff" />
               <Float speed={2} rotationIntensity={0.2} floatIntensity={0.2}>
-                 <RubikGroup onBlockSelect={handleBlockSelect} />
+                 <RubikGroup onBlockSelect={handleBlockSelect} selectedBlock={selectedBlock} />
               </Float>
               <Environment preset="city" />
             </Canvas>
