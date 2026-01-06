@@ -231,8 +231,8 @@ const SecurityGrid = () => {
               <div className="lg:w-1/2 flex justify-center">
                 <div className="relative group">
                   <div className="w-80 h-80 rounded-2xl overflow-hidden border-2 border-[#00ff9d]/30 shadow-2xl shadow-[#00ff9d]/10 transform transition-transform duration-500 group-hover:scale-105">
-                    <img 
-                      src={`/cubes/${tier.id.slice(4)}.jpg`} 
+                    <img
+                      src={`/cubes/${index + 3}.jpg`}
                       alt={`${tier.name} Visualization`}
                       className="w-full h-full object-cover"
                     />
