@@ -133,10 +133,10 @@ export default function Home() {
     The global cryptocurrency market exceeds 50 trillion dollars. The real opportunity lies in real-world asset tokenization (RWA). It is projected that by 2030, 10% of global GDP will be stored in DLT technologies.
 
     RSA-2048 Collapse:
-    Quantum computing threatens to obsolete all RSA-2048-based cryptographic systems. QbitCoin anticipates "Q-Day" by migrating to post-quantum cryptography (PQC) signature schemes.
+    Quantum computing threatens to obsolete all RSA-2048-based cryptographic systems. QubitCoin anticipates "Q-Day" by migrating to post-quantum cryptography (PQC) signature schemes.
 
     Early Opportunity:
-    Bitcoin has the first-mover advantage, but QbitCoin has the technological last-mover advantage with native RubikPoW architecture.
+    Bitcoin has the first-mover advantage, but QubitCoin has the technological last-mover advantage with native RubikPoW architecture.
 
     European Sovereignty:
     Product developed entirely in Europe, compliant with MiCA and GDPR regulations.
@@ -171,7 +171,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           <div
             className="p-6 rounded-2xl border border-[#00ff9d]/20 bg-[#0a0a0a]/30 backdrop-blur-md cursor-pointer hover:border-[#00ff9d]/50 transition-colors"
-            onClick={() => openModal('Algorithm Comparison', 'This is an example of detailed content about the comparison between Bitcoin\'s SHA-256 and QbitCoin\'s RubikPoW.')}
+            onClick={() => openModal('Algorithm Comparison', 'This is an example of detailed content about the comparison between Bitcoin\'s SHA-256 and QubitCoin\'s RubikPoW.')}
           >
             <h4 className="text-xl font-bold text-red-400 mb-4">Bitcoin: SHA-256</h4>
             <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
@@ -188,7 +188,7 @@ while Hash > Target:
             className="p-6 rounded-2xl border border-[#7000ff]/20 bg-[#0a0a0a]/30 backdrop-blur-md cursor-pointer hover:border-[#7000ff]/50 transition-colors"
             onClick={() => openModal('RubikPoW Details', 'This is an example of detailed content about the RubikPoW algorithm.')}
           >
-            <h4 className="text-xl font-bold text-[#00ff9d] mb-4">QbitCoin: RubikPoW</h4>
+            <h4 className="text-xl font-bold text-[#00ff9d] mb-4">QubitCoin: RubikPoW</h4>
             <pre className="bg-black/30 p-4 rounded-lg text-sm overflow-x-auto">
               {`Proof of Work:
 Permutation = Solve_Rubik_State(random_state)
@@ -203,7 +203,7 @@ while Verification_Fails(Permutation):
         <div className="mt-8">
           <h4 className="text-xl font-bold text-[#00eeff] mb-4">Quantum-Safe Cryptography</h4>
           <p className="text-gray-300 leading-relaxed">
-            QbitCoin implements NIST standards such as <strong>Dilithium</strong> for digital signatures and <strong>Kyber</strong> for post-quantum key exchange.
+            QubitCoin implements NIST standards such as <strong>Dilithium</strong> for digital signatures and <strong>Kyber</strong> for post-quantum key exchange.
             These algorithms are designed to resist quantum computer attacks, providing long-term security.
           </p>
         </div>
@@ -373,7 +373,7 @@ while Verification_Fails(Permutation):
 
           <div
             className="p-6 rounded-2xl border border-[#7000ff]/20 bg-[#0a0a0a]/30 backdrop-blur-md cursor-pointer hover:border-[#7000ff]/50 transition-colors"
-            onClick={() => openModal('European Employment', 'QbitCoin Labs GmbH plans to create over 200 high-skilled positions in Frankfurt, Munich, and Zurich. Engineers, cryptographers, group theory experts, and applied mathematicians will find opportunities on our platform.')}
+            onClick={() => openModal('European Employment', 'QubitCoin Labs GmbH plans to create over 200 high-skilled positions in Frankfurt, Munich, and Zurich. Engineers, cryptographers, group theory experts, and applied mathematicians will find opportunities on our platform.')}
           >
             <div className="text-4xl mb-4">👤</div>
             <h4 className="text-xl font-bold mb-2">European Employment</h4>
@@ -396,11 +396,11 @@ while Verification_Fails(Permutation):
 
         <div
           className="mt-8 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md cursor-pointer hover:border-[#00ff9d]/50 transition-colors"
-          onClick={() => openModal('Strategic Alliances', 'QbitCoin Labs GmbH will establish collaborations with leading European technology institutions such as TSMC, Infineon Technologies, and research centers such as the Fraunhofer Institute. Our goal is to create a European cryptographic hardware industry resilient to geopolitical threats.')}
+          onClick={() => openModal('Strategic Alliances', 'QubitCoin Labs GmbH will establish collaborations with leading European technology institutions such as TSMC, Infineon Technologies, and research centers such as the Fraunhofer Institute. Our goal is to create a European cryptographic hardware industry resilient to geopolitical threats.')}
         >
           <h4 className="text-xl font-bold text-[#00ff9d] mb-4">Strategic Alliances</h4>
           <p className="text-gray-300 leading-relaxed">
-            QbitCoin Labs GmbH will establish collaborations with leading European technology institutions such as TSMC, Infineon Technologies, and research centers such as the Fraunhofer Institute.
+            QubitCoin Labs GmbH will establish collaborations with leading European technology institutions such as TSMC, Infineon Technologies, and research centers such as the Fraunhofer Institute.
             Our goal is to create a European cryptographic hardware industry resilient to geopolitical threats.
           </p>
         </div>
@@ -454,7 +454,7 @@ while Verification_Fails(Permutation):
         </h1>
 
         <p className="text-lg md:text-xl text-gray-400 font-light mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-          As <span className="text-red-500 font-bold">classical cryptography collapses</span>, QbitCoin builds <span className="text-[#00ff9d] font-medium">Europe's digital bunker</span>.
+          As <span className="text-red-500 font-bold">classical cryptography collapses</span>, QubitCoin builds <span className="text-[#00ff9d] font-medium">Europe's digital bunker</span>.
         </p>
 
         {/* Contador principal */}
@@ -664,7 +664,7 @@ while Verification_Fails(Permutation):
               Market <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] to-blue-500">Projections</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              QbitCoin captures value in the transition to real-world asset tokenization (RWA) and quantum-resistant infrastructure.
+              QubitCoin captures value in the transition to real-world asset tokenization (RWA) and quantum-resistant infrastructure.
             </p>
           </div>
 
@@ -742,7 +742,7 @@ while Verification_Fails(Permutation):
               <p className="text-gray-300 leading-relaxed">
                 The real-world assets tokenization market (Real World Assets - RWA) is experiencing exponential growth.
                 It is projected to reach <span className="text-brand-accent font-bold">$30 Trillions</span> by 2030, representing a critical
-                opportunity for post-quantum financial infrastructures like QbitCoin.
+                opportunity for post-quantum financial infrastructures like QubitCoin.
               </p>
             </div>
 
@@ -819,7 +819,7 @@ while Verification_Fails(Permutation):
                 <BarChart
                   data={[
                     { name: 'Bitcoin (PoW)', desperdicio: 95, utilidad: 5 },
-                    { name: 'QbitCoin (PoUW)', desperdicio: 10, utilidad: 90 }
+                    { name: 'QubitCoin (PoUW)', desperdicio: 10, utilidad: 90 }
                   ]}
                   margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
                 >
@@ -865,7 +865,7 @@ while Verification_Fails(Permutation):
               <h3 className="text-2xl font-bold text-[#00ff9d] mb-4">Energy Sustainability Comparison</h3>
               <p className="text-gray-300 leading-relaxed">
                 While Bitcoin wastes electrical energy on single calculations (95% waste),
-                QbitCoin reuses energy for useful scientific calculations (90% utility),
+                QubitCoin reuses energy for useful scientific calculations (90% utility),
                 meeting European Green Deal objectives.
               </p>
             </div>
@@ -897,7 +897,7 @@ while Verification_Fails(Permutation):
                     data={[
                       { name: 'Bitcoin (SHA-256)', valor: 77, tipo: 'bitcoin' },
                       { name: 'Atoms in the Universe', valor: 80, tipo: 'universo' },
-                      { name: 'QbitCoin (Rubik S48)', valor: 116, tipo: 'qubitcoin' },
+                      { name: 'QubitCoin (Rubik S48)', valor: 116, tipo: 'qubitcoin' },
                     ]}
                     margin={{ top: 20, right: 30, left: 150, bottom: 60 }}
                   >
@@ -936,7 +936,7 @@ while Verification_Fails(Permutation):
                       {[
                         { name: 'Bitcoin (SHA-256)', valor: 77, tipo: 'bitcoin' },
                         { name: 'Atoms in the Universe', valor: 80, tipo: 'universo' },
-                        { name: 'QbitCoin (Rubik S48)', valor: 116, tipo: 'qubitcoin' },
+                        { name: 'QubitCoin (Rubik S48)', valor: 116, tipo: 'qubitcoin' },
                       ].map((entry, index) => (
                         <Cell
                           key={`cell-${index}`}
@@ -949,7 +949,7 @@ while Verification_Fails(Permutation):
               </div>
               <div className="mt-6 text-center">
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  QbitCoin's Symmetric Group S48 (10<sup>116</sup>) exceeds the number of atoms in the observable universe by 36 orders of magnitude (10<sup>80</sup>), providing quantum resistance even against Grover's Algorithm.
+                  QubitCoin's Symmetric Group S48 (10<sup>116</sup>) exceeds the number of atoms in the observable universe by 36 orders of magnitude (10<sup>80</sup>), providing quantum resistance even against Grover's Algorithm.
                 </p>
               </div>
             </div>
@@ -1147,7 +1147,7 @@ while Verification_Fails(Permutation):
             ].map((doc, i) => (
               <a
                 key={doc.lang}
-                href={`/whitepaper/QbitCoin-QBC _EU_${doc.lang}_Final.pdf`}
+                href={`/whitepaper/QubitCoin-QBC _EU_${doc.lang}_Final.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 text-left transition-all duration-300 hover:border-[#00ff9d]/50 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(0,255,157,0.1)]"
