@@ -468,7 +468,7 @@ while Verification_Fails(Permutation):
           </h1>
 
           <p className="text-lg md:text-xl text-gray-400 font-light mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-            <span className="text-white font-bold">As</span> <span className="text-red-700 font-bold">classical cryptography collapses</span>, <span className="text-white font-bold">QubitCoin</span> <span className="text-white font-bold">builds</span> <span className="text-[#00ff9d] font-medium">Europe's digital bunker</span>.
+            <span className="text-white font-bold">As</span> <span className="text-red-800 font-bold">classical cryptography collapses</span>, <span className="text-white font-bold">QubitCoin</span> <span className="text-white font-bold">builds</span> <span className="text-[#00ff9d] font-medium">Europe's digital bunker</span>.
           </p>
 
           {/* Contador principal */}
