@@ -37,6 +37,12 @@ module.exports = {
         'glow-pulse': 'glowPulse 4s ease-in-out infinite',
         'spin-slow': 'spin 20s linear infinite',
       },
+      brightness: {
+        125: '1.25',
+      },
+      contrast: {
+        125: '1.25',
+      },
       keyframes: {
         auroraFlow: {
           '0%, 100%': {

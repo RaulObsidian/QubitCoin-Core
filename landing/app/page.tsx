@@ -448,7 +448,7 @@ while Verification_Fails(Permutation):
             <img
               src="/qbc_hero.png"
               alt="QubitCoin Brand Identity"
-              className="w-[600px] h-[600px] object-contain opacity-20 mix-blend-overlay animate-spin-slow"
+              className="w-[800px] h-[800px] object-contain opacity-30 mix-blend-overlay animate-spin-slow brightness-125 contrast-125"
             />
           </div>
         </div>
