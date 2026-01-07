@@ -443,15 +443,7 @@ while Verification_Fails(Permutation):
       {/* HERO SECTION */}
       <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-24 text-center overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center">
-          <div className="relative">
-            <img
-              src="/qbc_hero.png?v=2"
-              alt="QubitCoin Brand Identity"
-              className="w-[1400px] h-[1400px] object-contain opacity-40 mix-blend-overlay brightness-135 contrast-175"
-            />
-          </div>
-        </div>
+        {/* Background Image - Temporarily removed for manual update */}
 
         {/* Content with higher z-index to stay on top */}
         <div className="relative z-10">
