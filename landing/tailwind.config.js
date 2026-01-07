@@ -39,6 +39,7 @@ module.exports = {
       },
       brightness: {
         125: '1.25',
+        150: '1.5',
         175: '1.75',
       },
       contrast: {
