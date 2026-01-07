@@ -446,7 +446,7 @@ while Verification_Fails(Permutation):
         <div className="absolute inset-0 z-0 flex items-center justify-center">
           <div className="relative">
             <img
-              src="/qbc_hero.png"
+              src="/qbc_hero_new.png"
               alt="QubitCoin Brand Identity"
               className="w-auto h-auto max-w-full max-h-full object-contain opacity-100"
             />

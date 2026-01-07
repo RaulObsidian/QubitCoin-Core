@@ -1,0 +1,25 @@
+diff --git a/landing/app/page.tsx b/landing/app/page.tsx
+index e00fa91..f24295d 100644
+--- a/landing/app/page.tsx
++++ b/landing/app/page.tsx
+@@ -443,7 +443,15 @@ while Verification_Fails(Permutation):
+       {/* HERO SECTION */}
+       <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-24 text-center overflow-hidden">
+         {/* Background Image */}
+-        {/* Background Image - Temporarily removed for manual update */}
++        <div className="absolute inset-0 z-0 flex items-center justify-center">
++          <div className="relative">
++            <img
++              src="/qbc_hero.png"
++              alt="QubitCoin Brand Identity"
++              className="w-auto h-auto max-w-full max-h-full object-contain opacity-100"
++            />
++          </div>
++        </div>
+ 
+         {/* Content with higher z-index to stay on top */}
+         <div className="relative z-10">
+diff --git a/landing/public/qbc_hero.png b/landing/public/qbc_hero.png
+new file mode 100644
+index 0000000..5e2598c
+Binary files /dev/null and b/landing/public/qbc_hero.png differ
