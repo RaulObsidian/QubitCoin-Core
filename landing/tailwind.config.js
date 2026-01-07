@@ -39,9 +39,11 @@ module.exports = {
       },
       brightness: {
         125: '1.25',
+        175: '1.75',
       },
       contrast: {
         125: '1.25',
+        175: '1.75',
       },
       keyframes: {
         auroraFlow: {
