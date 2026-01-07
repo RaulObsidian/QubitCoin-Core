@@ -31,7 +31,7 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
         {['DAYS', 'HOURS', 'MINUTES', 'SECONDS'].map((label, i) => (
           <div key={i} className="text-center">
             <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20">00</div>
-            <div className="text-xs md:text-sm text-gray-400 mt-2">{label}</div>
+            <div className="text-xs md:text-sm text-gray-400 mt-2 font-bold">{label}</div>
           </div>
         ))}
       </div>
@@ -41,19 +41,19 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
       <div className="grid grid-cols-4 gap-4 md:gap-8 mb-16 w-full max-w-2xl animate-fade-in-up">
         <div className="text-center">
           <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(days).padStart(2, '0')}</div>
-          <div className="text-xs md:text-sm text-gray-400 mt-2">DAYS</div>
+          <div className="text-xs md:text-sm text-gray-400 mt-2 font-bold">DAYS</div>
         </div>
         <div className="text-center">
           <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(hours).padStart(2, '0')}</div>
-          <div className="text-xs md:text-sm text-gray-400 mt-2">HOURS</div>
+          <div className="text-xs md:text-sm text-gray-400 mt-2 font-bold">HOURS</div>
         </div>
         <div className="text-center">
           <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(minutes).padStart(2, '0')}</div>
-          <div className="text-xs md:text-sm text-gray-400 mt-2">MINUTES</div>
+          <div className="text-xs md:text-sm text-gray-400 mt-2 font-bold">MINUTES</div>
         </div>
         <div className="text-center">
           <div className="text-3xl md:text-5xl font-mono font-bold text-white bg-black/30 backdrop-blur-xl p-4 rounded-xl border border-[#00ff9d]/20 animate-pulse-glow">{String(seconds).padStart(2, '0')}</div>
-          <div className="text-xs md:text-sm text-gray-400 mt-2">SECONDS</div>
+          <div className="text-xs md:text-sm text-gray-400 mt-2 font-bold">SECONDS</div>
         </div>
       </div>
     );
@@ -459,16 +459,16 @@ while Verification_Fails(Permutation):
             <span className="text-[#00ff9d] text-xs font-mono tracking-[0.3em] font-bold">POST-QUANTUM MATHEMATICAL SOVEREIGNTY</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00ff9d] to-[#7000ff] drop-shadow-2xl animate-glow-pulse">
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] via-[#00eeff] to-[#7000ff] drop-shadow-2xl animate-glow-pulse">
             THE INFRASTRUCTURE OF
           </h1>
 
-          <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-12 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00eeff] to-[#7000ff] drop-shadow-2xl animate-glow-pulse">
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-12 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#00ff9d] via-[#00eeff] to-[#7000ff] drop-shadow-2xl animate-glow-pulse">
             MATHEMATICAL SOVEREIGNTY
           </h1>
 
           <p className="text-lg md:text-xl text-gray-400 font-light mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-            As <span className="text-red-500 font-bold">classical cryptography collapses</span>, QubitCoin builds <span className="text-[#00ff9d] font-medium">Europe's digital bunker</span>.
+            <span className="text-[#7000ff] font-bold">As</span> <span className="text-red-500 font-bold">classical cryptography collapses</span>, <span className="text-[#7000ff] font-bold">QubitCoin</span> builds <span className="text-[#00ff9d] font-medium">Europe's digital bunker</span>.
           </p>
 
           {/* Contador principal */}
