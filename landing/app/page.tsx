@@ -645,7 +645,7 @@ while Verification_Fails(Permutation):
                    { name: 'PoUW Mining (Scientific)', value: 45, color: '#00ff9d', detail: 'Direct rewards for nodes providing useful computing power to the network (Q-HPC). Decreasing emission like Halving.' },
                    { name: 'DAO Treasury & R&D', value: 20, color: '#7000ff', detail: 'Community-governed fund to finance quantum-resistant hardware development, grants, and ecosystem expansion.' },
                    { name: 'Team & Advisors (Vesting)', value: 15, color: '#00a8ff', detail: 'Allocation for founders and key experts. Locked for 2 years with linear release afterward to align incentives.' },
-                   { name: 'Liquidity Fund & Exchange', value: 10, color: '#ff00e6', detail: 'Initial liquidity provision on DEX/CEX to ensure market stability and QBIT token accessibility.' },
+                   { name: 'Liquidity Fund & Exchange', value: 10, color: '#ff00e6', detail: 'Initial liquidity provision on DEX/CEX to ensure market stability and QUBIT token accessibility.' },
                    { name: 'Validators & Network Security', value: 10, color: '#ffbd00', detail: 'Exclusive incentives for validator nodes ensuring RubikPoW consensus and transaction finality.' },
                  ].map((item, index) => (
                    <button
