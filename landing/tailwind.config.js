@@ -35,6 +35,7 @@ module.exports = {
         'fade-in': 'fadeIn 1.5s ease-out forwards',
         'slide-up': 'slideUp 1s ease-out forwards',
         'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+        'spin-slow': 'spin 20s linear infinite',
       },
       keyframes: {
         auroraFlow: {

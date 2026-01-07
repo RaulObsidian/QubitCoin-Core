@@ -441,38 +441,52 @@ while Verification_Fails(Permutation):
       )}
 
       {/* HERO SECTION */}
-      <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-24 text-center">
-        <div className="mb-8 inline-block border border-[#00ff9d]/30 bg-[#00ff9d]/10 px-6 py-2 rounded-full backdrop-blur-md animate-pulse-glow">
-          <span className="text-[#00ff9d] text-xs font-mono tracking-[0.3em] font-bold">POST-QUANTUM MATHEMATICAL SOVEREIGNTY</span>
+      <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-24 text-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center">
+          <div className="relative">
+            <img
+              src="/qbc_hero.png"
+              alt="QubitCoin Brand Identity"
+              className="w-[600px] h-[600px] object-contain opacity-20 mix-blend-overlay animate-spin-slow"
+            />
+          </div>
         </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00ff9d] to-[#7000ff] drop-shadow-2xl animate-glow-pulse">
-          THE INFRASTRUCTURE OF
-        </h1>
+        {/* Content with higher z-index to stay on top */}
+        <div className="relative z-10">
+          <div className="mb-8 inline-block border border-[#00ff9d]/30 bg-[#00ff9d]/10 px-6 py-2 rounded-full backdrop-blur-md animate-pulse-glow">
+            <span className="text-[#00ff9d] text-xs font-mono tracking-[0.3em] font-bold">POST-QUANTUM MATHEMATICAL SOVEREIGNTY</span>
+          </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-12 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00eeff] to-[#7000ff] drop-shadow-2xl animate-glow-pulse">
-          MATHEMATICAL SOVEREIGNTY
-        </h1>
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00ff9d] to-[#7000ff] drop-shadow-2xl animate-glow-pulse">
+            THE INFRASTRUCTURE OF
+          </h1>
 
-        <p className="text-lg md:text-xl text-gray-400 font-light mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-          As <span className="text-red-500 font-bold">classical cryptography collapses</span>, QubitCoin builds <span className="text-[#00ff9d] font-medium">Europe's digital bunker</span>.
-        </p>
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-12 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-[#00eeff] to-[#7000ff] drop-shadow-2xl animate-glow-pulse">
+            MATHEMATICAL SOVEREIGNTY
+          </h1>
 
-        {/* Contador principal */}
-        <div className="w-full max-w-2xl mx-auto">
-          <Countdown
-            date={1780185600000} // Timestamp fijo: 1 de Junio de 2026
-            renderer={renderer}
-          />
+          <p className="text-lg md:text-xl text-gray-400 font-light mb-12 max-w-3xl mx-auto leading-relaxed px-4">
+            As <span className="text-red-500 font-bold">classical cryptography collapses</span>, QubitCoin builds <span className="text-[#00ff9d] font-medium">Europe's digital bunker</span>.
+          </p>
+
+          {/* Contador principal */}
+          <div className="w-full max-w-2xl mx-auto">
+            <Countdown
+              date={1780185600000} // Timestamp fijo: 1 de Junio de 2026
+              renderer={renderer}
+            />
+          </div>
+
+          {/* Botón CTA que abre el modal de Tesis */}
+          <button
+            onClick={() => openModal('Investment Thesis', thesisContent)}
+            className="px-8 py-4 bg-gradient-to-r from-[#00ff9d] to-[#7000ff] rounded-full text-black font-bold text-lg hover:opacity-90 transition-opacity"
+          >
+            View Investment Thesis
+          </button>
         </div>
-
-        {/* Botón CTA que abre el modal de Tesis */}
-        <button
-          onClick={() => openModal('Investment Thesis', thesisContent)}
-          className="px-8 py-4 bg-gradient-to-r from-[#00ff9d] to-[#7000ff] rounded-full text-black font-bold text-lg hover:opacity-90 transition-opacity"
-        >
-          View Investment Thesis
-        </button>
       </section>
 
       {/* TABS NAVIGATION */}
