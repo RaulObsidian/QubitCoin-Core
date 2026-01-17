@@ -1,0 +1,348 @@
+# Documento Técnico del Cubo 5×5×5 - QubitCoin
+
+## Descripción Matemática
+
+El cubo 5×5×5, también conocido como Profesor Cube, es una extensión más compleja de la familia de cubos de Rubik. Aunque no es el cubo principal en QubitCoin, proporciona un nivel adicional de complejidad matemática para aplicaciones específicas.
+
+### Grupo de Permutaciones
+
+El estado del cubo 5×5×5 puede representarse como un elemento del grupo de permutaciones:
+
+G = S50 × S48 × S8 ⋊ (Z2^48 × Z3^8)
+
+Donde:
+- S50: permutaciones de las 50 piezas centrales (25 centros por cara × 6 caras - 4 centros por vértice × 8 vértices / 4)
+- S48: permutaciones de las 48 piezas de borde
+- S8: permutaciones de las 8 esquinas
+- Z2^48: orientaciones de las piezas de borde
+- Z3^8: orientaciones de las esquinas
+
+### Espacio de Estados
+
+- Número total de estados posibles: ≈ 2.8 × 10^74
+- Número de estados alcanzables mediante giros legales: ≈ 2.8 × 10^74
+- Este número es significativamente mayor que el del cubo 4×4×4
+
+## Código Rust para el Cubo 5×5×5
+
+```rust
+use std::fmt;
+
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub struct Center {
+    pub piece: u8,      // Identificador de la pieza central (0-49)
+    pub face: u8,       // Cara a la que pertenece (0-5)
+}
+
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub struct Edge {
+    pub piece: u8,      // Identificador de la pieza de borde (0-47)
+    pub orientation: u8, // Orientación (0, 1)
+}
+
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub struct Corner {
+    pub piece: u8,      // Identificador de la esquina (0-7)
+    pub orientation: u8, // Orientación (0, 1, 2)
+}
+
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub struct Cube5x5x5 {
+    centers: [Center; 50],  // 25 centros por cara × 6 caras - 4 centros por vértice × 8 vértices / 4 = 50 centros
+    edges: [Edge; 48],      // 8 aristas por cara × 6 caras - 4 aristas por vértice × 8 vértices / 2 = 48 aristas
+    corners: [Corner; 8],   // 8 esquinas
+}
+
+impl Cube5x5x5 {
+    pub fn new() -> Self {
+        // Estado resuelto
+        Cube5x5x5 {
+            centers: [
+                // Cara U (Superior) - 25 centros
+                Center { piece: 0, face: 0 }, Center { piece: 1, face: 0 }, Center { piece: 2, face: 0 }, Center { piece: 3, face: 0 }, Center { piece: 4, face: 0 },
+                Center { piece: 5, face: 0 }, Center { piece: 6, face: 0 }, Center { piece: 7, face: 0 }, Center { piece: 8, face: 0 }, Center { piece: 9, face: 0 },
+                Center { piece: 10, face: 0 }, Center { piece: 11, face: 0 }, Center { piece: 12, face: 0 }, Center { piece: 13, face: 0 }, Center { piece: 14, face: 0 },
+                Center { piece: 15, face: 0 }, Center { piece: 16, face: 0 }, Center { piece: 17, face: 0 }, Center { piece: 18, face: 0 }, Center { piece: 19, face: 0 },
+                Center { piece: 20, face: 0 }, Center { piece: 21, face: 0 }, Center { piece: 22, face: 0 }, Center { piece: 23, face: 0 }, Center { piece: 24, face: 0 },
+                
+                // Cara D (Inferior) - 25 centros
+                Center { piece: 25, face: 1 }, Center { piece: 26, face: 1 }, Center { piece: 27, face: 1 }, Center { piece: 28, face: 1 }, Center { piece: 29, face: 1 },
+                Center { piece: 30, face: 1 }, Center { piece: 31, face: 1 }, Center { piece: 32, face: 1 }, Center { piece: 33, face: 1 }, Center { piece: 34, face: 1 },
+                Center { piece: 35, face: 1 }, Center { piece: 36, face: 1 }, Center { piece: 37, face: 1 }, Center { piece: 38, face: 1 }, Center { piece: 39, face: 1 },
+                Center { piece: 40, face: 1 }, Center { piece: 41, face: 1 }, Center { piece: 42, face: 1 }, Center { piece: 43, face: 1 }, Center { piece: 44, face: 1 },
+                Center { piece: 45, face: 1 }, Center { piece: 46, face: 1 }, Center { piece: 47, face: 1 }, Center { piece: 48, face: 1 }, Center { piece: 49, face: 1 },
+                
+                // Caras L, R, F, B tendrían más centros...
+            ],
+            edges: [
+                // Aristas U (Superiores) - 16 aristas
+                Edge { piece: 0, orientation: 0 }, Edge { piece: 1, orientation: 0 },
+                Edge { piece: 2, orientation: 0 }, Edge { piece: 3, orientation: 0 },
+                Edge { piece: 4, orientation: 0 }, Edge { piece: 5, orientation: 0 },
+                Edge { piece: 6, orientation: 0 }, Edge { piece: 7, orientation: 0 },
+                Edge { piece: 8, orientation: 0 }, Edge { piece: 9, orientation: 0 },
+                Edge { piece: 10, orientation: 0 }, Edge { piece: 11, orientation: 0 },
+                Edge { piece: 12, orientation: 0 }, Edge { piece: 13, orientation: 0 },
+                Edge { piece: 14, orientation: 0 }, Edge { piece: 15, orientation: 0 },
+                
+                // Aristas D (Inferiores) - 16 aristas
+                Edge { piece: 16, orientation: 0 }, Edge { piece: 17, orientation: 0 },
+                Edge { piece: 18, orientation: 0 }, Edge { piece: 19, orientation: 0 },
+                Edge { piece: 20, orientation: 0 }, Edge { piece: 21, orientation: 0 },
+                Edge { piece: 22, orientation: 0 }, Edge { piece: 23, orientation: 0 },
+                Edge { piece: 24, orientation: 0 }, Edge { piece: 25, orientation: 0 },
+                Edge { piece: 26, orientation: 0 }, Edge { piece: 27, orientation: 0 },
+                Edge { piece: 28, orientation: 0 }, Edge { piece: 29, orientation: 0 },
+                Edge { piece: 30, orientation: 0 }, Edge { piece: 31, orientation: 0 },
+                
+                // Aristas laterales - 16 aristas
+                Edge { piece: 32, orientation: 0 }, Edge { piece: 33, orientation: 0 },
+                Edge { piece: 34, orientation: 0 }, Edge { piece: 35, orientation: 0 },
+                Edge { piece: 36, orientation: 0 }, Edge { piece: 37, orientation: 0 },
+                Edge { piece: 38, orientation: 0 }, Edge { piece: 39, orientation: 0 },
+                Edge { piece: 40, orientation: 0 }, Edge { piece: 41, orientation: 0 },
+                Edge { piece: 42, orientation: 0 }, Edge { piece: 43, orientation: 0 },
+                Edge { piece: 44, orientation: 0 }, Edge { piece: 45, orientation: 0 },
+                Edge { piece: 46, orientation: 0 }, Edge { piece: 47, orientation: 0 },
+            ],
+            corners: [
+                Corner { piece: 0, orientation: 0 }, // UFR
+                Corner { piece: 1, orientation: 0 }, // UFL
+                Corner { piece: 2, orientation: 0 }, // ULB
+                Corner { piece: 3, orientation: 0 }, // UBR
+                Corner { piece: 4, orientation: 0 }, // DFR
+                Corner { piece: 5, orientation: 0 }, // DFL
+                Corner { piece: 6, orientation: 0 }, // DLB
+                Corner { piece: 7, orientation: 0 }, // DBR
+            ],
+        }
+    }
+
+    // Movimiento U (gira la cara superior 90 grados en sentido horario)
+    pub fn move_u(&mut self) {
+        // Permutar centros U (fila superior)
+        let temp_centers_row1 = [self.centers[0], self.centers[1], self.centers[2], self.centers[3], self.centers[4]];
+        self.centers[0] = self.centers[4];  // UR -> UF
+        self.centers[1] = temp_centers_row1[0];  // UF -> UL
+        self.centers[2] = temp_centers_row1[1];  // UL -> UB
+        self.centers[3] = temp_centers_row1[2];  // UB -> UR
+        // Centro central no cambia: self.centers[12]
+        
+        // Permutar centros U (fila inferior)
+        let temp_centers_row2 = [self.centers[20], self.centers[21], self.centers[22], self.centers[23], self.centers[24]];
+        self.centers[20] = self.centers[24];  // UR -> UF
+        self.centers[21] = temp_centers_row2[0];  // UF -> UL
+        self.centers[22] = temp_centers_row2[1];  // UL -> UB
+        self.centers[23] = temp_centers_row2[2];  // UB -> UR
+        // Centro central no cambia: self.centers[12]
+        
+        // Permutar aristas U
+        let temp_edges = [self.edges[0], self.edges[1], self.edges[2], self.edges[3]];
+        self.edges[0] = self.edges[3];  // UR -> UF
+        self.edges[1] = temp_edges[0];  // UF -> UL
+        self.edges[2] = temp_edges[1];  // UL -> UB
+        self.edges[3] = temp_edges[2];  // UB -> UR
+        
+        // Permutar esquinas U
+        let temp_corners = [self.corners[0], self.corners[1], self.corners[2], self.corners[3]];
+        self.corners[0] = self.corners[3];  // UFR -> UBR
+        self.corners[1] = temp_corners[0];  // UFL -> UFR
+        self.corners[2] = temp_corners[1];  // ULB -> UFL
+        self.corners[3] = temp_corners[2];  // UBR -> ULB
+    }
+
+    // Movimiento R (gira la cara derecha 90 grados en sentido horario)
+    pub fn move_r(&mut self) {
+        // Permutar centros R
+        // Similar a U pero en la cara derecha
+        
+        // Permutar aristas R
+        let temp_edges = [self.edges[32], self.edges[33], self.edges[34], self.edges[35]];
+        self.edges[32] = self.edges[35];  // RF -> RB
+        self.edges[33] = temp_edges[0];   // RU -> RF
+        self.edges[34] = temp_edges[1];   // RD -> RU
+        self.edges[35] = temp_edges[2];   // RB -> RD
+        
+        // Permutar esquinas R
+        let temp_corners = [self.corners[0], self.corners[4], self.corners[7], self.corners[3]];
+        self.corners[0] = self.corners[4];  // UFR -> DFR
+        self.corners[4] = self.corners[7];  // DFR -> DBR
+        self.corners[7] = self.corners[3];  // DBR -> UBR
+        self.corners[3] = temp_corners[0];  // UBR -> UFR
+        
+        // Ajustar orientaciones de esquinas
+        self.corners[0].orientation = (self.corners[0].orientation + 2) % 3;
+        self.corners[4].orientation = (self.corners[4].orientation + 1) % 3;
+        self.corners[7].orientation = (self.corners[7].orientation + 2) % 3;
+        self.corners[3].orientation = (self.corners[3].orientation + 1) % 3;
+    }
+
+    // Movimiento F (gira la cara frontal 90 grados en sentido horario)
+    pub fn move_f(&mut self) {
+        // Permutar centros F
+        // Similar a U pero en la cara frontal
+        
+        // Permutar aristas F
+        let temp_edges = [self.edges[16], self.edges[17], self.edges[18], self.edges[19]];
+        self.edges[16] = self.edges[19];  // FR -> FD
+        self.edges[17] = temp_edges[0];   // FU -> FR
+        self.edges[18] = temp_edges[1];   // FD -> FL
+        self.edges[19] = temp_edges[2];   // FL -> FU
+        
+        // Permutar esquinas F
+        let temp_corners = [self.corners[0], self.corners[1], self.corners[5], self.corners[4]];
+        self.corners[0] = self.corners[5];  // UFR -> DFL
+        self.corners[1] = temp_corners[0];  // UFL -> UFR
+        self.corners[5] = temp_corners[2];  // DFL -> DFR
+        self.corners[4] = temp_corners[1];  // DFR -> UFL
+        
+        // Ajustar orientaciones de esquinas
+        self.corners[0].orientation = (self.corners[0].orientation + 1) % 3;
+        self.corners[5].orientation = (self.corners[5].orientation + 2) % 3;
+        self.corners[1].orientation = (self.corners[1].orientation + 2) % 3;
+        self.corners[4].orientation = (self.corners[4].orientation + 1) % 3;
+    }
+
+    // Verifica si el cubo está resuelto
+    pub fn is_solved(&self) -> bool {
+        // Verificar centros
+        for i in 0..50 {
+            if self.centers[i].piece != i {
+                return false;
+            }
+        }
+        
+        // Verificar aristas
+        for i in 0..48 {
+            if self.edges[i].piece != i || self.edges[i].orientation != 0 {
+                return false;
+            }
+        }
+        
+        // Verificar esquinas
+        for i in 0..8 {
+            if self.corners[i].piece != i || self.corners[i].orientation != 0 {
+                return false;
+            }
+        }
+        
+        true
+    }
+
+    // Calcula un hash del estado actual del cubo
+    pub fn get_state_hash(&self) -> u64 {
+        use std::collections::hash_map::DefaultHasher;
+        use std::hash::{Hash, Hasher};
+        
+        let mut hasher = DefaultHasher::new();
+        self.hash(&mut hasher);
+        hasher.finish()
+    }
+
+    // Aplica una secuencia de movimientos
+    pub fn apply_sequence(&mut self, sequence: &str) {
+        for move_char in sequence.chars() {
+            match move_char {
+                'U' => self.move_u(),
+                'R' => self.move_r(),
+                'F' => self.move_f(),
+                'D' => {
+                    // Doble movimiento U: U U
+                    self.move_u();
+                    self.move_u();
+                }
+                'L' => {
+                    // Doble movimiento R: R R
+                    self.move_r();
+                    self.move_r();
+                }
+                'B' => {
+                    // Doble movimiento F: F F
+                    self.move_f();
+                    self.move_f();
+                }
+                ' ' | '\n' | '\t' => continue, // Ignorar espacios
+                _ => {} // Otros caracteres se ignoran
+            }
+        }
+    }
+}
+
+impl fmt::Display for Cube5x5x5 {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        writeln!(f, "Cube 5x5x5 State:")?;
+        writeln!(f, "Centers (first 10):")?;
+        for i in 0..std::cmp::min(10, self.centers.len()) {
+            writeln!(f, "  Center {}: piece={}, face={}", i, self.centers[i].piece, self.centers[i].face)?;
+        }
+        writeln!(f, "Edges (first 10):")?;
+        for i in 0..std::cmp::min(10, self.edges.len()) {
+            writeln!(f, "  Edge {}: piece={}, orientation={}", i, self.edges[i].piece, self.edges[i].orientation)?;
+        }
+        writeln!(f, "Corners:")?;
+        for (i, corner) in self.corners.iter().enumerate() {
+            writeln!(f, "  Corner {}: piece={}, orientation={}", i, corner.piece, corner.orientation)?;
+        }
+        Ok(())
+    }
+}
+
+impl std::hash::Hash for Cube5x5x5 {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        self.centers.hash(state);
+        self.edges.hash(state);
+        self.corners.hash(state);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_new_cube_is_solved() {
+        let cube = Cube5x5x5::new();
+        assert!(cube.is_solved());
+    }
+
+    #[test]
+    fn test_move_u() {
+        let mut cube = Cube5x5x5::new();
+        cube.move_u();
+        // Después de U, las esquinas U deben estar permutadas
+        assert_eq!(cube.corners[0].piece, 3); // Antes era 0 (UFR -> UBR)
+        assert_eq!(cube.corners[1].piece, 0); // Antes era 1 (UFL -> UFR)
+        assert_eq!(cube.corners[2].piece, 1); // Antes era 2 (ULB -> UFL)
+        assert_eq!(cube.corners[3].piece, 2); // Antes era 3 (UBR -> ULB)
+    }
+}
+```
+
+## Aplicaciones en QubitCoin
+
+### Uso en RubikPoW
+
+El cubo 5×5×5 puede utilizarse para:
+
+- Niveles de seguridad extremadamente altos
+- Aplicaciones que requieren máxima resistencia cuántica
+- Validación de transacciones de alto valor
+
+### Seguridad
+
+- Espacio de estados: ≈ 2.8 × 10^74
+- Mayor seguridad que el cubo 4×4×4
+- Adecuado para protección contra ataques futuros
+
+## Comparación con Otros Cubos
+
+| Cubo | Espacio de Estados | Seguridad Relativa | Uso Principal |
+|------|-------------------|-------------------|---------------|
+| 2×2×2 | ~3.6 × 10^6 | Baja | Pruebas, nodos ligeros |
+| 3×3×3 | ~4.3 × 10^19 | Media | Transacciones de valor medio |
+| 4×4×4 | ~7.4 × 10^45 | Alta | Principal en QubitCoin |
+| 5×5×5 | ~2.8 × 10^74 | Extrema | Altas transacciones, seguridad máxima |
+
+## Conclusiones
+
+El cubo 5×5×5 proporciona un nivel adicional de complejidad matemática para aplicaciones que requieren seguridad extrema. Aunque no es el cubo principal en QubitCoin, ofrece capacidades valiosas para ciertos casos de uso especializados.

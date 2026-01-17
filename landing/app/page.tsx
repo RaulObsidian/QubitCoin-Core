@@ -1165,7 +1165,7 @@ while Verification_Fails(Permutation):
             ].map((doc, i) => (
               <a
                 key={doc.lang}
-                href={`/whitepaper/QubitCoin-QBC _EU_${doc.lang}_Final.pdf`}
+                href={`/whitepaper/QbitCoin-QBC _EU_${doc.lang}_Final.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 text-left transition-all duration-300 hover:border-[#00ff9d]/50 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(0,255,157,0.1)]"

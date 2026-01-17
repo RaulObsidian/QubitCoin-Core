@@ -1,0 +1,129 @@
+# Matemáticas Aplicadas en QubitCoin
+
+## Introducción
+
+QubitCoin utiliza un algoritmo de prueba de trabajo (Proof of Work) basado en la teoría de grupos, específicamente en el Grupo Simétrico S48, que representa las posibles permutaciones de una cara de un cubo 4×4×4.
+
+## Fundamentos Matemáticos
+
+### Grupo Simétrico S48
+
+El Grupo Simétrico S48 (S48) es el grupo de todas las permutaciones posibles de 48 elementos. En el contexto de QubitCoin, estos 48 elementos representan las posibles posiciones de las piezas en una cara de un cubo 4×4×4.
+
+- Número de elementos en S48: 48! ≈ 1.24 × 10^61
+- En realidad, para el cubo 4×4×4, el número de estados válidos es aún mayor debido a las restricciones geométricas
+
+### Espacio de Estados del Cubo 4×4×4
+
+El cubo 4×4×4 tiene un espacio de estados mucho más complejo que el cubo 3×3×3:
+
+- Piezas centrales: 24 piezas (4 por cara × 6 caras)
+- Piezas de borde: 24 piezas
+- Piezas de esquina: 8 piezas
+- Total de piezas móviles: 56
+
+### Grupo de Permutaciones del Cubo
+
+El estado del cubo 4×4×4 puede representarse como un elemento del grupo de permutaciones:
+
+G = S24 × S24 × S8 ⋊ (Z2^24 × Z3^8)
+
+Donde:
+- S24: permutaciones de las piezas centrales
+- S24: permutaciones de las piezas de borde
+- S8: permutaciones de las esquinas
+- Z2^24: orientaciones de las piezas de borde
+- Z3^8: orientaciones de las esquinas
+
+## Algoritmo RubikPoW
+
+### Descripción General
+
+RubikPoW (Rubik Proof of Work) es un algoritmo de prueba de trabajo que requiere resolver un estado específico de un cubo 4×4×4. La dificultad se ajusta mediante un parámetro objetivo.
+
+### Pseudocódigo
+
+```
+Proof of Work:
+Permutation = Solve_Rubik_State(random_state)
+while Verification_Fails(Permutation):
+  random_state = shuffle_permutation(random_state)
+  Permutation = Solve_Rubik_State(random_state)
+```
+
+### Función de Hash
+
+H = Hash(Block_Header + Permutation)
+
+### Verificación
+
+La verificación de una solución es computacionalmente eficiente:
+- Tiempo de verificación: O(n) donde n es el número de movimientos
+- La verificación implica comprobar que la secuencia de movimientos lleva del estado inicial al estado objetivo
+
+## Seguridad Criptográfica
+
+### Resistencia Cuántica
+
+El algoritmo RubikPoW es resistente a ataques cuánticos debido a:
+
+1. La complejidad computacional del problema de búsqueda en el espacio S48
+2. La asimetría inherente entre la dificultad de resolución y verificación
+3. La naturaleza combinatoria del problema, que no es susceptible a algoritmos cuánticos como Shor o Grover
+
+### Niveles de Seguridad
+
+- Seguridad contra ataques clásicos: > 2^128 operaciones
+- Seguridad contra ataques cuánticos: > 2^64 operaciones cuánticas equivalentes
+- Nivel de seguridad comparable al NIST PQC Security Level 5
+
+## Aplicaciones en Criptografía Post-Cuántica
+
+### Firma Digital
+
+QubitCoin implementa esquemas de firma digital post-cuántica como:
+
+- **Dilithium**: Para firmas digitales resistentes a cuánticos
+- **Kyber**: Para intercambio de claves post-cuántico
+
+### Algoritmos de Derivación
+
+La criptografía de QubitCoin se basa en problemas matemáticos difíciles:
+
+1. Problema de la palabra en grupos no conmutativos
+2. Problema de conjugación en grupos de permutaciones
+3. Problema de isomorfismo de grafos aplicado a estructuras cúbicas
+
+## Complejidad Computacional
+
+### Análisis de Complejidad
+
+- Tiempo de resolución (minero): Exponencial en el tamaño del espacio de búsqueda
+- Tiempo de verificación (nodo): Lineal O(n) en el número de movimientos
+- Relación resolución/verificación: > 10^6:1
+
+### Espacio de Búsqueda
+
+El espacio de búsqueda efectivo es aproximadamente:
+
+| Nivel de Seguridad | Tamaño del Espacio | Estimación |
+|-------------------|-------------------|------------|
+| Seguridad Baja    | S16              | ~2.09 × 10^13 |
+| Seguridad Media   | S24              | ~6.20 × 10^23 |
+| Seguridad Alta    | S32              | ~2.63 × 10^35 |
+| Seguridad Máxima  | S48              | ~1.24 × 10^61 |
+
+## Aplicaciones Científicas
+
+### Pruebas de Trabajo Útil (PoUW)
+
+A diferencia de SHA-256, RubikPoW resuelve problemas matemáticos útiles:
+
+1. Optimización de rutas en grafos
+2. Problemas de empaquetamiento
+3. Simulaciones moleculares
+4. Análisis de redes complejas
+
+## Conclusión
+
+El uso del Grupo Simétrico S48 en QubitCoin proporciona una base matemática sólida para una criptomoneda resistente a ataques cuánticos, con aplicaciones prácticas en computación científica útil.

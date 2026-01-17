@@ -1,0 +1,249 @@
+# Documento Técnico del Cubo 3×3×3 - QubitCoin
+
+## Descripción Matemática
+
+El cubo 3×3×3, conocido como el Cubo de Rubik original, es el más famoso de la familia de cubos. Su estructura matemática es más compleja que la del 2×2×2 y sirve como base para muchos algoritmos avanzados.
+
+### Grupo de Permutaciones
+
+El estado del cubo 3×3×3 puede representarse como un elemento del grupo de permutaciones:
+
+G = (S8 ⋉ Z3^7) × (S12 ⋉ Z2^11)
+
+Donde:
+- S8: permutaciones de las 8 esquinas
+- Z3^7: orientaciones de las esquinas (la orientación de la octava está determinada por las otras 7)
+- S12: permutaciones de las 12 aristas
+- Z2^11: orientaciones de las aristas (la orientación de la duodécima está determinada por las otras 11)
+
+### Espacio de Estados
+
+- Número total de estados posibles: 8! × 3^8 × 12! × 2^12
+- Número de estados alcanzables mediante giros legales: (8! × 3^7) × (12! × 2^10) = 43,252,003,274,489,856,000
+- Aproximadamente 4.3 × 10^19 estados
+
+## Código Rust para el Cubo 3×3×3
+
+```rust
+use std::fmt;
+
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub struct Corner {
+    pub piece: u8,      // Identificador de la pieza (0-7)
+    pub orientation: u8, // Orientación (0, 1, 2)
+}
+
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub struct Edge {
+    pub piece: u8,      // Identificador de la pieza (0-11)
+    pub orientation: u8, // Orientación (0, 1)
+}
+
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub struct Cube3x3x3 {
+    corners: [Corner; 8],
+    edges: [Edge; 12],
+}
+
+impl Cube3x3x3 {
+    pub fn new() -> Self {
+        // Estado resuelto
+        Cube3x3x3 {
+            corners: [
+                Corner { piece: 0, orientation: 0 }, // URF
+                Corner { piece: 1, orientation: 0 }, // UFL
+                Corner { piece: 2, orientation: 0 }, // ULB
+                Corner { piece: 3, orientation: 0 }, // UBR
+                Corner { piece: 4, orientation: 0 }, // DFR
+                Corner { piece: 5, orientation: 0 }, // DLF
+                Corner { piece: 6, orientation: 0 }, // DBL
+                Corner { piece: 7, orientation: 0 }, // DRB
+            ],
+            edges: [
+                Edge { piece: 0, orientation: 0 }, // UR
+                Edge { piece: 1, orientation: 0 }, // UF
+                Edge { piece: 2, orientation: 0 }, // UL
+                Edge { piece: 3, orientation: 0 }, // UB
+                Edge { piece: 4, orientation: 0 }, // DR
+                Edge { piece: 5, orientation: 0 }, // DF
+                Edge { piece: 6, orientation: 0 }, // DL
+                Edge { piece: 7, orientation: 0 }, // DB
+                Edge { piece: 8, orientation: 0 }, // FR
+                Edge { piece: 9, orientation: 0 }, // FL
+                Edge { piece: 10, orientation: 0 }, // BL
+                Edge { piece: 11, orientation: 0 }, // BR
+            ],
+        }
+    }
+
+    // Movimiento U (gira la cara superior 90 grados en sentido horario)
+    pub fn move_u(&mut self) {
+        // Permutar esquinas URF -> UFL -> ULB -> UBR -> URF
+        let temp_corner = self.corners[0];
+        self.corners[0] = self.corners[1];
+        self.corners[1] = self.corners[2];
+        self.corners[2] = self.corners[3];
+        self.corners[3] = temp_corner;
+        
+        // Permutar aristas UR -> UF -> UL -> UB -> UR
+        let temp_edge = self.edges[0];
+        self.edges[0] = self.edges[1];
+        self.edges[1] = self.edges[2];
+        self.edges[2] = self.edges[3];
+        self.edges[3] = temp_edge;
+        
+        // Las orientaciones no cambian en el movimiento U
+    }
+
+    // Movimiento R (gira la cara derecha 90 grados en sentido horario)
+    pub fn move_r(&mut self) {
+        // Permutar esquinas URF -> DFR -> DRB -> UBR -> URF
+        let temp_corner = self.corners[0];
+        self.corners[0] = self.corners[4];
+        self.corners[4] = self.corners[7];
+        self.corners[7] = self.corners[3];
+        self.corners[3] = temp_corner;
+        
+        // Ajustar orientaciones de esquinas
+        self.corners[0].orientation = (self.corners[0].orientation + 2) % 3;
+        self.corners[4].orientation = (self.corners[4].orientation + 1) % 3;
+        self.corners[7].orientation = (self.corners[7].orientation + 2) % 3;
+        self.corners[3].orientation = (self.corners[3].orientation + 1) % 3;
+        
+        // Permutar aristas UR -> BR -> DR -> FR -> UR
+        let temp_edge = self.edges[0];
+        self.edges[0] = self.edges[11];
+        self.edges[11] = self.edges[4];
+        self.edges[4] = self.edges[8];
+        self.edges[8] = temp_edge;
+        
+        // Ajustar orientaciones de aristas
+        self.edges[0].orientation = (self.edges[0].orientation + 1) % 2;
+        self.edges[11].orientation = (self.edges[11].orientation + 1) % 2;
+        self.edges[4].orientation = (self.edges[4].orientation + 1) % 2;
+        self.edges[8].orientation = (self.edges[8].orientation + 1) % 2;
+    }
+
+    // Movimiento F (gira la cara frontal 90 grados en sentido horario)
+    pub fn move_f(&mut self) {
+        // Permutar esquinas URF -> DLF -> ULF -> UFR -> URF
+        let temp_corner = self.corners[0];
+        self.corners[0] = self.corners[5];
+        self.corners[5] = self.corners[2];
+        self.corners[2] = self.corners[1];
+        self.corners[1] = temp_corner;
+        
+        // Ajustar orientaciones de esquinas
+        self.corners[0].orientation = (self.corners[0].orientation + 1) % 3;
+        self.corners[5].orientation = (self.corners[5].orientation + 2) % 3;
+        self.corners[2].orientation = (self.corners[2].orientation + 1) % 3;
+        self.corners[1].orientation = (self.corners[1].orientation + 2) % 3;
+        
+        // Permutar aristas UF -> FL -> DF -> FR -> UF
+        let temp_edge = self.edges[1];
+        self.edges[1] = self.edges[9];
+        self.edges[9] = self.edges[5];
+        self.edges[5] = self.edges[8];
+        self.edges[8] = temp_edge;
+        
+        // Ajustar orientaciones de aristas
+        self.edges[1].orientation = (self.edges[1].orientation + 1) % 2;
+        self.edges[9].orientation = (self.edges[9].orientation + 1) % 2;
+        self.edges[5].orientation = (self.edges[5].orientation + 1) % 2;
+        self.edges[8].orientation = (self.edges[8].orientation + 1) % 2;
+    }
+
+    // Verifica si el cubo está resuelto
+    pub fn is_solved(&self) -> bool {
+        // Verificar esquinas
+        for i in 0..8 {
+            if self.corners[i].piece != i || self.corners[i].orientation != 0 {
+                return false;
+            }
+        }
+        
+        // Verificar aristas
+        for i in 0..12 {
+            if self.edges[i].piece != i || self.edges[i].orientation != 0 {
+                return false;
+            }
+        }
+        
+        true
+    }
+
+    // Obtiene el estado actual como un hash
+    pub fn get_state_hash(&self) -> u64 {
+        use std::collections::hash_map::DefaultHasher;
+        use std::hash::{Hash, Hasher};
+        
+        let mut hasher = DefaultHasher::new();
+        self.hash(&mut hasher);
+        hasher.finish()
+    }
+}
+
+impl fmt::Display for Cube3x3x3 {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        writeln!(f, "Cube 3x3x3 State:")?;
+        writeln!(f, "Corners:")?;
+        for (i, corner) in self.corners.iter().enumerate() {
+            writeln!(f, "  Corner {}: piece={}, orientation={}", i, corner.piece, corner.orientation)?;
+        }
+        writeln!(f, "Edges:")?;
+        for (i, edge) in self.edges.iter().enumerate() {
+            writeln!(f, "  Edge {}: piece={}, orientation={}", i, edge.piece, edge.orientation)?;
+        }
+        Ok(())
+    }
+}
+
+impl std::hash::Hash for Cube3x3x3 {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        self.corners.hash(state);
+        self.edges.hash(state);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_new_cube_is_solved() {
+        let cube = Cube3x3x3::new();
+        assert!(cube.is_solved());
+    }
+
+    #[test]
+    fn test_move_u() {
+        let mut cube = Cube3x3x3::new();
+        cube.move_u();
+        // Después de U, las esquinas deben estar permutadas
+        assert_eq!(cube.corners[0].piece, 1); // Antes era 0
+        assert_eq!(cube.corners[1].piece, 2); // Antes era 1
+        assert_eq!(cube.corners[2].piece, 3); // Antes era 2
+        assert_eq!(cube.corners[3].piece, 0); // Antes era 3
+    }
+}
+```
+
+## Aplicaciones en QubitCoin
+
+### Uso en RubikPoW
+
+El cubo 3×3×3 puede utilizarse como nivel intermedio de dificultad:
+
+- Mayor seguridad que el 2×2×2
+- Menor complejidad que el 4×4×4
+- Útil para transacciones de valor medio
+
+### Seguridad
+
+- Espacio de estados: ~4.3 × 10^19
+- Adecuado para protección contra ataques de fuerza bruta
+- Compatible con los requisitos de seguridad de NIST
+
+## Conclusiones
+
+El cubo 3×3×3 representa un equilibrio entre complejidad matemática y eficiencia computacional, ideal para ciertos casos de uso en la red QubitCoin.
